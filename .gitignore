@@ -20,3 +20,7 @@
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+# Generated research downloads and Python bytecode
+research_data/
+__pycache__/

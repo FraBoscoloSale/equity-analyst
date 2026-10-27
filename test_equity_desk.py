@@ -87,6 +87,40 @@ class FinancialTests(unittest.TestCase):
 
 
 class EvidenceTests(unittest.TestCase):
+    def test_quarter_per_diluted_share_is_printed_verbatim(self):
+        quarter_line = (
+            "Net income for the fourth quarter was $2.998 billion, $6.75 per diluted share, "
+            "compared to $2.610 billion, $5.87 per diluted share, last year."
+        )
+        # Annual figures can share the same HTML paragraph/plain-text line.
+        for suffix in ("", " Net income for the full fiscal year was $9.226 billion, $20.76 per diluted share."):
+            with self.subTest(suffix=suffix):
+                source_line = quarter_line + suffix
+                result = desk.release_lines(source_line)
+                self.assertEqual([item["text"] for item in result["diluted_eps"]], [source_line])
+                with tempfile.TemporaryDirectory() as tmp:
+                    path = Path(tmp) / "release.txt"
+                    path.write_text(source_line, encoding="utf-8")
+                    printed = io.StringIO()
+                    with redirect_stdout(printed):
+                        desk.show_release({"release": str(path)}, Path(tmp))
+                eps_output = printed.getvalue().split("Quarter diluted EPS", 1)[1]
+                self.assertIn(source_line, eps_output)
+                self.assertNotIn("No reliable quarter-labelled match", eps_output)
+
+    def test_per_diluted_share_keeps_quarter_scope_and_rejects_guidance(self):
+        for wording in ("per diluted share", "per diluted common share"):
+            with self.subTest(wording=wording):
+                actual = f"Net income was $120 million, $1.25 {wording}."
+                text = "\n".join([
+                    "Results for the first quarter ended March 31:", actual,
+                    f"Next quarter we expect $1.50 {wording}.",
+                    "Twelve Months Ended December 31",
+                    f"Net income was $400 million, $4.25 {wording}.",
+                ])
+                result = desk.release_lines(text)
+                self.assertEqual([item["text"] for item in result["diluted_eps"]], [actual])
+
     def test_quarter_totals_exclude_segments_guidance_and_annual(self):
         text = "\n".join([
             "Results for the quarter ended June 30, 2025:",

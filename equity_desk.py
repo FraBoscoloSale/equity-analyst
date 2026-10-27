@@ -433,7 +433,8 @@ def release_lines(text):
     revenue = re.compile(r"^(?:(?:the\s+)?(?:company|we)\s+(?:reported\s+)?)?"
                          r"(?:total\s+)?(?:net\s+)?(?:revenues?|sales)\b", re.I)
     eps = re.compile(r"diluted\s+(?:(?:net\s+)?(?:earnings|income|loss)\s+per\s+(?:common\s+)?share|EPS)"
-                     r"|(?:earnings|income|loss)\s+per\s+(?:common\s+)?share.{0,30}diluted", re.I)
+                     r"|(?:earnings|income|loss)\s+per\s+(?:common\s+)?share.{0,30}diluted"
+                     r"|\bper\s+diluted\s+(?:common\s+)?share\b", re.I)
     found = {"revenue": [], "diluted_eps": []}
     scope, scope_line = None, None
     for i, line in enumerate(lines):
@@ -441,7 +442,16 @@ def release_lines(text):
             scope, scope_line = "annual", line
         elif quarter.search(line) and not future.search(line):
             scope, scope_line = "quarter", line
-        if scope != "quarter" or future.search(line):
+        # HTML paragraphs may put quarterly and annual results on the same line.
+        # Check explicit quarter statements sentence by sentence, preserving the
+        # complete source line for verbatim evidence. Decimal points stay intact.
+        quarter_eps_statement = any(
+            quarter.search(sentence) and eps.search(sentence)
+            and not annual.search(sentence) and not future.search(sentence)
+            for sentence in re.split(r"(?<=[.!?])\s+(?=[A-Z])", line)
+        )
+        quarter_scope = scope == "quarter" and not future.search(line)
+        if not quarter_scope and not quarter_eps_statement:
             continue
         clean = line.strip(" |\t\u2022\u201c\u201d\"")
         table = "|" in line
@@ -451,10 +461,11 @@ def release_lines(text):
             continue
         revenue_match = revenue.search(clean)
         # Reject segment revenue and percentage-only revenue growth statements.
-        is_revenue = revenue_match and (table or re.match(
+        is_revenue = quarter_scope and revenue_match and (table or re.match(
             r"\s*(?:was|were|of|totaled|totalled|:|\$|increased\s+to|grew\s+to)", clean[revenue_match.end():], re.I))
-        is_eps = eps.search(clean) or (table and re.match(r"diluted\s*\|", clean, re.I)
-                                      and re.search(r"earnings per share", " ".join(lines[max(0, i-5):i]), re.I))
+        is_eps = quarter_eps_statement or (quarter_scope and (
+            eps.search(clean) or (table and re.match(r"diluted\s*\|", clean, re.I)
+                                 and re.search(r"earnings per share", " ".join(lines[max(0, i-5):i]), re.I))))
         for key, matches in (("revenue", is_revenue), ("diluted_eps", is_eps)):
             if not matches:
                 continue

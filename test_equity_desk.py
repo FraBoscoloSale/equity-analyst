@@ -41,13 +41,14 @@ class FinancialTests(unittest.TestCase):
         raw = fixture()
         taxonomy = raw["facts"]["us-gaap"]
         fresh = taxonomy.pop(desk.CONCEPTS["revenue"][2][0])
-        taxonomy["Revenues"] = fresh
+        taxonomy["RevenueFromContractWithCustomerExcludingAssessedTax"] = fresh
         taxonomy[desk.CONCEPTS["revenue"][2][0]] = {"units": {"USD": [
             record(999, end="2023-06-30", start="2022-07-01", filed="2026-01-01")]}}
         # A quarterly duration with the same end and a newer filing is not a full year.
         taxonomy["OperatingIncomeLoss"]["units"]["USD"].append(record(888, start="2025-04-01", filed="2026-01-01"))
         facts = desk.extract_facts(raw, COMPANY)
-        self.assertEqual(facts["concepts"]["revenue"]["current"]["tag"], "us-gaap:Revenues")
+        self.assertEqual(facts["concepts"]["revenue"]["current"]["tag"],
+                         "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax")
         self.assertEqual(facts["concepts"]["operating_income"]["current"]["val"], 30)
         self.assertEqual(facts["concepts"]["revenue"]["prior"]["val"], 100)
         for concept in facts["concepts"].values():
@@ -58,9 +59,58 @@ class FinancialTests(unittest.TestCase):
         raw = fixture()
         tax = raw["facts"]["us-gaap"]
         revenue = tax[desk.CONCEPTS["revenue"][2][0]]["units"]["USD"]
-        tax["Revenues"] = {"units": {"USD": [revenue.pop()]}}
+        tax["RevenueFromContractWithCustomerExcludingAssessedTax"] = {"units": {"USD": [revenue.pop()]}}
         facts = desk.extract_facts(raw, COMPANY)
-        self.assertEqual(facts["concepts"]["revenue"]["prior"]["tag"], "us-gaap:Revenues")
+        self.assertEqual(facts["concepts"]["revenue"]["prior"]["tag"],
+                         "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax")
+
+    def test_total_revenues_outranks_same_year_net_sales(self):
+        for total, sales in ((125, 120), (115, 120)):
+            with self.subTest(total=total, sales=sales):
+                raw = fixture()
+                tax = raw["facts"]["us-gaap"]
+                tax["Revenues"]["units"]["USD"][0]["val"] = total
+                # Narrower revenue disclosures are newer filings of the same year.
+                # Semantic preference must not depend on amount or filing recency.
+                for tag in ("RevenueFromContractWithCustomerExcludingAssessedTax", "SalesRevenueNet"):
+                    tax[tag] = {"units": {"USD": [record(sales, filed="2025-09-01"),
+                        record(95, end="2024-06-30", start="2023-07-01", filed="2025-09-01")]}}
+                facts = desk.extract_facts(raw, COMPANY)
+                revenue = facts["concepts"]["revenue"]
+                self.assertEqual(revenue["current"]["tag"], "us-gaap:Revenues")
+                self.assertEqual(revenue["current"]["val"], total)
+                self.assertEqual(revenue["prior"]["val"], 100)
+                self.assertEqual(facts["concepts"]["operating_income"]["current"]["val"], 30)
+                with redirect_stdout(io.StringIO()):
+                    metrics = desk.calculate(facts)
+                self.assertAlmostEqual(metrics["operating_margin"]["value"], 30 / total)
+                self.assertAlmostEqual(metrics["revenue_growth"]["value"], total / 100 - 1)
+
+    def test_newer_contract_revenue_wins_over_obsolete_total_and_aligns_prior(self):
+        raw = fixture()
+        tax = raw["facts"]["us-gaap"]
+        # The broad tag stops in the prior year; the new tag supplies this year.
+        prior_total = tax["Revenues"]["units"]["USD"].pop(0)
+        tax["Revenues"]["units"]["USD"][0]["val"] = 105
+        tax["RevenueFromContractWithCustomerExcludingAssessedTax"] = {"units": {"USD": [prior_total]}}
+        tax["SalesRevenueNet"] = {"units": {"USD": [
+            record(99, end="2024-06-30", start="2023-07-01", filed="2026-01-01")]}}
+        facts = desk.extract_facts(raw, COMPANY)
+        revenue = facts["concepts"]["revenue"]
+        self.assertEqual(revenue["current"]["tag"], "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax")
+        self.assertEqual(revenue["prior"]["tag"], "us-gaap:Revenues")
+        self.assertEqual(revenue["prior"]["val"], 105)
+        for concept in facts["concepts"].values():
+            self.assertEqual(concept["current"]["end"], facts["current_period"]["end"])
+            self.assertEqual(concept["prior"]["end"], facts["prior_period"]["end"])
+
+    def test_contract_revenue_remains_available_without_broad_total_tag(self):
+        raw = fixture()
+        tax = raw["facts"]["us-gaap"]
+        tax["RevenueFromContractWithCustomerExcludingAssessedTax"] = tax.pop("Revenues")
+        facts = desk.extract_facts(raw, COMPANY)
+        self.assertEqual(facts["concepts"]["revenue"]["current"]["val"], 120)
+        self.assertEqual(facts["concepts"]["revenue"]["prior"]["val"], 100)
 
     def test_all_calculations_and_current_debt_included(self):
         facts = desk.extract_facts(fixture(), COMPANY)

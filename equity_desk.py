@@ -22,9 +22,13 @@ ANNUAL_FORMS = {"10-K", "10-K/A"}
 # These debt concepts exclude the current portion; it is added separately.
 CONCEPTS = {
     "revenue": ("Revenue", "duration", [
+        # Revenues includes other revenue sources that contract revenue/net sales
+        # may omit. Prefer it when annual data is equally current; newest_tag
+        # still lets a newer contract-revenue tag supersede an obsolete tag.
+        "Revenues",
         "RevenueFromContractWithCustomerExcludingAssessedTax",
         "RevenueFromContractWithCustomerIncludingAssessedTax",
-        "Revenues", "SalesRevenueNet",
+        "SalesRevenueNet",
     ]),
     "operating_income": ("Operating income", "duration", ["OperatingIncomeLoss"]),
     "net_income": ("Net income", "duration", ["NetIncomeLoss", "ProfitLoss"]),
@@ -347,7 +351,11 @@ def extract_facts(raw, company):
                                 for candidate in tags]
                 alternatives = [(candidate, value) for candidate, value in alternatives if value]
                 if alternatives:
-                    chosen_tag, row = max(alternatives, key=lambda pair: (pair[1]["end"], pair[1].get("filed", "")))
+                    # Exact-period revenue fallbacks use the same total-revenue
+                    # preference as the main selection, rather than letting a
+                    # later filing of net sales outrank a reported total.
+                    chosen_tag, row = (alternatives[0] if key == "revenue" else
+                                      max(alternatives, key=lambda pair: (pair[1]["end"], pair[1].get("filed", ""))))
             values[name] = fact_detail(row, chosen_tag, unit, company)
         result["concepts"][key] = {"label": label, "selected_tag": f"us-gaap:{tag}" if tag else None,
                                    "latest_available_end": max((r["end"] for r in records), default=None), **values}

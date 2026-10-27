@@ -59,7 +59,12 @@ the timezone. Existing runs are preserved.
 ## Financial selection and limits
 
 Candidate tags are compared by their newest available annual period end, rather
-than taking the first tag that exists. Annual duration facts must cover 330–400
+than taking the first tag that exists. When revenue candidates have the same
+latest annual period, `Revenues` takes precedence over contract revenue and net
+sales because those narrower disclosures can exclude other revenue sources.
+The exact-period prior-year fallback uses the same semantic preference. A newer
+contract-revenue tag still supersedes an obsolete `Revenues` tag; values are never
+ranked by size. Annual duration facts must cover 330–400
 days and come from 10-K/10-K/A filings. Balance-sheet facts must be instants on
 the revenue fiscal year-end. Current and comparative duration facts must match
 revenue's exact start/end dates. Comparative `fy` fields describe the filing's

@@ -1,0 +1,18 @@
+{
+  "description": "Failure cases from the second completed Lab 03 COST run; numerical examples are fixture data, not issuer rules.",
+  "subject_margin": 0.03854476602650798,
+  "peer_margins": {"WMT": 0.041821, "TGT": 0.048836, "BJ": 0.038057},
+  "false_comparison": "The operating margin exceeds the margins reported by peer companies BJ's Wholesale Club, Target, and Walmart, whose operating margins are provided by the peer calculations.",
+  "false_segments": "The business is organized into three primary segments: core merchandise categories, warehouse ancillary services, and other businesses.",
+  "categories": "We offer merchandise and services in the following categories: core merchandise categories, warehouse ancillary services, and other businesses.",
+  "segments": "Our operating models are generally the same across our U.S., Canadian, and Other International operating segments.",
+  "contribution": "Higher gasoline prices positively impacted net sales. Changes in foreign currencies positively impacted net sales.",
+  "point_in_time": "Digitally-enabled comparable sales increased during the fiscal year.",
+  "false_price_claim": "Revenue growth indicates expanding top-line without reliance on price hikes.",
+  "false_acceleration": "Digitally-enabled comparable sales are accelerating, reflecting stronger e-commerce adoption across markets.",
+  "false_causality": "Continued opening of new warehouses expands the store footprint and drives comparable sales growth.",
+  "false_missing": "Quarterly cash-flow from operations is not provided in the current evidence set; acquiring the detailed 10-Q cash-flow statement would be necessary.",
+  "ratio_review": "Claims such as operating margin exceeding peers, revenue growth, and free cash flow rely solely on calculated metrics without accompanying narrative evidence from the filing.",
+  "limitation_review": "Limitations are listed separately as bullet points rather than integrated into qualitative prose with appropriate citations.",
+  "recommendation_review": "The recommendation relies on a single deciding metric (revenue growth) without explicitly linking other supporting metrics in the prose."
+}

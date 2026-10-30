@@ -1,0 +1,33 @@
+{
+  "description": "Small issuer-neutral excerpts reproducing the saved Lab 03 citation failure modes. Production code never loads this fixture.",
+  "lines": {
+    "96": "We operate membership warehouses and e-commerce sites based on the concept that offering low prices on a limited selection of nationally-branded and private-label products in a wide range of categories will produce high sales volumes and rapid inventory turnover.",
+    "152": "Competition",
+    "153": "We compete on a worldwide basis with global, national, and regional wholesalers and retailers, including supermarkets, supercenters, online retailers, gasoline stations, hard discounters, department and specialty stores, and operators selling a single category or narrow range of merchandise.",
+    "386": "• We opened 28 new warehouses, including three relocations, for a total of 25 net new warehouses: 18 in the U.S., five in our Canadian segment, and two in our Other International segment, compared to 27 new warehouses, including three relocations, in 2025;"
+  },
+  "invalid_citations": [
+    {
+      "case": "unicode_hyphen_replaces_ascii",
+      "source": "annual",
+      "line": 96,
+      "quote": "We operate membership warehouses and e-commerce sites based on the concept that offering low prices on a limited selection of nationally‑branded and private‑label products in a wide range of categories will produce high sales volumes and rapid inventory turnover."
+    },
+    {
+      "case": "ellipsis_abbreviates_line",
+      "source": "annual",
+      "line": 386,
+      "quote": "We opened 28 new warehouses … compared to 27 new warehouses … in 2025;"
+    },
+    {
+      "case": "heading_instead_of_competition_paragraph",
+      "source": "annual",
+      "line": 152,
+      "quote": "We compete on a worldwide basis with global, national, and regional wholesalers and retailers, including supermarkets, supercenters, online retailers, gasoline stations, hard discounters, department and specialty stores, and operators selling a single category or narrow range of merchandise."
+    },
+    {"case": "invented_mda_source", "source": "mda", "line": 386, "quote": "We opened 28 new warehouses"},
+    {"case": "invented_cli_line", "source": "CLI", "line": 1, "quote": "User-supplied share price | 992.13"},
+    {"case": "invented_metrics_line", "source": "metrics", "line": 1, "quote": "Operating margin"},
+    {"case": "out_of_range_release_line", "source": "release", "line": 394, "quote": "Dividend increase"}
+  ]
+}

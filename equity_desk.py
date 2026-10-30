@@ -1,4 +1,4 @@
-"""Seven-step SEC research data pipeline. No model calls or issuer-specific rules."""
+"""Seven SEC data steps followed by a four-role equity research desk."""
 
 import argparse
 import json
@@ -522,10 +522,12 @@ def parse_args(argv=None):
 
 def main(argv=None):
     args = parse_args(argv)
-    # Read this folder's file explicitly; no API key is needed or read.
-    user_agent = dotenv_values(ROOT / ".env").get("SEC_USER_AGENT", "")
+    settings = dotenv_values(ROOT / ".env")
+    user_agent = settings.get("SEC_USER_AGENT", "")
     if not user_agent or not user_agent.strip() or "\n" in user_agent or "\r" in user_agent:
         raise DeskError("Set a valid, single-line SEC_USER_AGENT in the .env beside this script.")
+    if not args.step and not (settings.get("API_KEY") or "").strip():
+        raise DeskError("Set API_KEY in the .env beside this script to run the four-role desk.")
     client = SECClient(user_agent.strip())
     state = {}
     descriptions = {
@@ -611,6 +613,13 @@ def main(argv=None):
                     peers[ticker] = {"error": str(exc)}
             save_json(output() / "peers.json", peers)
     print(f"\nSaved research data: {output()}")
+    if not args.step:
+        from research_roles import run_roles, RoleError
+        try:
+            report = run_roles(output(), settings["API_KEY"].strip())
+        except RoleError as exc:
+            raise DeskError(str(exc)) from exc
+        print(f"Report: {report.resolve()}", flush=True)
     return 0
 
 

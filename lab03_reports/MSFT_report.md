@@ -1,6 +1,10 @@
 Filings read: 10-K.txt (10-K 0001193125-26-323660); 10-Q.txt (10-Q 0001193125-26-436133); AMZN XBRL 10-K 0001018724-26-000004; GOOGL XBRL 10-K 0001652044-26-000018; MSFT XBRL 10-K 0001193125-26-323660; ORCL XBRL 10-K 0000950170-25-087926; ORCL XBRL 10-K 0001193125-26-277521; earnings_release.txt (8-K 0001193125-26-436122)
 Run time: 2026-10-29T20:05:33.852932-04:00
 
+Partner manual checks:
+- Core Claim 1 — Total revenue, latest fiscal year: Correct
+- Core Claim 5 — Diluted EPS, GAAP: Correct
+
 # MSFT Equity Research
 
 **HUMAN AUDIT REQUIRED.** Generated analysis is preserved unchanged after the single correction pass. Flags and evidence below are audit annotations, not corrections or approval of the claims.

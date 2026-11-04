@@ -1,0 +1,1585 @@
+{
+  "records": [
+    {
+      "id": "audited_claim_1",
+      "record": {
+        "kind": "sourced_claim",
+        "statement": "Total revenue for FY2026 (52 weeks, September 1, 2025-August 30, 2026) was \"$303,154 million\"; this is total revenue including membership fees, not net sales.",
+        "inputs": [
+          {
+            "name": "a",
+            "quoted": "303154",
+            "scale": "1000000",
+            "unit": "USD",
+            "period": {
+              "start": "2025-09-01",
+              "end": "2026-08-30"
+            },
+            "definition": "revenue",
+            "source": {
+              "fact": {
+                "file": "facts.json",
+                "pointer": "/concepts/revenue/current",
+                "record": {
+                  "start": "2025-09-01",
+                  "end": "2026-08-30",
+                  "val": 303154000000,
+                  "accn": "0000909832-26-000093",
+                  "fy": 2026,
+                  "fp": "FY",
+                  "form": "10-K",
+                  "filed": "2026-10-07",
+                  "frame": "CY2026",
+                  "tag": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+                  "unit": "USD",
+                  "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+                }
+              },
+              "filing": {
+                "file": "10-K.txt",
+                "line": 599,
+                "quote": "Total revenue | 303,154 | | | 275,235 | | | 254,453 |",
+                "number_index": 0,
+                "context": [
+                  {
+                    "line": 592,
+                    "quote": "(amounts in millions, except per share data)"
+                  },
+                  {
+                    "line": 594,
+                    "quote": "| 52 Weeks Ended"
+                  },
+                  {
+                    "line": 595,
+                    "quote": "| August 30, 2026 | | August 31, 2025 | | September 1, 2024"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "mentions": [
+          {
+            "start": 77,
+            "end": 84,
+            "expression": "a",
+            "unit": "USD",
+            "scale": "1000000",
+            "decimals": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "audited_claim_2",
+      "record": {
+        "kind": "sourced_claim",
+        "statement": "Total revenue growth was approximately 10.14%, using \"$303,154 million\" for FY2026 (52 weeks, September 1, 2025-August 30, 2026) and \"$275,235 million\" for FY2025 (52 weeks, September 2, 2024-August 31, 2025); definition: current-year total revenue / prior-year total revenue - 1, expressed as a percentage.",
+        "inputs": [
+          {
+            "name": "a",
+            "quoted": "303154",
+            "scale": "1000000",
+            "unit": "USD",
+            "period": {
+              "start": "2025-09-01",
+              "end": "2026-08-30"
+            },
+            "definition": "revenue",
+            "source": {
+              "fact": {
+                "file": "facts.json",
+                "pointer": "/concepts/revenue/current",
+                "record": {
+                  "start": "2025-09-01",
+                  "end": "2026-08-30",
+                  "val": 303154000000,
+                  "accn": "0000909832-26-000093",
+                  "fy": 2026,
+                  "fp": "FY",
+                  "form": "10-K",
+                  "filed": "2026-10-07",
+                  "frame": "CY2026",
+                  "tag": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+                  "unit": "USD",
+                  "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+                }
+              },
+              "filing": {
+                "file": "10-K.txt",
+                "line": 599,
+                "quote": "Total revenue | 303,154 | | | 275,235 | | | 254,453 |",
+                "number_index": 0,
+                "context": [
+                  {
+                    "line": 592,
+                    "quote": "(amounts in millions, except per share data)"
+                  },
+                  {
+                    "line": 594,
+                    "quote": "| 52 Weeks Ended"
+                  },
+                  {
+                    "line": 595,
+                    "quote": "| August 30, 2026 | | August 31, 2025 | | September 1, 2024"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "b",
+            "quoted": "275235",
+            "scale": "1000000",
+            "unit": "USD",
+            "period": {
+              "start": "2024-09-02",
+              "end": "2025-08-31"
+            },
+            "definition": "revenue",
+            "source": {
+              "fact": {
+                "file": "facts.json",
+                "pointer": "/concepts/revenue/prior",
+                "record": {
+                  "start": "2024-09-02",
+                  "end": "2025-08-31",
+                  "val": 275235000000,
+                  "accn": "0000909832-26-000093",
+                  "fy": 2026,
+                  "fp": "FY",
+                  "form": "10-K",
+                  "filed": "2026-10-07",
+                  "frame": "CY2025",
+                  "tag": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+                  "unit": "USD",
+                  "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+                }
+              },
+              "filing": {
+                "file": "10-K.txt",
+                "line": 599,
+                "quote": "Total revenue | 303,154 | | | 275,235 | | | 254,453 |",
+                "number_index": 1,
+                "context": [
+                  {
+                    "line": 592,
+                    "quote": "(amounts in millions, except per share data)"
+                  },
+                  {
+                    "line": 594,
+                    "quote": "| 52 Weeks Ended"
+                  },
+                  {
+                    "line": 595,
+                    "quote": "| August 30, 2026 | | August 31, 2025 | | September 1, 2024"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "mentions": [
+          {
+            "start": 39,
+            "end": 44,
+            "expression": "(a / b - 1) * 100",
+            "unit": "%",
+            "scale": "1",
+            "decimals": 2
+          },
+          {
+            "start": 55,
+            "end": 62,
+            "expression": "a",
+            "unit": "USD",
+            "scale": "1000000",
+            "decimals": 0
+          },
+          {
+            "start": 135,
+            "end": 142,
+            "expression": "b",
+            "unit": "USD",
+            "scale": "1000000",
+            "decimals": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "audited_claim_3",
+      "record": {
+        "kind": "sourced_claim",
+        "statement": "Operating income for FY2026 (52 weeks, September 1, 2025-August 30, 2026) was \"$11,685 million\"; operating margin was approximately 3.85%, defined as operating income divided by total revenue \"$303,154 million\" for the same fiscal year, multiplied by 100.",
+        "inputs": [
+          {
+            "name": "a",
+            "quoted": "11685",
+            "scale": "1000000",
+            "unit": "USD",
+            "period": {
+              "start": "2025-09-01",
+              "end": "2026-08-30"
+            },
+            "definition": "operating income",
+            "source": {
+              "fact": {
+                "file": "facts.json",
+                "pointer": "/concepts/operating_income/current",
+                "record": {
+                  "start": "2025-09-01",
+                  "end": "2026-08-30",
+                  "val": 11685000000,
+                  "accn": "0000909832-26-000093",
+                  "fy": 2026,
+                  "fp": "FY",
+                  "form": "10-K",
+                  "filed": "2026-10-07",
+                  "frame": "CY2026",
+                  "tag": "us-gaap:OperatingIncomeLoss",
+                  "unit": "USD",
+                  "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+                }
+              },
+              "filing": {
+                "file": "10-K.txt",
+                "line": 603,
+                "quote": "Operating income | 11,685 | | | 10,383 | | | 9,285 |",
+                "number_index": 0,
+                "context": [
+                  {
+                    "line": 592,
+                    "quote": "(amounts in millions, except per share data)"
+                  },
+                  {
+                    "line": 594,
+                    "quote": "| 52 Weeks Ended"
+                  },
+                  {
+                    "line": 595,
+                    "quote": "| August 30, 2026 | | August 31, 2025 | | September 1, 2024"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "b",
+            "quoted": "303154",
+            "scale": "1000000",
+            "unit": "USD",
+            "period": {
+              "start": "2025-09-01",
+              "end": "2026-08-30"
+            },
+            "definition": "revenue",
+            "source": {
+              "fact": {
+                "file": "facts.json",
+                "pointer": "/concepts/revenue/current",
+                "record": {
+                  "start": "2025-09-01",
+                  "end": "2026-08-30",
+                  "val": 303154000000,
+                  "accn": "0000909832-26-000093",
+                  "fy": 2026,
+                  "fp": "FY",
+                  "form": "10-K",
+                  "filed": "2026-10-07",
+                  "frame": "CY2026",
+                  "tag": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+                  "unit": "USD",
+                  "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+                }
+              },
+              "filing": {
+                "file": "10-K.txt",
+                "line": 599,
+                "quote": "Total revenue | 303,154 | | | 275,235 | | | 254,453 |",
+                "number_index": 0,
+                "context": [
+                  {
+                    "line": 592,
+                    "quote": "(amounts in millions, except per share data)"
+                  },
+                  {
+                    "line": 594,
+                    "quote": "| 52 Weeks Ended"
+                  },
+                  {
+                    "line": 595,
+                    "quote": "| August 30, 2026 | | August 31, 2025 | | September 1, 2024"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "mentions": [
+          {
+            "start": 80,
+            "end": 86,
+            "expression": "a",
+            "unit": "USD",
+            "scale": "1000000",
+            "decimals": 0
+          },
+          {
+            "start": 132,
+            "end": 136,
+            "expression": "a / b * 100",
+            "unit": "%",
+            "scale": "1",
+            "decimals": 2
+          },
+          {
+            "start": 194,
+            "end": 201,
+            "expression": "b",
+            "unit": "USD",
+            "scale": "1000000",
+            "decimals": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "audited_claim_4",
+      "record": {
+        "kind": "sourced_claim",
+        "statement": "Net income attributable to the company for FY2026 (52 weeks, September 1, 2025-August 30, 2026) was \"$9,226 million\", as reported in the consolidated income statement.",
+        "inputs": [
+          {
+            "name": "a",
+            "quoted": "9226",
+            "scale": "1000000",
+            "unit": "USD",
+            "period": {
+              "start": "2025-09-01",
+              "end": "2026-08-30"
+            },
+            "definition": "net income",
+            "source": {
+              "fact": {
+                "file": "facts.json",
+                "pointer": "/concepts/net_income/current",
+                "record": {
+                  "start": "2025-09-01",
+                  "end": "2026-08-30",
+                  "val": 9226000000,
+                  "accn": "0000909832-26-000093",
+                  "fy": 2026,
+                  "fp": "FY",
+                  "form": "10-K",
+                  "filed": "2026-10-07",
+                  "frame": "CY2026",
+                  "tag": "us-gaap:NetIncomeLoss",
+                  "unit": "USD",
+                  "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+                }
+              },
+              "filing": {
+                "file": "10-K.txt",
+                "line": 611,
+                "quote": "NET INCOME | $ | 9,226 | | | $ | 8,099 | | | $ | 7,367 |",
+                "number_index": 0,
+                "context": [
+                  {
+                    "line": 592,
+                    "quote": "(amounts in millions, except per share data)"
+                  },
+                  {
+                    "line": 594,
+                    "quote": "| 52 Weeks Ended"
+                  },
+                  {
+                    "line": 595,
+                    "quote": "| August 30, 2026 | | August 31, 2025 | | September 1, 2024"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "mentions": [
+          {
+            "start": 102,
+            "end": 107,
+            "expression": "a",
+            "unit": "USD",
+            "scale": "1000000",
+            "decimals": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "audited_claim_5",
+      "record": {
+        "kind": "sourced_claim",
+        "statement": "Unadjusted GAAP diluted EPS for FY2026 (52 weeks, September 1, 2025-August 30, 2026) was \"$20.76 per diluted share\"; this is the annual figure, not quarterly EPS.",
+        "inputs": [
+          {
+            "name": "a",
+            "quoted": "20.76",
+            "scale": "1",
+            "unit": "USD/shares",
+            "period": {
+              "start": "2025-09-01",
+              "end": "2026-08-30"
+            },
+            "definition": "diluted eps",
+            "source": {
+              "fact": {
+                "file": "facts.json",
+                "pointer": "/concepts/diluted_eps/current",
+                "record": {
+                  "start": "2025-09-01",
+                  "end": "2026-08-30",
+                  "val": 20.76,
+                  "accn": "0000909832-26-000093",
+                  "fy": 2026,
+                  "fp": "FY",
+                  "form": "10-K",
+                  "filed": "2026-10-07",
+                  "frame": "CY2026",
+                  "tag": "us-gaap:EarningsPerShareDiluted",
+                  "unit": "USD/shares",
+                  "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+                }
+              },
+              "filing": {
+                "file": "10-K.txt",
+                "line": 614,
+                "quote": "Diluted | $ | 20.76 | | | $ | 18.21 | | | $ | 16.56 |",
+                "number_index": 0,
+                "context": [
+                  {
+                    "line": 592,
+                    "quote": "(amounts in millions, except per share data)"
+                  },
+                  {
+                    "line": 594,
+                    "quote": "| 52 Weeks Ended"
+                  },
+                  {
+                    "line": 595,
+                    "quote": "| August 30, 2026 | | August 31, 2025 | | September 1, 2024"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "mentions": [
+          {
+            "start": 91,
+            "end": 96,
+            "expression": "a",
+            "unit": "USD/shares",
+            "scale": "1",
+            "decimals": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "audited_claim_6",
+      "record": {
+        "kind": "sourced_claim",
+        "statement": "Return on average equity for FY2026 (52 weeks, September 1, 2025-August 30, 2026) was approximately 28.40%, using annual net income \"$9,226 million\", ending equity \"$35,803 million\" at August 30, 2026, and beginning equity \"$29,164 million\" at August 31, 2025; definition: annual net income / the arithmetic average of beginning and ending stockholders equity, multiplied by 100.",
+        "inputs": [
+          {
+            "name": "a",
+            "quoted": "9226",
+            "scale": "1000000",
+            "unit": "USD",
+            "period": {
+              "start": "2025-09-01",
+              "end": "2026-08-30"
+            },
+            "definition": "net income",
+            "source": {
+              "fact": {
+                "file": "facts.json",
+                "pointer": "/concepts/net_income/current",
+                "record": {
+                  "start": "2025-09-01",
+                  "end": "2026-08-30",
+                  "val": 9226000000,
+                  "accn": "0000909832-26-000093",
+                  "fy": 2026,
+                  "fp": "FY",
+                  "form": "10-K",
+                  "filed": "2026-10-07",
+                  "frame": "CY2026",
+                  "tag": "us-gaap:NetIncomeLoss",
+                  "unit": "USD",
+                  "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+                }
+              },
+              "filing": {
+                "file": "10-K.txt",
+                "line": 611,
+                "quote": "NET INCOME | $ | 9,226 | | | $ | 8,099 | | | $ | 7,367 |",
+                "number_index": 0,
+                "context": [
+                  {
+                    "line": 592,
+                    "quote": "(amounts in millions, except per share data)"
+                  },
+                  {
+                    "line": 594,
+                    "quote": "| 52 Weeks Ended"
+                  },
+                  {
+                    "line": 595,
+                    "quote": "| August 30, 2026 | | August 31, 2025 | | September 1, 2024"
+                  },
+                  {
+                    "line": 637,
+                    "quote": "(amounts in millions, except par value and share data)"
+                  },
+                  {
+                    "line": 639,
+                    "quote": "| August 30, 2026 | | August 31, 2025"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "b",
+            "quoted": "35803",
+            "scale": "1000000",
+            "unit": "USD",
+            "period": {
+              "end": "2026-08-30"
+            },
+            "definition": "equity",
+            "source": {
+              "fact": {
+                "file": "facts.json",
+                "pointer": "/concepts/equity/current",
+                "record": {
+                  "end": "2026-08-30",
+                  "val": 35803000000,
+                  "accn": "0000909832-26-000093",
+                  "fy": 2026,
+                  "fp": "FY",
+                  "form": "10-K",
+                  "filed": "2026-10-07",
+                  "frame": "CY2026Q3I",
+                  "tag": "us-gaap:StockholdersEquity",
+                  "unit": "USD",
+                  "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+                }
+              },
+              "filing": {
+                "file": "10-K.txt",
+                "line": 676,
+                "quote": "TOTAL EQUITY | 35,803 | | | 29,164 |",
+                "number_index": 0,
+                "context": [
+                  {
+                    "line": 592,
+                    "quote": "(amounts in millions, except per share data)"
+                  },
+                  {
+                    "line": 594,
+                    "quote": "| 52 Weeks Ended"
+                  },
+                  {
+                    "line": 595,
+                    "quote": "| August 30, 2026 | | August 31, 2025 | | September 1, 2024"
+                  },
+                  {
+                    "line": 637,
+                    "quote": "(amounts in millions, except par value and share data)"
+                  },
+                  {
+                    "line": 639,
+                    "quote": "| August 30, 2026 | | August 31, 2025"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "c",
+            "quoted": "29164",
+            "scale": "1000000",
+            "unit": "USD",
+            "period": {
+              "end": "2025-08-31"
+            },
+            "definition": "equity",
+            "source": {
+              "fact": {
+                "file": "facts.json",
+                "pointer": "/concepts/equity/prior",
+                "record": {
+                  "end": "2025-08-31",
+                  "val": 29164000000,
+                  "accn": "0000909832-26-000093",
+                  "fy": 2026,
+                  "fp": "FY",
+                  "form": "10-K",
+                  "filed": "2026-10-07",
+                  "frame": "CY2025Q3I",
+                  "tag": "us-gaap:StockholdersEquity",
+                  "unit": "USD",
+                  "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+                }
+              },
+              "filing": {
+                "file": "10-K.txt",
+                "line": 676,
+                "quote": "TOTAL EQUITY | 35,803 | | | 29,164 |",
+                "number_index": 1,
+                "context": [
+                  {
+                    "line": 592,
+                    "quote": "(amounts in millions, except per share data)"
+                  },
+                  {
+                    "line": 594,
+                    "quote": "| 52 Weeks Ended"
+                  },
+                  {
+                    "line": 595,
+                    "quote": "| August 30, 2026 | | August 31, 2025 | | September 1, 2024"
+                  },
+                  {
+                    "line": 637,
+                    "quote": "(amounts in millions, except par value and share data)"
+                  },
+                  {
+                    "line": 639,
+                    "quote": "| August 30, 2026 | | August 31, 2025"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "mentions": [
+          {
+            "start": 100,
+            "end": 105,
+            "expression": "a / ((b + c) / 2) * 100",
+            "unit": "%",
+            "scale": "1",
+            "decimals": 2
+          },
+          {
+            "start": 134,
+            "end": 139,
+            "expression": "a",
+            "unit": "USD",
+            "scale": "1000000",
+            "decimals": 0
+          },
+          {
+            "start": 166,
+            "end": 172,
+            "expression": "b",
+            "unit": "USD",
+            "scale": "1000000",
+            "decimals": 0
+          },
+          {
+            "start": 225,
+            "end": 231,
+            "expression": "c",
+            "unit": "USD",
+            "scale": "1000000",
+            "decimals": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "audited_claim_7",
+      "record": {
+        "kind": "sourced_claim",
+        "statement": "Debt to equity at August 30, 2026 was approximately 0.1721 times, using \"$3,914 million\" of noncurrent long-term debt, \"$2,248 million\" of its current portion, and \"$35,803 million\" of ending equity; definition: (noncurrent long-term debt + current portion of long-term debt) / ending stockholders equity, excluding other liabilities and operating leases.",
+        "inputs": [
+          {
+            "name": "a",
+            "quoted": "3914",
+            "scale": "1000000",
+            "unit": "USD",
+            "period": {
+              "end": "2026-08-30"
+            },
+            "definition": "long term debt",
+            "source": {
+              "fact": {
+                "file": "facts.json",
+                "pointer": "/concepts/long_term_debt/current",
+                "record": {
+                  "end": "2026-08-30",
+                  "val": 3914000000,
+                  "accn": "0000909832-26-000093",
+                  "fy": 2026,
+                  "fp": "FY",
+                  "form": "10-K",
+                  "filed": "2026-10-07",
+                  "frame": "CY2026Q3I",
+                  "tag": "us-gaap:LongTermDebtNoncurrent",
+                  "unit": "USD",
+                  "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+                }
+              },
+              "filing": {
+                "file": "10-K.txt",
+                "line": 663,
+                "quote": "Long-term debt, excluding current portion | 3,914 | | | 5,713 |",
+                "number_index": 0,
+                "context": [
+                  {
+                    "line": 592,
+                    "quote": "(amounts in millions, except per share data)"
+                  },
+                  {
+                    "line": 594,
+                    "quote": "| 52 Weeks Ended"
+                  },
+                  {
+                    "line": 595,
+                    "quote": "| August 30, 2026 | | August 31, 2025 | | September 1, 2024"
+                  },
+                  {
+                    "line": 637,
+                    "quote": "(amounts in millions, except par value and share data)"
+                  },
+                  {
+                    "line": 639,
+                    "quote": "| August 30, 2026 | | August 31, 2025"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "b",
+            "quoted": "2248",
+            "scale": "1000000",
+            "unit": "USD",
+            "period": {
+              "end": "2026-08-30"
+            },
+            "definition": "current debt",
+            "source": {
+              "fact": {
+                "file": "facts.json",
+                "pointer": "/concepts/current_debt/current",
+                "record": {
+                  "end": "2026-08-30",
+                  "val": 2248000000,
+                  "accn": "0000909832-26-000093",
+                  "fy": 2026,
+                  "fp": "FY",
+                  "form": "10-K",
+                  "filed": "2026-10-07",
+                  "frame": "CY2026Q3I",
+                  "tag": "us-gaap:LongTermDebtCurrent",
+                  "unit": "USD",
+                  "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+                }
+              },
+              "filing": {
+                "file": "10-K.txt",
+                "line": 659,
+                "quote": "Current portion of long-term debt | 2,248 | | | 75 |",
+                "number_index": 0,
+                "context": [
+                  {
+                    "line": 592,
+                    "quote": "(amounts in millions, except per share data)"
+                  },
+                  {
+                    "line": 594,
+                    "quote": "| 52 Weeks Ended"
+                  },
+                  {
+                    "line": 595,
+                    "quote": "| August 30, 2026 | | August 31, 2025 | | September 1, 2024"
+                  },
+                  {
+                    "line": 637,
+                    "quote": "(amounts in millions, except par value and share data)"
+                  },
+                  {
+                    "line": 639,
+                    "quote": "| August 30, 2026 | | August 31, 2025"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "c",
+            "quoted": "35803",
+            "scale": "1000000",
+            "unit": "USD",
+            "period": {
+              "end": "2026-08-30"
+            },
+            "definition": "equity",
+            "source": {
+              "fact": {
+                "file": "facts.json",
+                "pointer": "/concepts/equity/current",
+                "record": {
+                  "end": "2026-08-30",
+                  "val": 35803000000,
+                  "accn": "0000909832-26-000093",
+                  "fy": 2026,
+                  "fp": "FY",
+                  "form": "10-K",
+                  "filed": "2026-10-07",
+                  "frame": "CY2026Q3I",
+                  "tag": "us-gaap:StockholdersEquity",
+                  "unit": "USD",
+                  "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+                }
+              },
+              "filing": {
+                "file": "10-K.txt",
+                "line": 676,
+                "quote": "TOTAL EQUITY | 35,803 | | | 29,164 |",
+                "number_index": 0,
+                "context": [
+                  {
+                    "line": 592,
+                    "quote": "(amounts in millions, except per share data)"
+                  },
+                  {
+                    "line": 594,
+                    "quote": "| 52 Weeks Ended"
+                  },
+                  {
+                    "line": 595,
+                    "quote": "| August 30, 2026 | | August 31, 2025 | | September 1, 2024"
+                  },
+                  {
+                    "line": 637,
+                    "quote": "(amounts in millions, except par value and share data)"
+                  },
+                  {
+                    "line": 639,
+                    "quote": "| August 30, 2026 | | August 31, 2025"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "mentions": [
+          {
+            "start": 52,
+            "end": 58,
+            "expression": "(a + b) / c",
+            "unit": "times",
+            "scale": "1",
+            "decimals": 4
+          },
+          {
+            "start": 74,
+            "end": 79,
+            "expression": "a",
+            "unit": "USD",
+            "scale": "1000000",
+            "decimals": 0
+          },
+          {
+            "start": 121,
+            "end": 126,
+            "expression": "b",
+            "unit": "USD",
+            "scale": "1000000",
+            "decimals": 0
+          },
+          {
+            "start": 166,
+            "end": 172,
+            "expression": "c",
+            "unit": "USD",
+            "scale": "1000000",
+            "decimals": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "audited_claim_8",
+      "record": {
+        "kind": "sourced_claim",
+        "statement": "Free cash flow for FY2026 (52 weeks, September 1, 2025-August 30, 2026) was \"$9,382 million\" ($9.382 billion), using \"$15,817 million\" of operating cash flow less \"$6,435 million\" of cash additions to property and equipment; definition: operating cash flow minus the positive magnitude of cash paid for property and equipment, not an issuer-adjusted free-cash-flow measure; the filing shows the capital expenditure as a parenthesized cash outflow.",
+        "inputs": [
+          {
+            "name": "a",
+            "quoted": "15817",
+            "scale": "1000000",
+            "unit": "USD",
+            "period": {
+              "start": "2025-09-01",
+              "end": "2026-08-30"
+            },
+            "definition": "cash from operations",
+            "source": {
+              "fact": {
+                "file": "facts.json",
+                "pointer": "/concepts/cash_from_operations/current",
+                "record": {
+                  "start": "2025-09-01",
+                  "end": "2026-08-30",
+                  "val": 15817000000,
+                  "accn": "0000909832-26-000093",
+                  "fy": 2026,
+                  "fp": "FY",
+                  "form": "10-K",
+                  "filed": "2026-10-07",
+                  "frame": "CY2026",
+                  "tag": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+                  "unit": "USD",
+                  "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+                }
+              },
+              "filing": {
+                "file": "10-K.txt",
+                "line": 730,
+                "quote": "Net cash provided by operating activities | 15,817 | | | 13,335 | | | 11,339 |",
+                "number_index": 0,
+                "context": [
+                  {
+                    "line": 714,
+                    "quote": "(amounts in millions)"
+                  },
+                  {
+                    "line": 716,
+                    "quote": "| 52 Weeks Ended"
+                  },
+                  {
+                    "line": 717,
+                    "quote": "| August 30, 2026 | | August 31, 2025 | | September 1, 2024"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "b",
+            "quoted": "6435",
+            "scale": "1000000",
+            "unit": "USD",
+            "period": {
+              "start": "2025-09-01",
+              "end": "2026-08-30"
+            },
+            "definition": "capex",
+            "source": {
+              "fact": {
+                "file": "facts.json",
+                "pointer": "/concepts/capex/current",
+                "record": {
+                  "start": "2025-09-01",
+                  "end": "2026-08-30",
+                  "val": 6435000000,
+                  "accn": "0000909832-26-000093",
+                  "fy": 2026,
+                  "fp": "FY",
+                  "form": "10-K",
+                  "filed": "2026-10-07",
+                  "frame": "CY2026",
+                  "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+                  "unit": "USD",
+                  "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+                }
+              },
+              "filing": {
+                "file": "10-K.txt",
+                "line": 732,
+                "quote": "Additions to property and equipment | ( 6,435 ) | | | ( 5,498 ) | | | ( 4,710 ) |",
+                "number_index": 0,
+                "context": [
+                  {
+                    "line": 714,
+                    "quote": "(amounts in millions)"
+                  },
+                  {
+                    "line": 716,
+                    "quote": "| 52 Weeks Ended"
+                  },
+                  {
+                    "line": 717,
+                    "quote": "| August 30, 2026 | | August 31, 2025 | | September 1, 2024"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "mentions": [
+          {
+            "start": 78,
+            "end": 83,
+            "expression": "a - b",
+            "unit": "USD",
+            "scale": "1000000",
+            "decimals": 0
+          },
+          {
+            "start": 95,
+            "end": 100,
+            "expression": "a - b",
+            "unit": "USD",
+            "scale": "1000000000",
+            "decimals": 3
+          },
+          {
+            "start": 119,
+            "end": 125,
+            "expression": "a",
+            "unit": "USD",
+            "scale": "1000000",
+            "decimals": 0
+          },
+          {
+            "start": 165,
+            "end": 170,
+            "expression": "b",
+            "unit": "USD",
+            "scale": "1000000",
+            "decimals": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "audited_claim_9",
+      "record": {
+        "kind": "sourced_claim",
+        "statement": "Total revenue for the 16-week fourth quarter ended August 30, 2026 was \"$95,723 million\", using the first total-revenue column of the release; this is quarterly total revenue including membership fees, not quarterly net sales or annual revenue.",
+        "inputs": [
+          {
+            "name": "a",
+            "quoted": "95723",
+            "scale": "1000000",
+            "unit": "USD",
+            "period": {
+              "end": "2026-08-30",
+              "duration": "16 weeks"
+            },
+            "definition": "Latest-quarter total revenue; current period table column",
+            "source": {
+              "filing": {
+                "file": "earnings_release.txt",
+                "line": 48,
+                "quote": "Total revenue | 95,723 | | | 86,156 | | | 303,154 | | | 275,235 |",
+                "number_index": 0,
+                "context": [
+                  {
+                    "line": 41,
+                    "quote": "(dollars in millions, except per share data) (unaudited)"
+                  },
+                  {
+                    "line": 43,
+                    "quote": "| 16 Weeks Ended | | 52 Weeks Ended"
+                  },
+                  {
+                    "line": 44,
+                    "quote": "| August 30, 2026 | | August 31, 2025 | | August 30, 2026 | | August 31, 2025"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "mentions": [
+          {
+            "start": 73,
+            "end": 79,
+            "expression": "a",
+            "unit": "USD",
+            "scale": "1000000",
+            "decimals": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "audited_claim_10",
+      "record": {
+        "kind": "sourced_claim",
+        "statement": "Total revenue growth for the 16-week fourth quarter ended August 30, 2026 versus the comparable 16-week fourth quarter ended August 31, 2025 was approximately 11.10%, using \"$95,723 million\" and \"$86,156 million\", respectively; definition: current-quarter total revenue / same-quarter-prior-year total revenue - 1, expressed as a percentage, with two comparable 16-week periods.",
+        "inputs": [
+          {
+            "name": "a",
+            "quoted": "95723",
+            "scale": "1000000",
+            "unit": "USD",
+            "period": {
+              "end": "2026-08-30",
+              "duration": "16 weeks"
+            },
+            "definition": "Total revenue; 16 weeks ended 2026-08-30; numeric table column 1",
+            "source": {
+              "filing": {
+                "file": "earnings_release.txt",
+                "line": 48,
+                "quote": "Total revenue | 95,723 | | | 86,156 | | | 303,154 | | | 275,235 |",
+                "number_index": 0,
+                "context": [
+                  {
+                    "line": 41,
+                    "quote": "(dollars in millions, except per share data) (unaudited)"
+                  },
+                  {
+                    "line": 43,
+                    "quote": "| 16 Weeks Ended | | 52 Weeks Ended"
+                  },
+                  {
+                    "line": 44,
+                    "quote": "| August 30, 2026 | | August 31, 2025 | | August 30, 2026 | | August 31, 2025"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "b",
+            "quoted": "86156",
+            "scale": "1000000",
+            "unit": "USD",
+            "period": {
+              "end": "2025-08-31",
+              "duration": "16 weeks"
+            },
+            "definition": "Total revenue; 16 weeks ended 2025-08-31; numeric table column 2",
+            "source": {
+              "filing": {
+                "file": "earnings_release.txt",
+                "line": 48,
+                "quote": "Total revenue | 95,723 | | | 86,156 | | | 303,154 | | | 275,235 |",
+                "number_index": 1,
+                "context": [
+                  {
+                    "line": 41,
+                    "quote": "(dollars in millions, except per share data) (unaudited)"
+                  },
+                  {
+                    "line": 43,
+                    "quote": "| 16 Weeks Ended | | 52 Weeks Ended"
+                  },
+                  {
+                    "line": 44,
+                    "quote": "| August 30, 2026 | | August 31, 2025 | | August 30, 2026 | | August 31, 2025"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "mentions": [
+          {
+            "start": 159,
+            "end": 164,
+            "expression": "(a / b - 1) * 100",
+            "unit": "%",
+            "scale": "1",
+            "decimals": 2
+          },
+          {
+            "start": 175,
+            "end": 181,
+            "expression": "a",
+            "unit": "USD",
+            "scale": "1000000",
+            "decimals": 0
+          },
+          {
+            "start": 197,
+            "end": 203,
+            "expression": "b",
+            "unit": "USD",
+            "scale": "1000000",
+            "decimals": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "audited_claim_11",
+      "record": {
+        "kind": "sourced_claim",
+        "statement": "Unadjusted GAAP diluted EPS for the 16-week fourth quarter ended August 30, 2026 was \"$6.75 per diluted share\", using the first Diluted column in the release income statement; this is the reported GAAP amount including items reported in GAAP net income, not an adjusted EPS amount or annual EPS.",
+        "inputs": [
+          {
+            "name": "a",
+            "quoted": "6.75",
+            "scale": "1",
+            "unit": "USD/shares",
+            "period": {
+              "end": "2026-08-30",
+              "duration": "16 weeks"
+            },
+            "definition": "Latest-quarter diluted EPS, GAAP; current period table column",
+            "source": {
+              "filing": {
+                "file": "earnings_release.txt",
+                "line": 64,
+                "quote": "Diluted | $ | 6.75 | | | $ | 5.87 | | | $ | 20.76 | | | $ | 18.21 |",
+                "number_index": 0,
+                "context": [
+                  {
+                    "line": 41,
+                    "quote": "(dollars in millions, except per share data) (unaudited)"
+                  },
+                  {
+                    "line": 43,
+                    "quote": "| 16 Weeks Ended | | 52 Weeks Ended"
+                  },
+                  {
+                    "line": 44,
+                    "quote": "| August 30, 2026 | | August 31, 2025 | | August 30, 2026 | | August 31, 2025"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "mentions": [
+          {
+            "start": 87,
+            "end": 91,
+            "expression": "a",
+            "unit": "USD/shares",
+            "scale": "1",
+            "decimals": 2
+          }
+        ]
+      }
+    }
+  ],
+  "saved_filing_texts": {
+    "10-K.txt": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n(amounts in millions, except per share data)\n\n| 52 Weeks Ended\n| August 30, 2026 | | August 31, 2025 | | September 1, 2024\n\n\n\nTotal revenue | 303,154 | | | 275,235 | | | 254,453 |\n\n\n\nOperating income | 11,685 | | | 10,383 | | | 9,285 |\n\n\n\n\n\n\n\nNET INCOME | $ | 9,226 | | | $ | 8,099 | | | $ | 7,367 |\n\n\nDiluted | $ | 20.76 | | | $ | 18.21 | | | $ | 16.56 |\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n(amounts in millions, except par value and share data)\n\n| August 30, 2026 | | August 31, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCurrent portion of long-term debt | 2,248 | | | 75 |\n\n\n\nLong-term debt, excluding current portion | 3,914 | | | 5,713 |\n\n\n\n\n\n\n\n\n\n\n\n\nTOTAL EQUITY | 35,803 | | | 29,164 |\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n(amounts in millions)\n\n| 52 Weeks Ended\n| August 30, 2026 | | August 31, 2025 | | September 1, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nNet cash provided by operating activities | 15,817 | | | 13,335 | | | 11,339 |\n\nAdditions to property and equipment | ( 6,435 ) | | | ( 5,498 ) | | | ( 4,710 ) |",
+    "earnings_release.txt": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n(dollars in millions, except per share data) (unaudited)\n\n| 16 Weeks Ended | | 52 Weeks Ended\n| August 30, 2026 | | August 31, 2025 | | August 30, 2026 | | August 31, 2025\n\n\n\nTotal revenue | 95,723 | | | 86,156 | | | 303,154 | | | 275,235 |\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDiluted | $ | 6.75 | | | $ | 5.87 | | | $ | 20.76 | | | $ | 18.21 |"
+  },
+  "saved_facts": {
+    "facts.json": {
+      "company": {
+        "ticker": "COST",
+        "cik": "0000909832",
+        "name": "COSTCO WHOLESALE CORP /NEW"
+      },
+      "currency": "USD",
+      "fiscal_year": 2026,
+      "current_period": {
+        "start": "2025-09-01",
+        "end": "2026-08-30"
+      },
+      "prior_period": {
+        "start": "2024-09-02",
+        "end": "2025-08-31"
+      },
+      "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000909832.json",
+      "concepts": {
+        "revenue": {
+          "label": "Revenue",
+          "selected_tag": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+          "latest_available_end": "2026-08-30",
+          "current": {
+            "start": "2025-09-01",
+            "end": "2026-08-30",
+            "val": 303154000000,
+            "accn": "0000909832-26-000093",
+            "fy": 2026,
+            "fp": "FY",
+            "form": "10-K",
+            "filed": "2026-10-07",
+            "frame": "CY2026",
+            "tag": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+            "unit": "USD",
+            "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+          },
+          "prior": {
+            "start": "2024-09-02",
+            "end": "2025-08-31",
+            "val": 275235000000,
+            "accn": "0000909832-26-000093",
+            "fy": 2026,
+            "fp": "FY",
+            "form": "10-K",
+            "filed": "2026-10-07",
+            "frame": "CY2025",
+            "tag": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+            "unit": "USD",
+            "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+          }
+        },
+        "operating_income": {
+          "label": "Operating income",
+          "selected_tag": "us-gaap:OperatingIncomeLoss",
+          "latest_available_end": "2026-08-30",
+          "current": {
+            "start": "2025-09-01",
+            "end": "2026-08-30",
+            "val": 11685000000,
+            "accn": "0000909832-26-000093",
+            "fy": 2026,
+            "fp": "FY",
+            "form": "10-K",
+            "filed": "2026-10-07",
+            "frame": "CY2026",
+            "tag": "us-gaap:OperatingIncomeLoss",
+            "unit": "USD",
+            "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+          },
+          "prior": {
+            "start": "2024-09-02",
+            "end": "2025-08-31",
+            "val": 10383000000,
+            "accn": "0000909832-26-000093",
+            "fy": 2026,
+            "fp": "FY",
+            "form": "10-K",
+            "filed": "2026-10-07",
+            "frame": "CY2025",
+            "tag": "us-gaap:OperatingIncomeLoss",
+            "unit": "USD",
+            "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+          }
+        },
+        "net_income": {
+          "label": "Net income",
+          "selected_tag": "us-gaap:NetIncomeLoss",
+          "latest_available_end": "2026-08-30",
+          "current": {
+            "start": "2025-09-01",
+            "end": "2026-08-30",
+            "val": 9226000000,
+            "accn": "0000909832-26-000093",
+            "fy": 2026,
+            "fp": "FY",
+            "form": "10-K",
+            "filed": "2026-10-07",
+            "frame": "CY2026",
+            "tag": "us-gaap:NetIncomeLoss",
+            "unit": "USD",
+            "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+          },
+          "prior": {
+            "start": "2024-09-02",
+            "end": "2025-08-31",
+            "val": 8099000000,
+            "accn": "0000909832-26-000093",
+            "fy": 2026,
+            "fp": "FY",
+            "form": "10-K",
+            "filed": "2026-10-07",
+            "frame": "CY2025",
+            "tag": "us-gaap:NetIncomeLoss",
+            "unit": "USD",
+            "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+          }
+        },
+        "diluted_eps": {
+          "label": "Diluted EPS",
+          "selected_tag": "us-gaap:EarningsPerShareDiluted",
+          "latest_available_end": "2026-08-30",
+          "current": {
+            "start": "2025-09-01",
+            "end": "2026-08-30",
+            "val": 20.76,
+            "accn": "0000909832-26-000093",
+            "fy": 2026,
+            "fp": "FY",
+            "form": "10-K",
+            "filed": "2026-10-07",
+            "frame": "CY2026",
+            "tag": "us-gaap:EarningsPerShareDiluted",
+            "unit": "USD/shares",
+            "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+          },
+          "prior": {
+            "start": "2024-09-02",
+            "end": "2025-08-31",
+            "val": 18.21,
+            "accn": "0000909832-26-000093",
+            "fy": 2026,
+            "fp": "FY",
+            "form": "10-K",
+            "filed": "2026-10-07",
+            "frame": "CY2025",
+            "tag": "us-gaap:EarningsPerShareDiluted",
+            "unit": "USD/shares",
+            "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+          }
+        },
+        "equity": {
+          "label": "Stockholders' equity",
+          "selected_tag": "us-gaap:StockholdersEquity",
+          "latest_available_end": "2026-08-30",
+          "current": {
+            "end": "2026-08-30",
+            "val": 35803000000,
+            "accn": "0000909832-26-000093",
+            "fy": 2026,
+            "fp": "FY",
+            "form": "10-K",
+            "filed": "2026-10-07",
+            "frame": "CY2026Q3I",
+            "tag": "us-gaap:StockholdersEquity",
+            "unit": "USD",
+            "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+          },
+          "prior": {
+            "end": "2025-08-31",
+            "val": 29164000000,
+            "accn": "0000909832-26-000093",
+            "fy": 2026,
+            "fp": "FY",
+            "form": "10-K",
+            "filed": "2026-10-07",
+            "frame": "CY2025Q3I",
+            "tag": "us-gaap:StockholdersEquity",
+            "unit": "USD",
+            "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+          }
+        },
+        "long_term_debt": {
+          "label": "Long-term debt, noncurrent",
+          "selected_tag": "us-gaap:LongTermDebtNoncurrent",
+          "latest_available_end": "2026-08-30",
+          "current": {
+            "end": "2026-08-30",
+            "val": 3914000000,
+            "accn": "0000909832-26-000093",
+            "fy": 2026,
+            "fp": "FY",
+            "form": "10-K",
+            "filed": "2026-10-07",
+            "frame": "CY2026Q3I",
+            "tag": "us-gaap:LongTermDebtNoncurrent",
+            "unit": "USD",
+            "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+          },
+          "prior": {
+            "end": "2025-08-31",
+            "val": 5713000000,
+            "accn": "0000909832-26-000093",
+            "fy": 2026,
+            "fp": "FY",
+            "form": "10-K",
+            "filed": "2026-10-07",
+            "frame": "CY2025Q3I",
+            "tag": "us-gaap:LongTermDebtNoncurrent",
+            "unit": "USD",
+            "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+          }
+        },
+        "current_debt": {
+          "label": "Current portion of long-term debt",
+          "selected_tag": "us-gaap:LongTermDebtCurrent",
+          "latest_available_end": "2026-08-30",
+          "current": {
+            "end": "2026-08-30",
+            "val": 2248000000,
+            "accn": "0000909832-26-000093",
+            "fy": 2026,
+            "fp": "FY",
+            "form": "10-K",
+            "filed": "2026-10-07",
+            "frame": "CY2026Q3I",
+            "tag": "us-gaap:LongTermDebtCurrent",
+            "unit": "USD",
+            "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+          },
+          "prior": {
+            "end": "2025-08-31",
+            "val": 75000000,
+            "accn": "0000909832-26-000093",
+            "fy": 2026,
+            "fp": "FY",
+            "form": "10-K",
+            "filed": "2026-10-07",
+            "frame": "CY2025Q3I",
+            "tag": "us-gaap:LongTermDebtCurrent",
+            "unit": "USD",
+            "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+          }
+        },
+        "cash_from_operations": {
+          "label": "Cash from operations",
+          "selected_tag": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+          "latest_available_end": "2026-08-30",
+          "current": {
+            "start": "2025-09-01",
+            "end": "2026-08-30",
+            "val": 15817000000,
+            "accn": "0000909832-26-000093",
+            "fy": 2026,
+            "fp": "FY",
+            "form": "10-K",
+            "filed": "2026-10-07",
+            "frame": "CY2026",
+            "tag": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+            "unit": "USD",
+            "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+          },
+          "prior": {
+            "start": "2024-09-02",
+            "end": "2025-08-31",
+            "val": 13335000000,
+            "accn": "0000909832-26-000093",
+            "fy": 2026,
+            "fp": "FY",
+            "form": "10-K",
+            "filed": "2026-10-07",
+            "frame": "CY2025",
+            "tag": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+            "unit": "USD",
+            "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+          }
+        },
+        "capex": {
+          "label": "Additions to property and equipment",
+          "selected_tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+          "latest_available_end": "2026-08-30",
+          "current": {
+            "start": "2025-09-01",
+            "end": "2026-08-30",
+            "val": 6435000000,
+            "accn": "0000909832-26-000093",
+            "fy": 2026,
+            "fp": "FY",
+            "form": "10-K",
+            "filed": "2026-10-07",
+            "frame": "CY2026",
+            "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+            "unit": "USD",
+            "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+          },
+          "prior": {
+            "start": "2024-09-02",
+            "end": "2025-08-31",
+            "val": 5498000000,
+            "accn": "0000909832-26-000093",
+            "fy": 2026,
+            "fp": "FY",
+            "form": "10-K",
+            "filed": "2026-10-07",
+            "frame": "CY2025",
+            "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+            "unit": "USD",
+            "filing_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/0000909832-26-000093-index.html"
+          }
+        }
+      }
+    }
+  }
+}

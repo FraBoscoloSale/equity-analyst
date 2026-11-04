@@ -520,14 +520,14 @@ def parse_args(argv=None):
     return args
 
 
-def main(argv=None):
-    args = parse_args(argv)
-    settings = dotenv_values(ROOT / ".env")
+def run_seven_steps(args, settings, on_step=None):
+    """The original seven tools, without invoking any research role.
+
+    on_step receives (number, phase, snapshot) for the Flow's audit trail.
+    """
     user_agent = settings.get("SEC_USER_AGENT", "")
     if not user_agent or not user_agent.strip() or "\n" in user_agent or "\r" in user_agent:
         raise DeskError("Set a valid, single-line SEC_USER_AGENT in the .env beside this script.")
-    if not args.step and not (settings.get("API_KEY") or "").strip():
-        raise DeskError("Set API_KEY in the .env beside this script to run the four-role desk.")
     client = SECClient(user_agent.strip())
     state = {}
     descriptions = {
@@ -573,6 +573,9 @@ def main(argv=None):
     from io import StringIO
     for step in ([args.step] if args.step else range(1, 8)):
         print(f"\nStep {step}/7: {descriptions[step]}", flush=True)
+        if on_step:
+            on_step(step, "input", {"ticker": args.ticker, "peers": args.peers,
+                                   "price": args.price, "description": descriptions[step]})
         if args.step:
             with redirect_stdout(StringIO()):
                 company()
@@ -612,11 +615,23 @@ def main(argv=None):
                     print(f"Unavailable: {exc}")
                     peers[ticker] = {"error": str(exc)}
             save_json(output() / "peers.json", peers)
+        if on_step:
+            on_step(step, "output", {"run_folder": str(output()),
+                                    "artifacts": sorted(p.name for p in output().iterdir() if p.is_file())})
     print(f"\nSaved research data: {output()}")
+    return output()
+
+
+def main(argv=None):
+    args = parse_args(argv)
+    settings = dotenv_values(ROOT / ".env")
+    if not args.step and not (settings.get("API_KEY") or "").strip():
+        raise DeskError("Set API_KEY in the .env beside this script to run the four-role desk.")
+    output = run_seven_steps(args, settings)
     if not args.step:
         from research_roles import run_roles, RoleError
         try:
-            report = run_roles(output(), settings["API_KEY"].strip())
+            report = run_roles(output, settings["API_KEY"].strip())
         except RoleError as exc:
             raise DeskError(str(exc)) from exc
         print(f"Report: {report.resolve()}", flush=True)

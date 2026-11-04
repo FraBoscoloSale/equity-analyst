@@ -1,5 +1,88 @@
 # SEC equity research desk
 
+## CrewAI Flow agent team
+
+The new entry point is `agent_team.py`. It reuses the original seven SEC data
+steps as Python tools, then follows this fixed graph:
+
+```text
+Seven steps -> Research Analyst -> Financial Analyst -> Investment Advisor
+            -> Strategy Manager (bounded revisions and compilation) -> Verifier
+```
+
+Python chooses every successor. Models receive only a JSON envelope containing
+`task`, `context`, and `expected_output`. Each specialist/manager invocation makes one Purdue
+model request, with no automatic transport or agent retries. The four original
+role instructions are preserved in separate files in `roles/` and loaded per call.
+The manager checks all five report parts and sends only failed parts back to their
+owner. Multiple failures for one owner share a single revision request, so no role
+runs more than twice. Parts that still fail are explicitly flagged in the compiled
+report. Compilation is Python work after review, not another model call.
+
+Install with Python 3.10 through 3.13:
+
+```powershell
+python -m pip install -r requirements.txt
+```
+
+Keep the existing root `.env` with `API_KEY` (Purdue GenAI Studio) and
+`SEC_USER_AGENT` (your name and contact email). Keys never belong in code or chat.
+No OpenAI key is required. Example run (price is a user input, not a fetched quote):
+
+```powershell
+python agent_team.py MSFT --peers ORCL ADBE --price 420
+```
+
+Each run creates a new `research_data/<company>_<date>_<time>/` folder. It contains
+filing texts, exact XBRL facts and peer facts, the seven tool inputs/outputs,
+role inputs/outputs, review findings, `compiled_report.md`, `verified_report.md`,
+and machine-readable `verification_marks.json`. Existing runs are preserved.
+Missing optional peers/price and unavailable filing values remain explicit gaps.
+
+The Verifier runs after the manager on every normal run. It receives only the
+compiled report, saved filing texts, and saved facts (including the explicitly
+labelled user-price input). It skips the Advisor thesis, compares XBRL facts
+exactly, checks filing quotations with formatting normalization, and recomputes
+ratio arithmetic from quoted, sourced operands. Python then plans semantic batches
+in required-check order, selecting complete relevant report/filing sections,
+referenced notes, table headers, and the saved fact records for those numbers.
+Shared evidence is deduplicated. Each batch has at most 64 checks and is measured
+using the same serialized-input budget calculation as the API client. Batches
+run sequentially inside the single Verifier node; a model never chooses them.
+Every required ID must receive exactly one validated result before a verified
+report is written. Missing, duplicate, unexpected, or incomplete results abort
+verification. A model cannot override a failed code check. Failed batches are
+not automatically retried. Batch plans, inputs, outputs, and aggregate coverage
+are saved in the run folder. If one check's required evidence cannot fit intact,
+verification fails explicitly rather than truncating it or skipping the check.
+
+The verified report keeps the original filings line first and places the marks
+table immediately below it. Wrong/unsupported numbers are replaced with sourced
+corrections when recoverable; otherwise the report says `N/A (not established by
+the saved filings)`. Original reports remain available for comparison. A user
+price is identified as a supplied input, never as a price found in a filing.
+
+Reverify a saved run, including an original Lab 03 run with `report.md`:
+
+```powershell
+python agent_team.py --verify-only "research_data\SAVED_RUN_FOLDER"
+```
+
+This command runs only the Verifier and writes a new company/date/time folder.
+It never invokes the seven tools or the other roles and never changes the saved
+run. A report, `facts.json`, and saved filing texts are required; missing inputs
+produce explicit errors. The model input budget is checked before sending, with
+an actionable error and saved input if the supplied evidence is too large.
+
+Offline regression tests, including the real Flow with scripted model responses:
+
+```powershell
+python -m unittest discover
+```
+
+The original `equity_desk.py` command below remains available for the original
+Lab 03 workflow and its individual data steps.
+
 Python 3.10+ desk implementing the seven data steps, then four isolated model roles.
 Company identities come from SEC data; the code contains no issuer-specific rules.
 
@@ -229,6 +312,30 @@ context budget fail explicitly without silently truncating source evidence.
 Purdue documents JSON `null` as a possible rate-limit response; null and retryable
 HTTP/network failures receive bounded backoff. The desk checks response completion
 and JSON structure and reports errors without printing the API key.
+
+The Lab 04 Verifier also accepts source-bound numeric statements using the existing
+`desk-record` wrapper with `record.kind = "sourced_claim"` (see
+`sourced_claims.py` and `tests/fixtures/sourced_clean_claims.json`). Each statement
+binds its numeric spans to named quoted inputs and arithmetic. Inputs identify an
+exact saved facts JSON pointer and observation, or a saved filing filename, line,
+numeric column, and complete unit/period context. The displayed citations are
+rendered from that record and checked against it. Detached quotations elsewhere
+in the report do not establish a statement's source.
+
+Direct amounts must match their explicit source exactly. Calculated results are
+recomputed with Decimal arithmetic and checked at their declared display precision;
+their definitions and every cited input still require semantic review. Unbound
+financial numbers remain unsupported, even if the same value occurs in a filing.
+Legacy citations and source records can coexist without suppressing either set of
+checks. All required semantic checks retain deterministic batching and exact ID
+coverage; a missing semantic result prevents verified report output.
+
+Source-bound semantic requests retain the exact displayed numeric span, display
+scale, expression, and the operands that expression uses. Each operand carries
+its own source row, selected numeric-token index, period, definition, unit headers
+and saved fact reference. Direct prior-period inputs do not inherit the current
+period or another operand's row. Equivalent million/billion displays retain the
+same computed base amount; semantic approval is still required for every check.
 
 Run offline regression tests:
 

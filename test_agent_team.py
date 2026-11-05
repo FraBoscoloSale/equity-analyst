@@ -29,9 +29,14 @@ class ScriptedClient:
             return {"checks": {c["id"]: {"supported": True, "reason": "Period and definition match.",
                                 "correction": None} for c in checks if c.get("semantic")}}
         if role == roles.MANAGER:
-            return {"checks": {p: {"passed": p not in self.fail_parts,
-                    "issues": [] if p not in self.fail_parts else [{"code": "missing_analysis", "text": "Clarify this part."}]}
-                    for p in roles.PARTS}}
+            checks = {p: {"passed": p not in self.fail_parts,
+                      "issues": [] if p not in self.fail_parts else [{"code": "missing_analysis", "text": "Clarify this part."}]}
+                      for p in roles.PARTS}
+            for part, check in checks.items():
+                for field in ('insight_present', 'insight_not_headline_restatement'):
+                    if field in schema['properties']['checks']['properties'][part]['properties']:
+                        check[field] = True
+            return {'checks': checks}
         properties = schema["properties"]
         parts = properties["sections"]["properties"]
         if role == roles.RESEARCH:
@@ -44,6 +49,18 @@ class ScriptedClient:
         else:
             refs, text, limitations = ["subject.pe"], "The supplied evidence informs the recommendation.", []
         result = {"sections": {p: [{"text": text, "evidence_ids": list(refs)}] for p in parts}, "limitations": limitations}
+        if role in (roles.RESEARCH, roles.FINANCIAL):
+            wanted = 'The business sells subscriptions.' if role == roles.RESEARCH else 'Revenue includes subscriptions.'
+            insight_id = next(k for k, value in context['evidence'].items() if value == wanted)
+            filename = context['insight_source_files'][insight_id.rsplit('.L', 1)[0]]
+            number = insight_id.rsplit('.L', 1)[1]
+        else:
+            insight_id, row = next((k, r) for output in context.values() for k, r in output['cited_evidence'].items()
+                                   if r.get('text') == 'The business sells subscriptions.')
+            wanted, filename, number = row['text'], row['source_id'].rsplit(':', 1)[-1], row['line']
+        designated = team.insight_locations(roles.PARTS, roles.OWNERS)[role]
+        if designated in result['sections']:
+            result['insight'] = {'part': designated, 'text': f'Insight: {wanted} [{filename}, line {number}]', 'evidence_ids': [insight_id]}
         if role == roles.FINANCIAL:
             result["calculator_requests"] = []
         if "thesis" in properties:

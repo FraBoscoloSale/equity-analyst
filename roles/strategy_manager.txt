@@ -47,3 +47,17 @@ provenance and arithmetic. Separate limitations are required by the output schem
 do not demand they be woven into prose. Exactly one deciding number is required;
 additional validated supporting metrics are optional. Use the review issue codes;
 Python enforces these contract rules independently of your interpretation.
+For reviews containing insight_requirements, require exactly one Insight per
+analyst role, in its designated last owned report part from the supplied locations.
+Keep all five parts. The other parts must not contain or require Insights.
+Require a standalone final Insight: line stating one supported claim and its
+filing and line. Fail the affected parts for missing, duplicated, misplaced,
+embedded/non-final, multiple-claim, or unsupported Insights, including Insight
+labels outside the designated section. Do not create, move, remove or repair an
+Insight yourself; unresolved failures remain visible after the one permitted retry.
+Also fail an Insight that only restates a figure in the supplied first narrative
+paragraph of the earnings release, including paraphrases or equivalent scales.
+Check the measure, period and meaning: a different supported claim does not fail
+merely because it coincidentally shares a number. Return the required
+insight_present and insight_not_headline_restatement booleans for designated parts only.
+Return failures to their existing owner for the one permitted revision only.

@@ -40,6 +40,158 @@ def plan(checks, sources, **kwargs):
 
 
 class PlannerTests(unittest.TestCase):
+    def mixed_column_fixture(self, header=None):
+        header = header or '(In millions, except percentages and per share amounts) | | 2033 | | 2032 | | Percentage Change |'
+        lines = ['Item 7. Results of operations', 'SUMMARY RESULTS OF OPERATIONS',
+                 '| | | | | | | |', header, '| | | | | | | |',
+                 'Revenue | | $ | 864 | | $ | 720 | | 20% |',
+                 'Operating income | | $ | 216 | | $ | 180 | | 20% |',
+                 'Footnote: revenue includes service consideration.',
+                 'Fiscal Year 2033 Compared with Fiscal Year 2032',
+                 'Item 8. Financial statements', 'UNRELATED_'+'x'*220000]
+        claim = 'Revenue | | $ | 864 | | $ | 720 | | 20% |'
+        sources = {'compiled_report':'Filings read: synthetic\n\n## Overview\n\n> '+claim+
+                   '\n\n[10-K.txt, line 6]', 'saved_filing_texts':{'10-K.txt':'\n'.join(lines)},
+                   'saved_facts':{}}
+        check = {'id':'number_1', 'original':'864', 'mark':'correct', 'semantic':True,
+                 'quote':claim, 'file':'10-K.txt', 'period':'2033-06-30', 'definition':'Annual revenue'}
+        return sources, check, lines
+
+    def test_table_row_retains_complete_separate_mixed_unit_year_and_change_header(self):
+        for header in ('(In millions, except percentages and per share amounts) | | 2033 | | 2032 | | Percentage Change |',
+                       '($ in millions) | 2033 | 2032 | Percentage Change Y/Y',
+                       '(Amounts in thousands) | FY2033 | FY2032 | Change'):
+            with self.subTest(header=header):
+                sources,check,lines=self.mixed_column_fixture(header)
+                before=copy.deepcopy(sources)
+                batches=plan([check],sources)
+                self.assertEqual([c for b in batches for c in b['ids']], ['number_1'])
+                selected=batches[0]['context']['saved_filing_texts']['10-K.txt']
+                for i in (1,3,5,7,8):
+                    self.assertIn(f'L{i+1}: {lines[i]}',selected)
+                self.assertNotIn('UNRELATED_',selected)
+                self.assertLess(batches[0]['input_characters'],15000)
+                self.assertEqual(sources,before)
+
+    def test_year_valued_body_row_cannot_substitute_for_missing_column_headers(self):
+        sources,check,lines=self.mixed_column_fixture()
+        lines[3]='(In millions)'
+        lines[4]='Other revenue | 2033 | 2032'
+        sources['saved_filing_texts']['10-K.txt']='\n'.join(lines)
+        with self.assertRaisesRegex(SemanticResponseError,'missing period/column context'):
+            plan([check],sources)
+
+    def test_comparison_caption_for_other_years_is_not_bound_to_the_table(self):
+        sources,check,lines=self.mixed_column_fixture()
+        lines[8]='Fiscal Year 2031 Compared with Fiscal Year 2030'
+        sources['saved_filing_texts']['10-K.txt']='\n'.join(lines)
+        selected=plan([check],sources)[0]['context']['saved_filing_texts']['10-K.txt']
+        self.assertIn('L4: '+lines[3],selected)
+        self.assertNotIn(lines[8],selected)
+
+    def test_multirow_period_and_gaap_column_labels_are_retained(self):
+        sources,check,lines=self.mixed_column_fixture('2033 | 2032')
+        lines[2]='(In millions, except per share amounts)'
+        lines[4]='As reported (GAAP) | As adjusted (non-GAAP) | As reported (GAAP) | As adjusted (non-GAAP)'
+        sources['saved_filing_texts']['10-K.txt']='\n'.join(lines)
+        selected=plan([check],sources)[0]['context']['saved_filing_texts']['10-K.txt']
+        for i in (2,3,4,5): self.assertIn(f'L{i+1}: {lines[i]}',selected)
+
+    def large_cited_source(self):
+        claim='Total revenue was $71 million for FY2031'
+        insight='Insight: '+claim+' [10-K.txt, line 5]'
+        lines=['Item 7 - Results of operations', '(amounts in millions)', '52 Weeks Ended',
+               'June 30, 2031 | June 30, 2030', 'Total revenue | 71 | 63',
+               'Footnote: total revenue includes membership fees.',
+               'UNRELATED_SAME_SECTION_'+'x'*260000]
+        source={'compiled_report':'Filings read: synthetic\n\n## Investment Recommendation\n\n'+insight+
+                '\n\n## Unrelated\n\nUNRELATED_REPORT_'+'y'*200000,
+                'saved_filing_texts':{'10-K.txt':'\n'.join(lines)},'saved_facts':{}}
+        check={'id':'number_1','original':'71','mark':'unsupported','semantic':True,
+               'quote':claim,'quoted_input':insight,'file':'10-K.txt','period':'2031-06-30',
+               'definition':'Annual total revenue including membership fees'}
+        return source,check,lines
+
+    def test_individual_paraphrased_citation_in_large_file_selects_complete_small_evidence(self):
+        sources,check,lines=self.large_cited_source()
+        original=copy.deepcopy(sources)
+        batch=plan([check],sources)[0]
+        self.assertLess(batch['input_characters'],15000)
+        self.assertLess(batch['input_characters'],MODEL_INPUT_CHAR_LIMIT)
+        self.assertEqual(batch['ids'],['number_1'])
+        selected=batch['context']['saved_filing_texts']['10-K.txt']
+        for i in range(6): self.assertIn(f'L{i+1}: {lines[i]}',selected)
+        self.assertNotIn('UNRELATED_SAME_SECTION',selected)
+        self.assertNotIn('UNRELATED_REPORT',batch['context']['compiled_report'])
+        self.assertEqual(sources,original)
+        # Selecting an actual cited line never upgrades the already-failed
+        # deterministic quotation check or fabricates a semantic result.
+        self.assertEqual(json.loads(batch['task'].split('Code checks: ',1)[1])[0]['mark'],'unsupported')
+
+    def test_missing_required_table_unit_or_period_context_fails_before_model(self):
+        for missing in ('units','period'):
+            with self.subTest(missing=missing),tempfile.TemporaryDirectory() as tmp:
+                sources,check,lines=self.large_cited_source()
+                if missing=='units': lines[1]=''
+                else: lines[2]=''; lines[3]=''
+                sources['saved_filing_texts']['10-K.txt']='\n'.join(lines)
+                client=Mock()
+                with self.assertRaisesRegex(SemanticResponseError,'missing (?:units/scale|period/column) context'):
+                    Verifier(client).run(sources,Path(tmp))
+                client.call.assert_not_called()
+                self.assertFalse((Path(tmp)/'verified_report.md').exists())
+
+    def test_missing_explicit_definition_reference_fails_closed(self):
+        sources,checks=sources_fixture(count=1)
+        sources['saved_filing_texts']['10-K.txt']=sources['saved_filing_texts']['10-K.txt'].replace(
+            'Footnote: measure 1 excludes the stated adjustment.','See Note 2 for the alternative definition.')
+        with self.assertRaisesRegex(SemanticResponseError,'missing referenced Note 2'):
+            plan(checks,sources)
+
+    def test_missing_required_period_on_narrative_amount_also_fails(self):
+        sources,checks=sources_fixture(count=1)
+        lines=sources['saved_filing_texts']['10-K.txt'].splitlines()
+        lines[2]=''; lines[3]=''
+        sources['saved_filing_texts']['10-K.txt']='\n'.join(lines)
+        with self.assertRaisesRegex(SemanticResponseError,'missing period/column context'):
+            plan(checks,sources)
+
+    def test_document_metadata_applies_to_notes_without_borrowing_other_note_units(self):
+        sources,checks=sources_fixture(count=1)
+        lines=['All amounts are in millions.', '52 Weeks Ended', 'June 30, 2025 | June 30, 2024',
+               'Note 1 - Other information', 'Other narrative.', 'Note 2 - Revenue definition', 'Revenue | 71 | 63']
+        sources['saved_filing_texts']['10-K.txt']='\n'.join(lines)
+        sources['compiled_report']='Filings read: synthetic\n\n> Revenue | 71 | 63'
+        check={**checks[0],'original':'71','quote':'Revenue | 71 | 63'}
+        selected=plan([check],sources)[0]['context']['saved_filing_texts']['10-K.txt']
+        for n in (0,1,2,5,6): self.assertIn(f'L{n+1}: {lines[n]}',selected)
+        self.assertNotIn('Other narrative.',selected)
+        lines[0]=''; lines[4]='(amounts in thousands)'
+        sources['saved_filing_texts']['10-K.txt']='\n'.join(lines)
+        with self.assertRaisesRegex(SemanticResponseError,'missing units/scale context'):
+            plan([check],sources)
+
+    def test_xbrl_context_uses_exact_record_identity_not_other_same_value_facts(self):
+        sources,checks=sources_fixture(count=1)
+        row={'val':71000000,'tag':'us-gaap:Revenues','start':'2030-07-01','end':'2031-06-30',
+             'unit':'USD','accn':'synthetic-observation'}
+        data={'company':{'ticker':'SYNTH'},'concepts':{
+            'revenue':{'label':'Total revenue','current':row,'prior':{**row,'end':'2030-06-30'}},
+            'different':{'label':'Different measure','current':{**row,'tag':'us-gaap:Assets'},'prior':None}}}
+        sources['saved_facts']={'facts.json':data,'PEER_facts.json':{**data,'company':{'ticker':'PEER'}}}
+        statement='Annual total revenue was $71 million.'
+        sources['compiled_report']='Filings read: synthetic\n\n'+statement
+        check={**checks[0],'file':None,'original':'71000000','quote':json.dumps(row),
+               'source_binding':{'statement':statement,'operands':[{'source':{'fact':{
+                   'file':'facts.json','pointer':'/concepts/revenue/current','record':row}}}]}}
+        context=plan([check],sources)[0]['context']
+        self.assertEqual(context['saved_filing_texts'],{})
+        self.assertEqual(set(context['saved_facts']),{'facts.json'})
+        concepts=context['saved_facts']['facts.json']['concepts']
+        self.assertEqual(set(concepts),{'revenue'})
+        self.assertEqual(concepts['revenue']['current'],row)
+        self.assertNotIn('prior',concepts['revenue'])
+
     def test_deterministic_disjoint_complete_plan_and_exact_budget_accounting(self):
         sources, checks = sources_fixture(count=12, noise=200000)
         before = copy.deepcopy(sources)
@@ -64,8 +216,9 @@ class PlannerTests(unittest.TestCase):
         sources['saved_filing_texts']['10-K.txt'] = '\n'.join(content)
         batches = plan(checks, sources)
         selected = batches[0]['context']['saved_filing_texts']['10-K.txt']
-        for i, original in enumerate(content, 1):
-            self.assertIn(f'L{i}: {original}', selected)
+        for i in (0,1,2,3,184,185):
+            self.assertIn(f'L{i+1}: {content[i]}', selected)
+        self.assertNotIn('Other table row |', selected)
         self.assertIn('Footnote: measure 1 excludes the stated adjustment.', selected)
 
     def test_explicit_note_references_retain_complete_definitions_in_another_section(self):

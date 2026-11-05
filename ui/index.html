@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Equity research desk</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header><div class="brand"><span class="logo">E</span> Equity research desk</div><span class="local">LOCAL WORKSPACE</span></header>
+  <main>
+    <div class="intro"><p class="eyebrow">YOUR ANALYST TEAM</p><h1>From a ticker to a verified report.</h1><p>Run your research team, follow its progress, and review the evidence.</p></div>
+    <section class="card setup" aria-labelledby="setup-title">
+      <h2 id="setup-title">Start a new run</h2>
+      <form id="run-form">
+        <div><label for="ticker">Ticker <span>Required</span></label><input id="ticker" name="ticker" placeholder="Ticker symbol" required maxlength="20" autocomplete="off" spellcheck="false"></div>
+        <div><label for="peers">Peers <span>Optional</span></label><input id="peers" name="peers" placeholder="Separate tickers with commas" autocomplete="off" spellcheck="false"><small>Compare against your selected peers.</small></div>
+        <div><label for="price">Share price <span>Optional</span></label><input id="price" name="price" type="number" min="0" step="any" placeholder="Enter a price"><small>Used for the annual P/E calculation.</small></div>
+        <button id="run-button" type="submit" disabled>Run team <span aria-hidden="true">↗</span></button>
+      </form>
+      <p class="setup-note">Every completed run includes mandatory verification. Saved runs are kept separately.</p>
+    </section>
+    <div id="error" class="error" role="alert" hidden></div>
+    <section class="card progress" aria-labelledby="progress-title">
+      <div class="section-top"><h2 id="progress-title">Team activity</h2><span id="status" class="status">Ready</span></div>
+      <p id="progress-message" role="status">Enter a ticker to begin. Node names will appear here as the team runs.</p>
+      <ol id="nodes" aria-label="Nodes started" aria-live="polite" aria-relevant="additions"></ol>
+    </section>
+    <section id="results" class="card results" aria-labelledby="report-title" hidden>
+      <div class="section-top"><div><p class="eyebrow">SAVED OUTPUT</p><h2 id="report-title">Verified report</h2></div><button id="download" class="secondary" type="button">Download report</button></div>
+      <div id="counts" class="counts"></div>
+      <p id="findings" class="findings" hidden></p>
+      <article id="report"></article>
+    </section>
+    <footer>Evidence stays in your local workspace. Verification marks and unresolved review findings remain visible.</footer>
+  </main>
+</body>
+</html>

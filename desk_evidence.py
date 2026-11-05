@@ -175,6 +175,9 @@ class EvidenceCatalog:
                                      'required_for': ['Financial Analyst']}
                 self.financial_ids.add(ref)
         source_id = 'calculator.extra' if key.startswith('extra.') else 'calculator'
+        if key.startswith('peer.'):
+            source_id = 'calculator.peer'
+            self.sources[source_id] = {'file': 'peers.json', 'kind': 'calculator', 'desk_step': 7}
         if source_id == 'calculator.extra':
             self.sources[source_id] = {'file': 'additional_calculations.json', 'kind': 'calculator'}
         self.records[key] = {**copy.deepcopy(row), 'kind': 'calculation', 'source_id': source_id,

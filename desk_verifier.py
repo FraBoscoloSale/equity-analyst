@@ -12,6 +12,7 @@ from pathlib import Path
 from quoted_calculations import parse_quoted_calculation, correction_text, AMOUNT, DATE
 from semantic_batches import plan_batches
 from sourced_claims import check_claim, finish_claim
+from insight_contract import parse_insight
 
 
 NUMBER = re.compile(r"(?<![\w.])-?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:[eE][+-]?\d+)?(?!\w|\.\d)")
@@ -288,6 +289,13 @@ class Verifier:
         quoted = "; ".join(f"{operand.text} (period {operand.period or 'unspecified'}): {c['source']}"
                            for operand, c in zip(calculation.inputs, input_checks))
         result_checks = []
+        for check in input_checks:
+            check['calculation_context'] = {'definition': calculation.definition,
+                'arithmetic': arithmetic, 'operands': [
+                    {'quoted_input': operand.text, 'period': operand.period, 'scale': str(operand.scale),
+                     'currency': operand.currency, 'source': source_check['source'],
+                     'fact': copy.deepcopy(canonical)}
+                    for operand, source_check, canonical in zip(calculation.inputs, input_checks, canonical_inputs)]}
         for result in calculation.results:
             equal = calculation.recomputed is not None and abs(result.value - calculation.recomputed) <= result.tolerance
             check = self.add(result.text, "unsupported" if errors else "correct" if equal else "wrong",
@@ -478,6 +486,26 @@ class Verifier:
                 extras = self.unclaimed_calculation_numbers(paragraph.group(), calculation)
                 quoted_blocks.append((a, b, paragraph.group(), calculation, result_checks, input_checks, extras))
                 covered.append((a, b))
+            else:
+                insight = parse_insight(paragraph.group())
+                if insight:
+                    filename, number = insight['file'], int(insight['line'])
+                    source_lines = sources['saved_filing_texts'].get(filename, '').splitlines()
+                    actual = source_lines[number - 1] if 0 < number <= len(source_lines) else ''
+                    bound = bool(actual) and normalized(insight['claim']) in normalized(actual)
+                    payload = {'record': {'kind': 'text', 'text': insight['claim']},
+                               'source': {'file': filename}}
+                    _, checks = self.check_record(payload, '> ' + insight['claim'] + '\n', sources)
+                    for check in checks:
+                        check['insight'] = True
+                        check['quoted_input'] = paragraph.group()
+                        check['definition'] = 'Measure stated in this Insight claim: ' + insight['claim']
+                        check['source'] = f"{filename}, line {number}: {actual or '[cited line missing]'}"
+                        if not bound:
+                            check['mark'] = 'unsupported'
+                            check['reason'] += ' Insight claim does not occur at the specified saved filing line.'
+                    covered.append((a, b))
+                    semantic_blocks.append((a, b, paragraph.group(), checks))
         # Any remaining model-authored financial numeric literal has no source.
         # Dates, metadata and source URLs are removed only in known metadata lines.
         for line_match in re.finditer(r"(?m)^.+$", report):
@@ -505,10 +533,11 @@ class Verifier:
         aliases, unique = {}, {}
         for check in semantic:
             identity = tuple(check.get(k) for k in ("file", "quote", "original", "period", "definition")) + (
-                json.dumps(check.get('source_binding'),sort_keys=True),)
+                json.dumps(check.get('source_binding'),sort_keys=True),
+                json.dumps(check.get('calculation_context'),sort_keys=True))
             unique.setdefault(identity, check)
             aliases[check["id"]] = unique[identity]["id"]
-        model_checks = [{k: c[k] for k in ("id", "original", "mark", "reason", "file", "quote", "candidate_quote", "period", "definition", "semantic", "quoted_input", "source_binding")
+        model_checks = [{k: c[k] for k in ("id", "original", "mark", "reason", "file", "quote", "candidate_quote", "period", "definition", "semantic", "quoted_input", "source_binding", "calculation_context")
                          if k in c} for c in unique.values()]
         expected_ids = [c["id"] for c in model_checks]
         returned = {}

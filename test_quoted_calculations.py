@@ -110,6 +110,12 @@ class QuotedVerificationTests(unittest.TestCase):
         self.assertNotIn("approximately 24%", report)
         requested = json.loads(client.calls[0][1].split("Code checks: ", 1)[1])
         self.assertEqual(len(requested), 2)
+        for check in requested:
+            calculation=check['calculation_context']
+            self.assertIn('(150 / 125 - 1) * 100 = 20%', calculation['arithmetic'])
+            self.assertEqual([operand['period'] for operand in calculation['operands']],['2025-06-30','2024-06-30'])
+            self.assertEqual([operand['fact']['val'] for operand in calculation['operands']],[150000000,125000000])
+            self.assertTrue(all(operand['scale']=='1000000' for operand in calculation['operands']))
         self.assertIn("June 30, 2025 | June 30, 2024", client.calls[0][2]["saved_filing_texts"]["10-K.txt"])
 
     def test_reported_invented_growth_regression_and_exact_fraction_alias(self):

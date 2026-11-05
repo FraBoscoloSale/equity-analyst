@@ -1,5 +1,31 @@
 # SEC equity research desk
 
+## Local browser page
+
+Start the page with the existing Python environment:
+
+```powershell
+python agent_team_ui.py
+```
+
+It opens `http://127.0.0.1:8501` in your browser. Enter a ticker, optional peers
+(commas or spaces), and an optional price, then click **Run team**. No terminal
+commands are needed for individual runs. Keep the local server running while
+using the page; stop it with Ctrl+C. An alternate port can be selected with
+`python agent_team_ui.py --port 8502`.
+
+The page launches the existing `agent_team.py` CLI and follows its same Flow,
+personas, Insight contract, one-time revisions and mandatory Verifier. Node names
+appear as they start. Failed or incomplete runs show an error; a final report is
+displayed only after a successful process exit and complete saved verification
+artifacts. The verified Markdown is rendered with its verification table and can
+be downloaded. Unsupported numbers and unresolved Manager findings remain visible.
+Refreshing the page reconnects to the current run. Only one run starts at a time.
+
+No extra UI packages are required. The existing root `.env` remains server-side;
+credentials and raw execution logs are never sent to the page. The server binds
+only to `127.0.0.1`. Existing CLI commands are unchanged.
+
 ## CrewAI Flow agent team
 
 The new entry point is `agent_team.py`. It reuses the original seven SEC data
@@ -14,10 +40,49 @@ Python chooses every successor. Models receive only a JSON envelope containing
 `task`, `context`, and `expected_output`. Each specialist/manager invocation makes one Purdue
 model request, with no automatic transport or agent retries. The four original
 role instructions are preserved in separate files in `roles/` and loaded per call.
+Research receives only Step 1 identity, Step 2 selected filing metadata, Step 3
+annual Business/MD&A and release evidence, Step 6 release source lines, and Step 7
+peer facts and operating margins. Large Research briefs are selected deterministically
+before constructing the role allowlist and response schema. Complete paragraphs,
+tables, source line IDs, headers, units, periods, footnotes and referenced definitions
+stay together. Revenue/EPS and Step 6 evidence take priority; remaining operating
+evidence is selected across Business, MD&A and the release in a fixed round-robin
+order. Required evidence that cannot fit intact fails explicitly. The saved filings
+and full catalog remain available to the mandatory Verifier. Research never receives
+subject Step 4 facts, Step 5 metrics, or the CLI price.
 The manager checks all five report parts and sends only failed parts back to their
 owner. Multiple failures for one owner share a single revision request, so no role
 runs more than twice. Parts that still fail are explicitly flagged in the compiled
 report. Compilation is Python work after review, not another model call.
+
+Every specialist returns a required `insight` object whenever its last owned
+report part is requested. It contains `part`, the complete role-written `text`
+line, and exactly one supplied filing-text `evidence_ids` entry. A line looks like
+`Insight: one supported claim [10-K.txt, line N]`, selecting exactly one supplied
+filing-text record. The claim must reproduce one sentence or single table row
+from that line. Python renders this explicit final-block field verbatim; it never
+composes the prefix, claim, amount, or citation. Ordinary `sections` arrays contain
+analysis, not another Insight. Revisions of the Insight part require this same
+field; other part-only revisions omit it and preserve the original model line.
+Python derives the three locations from `PARTS` and `OWNERS`:
+Research in Market Positioning and Growth Outlook, Financial in Valuation Insights,
+and Advisor in Investment Recommendation. Overview and Future Developments and
+Strategic Recommendations remain without Insights. The Manager audits each whole
+role for missing, duplicate, misplaced, embedded/non-final or unsupported Insights,
+and separately checks that an Insight does not merely repeat a
+figure in the earnings release's first narrative paragraph, including paraphrases
+and equivalent unit displays. These failures use the existing single revision;
+unresolved failures remain flagged and still proceed to the mandatory Verifier.
+Compilation preserves submitted Insight text and order, including invalid Insights;
+it never silently creates, moves, removes or repairs one to obtain a count of three.
+Validated analyst-written Insights contribute their cited text to the Advisor's
+existing analyst-output projection, even if other analyst prose fails validation.
+Invalid Insights do not expand that evidence scope. If no supplied filing text
+exists, the response schema permits only an explicit null Insight, which fails
+the Manager's missing-Insight check; no source is invented. Exact system
+instructions are saved separately for each node call for prompt auditing.
+Insight numbers use the existing filing-line semantic checks and quoted-input
+calculation checks; they are outside the Advisor thesis exclusion.
 
 Install with Python 3.10 through 3.13:
 
@@ -44,8 +109,14 @@ compiled report, saved filing texts, and saved facts (including the explicitly
 labelled user-price input). It skips the Advisor thesis, compares XBRL facts
 exactly, checks filing quotations with formatting normalization, and recomputes
 ratio arithmetic from quoted, sourced operands. Python then plans semantic batches
-in required-check order, selecting complete relevant report/filing sections,
-referenced notes, table headers, and the saved fact records for those numbers.
+in required-check order, selecting the complete claim paragraphs and cited source
+lines, the necessary period/unit headers and definitions, explicitly referenced
+notes, and exact saved fact observations. An unmatched paraphrase uses its actual
+filing-line citation; it never falls back to sending the whole filing. Unresolvable
+required evidence or missing table units/periods stops verification before a model
+call. Required lines and definitions that are themselves oversized still fail
+explicitly; no required content is clipped or assigned a mark to fit the budget.
+Calculated claims retain both sourced operands, units, periods and code arithmetic.
 Shared evidence is deduplicated. Each batch has at most 64 checks and is measured
 using the same serialized-input budget calculation as the API client. Batches
 run sequentially inside the single Verifier node; a model never chooses them.

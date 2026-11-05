@@ -23,6 +23,9 @@ import research_roles as roles
 from desk_verifier import (Verifier, load_verifier_sources, load_semantic_response,
                            validate_semantic_response, SemanticResponseError)
 from model_budget import MODEL_INPUT_CHAR_LIMIT, request_characters
+from research_context import research_evidence_ids
+from insight_contract import (opening_paragraph, insight_locations, role_insight_audit,
+                              insight_block, role_sections, INSIGHT_OUTPUT_CONTRACT)
 
 ROOT = Path(__file__).resolve().parent
 VERIFIER = "Verifier"
@@ -61,6 +64,9 @@ class NodeClient:
         roles.write_json(self.output / f"{stem}_input.json", envelope)
         instructions = ((ROOT / "roles/verifier.txt").read_text(encoding="utf-8")
                         if role == VERIFIER else roles.load_instructions(role))
+        if role != VERIFIER and 'insight' in schema.get('properties', {}):
+            instructions += '\n\n' + INSIGHT_OUTPUT_CONTRACT
+        roles.write_json(self.output / f'{stem}_instructions.json', {'instructions': instructions})
         body = {"model": roles.MODEL, "stream": False, "max_tokens": 16384 if role == VERIFIER else 8192,
                 "messages": [{"role": "system", "content": instructions},
                              {"role": "user", "content": json.dumps(envelope, ensure_ascii=False)}],
@@ -101,35 +107,124 @@ class NodeClient:
 class TeamManager(roles.StrategyManager):
     """Reuse Lab 03 evidence boundaries and review contracts, with bounded revisions."""
 
+    def specialist_schema(self, role, supplied, parts):
+        schema = roles.analyst_schema(role, supplied)
+        schema['properties']['sections'] = roles.object_schema({
+            part: schema['properties']['sections']['properties'][part] for part in parts})
+        designated = insight_locations(roles.PARTS, roles.OWNERS)[role]
+        if designated in parts:
+            text_ids = sorted(key for key, row in supplied.items() if row.get('kind') == 'text')
+            # A source-bound field is required whenever its part is requested.
+            # Without any supplied text, null explicitly records the impossible
+            # prerequisite; the unchanged Manager missing-Insight rule fails it.
+            schema['properties']['insight'] = (roles.object_schema({
+                'part': {'type': 'string', 'enum': [designated]},
+                'text': {'type': 'string', 'description': 'Complete role-written final line: Insight: one supported claim [filing.txt, line N].'},
+                'evidence_ids': {'type': 'array', 'items': {'type': 'string', 'enum': text_ids},
+                                 'minItems': 1, 'maxItems': 1}}) if text_ids else {'enum': [None]})
+            schema['required'].append('insight')
+        return schema
+
+    def review_schema(self):
+        schema = copy.deepcopy(roles.REVIEW_SCHEMA)
+        for part in insight_locations(roles.PARTS, roles.OWNERS).values():
+            check = schema['properties']['checks']['properties'][part]
+            for field in ('insight_present', 'insight_not_headline_restatement'):
+                check['properties'][field] = {'type': 'boolean'}
+                check['required'].append(field)
+        return schema
+
+    def review_context(self):
+        release = self.output / 'earnings_release.txt'
+        opening = opening_paragraph(release.read_text(encoding='utf-8') if release.exists() else '')
+        audits = {}
+        locations = insight_locations(roles.PARTS, roles.OWNERS)
+        for owner, part in locations.items():
+            result = self.results[owner]
+            issues, audit = role_insight_audit(role_sections(result), self.supplied[owner], opening, part,
+                                               extra_text=[result.get(field, '') for field in ('thesis', 'reason')])
+            if not isinstance(result.get('insight'), dict):
+                issues[part].append('Missing required model-written insight field; Python cannot supply one.')
+            for section, blocks in result['sections'].items():
+                if any('Insight:' in block['text'] for block in blocks):
+                    issues[section].append('Insight must use the dedicated insight field, not ordinary analysis blocks.')
+            for affected, findings in issues.items():
+                self.errors[affected].extend(findings)
+            audits[part] = audit
+        return {'insight_requirements': {'opening_paragraph': opening, 'parts': audits, 'locations': locations,
+                'rule': 'Each role must have exactly one standalone final sourced Insight, in its designated last owned part. '
+                        'The other parts must remain, without Insights. Fail the relevant parts for missing, duplicate, '
+                        'misplaced, embedded/non-final, unsupported Insights, or a claim that only '
+                        'restates an opening-paragraph figure, including paraphrases and equivalent unit displays. '
+                        'Check measure, period and claim meaning; a coincident number for a different measure is not a restatement. '
+                        'Explicitly return insight_present and insight_not_headline_restatement for each designated part only. '
+                        'Also fail multiple claims or a claim not supported by its specified filing line.'}}
+
+    def review(self):
+        review = super().review()
+        for part in insight_locations(roles.PARTS, roles.OWNERS).values():
+            check = review['checks'][part]
+            for field, issue in (('insight_present', 'Report part is missing its required Insight: line.'),
+                                 ('insight_not_headline_restatement', 'Insight only repeats an opening earnings-release figure.')):
+                if not check[field]:
+                    check['passed'] = False
+                    check['issues'].append(issue)
+        return review
+
     def specialist(self, role, feedback=None):
         if role == roles.ADVISOR:
             context = copy.deepcopy(self.analyst_context())
             supplied = {key: copy.deepcopy(row) for result in context.values()
                         for key, row in result["cited_evidence"].items()}
         else:
-            keys = self.catalog.research_ids if role == roles.RESEARCH else roles.financial_evidence_ids(self.catalog)
+            keys = (research_evidence_ids(self.catalog, self.research, self.sources, roles.RoleError)
+                    if role == roles.RESEARCH else roles.financial_evidence_ids(self.catalog))
             supplied = self.catalog.select(keys)
             context = {"company": self.run["company"], "evidence": supplied,
                        "sources": self.catalog.source_records(supplied)}
+            if role == roles.RESEARCH:
+                context['step6_quarter'] = {
+                    key: [ref for ref in self.catalog.records[key]['references'] if ref in supplied]
+                    for key in self.catalog.quarter_ids}
+                context['step7_peers'] = copy.deepcopy(self.financial['step7_peers'])
+                for peer in context['step7_peers'].values():
+                    for field in ('fact_ids', 'metric_ids'):
+                        if field in peer:
+                            peer[field] = [key for key in peer[field] if key in supplied]
             if role == roles.FINANCIAL:
                 context.update({key: copy.deepcopy(self.financial[key]) for key in
                                 ("step4_facts", "step5_metrics", "step7_peers")})
                 context["step6_quarter"] = list(self.catalog.quarter_ids)
             context = (roles.compact_research_context(context) if role == roles.RESEARCH
                        else roles.compact_financial_context(context))
+            context['insight_source_files'] = {
+                key.rsplit('.L', 1)[0]: self.catalog.sources[row['source_id']]['file']
+                for key, row in supplied.items() if row.get('kind') == 'text'}
         self.supplied[role] = copy.deepcopy(supplied)
-        schema = roles.analyst_schema(role, supplied)
         parts = [p for p in roles.PARTS if roles.OWNERS[p] == role and (feedback is None or p in feedback)]
-        schema["properties"]["sections"] = roles.object_schema({p: schema["properties"]["sections"]["properties"][p]
-                                                               for p in parts})
+        schema = self.specialist_schema(role, supplied, parts)
         # A retry contains only failed parts. Preserve all other part text and fields.
         if feedback is not None and role == roles.ADVISOR and roles.PARTS[4] not in parts:
             for field in ("thesis", "thesis_evidence_ids", "recommendation", "reason", "reason_evidence_ids", "deciding_evidence_id"):
                 del schema["properties"][field]
                 schema["required"].remove(field)
         task = "Write only these assigned report parts: " + "; ".join(parts) + ". Use only the assigned context."
+        insight_part = insight_locations(roles.PARTS, roles.OWNERS)[role]
+        task += (f' Your role has exactly ONE Insight across its output, located only in {insight_part}. '
+                 'Keep every assigned part, but put no Insight in other parts or fields. '
+                 'When the designated part is in this request, return its separate final block in the required insight field '
+                 '(part, text, evidence_ids), not in the sections array. insight.text is the complete model-written line: '
+                 'Insight: one supported claim [filing.txt, line N]. Select exactly one supplied text evidence_id for it. '
+                 'Copy one actual sentence or single table row from that filing line; do not invent a number or source. '
+                 'The Insight must add a claim beyond repeating a figure in the release opening paragraph. '
+                 'For compact text evidence, the existing ID suffix .LN identifies saved line N; '
+                 'insight_source_files maps its prefix to the saved filename. Copy existing IDs only. '
+                 'All other blocks keep their existing evidence/prose rules. '
+                 'If this revision excludes the designated part, return no Insight and leave the existing Insight part unchanged.')
         if feedback:
             context["revision"] = {p: {"previous": self.results[role]["sections"][p], "issues": feedback[p]} for p in parts}
+            if insight_part in parts:
+                context['revision'][insight_part]['previous_insight'] = copy.deepcopy(self.results[role].get('insight'))
             task += " Revise only these failed parts once. Do not return or change any other part."
         result = self.client.call(role, task, context, schema)
         if role == roles.FINANCIAL:
@@ -142,7 +237,8 @@ class TeamManager(roles.StrategyManager):
                 self.metrics[key] = calculation
                 self.catalog.add_calculation(key, calculation)
                 for block in result["sections"][roles.PARTS[2]]:
-                    block["evidence_ids"].append(key)
+                    if not block['text'].startswith('Insight:'):
+                        block["evidence_ids"].append(key)
             supplied = self.catalog.select(roles.financial_evidence_ids(self.catalog))
             self.supplied[role] = supplied
             roles.write_json(self.output / "additional_calculations.json", self.metrics)
@@ -216,12 +312,26 @@ class TeamManager(roles.StrategyManager):
                 prose(result["reason"])
                 for key in result["reason_evidence_ids"] + ([result["deciding_evidence_id"]] if result["deciding_evidence_id"] else []):
                     evidence(key, role, seen)
-            for block in result["sections"][part]:
-                prose(block["text"])
-                for key in block["evidence_ids"]:
-                    evidence(key, role, seen)
+            # Put limitations before the submitted blocks so a valid final
+            # Insight stays final, without moving any submitted Insight.
             for key in result["limitations"]:
                 evidence(key, role, seen)
+            for block in result["sections"][part]:
+                if block['text'].startswith('Insight:'):
+                    for key in block['evidence_ids']:
+                        evidence(key, role, seen)
+                    prose(block['text'])
+                else:
+                    prose(block["text"])
+                    for key in block["evidence_ids"]:
+                        evidence(key, role, seen)
+            # This is ordinary rendering of the role's explicit final-block
+            # field. Never construct its prefix, claim, source, or citation.
+            insight = result.get('insight')
+            if isinstance(insight, dict) and insight['part'] == part:
+                for key in insight['evidence_ids']:
+                    evidence(key, role, seen)
+                prose(insight['text'])
         path = self.output / "compiled_report.md"
         path.write_text("\n".join(lines), encoding="utf-8")
         (self.output / "report.md").write_text(path.read_text(encoding="utf-8"), encoding="utf-8")

@@ -16,6 +16,7 @@ import requests
 
 from desk_evidence import EvidenceCatalog
 from claim_validation import claim_errors, numeric_record_errors, financial_numeric_literals, review_policy, REVIEW_CODES
+from insight_contract import insight_errors, insight_locations, insight_block
 
 
 ENDPOINT = "https://genai.rcac.purdue.edu/api/chat/completions"
@@ -110,6 +111,8 @@ def compact_research_context(context):
             text[key] = row["text"]
         elif row.get("kind") in {"limitation", "missing_input"}:
             limitations[key] = row.get("statement", row.get("label", ""))
+        elif key.startswith('peer.') and row.get('kind') in {'xbrl_fact', 'calculation'}:
+            text[key] = compact_evidence_records({key: row})[key]
         else:
             raise RoleError("Research context contains evidence outside its text and limitation scope.")
     compact["evidence"] = text
@@ -444,12 +447,20 @@ def evidence_keys(result):
     keys.update(result.get('limitations', []))
     keys.update(result.get('thesis_evidence_ids', []))
     keys.update(result.get('reason_evidence_ids', []))
+    if isinstance(result.get('insight'), dict):
+        keys.update(result['insight']['evidence_ids'])
     return keys
 
 
 def validate_content(role, result, supplied, require_limitations=True):
     """Citation membership is checked against this role's supplied snapshot only."""
     errors = {part: [] for part in PARTS if OWNERS[part] == role}
+    if isinstance(result.get('insight'), dict):
+        designated = insight_locations(PARTS, OWNERS)[role]
+        insight = result['insight']
+        if insight['part'] != designated:
+            errors[designated].append('Insight field declares the wrong report part.')
+        errors[designated].extend(insight_errors(insight_block(insight), supplied))
     for part, blocks in result["sections"].items():
         if part not in errors:
             continue
@@ -458,7 +469,8 @@ def validate_content(role, result, supplied, require_limitations=True):
             if set(block) != {'text', 'evidence_ids'}:
                 problem.append('Only text and evidence_ids are allowed; model-authored quotations or citation metadata are forbidden.')
             refs = block.get('evidence_ids', [])
-            problem.extend(claim_errors(block['text'], refs, supplied))
+            problem.extend(insight_errors(block, supplied) if block['text'].startswith('Insight:')
+                           else claim_errors(block['text'], refs, supplied))
             for key in refs:
                 if key not in supplied:
                     problem.append(f'Unknown or unsupplied evidence ID: {key}.')
@@ -515,6 +527,12 @@ class StrategyManager:
                     validate_content(role, {'sections': {part: [block]}, 'limitations': []}, self.supplied[role], require_limitations=False)[part]]
             result['limitations'] = [key for key in result['limitations'] if key in self.supplied[role]
                                      and self.supplied[role][key]['kind'] in {'limitation', 'missing_input'}]
+            # A valid role-written Insight independently contributes its cited
+            # text. Rejected prose must not erase this supported public output.
+            if isinstance(result.get('insight'), dict) and (
+                    result['insight']['part'] != insight_locations(PARTS, OWNERS)[role] or
+                    insight_errors(insight_block(result['insight']), self.supplied[role])):
+                result.pop('insight')
             result = self.enrich(role, result)
             supported[role] = result
         return supported
@@ -583,6 +601,12 @@ class StrategyManager:
         self.results[role] = self.enrich(role, result)
         self.errors.update(errors)
 
+    def review_schema(self):
+        return REVIEW_SCHEMA
+
+    def review_context(self):
+        return {}
+
     def review(self):
         # Revalidate at review time; a model's 'passed' cannot override membership
         # failures or changes to the canonical metadata/quotation payload.
@@ -620,9 +644,10 @@ class StrategyManager:
                    'citation_audit': self.errors, 'supplied_evidence': records,
                    'sources': self.catalog.source_records(records),
                    "input_gaps": {"peers": self.run["peers"], "price_supplied": self.run["price"] is not None}}
+        context.update(self.review_context())
         review = self.client.call(MANAGER, "Check every part for presence, support and cross-role consistency. "
                                  "Return failures to the owning role. Check limitations are honest and not unsupported claims.",
-                                 context, REVIEW_SCHEMA)
+                                 context, self.review_schema())
         exclusions = {}
         for part, check in review['checks'].items():
             retained = []

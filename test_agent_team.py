@@ -47,7 +47,9 @@ class ScriptedClient:
             refs, text = ["subject.operating_margin", "subject.pe", "quarter.revenue"], "The supplied evidence informs valuation."
             limitations = [k for k, r in context["evidence"].items() if isinstance(r, dict) and role in r.get("required_for", [])]
         else:
-            refs, text, limitations = ["subject.pe"], "The supplied evidence informs the recommendation.", []
+            choices = properties.get('deciding_evidence_id', {}).get('enum', ['subject.pe'])
+            deciding = 'subject.pe' if 'subject.pe' in choices else 'subject.operating_margin'
+            refs, text, limitations = [deciding], "The supplied evidence informs the recommendation.", []
         result = {"sections": {p: [{"text": text, "evidence_ids": list(refs)}] for p in parts}, "limitations": limitations}
         if role in (roles.RESEARCH, roles.FINANCIAL):
             wanted = 'The business sells subscriptions.' if role == roles.RESEARCH else 'Revenue includes subscriptions.'
@@ -65,8 +67,8 @@ class ScriptedClient:
             result["calculator_requests"] = []
         if "thesis" in properties:
             result.update(thesis="Unverified thesis with 999 percent upside.", recommendation="Hold",
-                          deciding_evidence_id="subject.pe", reason="The earnings multiple decides the rating.",
-                          thesis_evidence_ids=["subject.pe"], reason_evidence_ids=["subject.pe"])
+                          deciding_evidence_id=deciding, reason="The selected measure decides the rating.",
+                          thesis_evidence_ids=[deciding], reason_evidence_ids=[deciding])
         roles.validate_shape(result, schema)
         return result
 
@@ -82,12 +84,16 @@ class FlowTests(unittest.TestCase):
             folder = Path(tmp)
             def tools(args, settings, on_step):
                 saved_fixture(folder)
+                filings = json.loads((folder / 'filings.json').read_text())
+                filings['8-K'].update(accepted='2025-07-01 16:15:00', accepted_source='https://www.sec.gov/test-index.html')
+                roles.write_json(folder / 'filings.json', filings)
                 for i in range(1, 8):
                     on_step(i, "input", {"ticker": args.ticker})
                     on_step(i, "output", {"run_folder": str(folder)})
                 return folder
             client = ScriptedClient()
             with patch.object(team.desk, "run_seven_steps", side_effect=tools) as tools_call, \
+                 patch.object(team, "last_close_before", return_value=30), \
                  patch.object(team, "NodeClient", return_value=client):
                 flow = team.DeskFlow({"API_KEY": "test-key", "SEC_USER_AGENT": "test@example.test"})
                 path = Path(flow.kickoff(inputs={"ticker": "TEST", "peers": [], "price": 30}))

@@ -9,7 +9,7 @@ python agent_team_ui.py
 ```
 
 It opens `http://127.0.0.1:8501` in your browser. Enter a ticker, optional peers
-(commas or spaces), and an optional price, then click **Run team**. No terminal
+(commas or spaces), and an optional Eastern filing-time override, then click **Run team**. No terminal
 commands are needed for individual runs. Keep the local server running while
 using the page; stop it with Ctrl+C. An alternate port can be selected with
 `python agent_team_ui.py --port 8502`.
@@ -49,7 +49,7 @@ stay together. Revenue/EPS and Step 6 evidence take priority; remaining operatin
 evidence is selected across Business, MD&A and the release in a fixed round-robin
 order. Required evidence that cannot fit intact fails explicitly. The saved filings
 and full catalog remain available to the mandatory Verifier. Research never receives
-subject Step 4 facts, Step 5 metrics, or the CLI price.
+subject Step 4 facts, Step 5 metrics, or the valuation price.
 The manager checks all five report parts and sends only failed parts back to their
 owner. Multiple failures for one owner share a single revision request, so no role
 runs more than twice. Parts that still fail are explicitly flagged in the compiled
@@ -92,21 +92,48 @@ python -m pip install -r requirements.txt
 
 Keep the existing root `.env` with `API_KEY` (Purdue GenAI Studio) and
 `SEC_USER_AGENT` (your name and contact email). Keys never belong in code or chat.
-No OpenAI key is required. Example run (price is a user input, not a fetched quote):
+No OpenAI key is required. The team reads `CLOSES_FILE` from the root `.env`.
+The Excel export must contain `Instrument`, `Date`, and `Price Close` columns;
+the requested ticker must match `Instrument` (case and surrounding spaces are ignored).
+The export is opened read-only and is never saved or changed. Install the reader dependencies:
 
 ```powershell
-python agent_team.py MSFT --peers ORCL ADBE --price 420
+python -m pip install "openpyxl>=3.1,<4" "tzdata>=2025.1"
+python agent_team.py TICKER --filed 2026-11-05T16:15:00
+```
+
+`--filed` is optional and must be `YYYY-MM-DDTHH:MM:SS` in Eastern time.
+By default, the team uses **Accepted** from the selected earnings Item 2.02 8-K's
+EDGAR index page. `filing_time.json` and `input_facts.json` preserve the original
+Accepted timestamp, index URL, override, and effective filing time.
+The last exported close strictly before that time replaces `--price` for valuation.
+Every trading day's close is treated as 4:00 PM America/New_York, with daylight
+saving time handled by the timezone database. At exactly 4:00 PM, that day's close
+is excluded. The legacy team `--price` argument is ignored.
+
+`closes_reader.py` provides `daily_closes(ticker, start_date, end_date)` (inclusive
+dates, returning date/close records) and `last_close_before(ticker, filed)` (one
+number). Both return `"not available"` for missing or unreadable export data.
+Conflicting duplicate closes are excluded. Missing data does not stop the team;
+the price and dependent valuation remain unavailable. The team passes only the
+selected market price into its existing Financial Analyst calculation/evidence
+path, never a close history or another reader result to a model.
+
+Print the last close without running the team:
+
+```powershell
+python closes_reader.py TICKER --filed 2026-11-05T16:15:00
 ```
 
 Each run creates a new `research_data/<company>_<date>_<time>/` folder. It contains
 filing texts, exact XBRL facts and peer facts, the seven tool inputs/outputs,
 role inputs/outputs, review findings, `compiled_report.md`, `verified_report.md`,
 and machine-readable `verification_marks.json`. Existing runs are preserved.
-Missing optional peers/price and unavailable filing values remain explicit gaps.
+Missing optional peers, unavailable closes, and unavailable filing values remain explicit gaps.
 
 The Verifier runs after the manager on every normal run. It receives only the
 compiled report, saved filing texts, and saved facts (including the explicitly
-labelled user-price input). It skips the Advisor thesis, compares XBRL facts
+labelled market-price input). It skips the Advisor thesis, compares XBRL facts
 exactly, checks filing quotations with formatting normalization, and recomputes
 ratio arithmetic from quoted, sourced operands. Python then plans semantic batches
 in required-check order, selecting the complete claim paragraphs and cited source

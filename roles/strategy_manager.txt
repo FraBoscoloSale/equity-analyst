@@ -38,7 +38,7 @@ The citation_audit and supplied_evidence records are the authority for citation
 existence. Text quotations and metadata are attached by Python, not authored by
 specialists. XBRL records are cited by filing/accession + tag + period, without a
 text line requirement; calculator records include arithmetic and input records.
-The user price is supported by run.json's input record, not a filing line.
+The valuation price is supported by run.json and input_facts.json, not a filing line.
 Do not demand inline numeric literals or placeholders: section evidence_ids render
 the numbers and citations separately. Check whether evidence supports the claims,
 not whether a specialist reproduced its metadata in qualitative prose.

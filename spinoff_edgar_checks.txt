@@ -1,0 +1,15 @@
+EDGAR manual checks
+
+1. Spinoff
+Company: Versant Media Group, Inc. (VSNT)
+Parent: Comcast Corporation
+Filing: Form 10-12B/A, Information Statement (EX-99.1), December 3, 2025
+Record date: December 16, 2025
+Distribution date: January 2, 2026
+Distribution ratio: 1 Versant share for every 25 Comcast shares
+What parent pushed into it: Versant incurred new debt and approximately $2.25 billion of the proceeds were to be paid to Comcast as a Special Cash Payment.
+
+2. Non-spinoff
+Company: Grayscale Bittensor Trust (TAO)
+Filing: Form 10-12G, October 10, 2025
+Reason: This is a trust registering its beneficial-interest shares. It is not a parent company distributing a business to its shareholders.

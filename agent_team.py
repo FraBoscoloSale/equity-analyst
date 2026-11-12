@@ -20,6 +20,7 @@ from pydantic import BaseModel
 
 import equity_desk as desk
 import research_roles as roles
+from closes_reader import last_close_before, NOT_AVAILABLE
 from desk_verifier import (Verifier, load_verifier_sources, load_semantic_response,
                            validate_semantic_response, SemanticResponseError)
 from model_budget import MODEL_INPUT_CHAR_LIMIT, request_characters
@@ -342,6 +343,7 @@ class DeskState(BaseModel):
     ticker: str = ""
     peers: list[str] = []
     price: float | None = None
+    filed: str | None = None
     run_folder: str = ""
     compiled_report: str = ""
     verified_report: str = ""
@@ -363,17 +365,18 @@ class DeskFlow(Flow[DeskState]):
             events.append((step, phase, payload))
             if phase == "output":
                 folder = Path(payload["run_folder"])
+                if step == 2:
+                    valuation = filing_valuation(folder, self.state.ticker, self.state.filed)
+                    args.price = valuation["price"]
+                    self.state.price = args.price
                 for n, event_phase, event_payload in events:
                     roles.write_json(folder / f"step_{n}_{event_phase}.json", event_payload)
                 events.clear()
-        args = SimpleNamespace(ticker=self.state.ticker, peers=self.state.peers, price=self.state.price, step=None)
+        args = SimpleNamespace(ticker=self.state.ticker, peers=self.state.peers, price=None, step=None)
         output = desk.run_seven_steps(args, self.settings, on_step=record)
         self.state.run_folder = str(output)
         roles.write_json(output / "seven_steps_input.json", {"ticker": args.ticker, "peers": args.peers, "price": args.price})
         roles.write_json(output / "seven_steps_output.json", {"run_folder": str(output), "steps": list(range(1, 8))})
-        # The supplied price remains explicitly an input, never a filing-derived price.
-        roles.write_json(output / "input_facts.json", {"price": self.state.price, "source": "CLI --price",
-                                                     "run_time": json.loads((output / "run.json").read_text(encoding="utf-8"))["run_time"]})
         self.manager = TeamManager(output, NodeClient(self.settings["API_KEY"], output))
 
     @listen(seven_steps)
@@ -400,6 +403,33 @@ class DeskFlow(Flow[DeskState]):
         result = Verifier(self.manager.client).run(source, output)
         self.state.verified_report = str(result)
         return str(result)
+
+
+def filing_valuation(output, ticker, override=None):
+    """Save filing provenance and only the single selected market input."""
+    output = Path(output)
+    filings_path = output / "filings.json"
+    filings = json.loads(filings_path.read_text(encoding="utf-8")) if filings_path.exists() else {}
+    filing = filings.get("8-K", {})
+    accepted = filing.get("accepted")
+    filed = override or accepted
+    close = last_close_before(ticker, filed) if filed else NOT_AVAILABLE
+    price = close if isinstance(close, (int, float)) and not isinstance(close, bool) and math.isfinite(close) and close > 0 else None
+    run_path = output / "run.json"
+    run = json.loads(run_path.read_text(encoding="utf-8"))
+    provenance = {"accepted": accepted, "accepted_source": filing.get("accepted_source"),
+                  "accession": filing.get("accessionNumber"), "filed_override": override,
+                  "effective_filing_time": filed, "timezone": "America/New_York"}
+    value = {"price": price, "status": "available" if price is not None else NOT_AVAILABLE,
+             "source": "CLOSES_FILE: last official daily close strictly before filing time (16:00 Eastern)",
+             "run_time": run["run_time"], **provenance}
+    roles.write_json(output / "filing_time.json", provenance)
+    roles.write_json(output / "input_facts.json", value)
+    run.update(price=price, price_source=value["source"], filing_time=provenance)
+    roles.write_json(run_path, run)
+    if price is None:
+        print("Filing-time close: not available; valuation continues without a market price.", flush=True)
+    return value
 
 
 def fresh_folder(company, parent=None):
@@ -429,15 +459,25 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("ticker", nargs="?")
     parser.add_argument("--peers", nargs="*", default=[])
-    parser.add_argument("--price", type=float)
+    parser.add_argument("--price", type=float, help="Deprecated; ignored. Valuation uses CLOSES_FILE.")
+    parser.add_argument("--filed", help="Override 8-K Accepted time: YYYY-MM-DDTHH:MM:SS Eastern")
     parser.add_argument("--verify-only", type=Path, metavar="SAVED_RUN")
     args = parser.parse_args(argv)
-    if args.verify_only and (args.ticker or args.peers or args.price is not None):
+    if args.verify_only and (args.ticker or args.peers or args.price is not None or args.filed):
         parser.error("--verify-only accepts only a saved run path; it does not run the desk.")
     if not args.verify_only and not args.ticker:
         parser.error("a ticker is required for a normal run")
     if args.price is not None and (not math.isfinite(args.price) or args.price <= 0):
         parser.error("--price must be a finite positive number")
+    if args.filed:
+        try:
+            if not re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}", args.filed):
+                raise ValueError
+            datetime.fromisoformat(args.filed)
+        except ValueError:
+            parser.error("--filed must be a valid YYYY-MM-DDTHH:MM:SS Eastern timestamp")
+    if args.price is not None:
+        print("--price is ignored; valuation uses the last exported close before filing time.", flush=True)
     settings = dotenv_values(ROOT / ".env")
     if not (settings.get("API_KEY") or "").strip():
         raise desk.DeskError("Required Lab 03 input missing: API_KEY in the root .env (Purdue GenAI Studio key).")
@@ -447,12 +487,11 @@ def main(argv=None):
         if not (settings.get("SEC_USER_AGENT") or "").strip():
             raise desk.DeskError("Required Lab 03 input missing: SEC_USER_AGENT in the root .env.")
         peers = list(dict.fromkeys(p.strip().upper() for entry in args.peers for p in entry.split(",") if p.strip()))
-        for optional, supplied in (("--peers: peer comparison will be unavailable", bool(peers)),
-                                   ("--price: annual P/E will be unavailable", args.price is not None)):
+        for optional, supplied in (("--peers: peer comparison will be unavailable", bool(peers)),):
             if not supplied:
                 print("Missing optional input " + optional, flush=True)
         flow = DeskFlow(settings)
-        result = flow.kickoff(inputs={"ticker": args.ticker.upper(), "peers": peers, "price": args.price})
+        result = flow.kickoff(inputs={"ticker": args.ticker.upper(), "peers": peers, "filed": args.filed})
     print(f"Verified report: {result}", flush=True)
     return 0
 

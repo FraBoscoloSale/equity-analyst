@@ -16,10 +16,17 @@
       <form id="run-form">
         <div><label for="ticker">Ticker <span>Required</span></label><input id="ticker" name="ticker" placeholder="Ticker symbol" required maxlength="20" autocomplete="off" spellcheck="false"></div>
         <div><label for="peers">Peers <span>Optional</span></label><input id="peers" name="peers" placeholder="Separate tickers with commas" autocomplete="off" spellcheck="false"><small>Compare against your selected peers.</small></div>
-        <div><label for="price">Share price <span>Optional</span></label><input id="price" name="price" type="number" min="0" step="any" placeholder="Enter a price"><small>Used for the annual P/E calculation.</small></div>
+        <div><label for="filed">Filing time <span>Optional override</span></label><input id="filed" name="filed" placeholder="YYYY-MM-DDTHH:MM:SS" autocomplete="off"><small>Eastern time. Leave blank to use the 8-K Accepted time.</small></div>
         <button id="run-button" type="submit" disabled>Run team <span aria-hidden="true">↗</span></button>
       </form>
       <p class="setup-note">Every completed run includes mandatory verification. Saved runs are kept separately.</p>
+    </section>
+    <section class="card setup" aria-labelledby="seeker-title">
+      <h2 id="seeker-title">Spinoff seeker</h2>
+      <form id="seeker-form">
+        <div><label for="start">Start date</label><input id="start" name="start" placeholder="YYYY-MM-DD" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" maxlength="10" required autocomplete="off"></div>
+        <button id="seeker-button" type="submit" disabled>Run seeker</button>
+      </form>
     </section>
     <div id="error" class="error" role="alert" hidden></div>
     <section class="card progress" aria-labelledby="progress-title">

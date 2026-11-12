@@ -318,7 +318,7 @@ DEFINITIONS = {
     "return_on_average_equity": "Annual net income / average beginning and ending stockholders' equity; fraction.",
     "debt_to_equity": "Noncurrent long-term debt plus current portion / ending stockholders' equity; excludes other short-term borrowings and leases.",
     "free_cash_flow": "Operating cash flow minus cash additions to property and equipment; desk definition, may differ from issuer's adjusted measure.",
-    "pe": "User-supplied price / latest annual diluted EPS; annual, not forward or trailing-quarter EPS.",
+    "pe": "Supplied market price / latest annual diluted EPS; annual, not forward or trailing-quarter EPS.",
 }
 
 
@@ -373,7 +373,7 @@ def build_context(output):
     add_facts(facts, "subject")
     if run.get("price") is not None:
         fact_catalog["price"] = {"val": run["price"], "unit": facts.get("currency"),
-                                 "label": "User-supplied share price", "source": "CLI --price",
+                                 "label": "Share price used for valuation", "source": run.get("price_source", "CLI --price"),
                                  "observed_at": run["run_time"]}
     add_metrics(metrics, "subject")
     for ticker, data in peers.items():

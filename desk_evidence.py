@@ -34,7 +34,7 @@ class EvidenceCatalog:
         for key, row in financial['facts'].items():
             record = copy.deepcopy(row)
             if key == 'price':
-                record.pop('source', None)
+                record['price_source'] = record.pop('source', 'CLI --price')
                 record['supplied_at'] = record.pop('observed_at')
                 record.update(kind='user_input', source_id='run.input', input_field='price')
             else:
@@ -155,7 +155,7 @@ class EvidenceCatalog:
         for item in ('revenue', 'diluted_eps'):
             limitation('quarterly_' + item, 'Reported-quarter ' + item.replace('_', ' '),
                        'quarter.' + item in self.records, [self.financial_ids])
-        limitation('price', 'A user-supplied subject share price',
+        limitation('price', 'A subject share price for valuation',
                    self.records.get('price', {}).get('kind') == 'user_input', [self.financial_ids])
         for key, row in list(self.records.items()):
             if row['kind'] == 'missing_input':
@@ -222,6 +222,9 @@ class EvidenceCatalog:
             return [f"{row['ticker']} {row['label']}: {row['val']} {row['unit']} "
                     f"[{row['form']} {row['accn']}; {row['tag']}; {period}; {row['filing_url']}]", '']
         if kind == 'user_input':
+            if row.get('price_source', '').startswith('CLOSES_FILE:'):
+                return [f"{row['label']}: {row['val']} {row['unit']} [{row['price_source']}; "
+                        f"run.json /price; input_facts.json; saved at run {row['supplied_at']}]", '']
             return [f"{row['label']}: {row['val']} {row['unit']} [user input --price; "
                     f"run.json /price; supplied at run {row['supplied_at']}; market observation time not supplied]", '']
         if kind == 'missing_input':

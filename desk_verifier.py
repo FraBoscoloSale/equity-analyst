@@ -113,7 +113,7 @@ def fact_records(saved):
     price = saved.get("input_facts.json", {})
     if price.get("price") is not None:
         records["price"] = {"val": price["price"], "unit": subject.get("currency"),
-                            "source": "CLI --price", "label": "User-supplied share price"}
+                            "source": price.get("source", "CLI --price"), "label": "Share price used for valuation"}
     return records
 
 
@@ -375,8 +375,8 @@ class Verifier:
             canonical = saved.get("price")
             valid = canonical and decimal(canonical["val"]) == decimal(row["val"])
             check = self.add(row.get("val"), "correct" if valid else "unsupported",
-                             "User price is an input, not an observed filing number.",
-                             canonical["val"] if canonical else "", "input_facts.json: CLI --price")
+                             "Market price compared with the saved valuation input.",
+                             canonical["val"] if canonical else "", "input_facts.json: " + (canonical.get("source", "price") if canonical else "price"))
             return self.replacement(check, visible)
         if kind == "calculation" and row.get("value") is not None:
             definition = row.get("definition", "")
@@ -414,7 +414,7 @@ class Verifier:
                 value, equal = None, False
                 reasons.append("Arithmetic cannot be recomputed from quoted, sourced inputs.")
             # Recover a wrong displayed ratio only when every quoted source is proven.
-            source = "; ".join(source_label(saved[r]) if saved.get(r, {}).get("tag") else "CLI --price input"
+            source = "; ".join(source_label(saved[r]) if saved.get(r, {}).get("tag") else saved[r].get("source", "price input")
                                for r in refs if r in saved)
             if value is not None:
                 source += "; arithmetic: " + row["arithmetic"] + " = " + str(value)

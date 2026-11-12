@@ -1,6 +1,7 @@
 """Local browser interface for the existing CLI: python agent_team_ui.py."""
 
 import argparse
+from datetime import datetime
 from collections import Counter
 import json
 import math
@@ -31,9 +32,20 @@ class InputError(ValueError):
 
 
 def command_for(payload, root=ROOT):
-    """Translate three form fields to the unchanged CLI, never a shell string."""
-    if not isinstance(payload, dict) or set(payload) - {'ticker', 'peers', 'price'}:
-        raise InputError('Supply only ticker, optional peers, and optional price.')
+    """Translate form fields to CLI arguments, never a shell string."""
+    if isinstance(payload, dict) and 'start' in payload:
+        start = payload['start']
+        if set(payload) != {'start'}:
+            raise InputError('Supply only a seeker start date.')
+        try:
+            if not isinstance(start, str) or not re.fullmatch(r'\d{4}-\d{2}-\d{2}', start):
+                raise ValueError
+            datetime.fromisoformat(start)
+        except ValueError:
+            raise InputError('Seeker start date must be a valid date in YYYY-MM-DD format.') from None
+        return [sys.executable, '-u', str(root / 'spinoff_seeker.py'), '--start', start]
+    if not isinstance(payload, dict) or set(payload) - {'ticker', 'peers', 'price', 'filed'}:
+        raise InputError('Supply only ticker, optional peers, and optional filing time.')
     ticker = payload.get('ticker', '')
     peers = payload.get('peers', '')
     if not isinstance(ticker, str) or not SYMBOL.fullmatch(ticker.strip()):
@@ -46,6 +58,16 @@ def command_for(payload, root=ROOT):
     command = [sys.executable, '-u', str(root / 'agent_team.py'), ticker.strip().upper()]
     if peers:
         command += ['--peers', ','.join(peers)]
+    filed = payload.get('filed')
+    if filed is not None and filed != '':
+        try:
+            if not isinstance(filed, str) or not re.fullmatch(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}', filed):
+                raise ValueError
+            datetime.fromisoformat(filed)
+        except ValueError:
+            raise InputError('Filing time must be YYYY-MM-DDTHH:MM:SS Eastern, or left blank.') from None
+        command += ['--filed', filed]
+    # Older clients may still send price; the team CLI explicitly ignores it.
     price = payload.get('price')
     if price is not None and price != '':
         try:
@@ -99,7 +121,8 @@ class RunService:
                 raise InputError('A run is already active. Wait for it to finish.')
             job_id = uuid.uuid4().hex
             job = {'id': job_id, 'status': 'running', 'nodes': [], 'error': '',
-                   'report': '', 'counts': {}, 'unresolved_parts': 0}
+                   'report': '', 'counts': {}, 'unresolved_parts': 0,
+                   'kind': 'seeker' if 'start' in payload else 'team'}
             self.jobs[job_id] = job
             self.active = job_id
             # Retain recent results through browser refresh without unbounded storage.
@@ -141,6 +164,8 @@ class RunService:
 
     def execute(self, job_id, command):
         scrub = lambda text: text
+        seeker = self.jobs[job_id].get('kind') == 'seeker'
+        run_name = 'Seeker' if seeker else 'Agent team'
         try:
             scrub = self.scrubber()
             report_path, error = None, ''
@@ -152,7 +177,7 @@ class RunService:
                                   creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0)) as process:
                 for raw in process.stdout:
                     line = raw.strip()
-                    node = node_from_line(line)
+                    node = (scrub(line) if re.match(r'^\[[a-z][a-z0-9_ -]*\] ', line) else None) if seeker else node_from_line(line)
                     with self.lock:
                         nodes = self.jobs[job_id]['nodes']
                         if node and (not nodes or nodes[-1] != node):
@@ -161,15 +186,30 @@ class RunService:
                         error = line
                     if line.startswith('Verified report: '):
                         report_path = line.removeprefix('Verified report: ').strip()
+                    if seeker and line.endswith('.md'):
+                        report_path = line
                 code = process.wait()
             if code != 0:
                 if not error:
                     # Never expose a raw traceback or source/model log to the page.
-                    error = f'Agent team exited with code {code}. No completed verified report was returned.'
+                    error = (f'Seeker exited with code {code}. No completed report was returned.' if seeker else
+                             f'Agent team exited with code {code}. No completed verified report was returned.')
                 raise RuntimeError(error)
             if not report_path:
-                raise ValueError('The agent team ended without returning a verified report. The run is incomplete.')
-            report, counts, unresolved = self.verified_artifacts(report_path)
+                raise ValueError('The seeker ended without returning a report. The run is incomplete.' if seeker else
+                                 'The agent team ended without returning a verified report. The run is incomplete.')
+            if seeker:
+                path = Path(report_path)
+                path = (path if path.is_absolute() else self.root / path).resolve()
+                if (not path.is_relative_to((self.root / 'spinoff_runs').resolve()) or
+                    not path.name.startswith('report_') or path.suffix != '.md'):
+                    raise ValueError('The seeker did not return a valid report location.')
+                report = path.read_text(encoding='utf-8')
+                if not report.strip():
+                    raise ValueError('The seeker returned an empty report.')
+                counts, unresolved = {}, 0
+            else:
+                report, counts, unresolved = self.verified_artifacts(report_path)
             with self.lock:
                 self.jobs[job_id].update(status='completed', report=scrub(report), counts=counts,
                                          unresolved_parts=unresolved)
@@ -178,9 +218,11 @@ class RunService:
             if isinstance(exc, (RuntimeError, ValueError)):
                 message = str(exc)
             elif isinstance(exc, FileNotFoundError):
-                message = 'A required program or verification artifact is missing. The run is incomplete.'
+                message = ('A required program or seeker report is missing. The run is incomplete.' if seeker else
+                           'A required program or verification artifact is missing. The run is incomplete.')
             else:
-                message = f'The run could not finish ({type(exc).__name__}). No completed verified report is available.'
+                message = (f'{run_name} could not finish ({type(exc).__name__}). No completed report is available.' if seeker else
+                           f'The run could not finish ({type(exc).__name__}). No completed verified report is available.')
             with self.lock:
                 self.jobs[job_id].update(status='failed', error=scrub(message), report='')
         finally:

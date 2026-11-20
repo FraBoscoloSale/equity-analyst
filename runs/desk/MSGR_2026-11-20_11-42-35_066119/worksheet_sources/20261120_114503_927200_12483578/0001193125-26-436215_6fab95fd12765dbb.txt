@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0609</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2026-10-26</periodOfReport>
+
+    <issuer>
+        <issuerCik>0002132873</issuerCik>
+        <issuerName>MSG Rangers Corp.</issuerName>
+        <issuerTradingSymbol>MSGR</issuerTradingSymbol>
+        <issuerForeignTradingSymbol></issuerForeignTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0002134651</rptOwnerCik>
+            <rptOwnerName>DiCicco Paul M.</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerNonUSAddressFlag>false</rptOwnerNonUSAddressFlag>
+            <rptOwnerStreet1>TWO PENNSYLVANIA PLAZA</rptOwnerStreet1>
+            <rptOwnerStreet2></rptOwnerStreet2>
+            <rptOwnerCity>NEW YORK</rptOwnerCity>
+            <rptOwnerState>NY</rptOwnerState>
+            <rptOwnerZipCode>10121</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>false</isDirector>
+            <isOfficer>true</isOfficer>
+            <isTenPercentOwner>false</isTenPercentOwner>
+            <isOther>false</isOther>
+            <officerTitle>EVP, CFO &amp; Treasurer</officerTitle>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <aff10b5One>false</aff10b5One>
+
+    <nonDerivativeTable>
+        <nonDerivativeHolding>
+            <securityTitle>
+                <value>No Securities Owned</value>
+            </securityTitle>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>0</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeHolding>
+    </nonDerivativeTable>
+
+    <derivativeTable>
+        <derivativeTransaction>
+            <securityTitle>
+                <value>Restricted Stock Units</value>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F1"/>
+            </conversionOrExercisePrice>
+            <transactionDate>
+                <value>2026-10-26</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>J</transactionCode>
+                <equitySwapInvolved>false</equitySwapInvolved>
+                <footnoteId id="F2"/>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>407</value>
+                    <footnoteId id="F2"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0.00</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <exerciseDate>
+                <footnoteId id="F3"/>
+            </exerciseDate>
+            <expirationDate>
+                <value>2029-09-15</value>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Class A Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>407</value>
+                    <footnoteId id="F2"/>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>407</value>
+                    <footnoteId id="F2"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeTransaction>
+    </derivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Represents restricted stock units (&quot;RSUs&quot;) of MSG Rangers Corp. (formerly MSGS Spinco, Inc., and referred to herein as &quot;MSGR&quot;) received by the Reporting Person in connection with the distribution by MSG Knickerbockers Corp. (formerly Madison Square Garden Sports Corp., and referred to herein as &quot;MSGK&quot;) of outstanding common stock of MSGR to MSGK stockholders, effected on October 26, 2026 (the &quot;Distribution&quot;), in a transaction exempt under Rules 16a-9 and 16b-3. In the Distribution, MSGK distributed one share of MSGR's Class A common stock (&quot;Class A Common Stock&quot;) and one share of MSGR's Class B common stock to MSGK stockholders for every two shares of MSGK Class A common stock and MSGK Class B common stock, respectively, in a transaction exempt under Rules 16a-9. Each RSU is granted under the MSGR 2026 Employee Stock Plan and represents a right to receive one share of MSGR Class A Common Stock or the cash equivalent thereof.</footnote>
+        <footnote id="F2">Reflects the acquisition of RSUs in connection with the Distribution in a transaction exempt under Rules 16a-9, 16b-6 and 16b-3. Reporting Person received one MSGR RSU in respect of every two MSGK RSUs.</footnote>
+        <footnote id="F3">Pursuant to the terms of the Reporting Person's MSGK RSU award dated August 26, 2026, the RSUs are scheduled to vest and settle in three equal installments on September 15, 2027, September 15, 2028 and September 15, 2029.</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>/s/ Mark C. Cresitello, Attorney-in-Fact for Paul M. DiCicco</signatureName>
+        <signatureDate>2026-10-28</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

@@ -1,0 +1,41 @@
+{
+  "sections": {
+    "Future Developments and Strategic Recommendations": [
+      {
+        "text": "Management should prioritize cost reduction initiatives, particularly in selling, general and administrative expenses, to narrow the widening operating loss while sustaining modest revenue growth.",
+        "evidence_ids": [
+          "text.ed17aac93a11.L25",
+          "text.ed17aac93a11.L26"
+        ]
+      }
+    ],
+    "Investment Recommendation": [
+      {
+        "text": "Hold",
+        "evidence_ids": [
+          "text.ed17aac93a11.L26"
+        ]
+      }
+    ]
+  },
+  "thesis": "Revenue grew modestly year‑over‑year, yet operating loss widened significantly, suggesting mixed momentum that does not yet justify a change in position.",
+  "recommendation": "Hold",
+  "reason": "The operating loss increase signals deteriorating profitability despite revenue growth, making the current valuation uncertain.",
+  "reason_evidence_ids": [
+    "text.ed17aac93a11.L26"
+  ],
+  "limitations": [],
+  "deciding_evidence_id": null,
+  "thesis_evidence_ids": [
+    "text.ed17aac93a11.L16",
+    "text.ed17aac93a11.L26"
+  ],
+  "direction": "not computed",
+  "insight": {
+    "part": "Investment Recommendation",
+    "text": "Insight: Operating loss of $23.6 million increased $10.7 million compared to the prior year period, indicating a widening loss [earnings_release.txt, line 26]",
+    "evidence_ids": [
+      "text.ed17aac93a11.L26"
+    ]
+  }
+}

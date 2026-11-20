@@ -62,17 +62,20 @@ async function api(path, options = {}) {
 }
 function error(message) { $('error').textContent = message; $('error').hidden = false; }
 function show(job) {
-  lastJob = job; const active = job.status === 'running', seeker = job.kind === 'seeker';
+  lastJob = job; const active = job.status === 'running', seeker = job.kind === 'seeker', desk = job.kind === 'desk';
   $('run-button').disabled = active;
   $('seeker-button').disabled = active;
-  $('run-button').firstChild.textContent = active && !seeker ? 'Team running… ' : 'Run team ';
+  $('desk-button').disabled = active;
+  $('run-button').firstChild.textContent = active && !seeker && !desk ? 'Team running… ' : 'Run team ';
   $('progress-title').textContent = seeker ? 'Seeker activity' : 'Team activity';
   $('report-title').textContent = seeker ? 'Seeker report' : 'Verified report';
+  if (desk) { $('progress-title').textContent = 'Desk activity'; $('report-title').textContent = 'Desk report'; }
   $('status').textContent = active ? 'Running' : job.status === 'failed' ? 'Failed' : seeker ? 'Completed' : 'Verification complete';
   $('status').className = 'status ' + job.status;
   $('progress-message').textContent = seeker
     ? (active ? 'The seeker is working. Progress appears below.' : job.status === 'failed' ? 'The seeker did not complete.' : 'The seeker has finished. Read the report below.')
     : (active ? 'The team is working. This can take several minutes.' : job.status === 'failed' ? 'The run did not complete. No final verified report is available.' : 'All nodes have finished, including the mandatory Verifier. Review the marks and findings below.');
+  if (desk) $('progress-message').textContent = active ? 'The desk is running its fixed pipeline. Progress appears below.' : job.status === 'failed' ? 'The desk stopped. Completed outputs remain in its saved folder.' : 'The desk completed, including numeric verification.';
   if ($('nodes').childElementCount > job.nodes.length) $('nodes').replaceChildren();
   for (const name of job.nodes.slice($('nodes').childElementCount)) {
     const li = document.createElement('li'); li.textContent = name; $('nodes').append(li);
@@ -81,12 +84,12 @@ function show(job) {
   if (job.status === 'completed') {
     $('error').hidden = true; reportText = job.report;
     $('results').hidden = false; $('counts').replaceChildren();
-    $('counts').hidden = seeker;
-    for (const mark of seeker ? [] : ['correct','wrong','unsupported']) {
+    $('counts').hidden = seeker || desk;
+    for (const mark of seeker || desk ? [] : ['correct','wrong','unsupported']) {
       const badge = document.createElement('span'); badge.className = mark;
       badge.textContent = `${job.counts[mark] || 0} ${mark}`; $('counts').append(badge);
     }
-    $('findings').hidden = seeker || !(job.unresolved_parts || job.counts.wrong || job.counts.unsupported);
+    $('findings').hidden = seeker || desk || !(job.unresolved_parts || job.counts.wrong || job.counts.unsupported);
     $('findings').textContent = `Verification completed with findings. ${job.unresolved_parts} report part(s) retain unresolved Manager findings. Check the verification table for corrections and unsupported numbers.`;
     renderMarkdown($('report'), job.report);
   }
@@ -108,12 +111,13 @@ async function poll(id) {
 }
 async function startRun(payload) {
   $('error').hidden = true; $('run-button').disabled = true; $('seeker-button').disabled = true;
+  $('desk-button').disabled = true;
   try {
     const response = await api('/api/runs', {method:'POST', headers:{'Content-Type':'application/json','X-Run-Token':token},
       body:JSON.stringify(payload)});
     reportText = ''; $('report').replaceChildren(); $('nodes').replaceChildren(); $('results').hidden = true;
     poll(response.id);
-  } catch (exc) { error(exc.message); $('run-button').disabled = false; $('seeker-button').disabled = false; }
+  } catch (exc) { error(exc.message); $('run-button').disabled = false; $('seeker-button').disabled = false; $('desk-button').disabled = false; }
 }
 $('run-form').addEventListener('submit', async event => {
   event.preventDefault();
@@ -123,16 +127,20 @@ $('seeker-form').addEventListener('submit', async event => {
   event.preventDefault();
   await startRun({start:$('start').value});
 });
+$('desk-form').addEventListener('submit', async event => {
+  event.preventDefault();
+  await startRun({desk:$('desk-input').value});
+});
 $('download').addEventListener('click', () => {
   if (!reportText) return;
   const url = URL.createObjectURL(new Blob([reportText], {type:'text/markdown;charset=utf-8'}));
-  const a = document.createElement('a'); a.href = url; a.download = lastJob?.kind === 'seeker' ? 'seeker_report.md' : 'verified_report.md'; a.click();
+  const a = document.createElement('a'); a.href = url; a.download = lastJob?.kind === 'desk' ? 'desk_report.md' : lastJob?.kind === 'seeker' ? 'seeker_report.md' : 'verified_report.md'; a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
 (async () => {
   try {
     const session = await api('/api/session'); token = session.token;
     if (session.run) { show(session.run); if (session.run.status === 'running') poll(session.run.id); }
-    else { $('run-button').disabled = false; $('seeker-button').disabled = false; }
+    else { $('run-button').disabled = false; $('seeker-button').disabled = false; $('desk-button').disabled = false; }
   } catch (exc) { error('Cannot connect to the local server. Reload the page after starting it.'); }
 })();

@@ -1,0 +1,79 @@
+{
+  "company": {
+    "ticker": "MSGR",
+    "cik": "0002132873",
+    "name": "MSG Rangers Corp."
+  },
+  "currency": "USD",
+  "fiscal_year": null,
+  "current_period": null,
+  "prior_period": null,
+  "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0002132873.json",
+  "concepts": {
+    "revenue": {
+      "label": "Revenue",
+      "selected_tag": null,
+      "latest_available_end": null,
+      "current": null,
+      "prior": null
+    },
+    "operating_income": {
+      "label": "Operating income",
+      "selected_tag": null,
+      "latest_available_end": null,
+      "current": null,
+      "prior": null
+    },
+    "net_income": {
+      "label": "Net income",
+      "selected_tag": null,
+      "latest_available_end": null,
+      "current": null,
+      "prior": null
+    },
+    "diluted_eps": {
+      "label": "Diluted EPS",
+      "selected_tag": null,
+      "latest_available_end": null,
+      "current": null,
+      "prior": null
+    },
+    "equity": {
+      "label": "Stockholders' equity",
+      "selected_tag": null,
+      "latest_available_end": null,
+      "current": null,
+      "prior": null
+    },
+    "long_term_debt": {
+      "label": "Long-term debt, noncurrent",
+      "selected_tag": null,
+      "latest_available_end": null,
+      "current": null,
+      "prior": null
+    },
+    "current_debt": {
+      "label": "Current portion of long-term debt",
+      "selected_tag": null,
+      "latest_available_end": null,
+      "current": null,
+      "prior": null
+    },
+    "cash_from_operations": {
+      "label": "Cash from operations",
+      "selected_tag": null,
+      "latest_available_end": null,
+      "current": null,
+      "prior": null
+    },
+    "capex": {
+      "label": "Additions to property and equipment",
+      "selected_tag": null,
+      "latest_available_end": null,
+      "current": null,
+      "prior": null
+    }
+  },
+  "annual_facts_limitation": "No mapped full-year revenue in annual filings; no annual fiscal period established. Aligned annual facts and calculations requiring them are unavailable.",
+  "worksheet_inputs": []
+}

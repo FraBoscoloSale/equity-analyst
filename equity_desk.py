@@ -581,7 +581,7 @@ def run_seven_steps(args, settings, on_step=None):
     user_agent = settings.get("SEC_USER_AGENT", "")
     if not user_agent or not user_agent.strip() or "\n" in user_agent or "\r" in user_agent:
         raise DeskError("Set a valid, single-line SEC_USER_AGENT in the .env beside this script.")
-    client = SECClient(user_agent.strip())
+    client = getattr(args, 'sec_client', None) or SECClient(user_agent.strip())
     state = {}
     descriptions = {
         1: "Resolve ticker to CIK", 2: "List filings and select 10-K, 10-Q and Item 2.02 8-K",
@@ -600,8 +600,12 @@ def run_seven_steps(args, settings, on_step=None):
             name = re.sub(r"[^\w.-]+", "_", company()["name"]).strip("_.")[:100] or company()["ticker"]
             stamp = datetime.now().astimezone().strftime("%Y-%m-%d_%H-%M-%S_%f")
             parent = getattr(args, 'output_root', None)
-            path = (Path(parent) if parent is not None else ROOT / "research_data") / f"{name}_{stamp}"
-            path.mkdir(parents=True, exist_ok=False)
+            existing = getattr(args, 'run_folder', None)
+            path = Path(existing) if existing is not None else (Path(parent) if parent is not None else ROOT / "research_data") / f"{name}_{stamp}"
+            if existing is None:
+                path.mkdir(parents=True, exist_ok=False)
+            elif not path.is_dir() or (path/'run.json').exists():
+                raise DeskError('Existing desk folder must exist without a previous team run.json.')
             state["output"] = path
             save_json(path / "run.json", {"company": company(), "run_time": datetime.now().astimezone().isoformat(),
                                          "step": args.step, "peers": args.peers, "price": args.price})

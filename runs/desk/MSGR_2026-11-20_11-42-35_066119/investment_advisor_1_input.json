@@ -1,0 +1,311 @@
+{
+  "task": "Write only these assigned report parts: Future Developments and Strategic Recommendations; Investment Recommendation. Use only the assigned context. State direction explicitly as up, down, flat, or not computed: your expectation for the sign of first post-filing official close / last pre-filing official close - one. Use not computed when no supported directional view is established. Do not infer a reaction forecast mechanically from Buy/Hold/Sell. Do not compute its return. Your role has exactly ONE Insight across its output, located only in Investment Recommendation. Keep every assigned part, but put no Insight in other parts or fields. When the designated part is in this request, return its separate final block in the required insight field (part, text, evidence_ids), not in the sections array. insight.text is the complete model-written line: Insight: one supported claim [filing.txt, line N]. Select exactly one supplied text evidence_id for it. Copy one actual sentence or single table row from that filing line; do not invent a number or source. The Insight must add a claim beyond repeating a figure in the release opening paragraph. For compact text evidence, the existing ID suffix .LN identifies saved line N; insight_source_files maps its prefix to the saved filename. Copy existing IDs only. All other blocks keep their existing evidence/prose rules. If this revision excludes the designated part, return no Insight and leave the existing Insight part unchanged.",
+  "context": {
+    "Research Analyst": {
+      "sections": {
+        "Overview": [],
+        "Market Positioning and Growth Outlook": [
+          {
+            "text": "Operating expenses rose sharply, widening the operating loss, which suggests a weakening competitive position.",
+            "evidence_ids": [
+              "text.ed17aac93a11.L26",
+              "text.ed17aac93a11.L25"
+            ]
+          }
+        ]
+      },
+      "limitations": [
+        "missing.business",
+        "missing.market_share",
+        "missing.mda"
+      ],
+      "insight": {
+        "part": "Market Positioning and Growth Outlook",
+        "text": "Insight: Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses. [earnings_release.txt, line 26]",
+        "evidence_ids": [
+          "text.ed17aac93a11.L26"
+        ]
+      },
+      "cited_evidence": {
+        "missing.business": {
+          "kind": "limitation",
+          "source_id": "evidence.inventory",
+          "statement": "The annual filing BUSINESS section is not available in the validated evidence supplied for this run. This is an extraction/input limitation, not a claim that the issuer did not disclose it.",
+          "item": "business",
+          "status": "not_extracted",
+          "references": [],
+          "required_for": [
+            "Research Analyst"
+          ]
+        },
+        "missing.market_share": {
+          "kind": "limitation",
+          "source_id": "evidence.inventory",
+          "statement": "A verified quantitative market-share measure is not available in the validated evidence supplied for this run. This is an extraction/input limitation, not a claim that the issuer did not disclose it.",
+          "item": "market_share",
+          "status": "not_extracted",
+          "references": [],
+          "required_for": [
+            "Research Analyst"
+          ]
+        },
+        "missing.mda": {
+          "kind": "limitation",
+          "source_id": "evidence.inventory",
+          "statement": "The annual filing MDA section is not available in the validated evidence supplied for this run. This is an extraction/input limitation, not a claim that the issuer did not disclose it.",
+          "item": "mda",
+          "status": "not_extracted",
+          "references": [],
+          "required_for": [
+            "Research Analyst"
+          ]
+        },
+        "text.ed17aac93a11.L25": {
+          "kind": "text",
+          "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+          "line": 25,
+          "text": "Selling, general and administrative expenses of $28.1 million increased $5.8 million, or 26%, as compared to the prior year period. This increase was primarily driven by (i) expenses related to the spin-off transaction in the current year period of $3.6 million and (ii) higher employee compensation and related benefits of $1.4 million."
+        },
+        "text.ed17aac93a11.L26": {
+          "kind": "text",
+          "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+          "line": 26,
+          "text": "Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses."
+        }
+      },
+      "evidence_sources": {
+        "8-K:0001628280-26-071324:earnings_release.txt": {
+          "source": "release",
+          "file": "earnings_release.txt",
+          "form": "8-K",
+          "accession": "0001628280-26-071324",
+          "period": "2026-11-06",
+          "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgrangerscorpex991forearn.htm",
+          "text_sha256": "ed17aac93a11b60121cbf255278fda6c803f2ab188b36839a92cc31bc18d1671"
+        },
+        "evidence.inventory": {
+          "kind": "inventory",
+          "file": "evidence_catalog.json",
+          "scope": "Only the evidence extracted and supplied to the roles; not all disclosures in a filing."
+        }
+      }
+    },
+    "Financial Analyst": {
+      "sections": {
+        "Valuation Insights": [
+          {
+            "text": "The quarter’s revenue increased year‑over‑year while operating loss widened, indicating that top‑line growth was not accompanied by operating profitability.",
+            "evidence_ids": [
+              "text.ed17aac93a11.L16",
+              "text.ed17aac93a11.L17"
+            ]
+          }
+        ]
+      },
+      "limitations": [],
+      "calculator_requests": [],
+      "cited_evidence": {
+        "text.ed17aac93a11.L16": {
+          "kind": "text",
+          "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+          "line": 16,
+          "text": "Revenues | | $ | 14.1 | | | $ | 13.7 | | | $ | 0.4 | | | 3 | %"
+        },
+        "text.ed17aac93a11.L17": {
+          "kind": "text",
+          "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+          "line": 17,
+          "text": "Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | %"
+        }
+      },
+      "evidence_sources": {
+        "8-K:0001628280-26-071324:earnings_release.txt": {
+          "source": "release",
+          "file": "earnings_release.txt",
+          "form": "8-K",
+          "accession": "0001628280-26-071324",
+          "period": "2026-11-06",
+          "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgrangerscorpex991forearn.htm",
+          "text_sha256": "ed17aac93a11b60121cbf255278fda6c803f2ab188b36839a92cc31bc18d1671"
+        }
+      }
+    }
+  },
+  "expected_output": {
+    "type": "object",
+    "properties": {
+      "sections": {
+        "type": "object",
+        "properties": {
+          "Future Developments and Strategic Recommendations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "evidence_ids": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/evidence_id"
+                  }
+                }
+              },
+              "required": [
+                "text",
+                "evidence_ids"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          },
+          "Investment Recommendation": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "evidence_ids": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/evidence_id"
+                  }
+                }
+              },
+              "required": [
+                "text",
+                "evidence_ids"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "Future Developments and Strategic Recommendations",
+          "Investment Recommendation"
+        ],
+        "additionalProperties": false
+      },
+      "limitations": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "missing.business",
+            "missing.market_share",
+            "missing.mda"
+          ]
+        }
+      },
+      "thesis": {
+        "type": "string"
+      },
+      "recommendation": {
+        "enum": [
+          "Buy",
+          "Hold",
+          "Sell"
+        ]
+      },
+      "deciding_evidence_id": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "enum": [
+          null
+        ]
+      },
+      "reason": {
+        "type": "string"
+      },
+      "thesis_evidence_ids": {
+        "type": "array",
+        "items": {
+          "$ref": "#/$defs/evidence_id"
+        }
+      },
+      "reason_evidence_ids": {
+        "type": "array",
+        "items": {
+          "$ref": "#/$defs/evidence_id"
+        }
+      },
+      "direction": {
+        "type": "string",
+        "enum": [
+          "up",
+          "down",
+          "flat",
+          "not computed"
+        ]
+      },
+      "insight": {
+        "type": "object",
+        "properties": {
+          "part": {
+            "type": "string",
+            "enum": [
+              "Investment Recommendation"
+            ]
+          },
+          "text": {
+            "type": "string",
+            "description": "Complete role-written final line: Insight: one supported claim [filing.txt, line N]."
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "text.ed17aac93a11.L16",
+                "text.ed17aac93a11.L17",
+                "text.ed17aac93a11.L25",
+                "text.ed17aac93a11.L26"
+              ]
+            },
+            "minItems": 1,
+            "maxItems": 1
+          }
+        },
+        "required": [
+          "part",
+          "text",
+          "evidence_ids"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "sections",
+      "limitations",
+      "thesis",
+      "recommendation",
+      "deciding_evidence_id",
+      "reason",
+      "thesis_evidence_ids",
+      "reason_evidence_ids",
+      "direction",
+      "insight"
+    ],
+    "additionalProperties": false,
+    "$defs": {
+      "evidence_id": {
+        "type": "string",
+        "enum": [
+          "missing.business",
+          "missing.market_share",
+          "missing.mda",
+          "text.ed17aac93a11.L16",
+          "text.ed17aac93a11.L17",
+          "text.ed17aac93a11.L25",
+          "text.ed17aac93a11.L26"
+        ]
+      }
+    }
+  }
+}

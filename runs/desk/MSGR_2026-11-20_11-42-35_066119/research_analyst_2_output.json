@@ -1,0 +1,30 @@
+{
+  "insight": {
+    "part": "Market Positioning and Growth Outlook",
+    "text": "Insight: Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses. [earnings_release.txt, line 26]",
+    "evidence_ids": [
+      "text.ed17aac93a11.L26"
+    ]
+  },
+  "sections": {
+    "Overview": [
+      {
+        "text": "Revenues for the quarter were $14.1 million, a $0.4 million increase from the prior year period.",
+        "evidence_ids": [
+          "text.ed17aac93a11.L23",
+          "text.ed17aac93a11.L49"
+        ]
+      }
+    ],
+    "Market Positioning and Growth Outlook": [
+      {
+        "text": "The increase in operating loss and higher selling, general and administrative expenses indicate a weakening competitive position.",
+        "evidence_ids": [
+          "text.ed17aac93a11.L26",
+          "text.ed17aac93a11.L25"
+        ]
+      }
+    ]
+  },
+  "limitations": []
+}

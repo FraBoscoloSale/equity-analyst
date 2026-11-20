@@ -1,0 +1,13 @@
+{
+  "run_folder": "C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119",
+  "artifacts": [
+    "company.json",
+    "investment_advisor.txt",
+    "reader_snapshot.json",
+    "registry.json",
+    "run.json",
+    "spinoff_factors.txt",
+    "spinoff_worksheet.txt",
+    "verifier_persona.txt"
+  ]
+}

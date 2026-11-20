@@ -1,0 +1,39 @@
+{
+  "calculator_requests": [],
+  "insight": {
+    "part": "Valuation Insights",
+    "text": "Insight: Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | % [earnings_release.txt, line L17]",
+    "evidence_ids": [
+      "text.ed17aac93a11.L17"
+    ]
+  },
+  "sections": {
+    "Valuation Insights": [
+      {
+        "text": "Revenue increased modestly year‑over‑year while operating loss expanded, suggesting top‑line growth was not matched by profitability.",
+        "evidence_ids": [
+          "text.ed17aac93a11.L16",
+          "text.ed17aac93a11.L17"
+        ]
+      }
+    ]
+  },
+  "limitations": [
+    "missing.market_share",
+    "missing.price",
+    "missing.quarterly_cash_from_operations",
+    "missing.quarterly_diluted_eps",
+    "price",
+    "subject.capex.current",
+    "subject.cash_from_operations.current",
+    "subject.current_debt.current",
+    "subject.diluted_eps.current",
+    "subject.equity.current",
+    "subject.equity.prior",
+    "subject.long_term_debt.current",
+    "subject.net_income.current",
+    "subject.operating_income.current",
+    "subject.revenue.current",
+    "subject.revenue.prior"
+  ]
+}

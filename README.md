@@ -4,6 +4,24 @@ Our team owns the factor check: factors, directions, and weights are fixed in sp
 
 ## Local browser page
 
+Lab 08 One Desk uses the existing components in a fixed pipeline:
+
+```powershell
+python -B -u one_desk.py TICKER
+python -B -u one_desk.py screen --start YYYY-MM-DD
+python -B -u one_desk.py --replay "runs/desk/SAVED_DESK_FOLDER"
+```
+
+Screen defaults to the command date minus 90 calendar days. Each desk has one
+folder under `runs/desk`, named for ticker and command start time. The seeker
+(screen only), team, worksheet and numeric checks share saved evidence there;
+the final `desk_report.md` preserves the verified report followed directly by
+the worksheet's final view. A failure stops the pipeline and retains its folder.
+Replay rechecks saved evidence and reproduces the final report byte-for-byte,
+without SEC/model calls or reading the live Excel export. Missing or changed
+saved evidence fails. Use **Run desk** on the page for the same command;
+**Run team** and **Run seeker** keep their existing behavior.
+
 Start the page with the existing Python environment:
 
 ```powershell

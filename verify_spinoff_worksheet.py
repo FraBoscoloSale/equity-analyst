@@ -503,7 +503,53 @@ class Audit:
                 self.fail(type(exc).__name__+': '+str(exc))
 
 
+def desk_report_copy(path):
+    """Identify the saved desk container by its manifest and component boundaries."""
+    manifest_path = path.parent/'desk_manifest.json'
+    if not manifest_path.is_file():
+        return False
+    manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+    team_path = path.parent/'verified_report.md'
+    if not team_path.is_file():
+        return False
+    text = path.read_text(encoding='utf-8-sig')
+    team_lines = team_path.read_text(encoding='utf-8-sig').splitlines()
+    return (bool(team_lines)
+            and text.startswith('Filings read: '+'; '.join(manifest['filings'])+'\n\n'+team_lines[0]+'\n')
+            and re.search(r'^## .*View and Conviction\s*$', text, re.M) is not None)
+
+
 def verify(worksheet, rules_path=ROOT/'spinoff_worksheet.txt'):
+    path = Path(worksheet)
+    if path.name == 'desk_report.md':
+        from one_desk import verify_desk_report
+        verify_desk_report(path)
+        return
+    if desk_report_copy(path):
+        from one_desk import verify_desk_report, compose, read_json
+        try:
+            verify_desk_report(path)
+        except ValueError as exc:
+            if str(exc) != 'Final report differs from the exact saved team report and worksheet view.':
+                raise
+            expected = compose(path.parent, read_json(path.parent/'desk_manifest.json')).decode('utf-8').splitlines()
+            actual = path.read_text(encoding='utf-8-sig').splitlines()
+            for index in range(max(len(expected), len(actual))):
+                source = expected[index] if index < len(expected) else '(no source line)'
+                line = actual[index] if index < len(actual) else '(missing line)'
+                if line != source:
+                    amounts = [m[0] for m in tokens(line)]
+                    originals = [m[0] for m in tokens(source)]
+                    changed = next((a for i, a in enumerate(amounts)
+                                    if i >= len(originals) or a != originals[i]), '(text)')
+                    raise Failure(path, index+1, line, changed, source,
+                                  'does not match the exact saved source output') from exc
+            raise
+        return
+    if path.name == 'verified_report.md' and (path.parent/'verifier_persona.txt').is_file():
+        from one_desk import verify_team
+        verify_team(path.parent)
+        return
     Audit(worksheet, rules_path).verify()
 
 
@@ -526,7 +572,8 @@ def strings(value):
 def output_paths(value, cwd):
     """Only actual worksheet paths in tool outputs/edits; never guess 'latest'."""
     result = set()
-    pattern = re.compile(r'(?:[A-Za-z]:[\\/]|/|(?:research_data[\\/]))[^\r\n"<>|]*?spinoff_worksheet_[^\\/\s"<>|]+\.md|\bspinoff_worksheet_[^\\/\s"<>|]+\.md')
+    filename = r'(?:spinoff_worksheet_[^\\/\s"<>|]+|desk_report)\.md'
+    pattern = re.compile(r'(?:[A-Za-z]:[\\/]|/|(?:(?:research_data|runs)[\\/]))[^\r\n"<>|]*?'+filename+r'|\b'+filename)
     for text in strings(value):
         for match in pattern.finditer(text):
             path = Path(match[0])

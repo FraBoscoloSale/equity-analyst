@@ -1,0 +1,70 @@
+{
+  "subject.operating_margin": {
+    "value": null,
+    "arithmetic": "N/A / N/A",
+    "reason": "missing aligned inputs",
+    "unit": "fraction",
+    "definition": "Operating income / selected total revenue; annual fraction.",
+    "inputs": [
+      "subject.operating_income.current",
+      "subject.revenue.current"
+    ]
+  },
+  "subject.revenue_growth": {
+    "value": null,
+    "arithmetic": "(N/A / N/A) - 1",
+    "reason": "missing aligned inputs",
+    "unit": "fraction",
+    "definition": "Selected annual total revenue / prior annual total revenue - 1; fraction.",
+    "inputs": [
+      "subject.revenue.current",
+      "subject.revenue.prior"
+    ]
+  },
+  "subject.return_on_average_equity": {
+    "value": null,
+    "arithmetic": "N/A / ((N/A + N/A) / 2)",
+    "reason": "missing aligned inputs",
+    "unit": "fraction",
+    "definition": "Annual net income / average beginning and ending stockholders' equity; fraction.",
+    "inputs": [
+      "subject.net_income.current",
+      "subject.equity.current",
+      "subject.equity.prior"
+    ]
+  },
+  "subject.debt_to_equity": {
+    "value": null,
+    "arithmetic": "(N/A + N/A) / N/A",
+    "reason": "missing aligned inputs",
+    "unit": "multiple",
+    "definition": "Noncurrent long-term debt plus current portion / ending stockholders' equity; excludes other short-term borrowings and leases.",
+    "inputs": [
+      "subject.long_term_debt.current",
+      "subject.current_debt.current",
+      "subject.equity.current"
+    ]
+  },
+  "subject.free_cash_flow": {
+    "value": null,
+    "arithmetic": "N/A - N/A",
+    "reason": "missing aligned inputs",
+    "unit": "USD",
+    "definition": "Operating cash flow minus cash additions to property and equipment; desk definition, may differ from issuer's adjusted measure.",
+    "inputs": [
+      "subject.cash_from_operations.current",
+      "subject.capex.current"
+    ]
+  },
+  "subject.pe": {
+    "value": null,
+    "arithmetic": "N/A / N/A",
+    "reason": "missing aligned inputs",
+    "unit": "multiple",
+    "definition": "Supplied market price / latest annual diluted EPS; annual, not forward or trailing-quarter EPS.",
+    "inputs": [
+      "price",
+      "subject.diluted_eps.current"
+    ]
+  }
+}

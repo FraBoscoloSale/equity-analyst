@@ -1,0 +1,589 @@
+{
+  "run_date": "2026-11-20T11:45:03.927200-05:00",
+  "rules_sha256": "11d2979afbb7eba4b0c3f10b82e62a10ad6743672f111596ee1dd581e791b75d",
+  "persona_sha256": "f6384b4f80fa856dcf0a61c85fac1d6e2ce3772daba2c36ea08ce0eec65c8c97",
+  "facts": {
+    "parent": {
+      "value": "MSG Sports",
+      "filing": "10-12B/A 0001193125-26-409182 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001193125-26-409182_9c7588c9c257b15c.txt",
+      "section": "Relationship Between MSG Sports and Us After the Distribution",
+      "date": "2026-09-30",
+      "classification": "historical",
+      "quote": "Relationship Between MSG Sports and Us After the Distribution",
+      "unit": "",
+      "start": "",
+      "amount": null,
+      "tag": "",
+      "source_scale": 0,
+      "facts_source": false
+    },
+    "distribution_ratio": {
+      "value": "one share of the Company’s Class A common stock, par value $0.01 per share (“Company Class A Common Stock”), for every two shares of MSG Knicks Class A Common Stock",
+      "filing": "8-K 0001193125-26-434266 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001193125-26-434266_7be9cb10c9267a7f.txt",
+      "section": "Completion of Distribution",
+      "date": "2026-10-27",
+      "classification": "historical",
+      "quote": "each holder of MSG Knicks Class A common stock, par value $0.01 per share (“MSG Knicks Class A Common Stock”), received one share of the Company’s Class A common stock, par value $0.01 per share (“Company Class A Common Stock”), for every two shares of MSG Knicks Class A Common Stock held of record as of the close of business, New York City time, on October 20, 2026 (the “Record Date”)",
+      "unit": "",
+      "start": "",
+      "amount": null,
+      "tag": "",
+      "source_scale": 0,
+      "facts_source": false
+    },
+    "record_date": {
+      "value": "2026-10-20",
+      "filing": "8-K 0001193125-26-434266 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001193125-26-434266_7be9cb10c9267a7f.txt",
+      "section": "Completion of Distribution",
+      "date": "2026-10-27",
+      "classification": "historical",
+      "quote": "as of the close of business, New York City time, on October 20, 2026 (the “Record Date”)",
+      "unit": "",
+      "start": "",
+      "amount": null,
+      "tag": "",
+      "source_scale": 0,
+      "facts_source": false
+    },
+    "distribution_date": {
+      "value": "2026-10-26",
+      "filing": "8-K 0001193125-26-434266 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001193125-26-434266_7be9cb10c9267a7f.txt",
+      "section": "Completion of Distribution",
+      "date": "2026-10-27",
+      "classification": "historical",
+      "quote": "On October 26, 2026, MSG Knickerbockers Corp. (formerly Madison Square Garden Sports Corp. and referred herein as “MSG Knicks”) effected the distribution (the “Distribution”) of all of the issued and outstanding shares of the common stock of MSG Rangers Corp.",
+      "unit": "",
+      "start": "",
+      "amount": null,
+      "tag": "",
+      "source_scale": 0,
+      "facts_source": false
+    },
+    "debt_raised": {
+      "value": "not known",
+      "filing": "not known",
+      "section": "not known",
+      "date": "not known",
+      "classification": "not known",
+      "quote": "looked in [/    PAUL DICICCO; 2 Penn Plaza; 2025 Rangers Credit Agreement; 2026 Fiscal; 2026 Grants of MSG Sports Plan-Based Awards; 5 Years; AOI (50%); AVAILABLE INFORMATION; Absence of Nominating Committee; Accelerated Filer; Accounts Receivable; Additional Financial Information; Advance Notification of Stockholder Nominations and Proposals; Advertising Expenses; After the; After the Distribution, MSG Sports; Aircraft Arrangements; All Other; Allocation Agreement; Allocation of Expenses and Related; Allocation of Expenses and Related Disclosure in; Allocations to MSG Knicks; Allocations to MSG Sports; Amendment to Local Telecast Rights Agreement; Annual Incentive; Annual Incentive Payouts; Approval of Executive Deferred Compensation Plan; Arena License Agreement; Arena License Expenses; Article 11 of Regulation; As a; As of; Audit Committee; August 31; Available Information; Average NEO Pay Mix; BUSINESS; Base Salaries; Base Salary; Basis for Opinion; Basis of Presentation; Beginning Balance; Beneficial Ownership of Stock; Board Committees; Bryan Warner; Business; Business Combination Statutes; Business Overview; CERTAIN RELATIONSHIPS AND RELATED PARTY TRANSACTIONS; COMBINED BALANCE SHEETS; COMBINED STATEMENTS OF CASH FLOWS; COMBINED STATEMENTS OF DIVISIONAL DEFICIT; COMBINED STATEMENTS OF DIVISIONAL EQUITY (DEFICIT); COMBINED STATEMENTS OF OPERATIONS AND COMPREHENSIVE (LOSS) INCOME; CONDITION AND RESULTS OF OPERATIONS; CROSS-REFERENCE SHEET BETWEEN ITEMS OF FORM 10; CURRENT REPORT; Car and; Car and; Cash Flow Discussion; Cash, Cash Equivalents and Restricted Cash; Certain Compensation Matters; Certain Corporate Opportunities and Conflicts; Certain Relationships and Potential Conflicts of; Certain Relationships and Potential Conflicts of Interest; Certain Relationships and Related Party Transactions; Certain Relationships and Related Transactions; Chairman of; Change in; Chief Executive Officer; Chief Financial Officer and Treasurer; Chief Operating Officer; Class A Common Stock; Class B Common Stock; Class A Common Stock; Class A Common Stock and Class B; Class A Common Stock and Class B Common Stock; Class A Common Stock; Class B Common Stock; Clawback Policy; Code of Conduct and Ethics; Combined Financial Statements; Commitments and Contingencies; Company Information; Comparison of Fiscal; Compensation Committee; Compensation Discussion & Analysis; Compensation Plan; Compensation Plan Information; Compensation Practices; Completion of Distribution; Completion of the; Concentration of Risk; Contract Balances; Contractual Obligations; Contractual Obligations and; Controls and Procedures; Corby Dolan Leinauer; Corporate Governance; Corporate Governance Guidelines; Corporate Governance and Management; Corporate Structure; Critical Accounting Estimates; Current Related Party Arrangements; DESCRIPTION OF CAPITAL STOCK; DIVIDEND POLICY; Date of; Date of Grant; Date of; David Granville- Smith; David Granville-Smith; Deferred Compensation Plan; Deferred Financing Costs; Defined Benefit Plans; Defined Contribution Pension Plans; Defined Contribution Plans; Description of; Description of Business; Description of Capital Stock; Determining Compensation; Direct Operating Expenses; Director Awards; Director Compensation; Director Stock Awards; Directors and Executive Officers; Disaggregation of Revenue; Disposition of Shares; Distributed Company; Distributing Company; Distribution Agent, Transfer Agent and Registrar for the Shares; Distribution Agreement; Distribution Date; Distribution Ratio; Dividend Policy; EACH MSG SPORTS; EACH MSG SPORTS STOCKHOLDER SHOULD CONSULT ITS TAX ADVISOR ABOUT THE PARTICULAR CONSEQUENCES; EDC Plan; EXECUTIVE COMPENSATION; Earnings Per Share; Economic and Business Relationship Risks; Emerging Growth Company; Emphasis of Matter; Employee Matters Agreement; Employee Stock Awards; Employment Agreements; End of FY; Ending Balance; Entity A; Entity B; Entity C; Establishment of Class A Common Stock; Establishment of Class B Common Stock; Estimated Future Payouts Under; Estimated Useful Lives; Excess Cash Balance Plan; Excess Savings Plan; Excess Savings Plan; Executive Chairman and; Executive Chairman and Chief Executive Officer Pay Mix; Executive Chairman and Chief Executive Officer; Executive Compensation; Executive Deferred Compensation Plan; Executive Security; Executive Sessions of; Executive Summary; Executive Vice President; Executive Vice President, Chief Financial Officer and Treasurer; Executive Wellness Program; FASB Accounting Standards; FASB Accounting Standards Codification,; Factors Affecting Operating Results; Fair Value Measurements; Fair Value; File Number); Finally, the; Financial Information; Financial Metrics; Financial Statements; Financial Statements and Supplementary Data; Financing Activities; Financing Agreements; Fiscal Year; Fiscal Year 2024 Performance Stock Unit Awards; Fiscal Year 2026; Fiscal Year 2026 Goals; Fiscal Year; Following the; Following the Distribution,; Food, Beverage and Merchandise Sales; Forum Selection; Fractional Shares; Garden of Dreams Foundation; General Form for Registration of Securities; Goodwill and Intangible Assets; Governance Practices; Grant Date; Grant Date; Grant Date Fair; Group Ticket Sales Services Agreement; Hartford Wolf Pack; Hedging Policy; Historical Compensation Information; Holders of; Holders of Class A Common; Human Capital Resources; IN REVIEWING THIS INFORMATION STATEMENT, YOU SHOULD CAREFULLY CONSIDER THE MATTERS DESCRIBED UNDER THE CAPTION “; IN REVIEWING THIS INFORMATION STATEMENT, YOU SHOULD CAREFULLY CONSIDER THE MATTERS DESCRIBED UNDER THE CAPTION “RISK FACTORS”; INDEX TO FORM 10-Q; INFORMATION STATEMENT; Identifiable Indefinite-Lived Intangible Assets; Impairment of Long-Lived and Indefinite-Lived Assets; Implications of Options and Restricted Stock Units Under the Director Stock Plan; Improvements to the Accounting for; In the Children Trusts Registration; Inapplicability of Controlling Interest Statutes; Incentive Plan; Incentive Stock Options; Income Taxes; Indemnification of Directors and Officers; Index to Combined Financial Statements; Index to Exhibits; Insider Trading Policy; Investing Activities; Key Elements of 2027 Expected; Key Elements of 2027 Expected Compensation; Knickerbocker Group LLC; LIABILITIES AND DIVISIONAL DEFICIT; LIABILITIES AND EQUITY; Large Accelerated Filer; League Assessments; Lease Accounting; Legal Matters; Legal Proceedings; Life Insurance; Line Item in the Combined Balance Sheet; Line Item in the Combined Balance Sheet; Listing and Trading of Our Common Stock; Local Media Rights Agreements; Long-Lived and Indefinite-Lived Assets; Long-Term Incentive; Long-Term Incentives; MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF; MLC Ventures LLC; MSG Cares Charitable Matching Gift Program; MSG Entertainment; MSG SPORTS STOCKHOLDERS WILL NOT BE REQUIRED TO; MSG SPORTS STOCKHOLDERS WILL NOT BE REQUIRED TO PAY FOR SHARES OF OUR COMMON STOCK RECEIVED IN THE DISTRIBUTION, OR TO SURRENDER OR; MSG Sports; MSG Sports 2026 Nonqualified Deferred Compensation; MSG Sports 2026 Pension Benefits; MSG Sports 2026 Stock Vested; MSG Sports Fiscal Year 2026; MSG Sports Independent Compensation Consultant; MSG Sports Performance Stock Units; MSG Sports Restricted Stock Units; MSGE Cash Balance Pension Plan; MSGE Cash Balance Pension Plan; MSGS Spinco,; Madison Square Garden Training Center; Manner of Effecting the Distribution; Marianne Dolan Weber; Mark Cresitello; Matching Gift; Media Rights; Multiemployer Defined Benefit Pension Plans; Multiemployer Defined Contribution Pension Plans; NEITHER THE; NEITHER THE SECURITIES AND; NEW YORK, NY 10121; NHL CBA; NHL Escrow System/Revenue Sharing; NHL Transfer Consent Agreement; NOTES TO COMBINED FINANCIAL STATEMENTS; NOTES TO COMBINED FINANCIAL STATEMENTS (UNAUDITED); NOTES TO UNAUDITED PRO FORMA COMBINED FINANCIAL INFORMATION; NY 10121; Name and Principal; Name and Principle Position; Name of Each Exchange; New York; New York State; New York Stock Exchange; New York, NY; Nonqualified Deferred Compensation; Nonstatutory Stock Options; Not Applicable; Notes to; Notes to Combined Financial Statements; Number of; Number of Unearned Shares,; Number of Shares; OF DIRECTORS AND OFFICERS; Operating Activities; Operational Risks; Organizational Structure; Other Committees; Other Expenses; Other Rights That Have Not; Other Terms; Our Board; Our Community; Our Company; Our Directors; Our Employee Stock Plan; Our Equity Compensation Plan Information; Our Executive; Our Executive Officers; Our Professional Sports Teams Performance Center; Our Stock Plan for; Our Strategy; Our Strengths; Overlapping Directors; Overlapping Directors and Officers and Potential Conflicts of Interest; Overlapping Officers; Overview; Oyster Bay, NY 11771; PART I – FINANCIAL INFORMATION; PART II—OTHER INFORMATION; PPA Zone; PPA Zone Status; Party Transaction Approval Policy; Paul DiCicco; Pay Mix; Payments of; Pension Value; Performance Link; Performance Stock Units; Performance Targets & Achievement Levels; Performance Stock; Plan Name; Player Costs and Other Team Personnel Transactions; Player Salaries, Escrow System/Revenue Sharing; Post-Distribution Dividend Policy; Preferred Stock; President and; Principles of Combination; Prior to; Prior to the; Property and Equipment; Proposed Distribution and Basis of Presentation; Pro Forma; Pro Forma Combined; Pursuant to the Arena License; Pursuant to the Arena License Agreement, MSG; QUESTIONS AND ANSWERS ABOUT THE DISTRIBUTION; Quantitative and Qualitative Disclosures About Market Risk; RISK FACTORS; Rangers LLC; Rangers NHL Advance Agreement; Rangers Revolving Credit Facility; Reasons for the Distribution; Recent Sales of Unregistered Securities; Recently Adopted Accounting Pronouncements; Recently Issued Accounting Pronouncements; Recently Issued Accounting Pronouncements Not Yet Adopted; Record Date; Registration Rights; Registration Rights Agreements; Regulation S-K; Related Party Transaction Approval Policy; Related Party Transactions; Related to the; Relationship Between MSG Sports and Us After the Distribution; Report of Independent Registered Public Accounting Firm; Restricted Cash; Restricted Stock; Restricted Stock Units; Restricted Stock Units Award Activity; Restricted Stock; Restructuring Charges; Restructuring Liability; Results of Operations; Results of the Distribution; Revenue Recognition; Revenue Sources; Risk Factors; Risks Related to; Risks Related to Our Business; Risks Related to the; Role of the MSG Sports Compensation Committee; Rule 144; Rule 144; SECURITIES AND EXCHANGE COMMISSION; SHARES ELIGIBLE FOR FUTURE SALE; SUMMARY; SUMMARY HISTORICAL AND UNAUDITED PRO FORMA COMBINED FINANCIAL; SUMMARY HISTORICAL AND UNAUDITED PRO FORMA COMBINED FINANCIAL DATA; SUMMARY OF RISK FACTORS; Salaries, Escrow System/Revenue Sharing; Savings Plan; Savings Plan; Seasonality of Our Business; Security Ownership of Certain Beneficial Owners and Management; Security Ownership of Certain Beneficial Owners and Management and Related Stockholder; See Note; Segment Information; Senior Vice President, Head of Legal; Service Representation Agreement; Share-based Compensation; Shares Eligible for Future Sale; Shares of; Sheet Arrangements; Significant Accounting Policies; Smaller Reporting Company; Spin-off Transaction; Spinco Corporate Structure; Sponsorship Allocation Agreement; Sponsorships and Signage; Sports 2026 Stock Vested; Sports Restricted Stock Units; Statements and Exhibits; Statements of; Stock Appreciation Rights; Stock Exchange Listing; Stock Ownership and Transfer Restrictions; Stock Price Performance; Stock and; Stockholder Matters; Stock Beneficially; Suites and Clubs; Summary; Summary Historical and Unaudited Pro Forma Combined Financial Data; Supplemental Information; THE DISTRIBUTION; TRANSACTION — THE REDUCED DISCLOSURE REQUIREMENTS APPLICABLE TO US AS AN ‘EMERGING GROWTH COMPANY’ MAY MAKE OUR; TRANSACTION — THE REDUCED DISCLOSURE REQUIREMENTS APPLICABLE TO US AS AN ‘EMERGING GROWTH COMPANY’ MAY MAKE OUR CLASS A COMMON STOCK; Table of Contents; Tally Sheets; Target Award Opportunities; Target Bonus; Target Long-Term Incentives; Target Setting; Tax Disaffiliation; Tax Disaffiliation Agreement; Team Personnel Transactions; Termination and Severance; The 2025; The Arena; The Arena License Agreement; The Class A Directors; The Class B Directors; The Company; The Compensation Committee; The Distribution; The Dolan Family Committee; The Dolan Registration Rights Agreement and the Children; The Proposed Distribution; The Rangers; The Role of the NHL in Our Operations; The Securities Exchange Act of 1934; Three Months Ended; Ticket Sales and Facility and Ticketing Fees; Title of Each Class; Title of Stock Class; Title of Stock Class; Total SpinCo Divisional Deficit; Trading; Trading Symbol(s); Transaction; Transaction Accounting; Transaction Approval Policy; Transaction Price Allocated to the Remaining Performance Obligations; Transaction of MSG Sports; Transfer Agent; Transfer Restrictions; Transition Services Agreement; Treatment After the Rangers Distribution of Outstanding Awards Initially Granted Under MSG Knicks Stock Plans; Treatment of Outstanding Awards; Trust FBO; Two Penn Plaza; Two Pennsylvania Plaza; UNAUDITED PRO FORMA COMBINED BALANCE SHEET; UNAUDITED PRO FORMA COMBINED FINANCIAL INFORMATION; UNAUDITED PRO FORMA COMBINED STATEMENT OF OPERATIONS; Unaudited Pro Forma Combined Financial Information; Under Equity Incentive Plan; Under the; Under the Distribution Agreement,; Use of Estimates; Value of; Value Realized; Vesting and Holding Requirements; WE ARE AN EMERGING GROWTH COMPANY AS DEFINED IN THE JUMPSTART OUR BUSINESS STARTUPS ACT; Year Base; Years Ended; Years Ended June 30; York, New York; Yorktown Heights, NY 10598; and Comprehensive Loss; and Independent Board; and Independent Board Members; and an; in FY; in FY 2026; of Class; of Interest; of MSG; of MSG Sports; of Operations; of The Securities Exchange Act of 1934; of Years; of the; of the Code),; of the Dolan Children Trust FBO Deborah Dolan-Sweeney, the 2009; of the Dolan Children Trust FBO Deborah Dolan-Sweeney, the 2009 Family; of the Dolan Children Trust FBO Marianne Dolan; of the Securities Exchange Act of 1934; of Class; the Balance; to the Accounting for; “RISK FACTORS — RISKS RELATED TO THE], found none",
+      "unit": "",
+      "start": "",
+      "amount": null,
+      "tag": "",
+      "source_scale": 0,
+      "facts_source": false
+    },
+    "cash_destination": {
+      "value": "not known",
+      "filing": "not known",
+      "section": "not known",
+      "date": "not known",
+      "classification": "not known",
+      "quote": "looked in [/    PAUL DICICCO; 2 Penn Plaza; 2025 Rangers Credit Agreement; 2026 Fiscal; 2026 Grants of MSG Sports Plan-Based Awards; 5 Years; AOI (50%); AVAILABLE INFORMATION; Absence of Nominating Committee; Accelerated Filer; Accounts Receivable; Additional Financial Information; Advance Notification of Stockholder Nominations and Proposals; Advertising Expenses; After the; After the Distribution, MSG Sports; Aircraft Arrangements; All Other; Allocation Agreement; Allocation of Expenses and Related; Allocation of Expenses and Related Disclosure in; Allocations to MSG Knicks; Allocations to MSG Sports; Amendment to Local Telecast Rights Agreement; Annual Incentive; Annual Incentive Payouts; Approval of Executive Deferred Compensation Plan; Arena License Agreement; Arena License Expenses; Article 11 of Regulation; As a; As of; Audit Committee; August 31; Available Information; Average NEO Pay Mix; BUSINESS; Base Salaries; Base Salary; Basis for Opinion; Basis of Presentation; Beginning Balance; Beneficial Ownership of Stock; Board Committees; Bryan Warner; Business; Business Combination Statutes; Business Overview; CERTAIN RELATIONSHIPS AND RELATED PARTY TRANSACTIONS; COMBINED BALANCE SHEETS; COMBINED STATEMENTS OF CASH FLOWS; COMBINED STATEMENTS OF DIVISIONAL DEFICIT; COMBINED STATEMENTS OF DIVISIONAL EQUITY (DEFICIT); COMBINED STATEMENTS OF OPERATIONS AND COMPREHENSIVE (LOSS) INCOME; CONDITION AND RESULTS OF OPERATIONS; CROSS-REFERENCE SHEET BETWEEN ITEMS OF FORM 10; CURRENT REPORT; Car and; Car and; Cash Flow Discussion; Cash, Cash Equivalents and Restricted Cash; Certain Compensation Matters; Certain Corporate Opportunities and Conflicts; Certain Relationships and Potential Conflicts of; Certain Relationships and Potential Conflicts of Interest; Certain Relationships and Related Party Transactions; Certain Relationships and Related Transactions; Chairman of; Change in; Chief Executive Officer; Chief Financial Officer and Treasurer; Chief Operating Officer; Class A Common Stock; Class B Common Stock; Class A Common Stock; Class A Common Stock and Class B; Class A Common Stock and Class B Common Stock; Class A Common Stock; Class B Common Stock; Clawback Policy; Code of Conduct and Ethics; Combined Financial Statements; Commitments and Contingencies; Company Information; Comparison of Fiscal; Compensation Committee; Compensation Discussion & Analysis; Compensation Plan; Compensation Plan Information; Compensation Practices; Completion of Distribution; Completion of the; Concentration of Risk; Contract Balances; Contractual Obligations; Contractual Obligations and; Controls and Procedures; Corby Dolan Leinauer; Corporate Governance; Corporate Governance Guidelines; Corporate Governance and Management; Corporate Structure; Critical Accounting Estimates; Current Related Party Arrangements; DESCRIPTION OF CAPITAL STOCK; DIVIDEND POLICY; Date of; Date of Grant; Date of; David Granville- Smith; David Granville-Smith; Deferred Compensation Plan; Deferred Financing Costs; Defined Benefit Plans; Defined Contribution Pension Plans; Defined Contribution Plans; Description of; Description of Business; Description of Capital Stock; Determining Compensation; Direct Operating Expenses; Director Awards; Director Compensation; Director Stock Awards; Directors and Executive Officers; Disaggregation of Revenue; Disposition of Shares; Distributed Company; Distributing Company; Distribution Agent, Transfer Agent and Registrar for the Shares; Distribution Agreement; Distribution Date; Distribution Ratio; Dividend Policy; EACH MSG SPORTS; EACH MSG SPORTS STOCKHOLDER SHOULD CONSULT ITS TAX ADVISOR ABOUT THE PARTICULAR CONSEQUENCES; EDC Plan; EXECUTIVE COMPENSATION; Earnings Per Share; Economic and Business Relationship Risks; Emerging Growth Company; Emphasis of Matter; Employee Matters Agreement; Employee Stock Awards; Employment Agreements; End of FY; Ending Balance; Entity A; Entity B; Entity C; Establishment of Class A Common Stock; Establishment of Class B Common Stock; Estimated Future Payouts Under; Estimated Useful Lives; Excess Cash Balance Plan; Excess Savings Plan; Excess Savings Plan; Executive Chairman and; Executive Chairman and Chief Executive Officer Pay Mix; Executive Chairman and Chief Executive Officer; Executive Compensation; Executive Deferred Compensation Plan; Executive Security; Executive Sessions of; Executive Summary; Executive Vice President; Executive Vice President, Chief Financial Officer and Treasurer; Executive Wellness Program; FASB Accounting Standards; FASB Accounting Standards Codification,; Factors Affecting Operating Results; Fair Value Measurements; Fair Value; File Number); Finally, the; Financial Information; Financial Metrics; Financial Statements; Financial Statements and Supplementary Data; Financing Activities; Financing Agreements; Fiscal Year; Fiscal Year 2024 Performance Stock Unit Awards; Fiscal Year 2026; Fiscal Year 2026 Goals; Fiscal Year; Following the; Following the Distribution,; Food, Beverage and Merchandise Sales; Forum Selection; Fractional Shares; Garden of Dreams Foundation; General Form for Registration of Securities; Goodwill and Intangible Assets; Governance Practices; Grant Date; Grant Date; Grant Date Fair; Group Ticket Sales Services Agreement; Hartford Wolf Pack; Hedging Policy; Historical Compensation Information; Holders of; Holders of Class A Common; Human Capital Resources; IN REVIEWING THIS INFORMATION STATEMENT, YOU SHOULD CAREFULLY CONSIDER THE MATTERS DESCRIBED UNDER THE CAPTION “; IN REVIEWING THIS INFORMATION STATEMENT, YOU SHOULD CAREFULLY CONSIDER THE MATTERS DESCRIBED UNDER THE CAPTION “RISK FACTORS”; INDEX TO FORM 10-Q; INFORMATION STATEMENT; Identifiable Indefinite-Lived Intangible Assets; Impairment of Long-Lived and Indefinite-Lived Assets; Implications of Options and Restricted Stock Units Under the Director Stock Plan; Improvements to the Accounting for; In the Children Trusts Registration; Inapplicability of Controlling Interest Statutes; Incentive Plan; Incentive Stock Options; Income Taxes; Indemnification of Directors and Officers; Index to Combined Financial Statements; Index to Exhibits; Insider Trading Policy; Investing Activities; Key Elements of 2027 Expected; Key Elements of 2027 Expected Compensation; Knickerbocker Group LLC; LIABILITIES AND DIVISIONAL DEFICIT; LIABILITIES AND EQUITY; Large Accelerated Filer; League Assessments; Lease Accounting; Legal Matters; Legal Proceedings; Life Insurance; Line Item in the Combined Balance Sheet; Line Item in the Combined Balance Sheet; Listing and Trading of Our Common Stock; Local Media Rights Agreements; Long-Lived and Indefinite-Lived Assets; Long-Term Incentive; Long-Term Incentives; MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF; MLC Ventures LLC; MSG Cares Charitable Matching Gift Program; MSG Entertainment; MSG SPORTS STOCKHOLDERS WILL NOT BE REQUIRED TO; MSG SPORTS STOCKHOLDERS WILL NOT BE REQUIRED TO PAY FOR SHARES OF OUR COMMON STOCK RECEIVED IN THE DISTRIBUTION, OR TO SURRENDER OR; MSG Sports; MSG Sports 2026 Nonqualified Deferred Compensation; MSG Sports 2026 Pension Benefits; MSG Sports 2026 Stock Vested; MSG Sports Fiscal Year 2026; MSG Sports Independent Compensation Consultant; MSG Sports Performance Stock Units; MSG Sports Restricted Stock Units; MSGE Cash Balance Pension Plan; MSGE Cash Balance Pension Plan; MSGS Spinco,; Madison Square Garden Training Center; Manner of Effecting the Distribution; Marianne Dolan Weber; Mark Cresitello; Matching Gift; Media Rights; Multiemployer Defined Benefit Pension Plans; Multiemployer Defined Contribution Pension Plans; NEITHER THE; NEITHER THE SECURITIES AND; NEW YORK, NY 10121; NHL CBA; NHL Escrow System/Revenue Sharing; NHL Transfer Consent Agreement; NOTES TO COMBINED FINANCIAL STATEMENTS; NOTES TO COMBINED FINANCIAL STATEMENTS (UNAUDITED); NOTES TO UNAUDITED PRO FORMA COMBINED FINANCIAL INFORMATION; NY 10121; Name and Principal; Name and Principle Position; Name of Each Exchange; New York; New York State; New York Stock Exchange; New York, NY; Nonqualified Deferred Compensation; Nonstatutory Stock Options; Not Applicable; Notes to; Notes to Combined Financial Statements; Number of; Number of Unearned Shares,; Number of Shares; OF DIRECTORS AND OFFICERS; Operating Activities; Operational Risks; Organizational Structure; Other Committees; Other Expenses; Other Rights That Have Not; Other Terms; Our Board; Our Community; Our Company; Our Directors; Our Employee Stock Plan; Our Equity Compensation Plan Information; Our Executive; Our Executive Officers; Our Professional Sports Teams Performance Center; Our Stock Plan for; Our Strategy; Our Strengths; Overlapping Directors; Overlapping Directors and Officers and Potential Conflicts of Interest; Overlapping Officers; Overview; Oyster Bay, NY 11771; PART I – FINANCIAL INFORMATION; PART II—OTHER INFORMATION; PPA Zone; PPA Zone Status; Party Transaction Approval Policy; Paul DiCicco; Pay Mix; Payments of; Pension Value; Performance Link; Performance Stock Units; Performance Targets & Achievement Levels; Performance Stock; Plan Name; Player Costs and Other Team Personnel Transactions; Player Salaries, Escrow System/Revenue Sharing; Post-Distribution Dividend Policy; Preferred Stock; President and; Principles of Combination; Prior to; Prior to the; Property and Equipment; Proposed Distribution and Basis of Presentation; Pro Forma; Pro Forma Combined; Pursuant to the Arena License; Pursuant to the Arena License Agreement, MSG; QUESTIONS AND ANSWERS ABOUT THE DISTRIBUTION; Quantitative and Qualitative Disclosures About Market Risk; RISK FACTORS; Rangers LLC; Rangers NHL Advance Agreement; Rangers Revolving Credit Facility; Reasons for the Distribution; Recent Sales of Unregistered Securities; Recently Adopted Accounting Pronouncements; Recently Issued Accounting Pronouncements; Recently Issued Accounting Pronouncements Not Yet Adopted; Record Date; Registration Rights; Registration Rights Agreements; Regulation S-K; Related Party Transaction Approval Policy; Related Party Transactions; Related to the; Relationship Between MSG Sports and Us After the Distribution; Report of Independent Registered Public Accounting Firm; Restricted Cash; Restricted Stock; Restricted Stock Units; Restricted Stock Units Award Activity; Restricted Stock; Restructuring Charges; Restructuring Liability; Results of Operations; Results of the Distribution; Revenue Recognition; Revenue Sources; Risk Factors; Risks Related to; Risks Related to Our Business; Risks Related to the; Role of the MSG Sports Compensation Committee; Rule 144; Rule 144; SECURITIES AND EXCHANGE COMMISSION; SHARES ELIGIBLE FOR FUTURE SALE; SUMMARY; SUMMARY HISTORICAL AND UNAUDITED PRO FORMA COMBINED FINANCIAL; SUMMARY HISTORICAL AND UNAUDITED PRO FORMA COMBINED FINANCIAL DATA; SUMMARY OF RISK FACTORS; Salaries, Escrow System/Revenue Sharing; Savings Plan; Savings Plan; Seasonality of Our Business; Security Ownership of Certain Beneficial Owners and Management; Security Ownership of Certain Beneficial Owners and Management and Related Stockholder; See Note; Segment Information; Senior Vice President, Head of Legal; Service Representation Agreement; Share-based Compensation; Shares Eligible for Future Sale; Shares of; Sheet Arrangements; Significant Accounting Policies; Smaller Reporting Company; Spin-off Transaction; Spinco Corporate Structure; Sponsorship Allocation Agreement; Sponsorships and Signage; Sports 2026 Stock Vested; Sports Restricted Stock Units; Statements and Exhibits; Statements of; Stock Appreciation Rights; Stock Exchange Listing; Stock Ownership and Transfer Restrictions; Stock Price Performance; Stock and; Stockholder Matters; Stock Beneficially; Suites and Clubs; Summary; Summary Historical and Unaudited Pro Forma Combined Financial Data; Supplemental Information; THE DISTRIBUTION; TRANSACTION — THE REDUCED DISCLOSURE REQUIREMENTS APPLICABLE TO US AS AN ‘EMERGING GROWTH COMPANY’ MAY MAKE OUR; TRANSACTION — THE REDUCED DISCLOSURE REQUIREMENTS APPLICABLE TO US AS AN ‘EMERGING GROWTH COMPANY’ MAY MAKE OUR CLASS A COMMON STOCK; Table of Contents; Tally Sheets; Target Award Opportunities; Target Bonus; Target Long-Term Incentives; Target Setting; Tax Disaffiliation; Tax Disaffiliation Agreement; Team Personnel Transactions; Termination and Severance; The 2025; The Arena; The Arena License Agreement; The Class A Directors; The Class B Directors; The Company; The Compensation Committee; The Distribution; The Dolan Family Committee; The Dolan Registration Rights Agreement and the Children; The Proposed Distribution; The Rangers; The Role of the NHL in Our Operations; The Securities Exchange Act of 1934; Three Months Ended; Ticket Sales and Facility and Ticketing Fees; Title of Each Class; Title of Stock Class; Title of Stock Class; Total SpinCo Divisional Deficit; Trading; Trading Symbol(s); Transaction; Transaction Accounting; Transaction Approval Policy; Transaction Price Allocated to the Remaining Performance Obligations; Transaction of MSG Sports; Transfer Agent; Transfer Restrictions; Transition Services Agreement; Treatment After the Rangers Distribution of Outstanding Awards Initially Granted Under MSG Knicks Stock Plans; Treatment of Outstanding Awards; Trust FBO; Two Penn Plaza; Two Pennsylvania Plaza; UNAUDITED PRO FORMA COMBINED BALANCE SHEET; UNAUDITED PRO FORMA COMBINED FINANCIAL INFORMATION; UNAUDITED PRO FORMA COMBINED STATEMENT OF OPERATIONS; Unaudited Pro Forma Combined Financial Information; Under Equity Incentive Plan; Under the; Under the Distribution Agreement,; Use of Estimates; Value of; Value Realized; Vesting and Holding Requirements; WE ARE AN EMERGING GROWTH COMPANY AS DEFINED IN THE JUMPSTART OUR BUSINESS STARTUPS ACT; Year Base; Years Ended; Years Ended June 30; York, New York; Yorktown Heights, NY 10598; and Comprehensive Loss; and Independent Board; and Independent Board Members; and an; in FY; in FY 2026; of Class; of Interest; of MSG; of MSG Sports; of Operations; of The Securities Exchange Act of 1934; of Years; of the; of the Code),; of the Dolan Children Trust FBO Deborah Dolan-Sweeney, the 2009; of the Dolan Children Trust FBO Deborah Dolan-Sweeney, the 2009 Family; of the Dolan Children Trust FBO Marianne Dolan; of the Securities Exchange Act of 1934; of Class; the Balance; to the Accounting for; “RISK FACTORS — RISKS RELATED TO THE], found none",
+      "unit": "",
+      "start": "",
+      "amount": null,
+      "tag": "",
+      "source_scale": 0,
+      "facts_source": false
+    },
+    "liabilities_left": {
+      "value": "not known",
+      "filing": "not known",
+      "section": "not known",
+      "date": "not known",
+      "classification": "not known",
+      "quote": "looked in [/    PAUL DICICCO; 2 Penn Plaza; 2025 Rangers Credit Agreement; 2026 Fiscal; 2026 Grants of MSG Sports Plan-Based Awards; 5 Years; AOI (50%); AVAILABLE INFORMATION; Absence of Nominating Committee; Accelerated Filer; Accounts Receivable; Additional Financial Information; Advance Notification of Stockholder Nominations and Proposals; Advertising Expenses; After the; After the Distribution, MSG Sports; Aircraft Arrangements; All Other; Allocation Agreement; Allocation of Expenses and Related; Allocation of Expenses and Related Disclosure in; Allocations to MSG Knicks; Allocations to MSG Sports; Amendment to Local Telecast Rights Agreement; Annual Incentive; Annual Incentive Payouts; Approval of Executive Deferred Compensation Plan; Arena License Agreement; Arena License Expenses; Article 11 of Regulation; As a; As of; Audit Committee; August 31; Available Information; Average NEO Pay Mix; BUSINESS; Base Salaries; Base Salary; Basis for Opinion; Basis of Presentation; Beginning Balance; Beneficial Ownership of Stock; Board Committees; Bryan Warner; Business; Business Combination Statutes; Business Overview; CERTAIN RELATIONSHIPS AND RELATED PARTY TRANSACTIONS; COMBINED BALANCE SHEETS; COMBINED STATEMENTS OF CASH FLOWS; COMBINED STATEMENTS OF DIVISIONAL DEFICIT; COMBINED STATEMENTS OF DIVISIONAL EQUITY (DEFICIT); COMBINED STATEMENTS OF OPERATIONS AND COMPREHENSIVE (LOSS) INCOME; CONDITION AND RESULTS OF OPERATIONS; CROSS-REFERENCE SHEET BETWEEN ITEMS OF FORM 10; CURRENT REPORT; Car and; Car and; Cash Flow Discussion; Cash, Cash Equivalents and Restricted Cash; Certain Compensation Matters; Certain Corporate Opportunities and Conflicts; Certain Relationships and Potential Conflicts of; Certain Relationships and Potential Conflicts of Interest; Certain Relationships and Related Party Transactions; Certain Relationships and Related Transactions; Chairman of; Change in; Chief Executive Officer; Chief Financial Officer and Treasurer; Chief Operating Officer; Class A Common Stock; Class B Common Stock; Class A Common Stock; Class A Common Stock and Class B; Class A Common Stock and Class B Common Stock; Class A Common Stock; Class B Common Stock; Clawback Policy; Code of Conduct and Ethics; Combined Financial Statements; Commitments and Contingencies; Company Information; Comparison of Fiscal; Compensation Committee; Compensation Discussion & Analysis; Compensation Plan; Compensation Plan Information; Compensation Practices; Completion of Distribution; Completion of the; Concentration of Risk; Contract Balances; Contractual Obligations; Contractual Obligations and; Controls and Procedures; Corby Dolan Leinauer; Corporate Governance; Corporate Governance Guidelines; Corporate Governance and Management; Corporate Structure; Critical Accounting Estimates; Current Related Party Arrangements; DESCRIPTION OF CAPITAL STOCK; DIVIDEND POLICY; Date of; Date of Grant; Date of; David Granville- Smith; David Granville-Smith; Deferred Compensation Plan; Deferred Financing Costs; Defined Benefit Plans; Defined Contribution Pension Plans; Defined Contribution Plans; Description of; Description of Business; Description of Capital Stock; Determining Compensation; Direct Operating Expenses; Director Awards; Director Compensation; Director Stock Awards; Directors and Executive Officers; Disaggregation of Revenue; Disposition of Shares; Distributed Company; Distributing Company; Distribution Agent, Transfer Agent and Registrar for the Shares; Distribution Agreement; Distribution Date; Distribution Ratio; Dividend Policy; EACH MSG SPORTS; EACH MSG SPORTS STOCKHOLDER SHOULD CONSULT ITS TAX ADVISOR ABOUT THE PARTICULAR CONSEQUENCES; EDC Plan; EXECUTIVE COMPENSATION; Earnings Per Share; Economic and Business Relationship Risks; Emerging Growth Company; Emphasis of Matter; Employee Matters Agreement; Employee Stock Awards; Employment Agreements; End of FY; Ending Balance; Entity A; Entity B; Entity C; Establishment of Class A Common Stock; Establishment of Class B Common Stock; Estimated Future Payouts Under; Estimated Useful Lives; Excess Cash Balance Plan; Excess Savings Plan; Excess Savings Plan; Executive Chairman and; Executive Chairman and Chief Executive Officer Pay Mix; Executive Chairman and Chief Executive Officer; Executive Compensation; Executive Deferred Compensation Plan; Executive Security; Executive Sessions of; Executive Summary; Executive Vice President; Executive Vice President, Chief Financial Officer and Treasurer; Executive Wellness Program; FASB Accounting Standards; FASB Accounting Standards Codification,; Factors Affecting Operating Results; Fair Value Measurements; Fair Value; File Number); Finally, the; Financial Information; Financial Metrics; Financial Statements; Financial Statements and Supplementary Data; Financing Activities; Financing Agreements; Fiscal Year; Fiscal Year 2024 Performance Stock Unit Awards; Fiscal Year 2026; Fiscal Year 2026 Goals; Fiscal Year; Following the; Following the Distribution,; Food, Beverage and Merchandise Sales; Forum Selection; Fractional Shares; Garden of Dreams Foundation; General Form for Registration of Securities; Goodwill and Intangible Assets; Governance Practices; Grant Date; Grant Date; Grant Date Fair; Group Ticket Sales Services Agreement; Hartford Wolf Pack; Hedging Policy; Historical Compensation Information; Holders of; Holders of Class A Common; Human Capital Resources; IN REVIEWING THIS INFORMATION STATEMENT, YOU SHOULD CAREFULLY CONSIDER THE MATTERS DESCRIBED UNDER THE CAPTION “; IN REVIEWING THIS INFORMATION STATEMENT, YOU SHOULD CAREFULLY CONSIDER THE MATTERS DESCRIBED UNDER THE CAPTION “RISK FACTORS”; INDEX TO FORM 10-Q; INFORMATION STATEMENT; Identifiable Indefinite-Lived Intangible Assets; Impairment of Long-Lived and Indefinite-Lived Assets; Implications of Options and Restricted Stock Units Under the Director Stock Plan; Improvements to the Accounting for; In the Children Trusts Registration; Inapplicability of Controlling Interest Statutes; Incentive Plan; Incentive Stock Options; Income Taxes; Indemnification of Directors and Officers; Index to Combined Financial Statements; Index to Exhibits; Insider Trading Policy; Investing Activities; Key Elements of 2027 Expected; Key Elements of 2027 Expected Compensation; Knickerbocker Group LLC; LIABILITIES AND DIVISIONAL DEFICIT; LIABILITIES AND EQUITY; Large Accelerated Filer; League Assessments; Lease Accounting; Legal Matters; Legal Proceedings; Life Insurance; Line Item in the Combined Balance Sheet; Line Item in the Combined Balance Sheet; Listing and Trading of Our Common Stock; Local Media Rights Agreements; Long-Lived and Indefinite-Lived Assets; Long-Term Incentive; Long-Term Incentives; MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF; MLC Ventures LLC; MSG Cares Charitable Matching Gift Program; MSG Entertainment; MSG SPORTS STOCKHOLDERS WILL NOT BE REQUIRED TO; MSG SPORTS STOCKHOLDERS WILL NOT BE REQUIRED TO PAY FOR SHARES OF OUR COMMON STOCK RECEIVED IN THE DISTRIBUTION, OR TO SURRENDER OR; MSG Sports; MSG Sports 2026 Nonqualified Deferred Compensation; MSG Sports 2026 Pension Benefits; MSG Sports 2026 Stock Vested; MSG Sports Fiscal Year 2026; MSG Sports Independent Compensation Consultant; MSG Sports Performance Stock Units; MSG Sports Restricted Stock Units; MSGE Cash Balance Pension Plan; MSGE Cash Balance Pension Plan; MSGS Spinco,; Madison Square Garden Training Center; Manner of Effecting the Distribution; Marianne Dolan Weber; Mark Cresitello; Matching Gift; Media Rights; Multiemployer Defined Benefit Pension Plans; Multiemployer Defined Contribution Pension Plans; NEITHER THE; NEITHER THE SECURITIES AND; NEW YORK, NY 10121; NHL CBA; NHL Escrow System/Revenue Sharing; NHL Transfer Consent Agreement; NOTES TO COMBINED FINANCIAL STATEMENTS; NOTES TO COMBINED FINANCIAL STATEMENTS (UNAUDITED); NOTES TO UNAUDITED PRO FORMA COMBINED FINANCIAL INFORMATION; NY 10121; Name and Principal; Name and Principle Position; Name of Each Exchange; New York; New York State; New York Stock Exchange; New York, NY; Nonqualified Deferred Compensation; Nonstatutory Stock Options; Not Applicable; Notes to; Notes to Combined Financial Statements; Number of; Number of Unearned Shares,; Number of Shares; OF DIRECTORS AND OFFICERS; Operating Activities; Operational Risks; Organizational Structure; Other Committees; Other Expenses; Other Rights That Have Not; Other Terms; Our Board; Our Community; Our Company; Our Directors; Our Employee Stock Plan; Our Equity Compensation Plan Information; Our Executive; Our Executive Officers; Our Professional Sports Teams Performance Center; Our Stock Plan for; Our Strategy; Our Strengths; Overlapping Directors; Overlapping Directors and Officers and Potential Conflicts of Interest; Overlapping Officers; Overview; Oyster Bay, NY 11771; PART I – FINANCIAL INFORMATION; PART II—OTHER INFORMATION; PPA Zone; PPA Zone Status; Party Transaction Approval Policy; Paul DiCicco; Pay Mix; Payments of; Pension Value; Performance Link; Performance Stock Units; Performance Targets & Achievement Levels; Performance Stock; Plan Name; Player Costs and Other Team Personnel Transactions; Player Salaries, Escrow System/Revenue Sharing; Post-Distribution Dividend Policy; Preferred Stock; President and; Principles of Combination; Prior to; Prior to the; Property and Equipment; Proposed Distribution and Basis of Presentation; Pro Forma; Pro Forma Combined; Pursuant to the Arena License; Pursuant to the Arena License Agreement, MSG; QUESTIONS AND ANSWERS ABOUT THE DISTRIBUTION; Quantitative and Qualitative Disclosures About Market Risk; RISK FACTORS; Rangers LLC; Rangers NHL Advance Agreement; Rangers Revolving Credit Facility; Reasons for the Distribution; Recent Sales of Unregistered Securities; Recently Adopted Accounting Pronouncements; Recently Issued Accounting Pronouncements; Recently Issued Accounting Pronouncements Not Yet Adopted; Record Date; Registration Rights; Registration Rights Agreements; Regulation S-K; Related Party Transaction Approval Policy; Related Party Transactions; Related to the; Relationship Between MSG Sports and Us After the Distribution; Report of Independent Registered Public Accounting Firm; Restricted Cash; Restricted Stock; Restricted Stock Units; Restricted Stock Units Award Activity; Restricted Stock; Restructuring Charges; Restructuring Liability; Results of Operations; Results of the Distribution; Revenue Recognition; Revenue Sources; Risk Factors; Risks Related to; Risks Related to Our Business; Risks Related to the; Role of the MSG Sports Compensation Committee; Rule 144; Rule 144; SECURITIES AND EXCHANGE COMMISSION; SHARES ELIGIBLE FOR FUTURE SALE; SUMMARY; SUMMARY HISTORICAL AND UNAUDITED PRO FORMA COMBINED FINANCIAL; SUMMARY HISTORICAL AND UNAUDITED PRO FORMA COMBINED FINANCIAL DATA; SUMMARY OF RISK FACTORS; Salaries, Escrow System/Revenue Sharing; Savings Plan; Savings Plan; Seasonality of Our Business; Security Ownership of Certain Beneficial Owners and Management; Security Ownership of Certain Beneficial Owners and Management and Related Stockholder; See Note; Segment Information; Senior Vice President, Head of Legal; Service Representation Agreement; Share-based Compensation; Shares Eligible for Future Sale; Shares of; Sheet Arrangements; Significant Accounting Policies; Smaller Reporting Company; Spin-off Transaction; Spinco Corporate Structure; Sponsorship Allocation Agreement; Sponsorships and Signage; Sports 2026 Stock Vested; Sports Restricted Stock Units; Statements and Exhibits; Statements of; Stock Appreciation Rights; Stock Exchange Listing; Stock Ownership and Transfer Restrictions; Stock Price Performance; Stock and; Stockholder Matters; Stock Beneficially; Suites and Clubs; Summary; Summary Historical and Unaudited Pro Forma Combined Financial Data; Supplemental Information; THE DISTRIBUTION; TRANSACTION — THE REDUCED DISCLOSURE REQUIREMENTS APPLICABLE TO US AS AN ‘EMERGING GROWTH COMPANY’ MAY MAKE OUR; TRANSACTION — THE REDUCED DISCLOSURE REQUIREMENTS APPLICABLE TO US AS AN ‘EMERGING GROWTH COMPANY’ MAY MAKE OUR CLASS A COMMON STOCK; Table of Contents; Tally Sheets; Target Award Opportunities; Target Bonus; Target Long-Term Incentives; Target Setting; Tax Disaffiliation; Tax Disaffiliation Agreement; Team Personnel Transactions; Termination and Severance; The 2025; The Arena; The Arena License Agreement; The Class A Directors; The Class B Directors; The Company; The Compensation Committee; The Distribution; The Dolan Family Committee; The Dolan Registration Rights Agreement and the Children; The Proposed Distribution; The Rangers; The Role of the NHL in Our Operations; The Securities Exchange Act of 1934; Three Months Ended; Ticket Sales and Facility and Ticketing Fees; Title of Each Class; Title of Stock Class; Title of Stock Class; Total SpinCo Divisional Deficit; Trading; Trading Symbol(s); Transaction; Transaction Accounting; Transaction Approval Policy; Transaction Price Allocated to the Remaining Performance Obligations; Transaction of MSG Sports; Transfer Agent; Transfer Restrictions; Transition Services Agreement; Treatment After the Rangers Distribution of Outstanding Awards Initially Granted Under MSG Knicks Stock Plans; Treatment of Outstanding Awards; Trust FBO; Two Penn Plaza; Two Pennsylvania Plaza; UNAUDITED PRO FORMA COMBINED BALANCE SHEET; UNAUDITED PRO FORMA COMBINED FINANCIAL INFORMATION; UNAUDITED PRO FORMA COMBINED STATEMENT OF OPERATIONS; Unaudited Pro Forma Combined Financial Information; Under Equity Incentive Plan; Under the; Under the Distribution Agreement,; Use of Estimates; Value of; Value Realized; Vesting and Holding Requirements; WE ARE AN EMERGING GROWTH COMPANY AS DEFINED IN THE JUMPSTART OUR BUSINESS STARTUPS ACT; Year Base; Years Ended; Years Ended June 30; York, New York; Yorktown Heights, NY 10598; and Comprehensive Loss; and Independent Board; and Independent Board Members; and an; in FY; in FY 2026; of Class; of Interest; of MSG; of MSG Sports; of Operations; of The Securities Exchange Act of 1934; of Years; of the; of the Code),; of the Dolan Children Trust FBO Deborah Dolan-Sweeney, the 2009; of the Dolan Children Trust FBO Deborah Dolan-Sweeney, the 2009 Family; of the Dolan Children Trust FBO Marianne Dolan; of the Securities Exchange Act of 1934; of Class; the Balance; to the Accounting for; “RISK FACTORS — RISKS RELATED TO THE], found none",
+      "unit": "",
+      "start": "",
+      "amount": null,
+      "tag": "",
+      "source_scale": 0,
+      "facts_source": false
+    },
+    "parent_restrictions": {
+      "value": "not known",
+      "filing": "8-K 0001193125-26-419170 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001193125-26-419170_2a2eb9b4092d104d.txt",
+      "section": "After the Distribution, MSG Sports; Employee Matters Agreement; Restricted Stock Units; Treatment of Outstanding Awards; of the Dolan Children Trust FBO Deborah Dolan-Sweeney, the 2009 Family",
+      "date": "not known",
+      "classification": "not known",
+      "quote": "Multiple distinct filing passages; no single amount or aggregate established",
+      "unit": "",
+      "start": "",
+      "amount": null,
+      "tag": "",
+      "source_scale": 0,
+      "facts_source": false
+    },
+    "parent_after_spin": {
+      "value": "not known",
+      "filing": "not known",
+      "section": "not known",
+      "date": "not known",
+      "classification": "not known",
+      "quote": "",
+      "unit": "",
+      "start": "",
+      "amount": null,
+      "tag": "",
+      "source_scale": 0,
+      "facts_source": false
+    },
+    "market_value": {
+      "value": "not known",
+      "filing": "not known",
+      "section": "not known",
+      "date": "not known",
+      "classification": "not known",
+      "quote": "",
+      "unit": "",
+      "start": "",
+      "amount": null,
+      "tag": "",
+      "source_scale": 0,
+      "facts_source": false
+    },
+    "index": {
+      "value": "not known",
+      "filing": "not known",
+      "section": "not known",
+      "date": "not known",
+      "classification": "not known",
+      "quote": "",
+      "unit": "",
+      "start": "",
+      "amount": null,
+      "tag": "",
+      "source_scale": 0,
+      "facts_source": false
+    },
+    "window_end": {
+      "value": "2027-01-24",
+      "filing": "registry distribution filing + saved factor configuration",
+      "section": "post-distribution window",
+      "date": "2026-11-20",
+      "classification": "historical",
+      "quote": "",
+      "unit": "",
+      "start": "",
+      "amount": null,
+      "tag": "",
+      "source_scale": 0,
+      "facts_source": false
+    },
+    "buybacks": {
+      "value": "not known",
+      "filing": "8-K 0001193125-26-419170 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001193125-26-419170_2a2eb9b4092d104d.txt",
+      "section": "After the Distribution, MSG Sports; Director Awards; Tax Disaffiliation Agreement; of the Code),",
+      "date": "not known",
+      "classification": "not known",
+      "quote": "Multiple distinct filing passages; no single amount or aggregate established",
+      "unit": "",
+      "start": "",
+      "amount": null,
+      "tag": "",
+      "source_scale": 0,
+      "facts_source": false
+    },
+    "restrictions": {
+      "value": "not known",
+      "filing": "10-Q 0001628280-26-071325 10-Q.html; 10-Q 0001628280-26-071325 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001628280-26-071325_9e94821a418261a6.txt",
+      "section": "As of; COMBINED STATEMENTS OF CASH FLOWS; Cash Flow Discussion; Cash, Cash Equivalents and Restricted Cash; Rangers LLC; Rangers Revolving Credit Facility; Restricted Stock Units Award Activity; Share-based Compensation; Table of Contents",
+      "date": "not known",
+      "classification": "not known",
+      "quote": "Multiple distinct filing passages; no single amount or aggregate established",
+      "unit": "",
+      "start": "",
+      "amount": null,
+      "tag": "",
+      "source_scale": 0,
+      "facts_source": false
+    },
+    "catalysts": {
+      "value": "Local telecast rights agreements between the Company and MSG Networks, as amended in June 2025 and set to expire after the 2028-29 season, providing MSG Networks with local telecast rights for Rangers games in exchange for telecast rights fees;",
+      "filing": "10-Q 0001628280-26-071325 10-Q.html",
+      "section": "NOTES TO COMBINED FINANCIAL STATEMENTS (UNAUDITED)",
+      "date": "2026-11-06",
+      "classification": "historical",
+      "quote": "Local telecast rights agreements between the Company and MSG Networks, as amended in June 2025 and set to expire after the 2028-29 season, providing MSG Networks with local telecast rights for Rangers games in exchange for telecast rights fees;",
+      "unit": "",
+      "start": "",
+      "amount": null,
+      "tag": "",
+      "source_scale": 0,
+      "facts_source": false
+    },
+    "after_tax_earnings": {
+      "value": "not known",
+      "filing": "not known",
+      "section": "not known",
+      "date": "not known",
+      "classification": "not known",
+      "quote": "",
+      "unit": "",
+      "start": "",
+      "amount": null,
+      "tag": "",
+      "source_scale": 0,
+      "facts_source": false
+    },
+    "depreciation": {
+      "value": "not known",
+      "filing": "not known",
+      "section": "not known",
+      "date": "not known",
+      "classification": "not known",
+      "quote": "",
+      "unit": "",
+      "start": "",
+      "amount": null,
+      "tag": "",
+      "source_scale": 0,
+      "facts_source": false
+    },
+    "capital_spending": {
+      "value": "not known",
+      "filing": "not known",
+      "section": "not known",
+      "date": "not known",
+      "classification": "not known",
+      "quote": "",
+      "unit": "",
+      "start": "",
+      "amount": null,
+      "tag": "",
+      "source_scale": 0,
+      "facts_source": false
+    },
+    "shares_outstanding": {
+      "value": "not known",
+      "filing": "not known",
+      "section": "not known",
+      "date": "not known",
+      "classification": "not known",
+      "quote": "",
+      "unit": "",
+      "start": "",
+      "amount": null,
+      "tag": "",
+      "source_scale": 0,
+      "facts_source": false
+    },
+    "insider_purchases": {
+      "value": 0,
+      "filing": "4 0001193125-26-436221 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001193125-26-436221_43f7f3a75f5808a8.txt; 4 0000933029-26-000004 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0000933029-26-000004_29a6266a7230be6c.txt; 4 0000932963-26-000009 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0000932963-26-000009_0ad96252daf1513b.txt; 4 0000933026-26-000006 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0000933026-26-000006_9084d87f5c191b03.txt; 4 0001025983-26-000004 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001025983-26-000004_665011f82e07ad31.txt; 4 0000933023-26-000004 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0000933023-26-000004_183842c8fbcea0c2.txt; 4 0000933022-26-000004 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0000933022-26-000004_600fb93eaef73eac.txt; 4 0001788337-26-000004 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001788337-26-000004_890b4fed85ba613a.txt; 4 0001564760-26-000010 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001564760-26-000010_79422508f2782eb0.txt; 4 0001564761-26-000008 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001564761-26-000008_2224305adb8ea4dc.txt; 4 0001505841-26-000004 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001505841-26-000004_4f4591db9059f599.txt; 4 0001513347-26-000008 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001513347-26-000008_051c7b873ded3b28.txt; 4 0001871757-26-000008 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001871757-26-000008_278371687ea6a61e.txt; 4 0001505856-26-000004 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001505856-26-000004_9b1e481e946ed739.txt; 4 0001505848-26-000002 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001505848-26-000002_160c37f103d1d1cd.txt; 4 0001505850-26-000005 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001505850-26-000005_d2baf30b55ab678f.txt; 4 0001505853-26-000007 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001505853-26-000007_698425991cbf17a2.txt; 4 0000933025-26-000004 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0000933025-26-000004_5d66bae9d42fba9d.txt; 4 0001653340-26-000004 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001653340-26-000004_8ffa5b4e39281bdf.txt; 4 0001098901-26-000004 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001098901-26-000004_2ea22334ffc5d720.txt; 4 0000933028-26-000012 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0000933028-26-000012_733ca680c275118d.txt; 4 0001193125-26-436217 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001193125-26-436217_617d5d1e6506125e.txt; 4 0001193125-26-436222 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001193125-26-436222_f74bc95f397102f1.txt; 4 0001193125-26-436215 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001193125-26-436215_6fab95fd12765dbb.txt; 4 0001193125-26-436213 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001193125-26-436213_acf35408acc9ad52.txt",
+      "section": "nonDerivativeTransaction/transactionCoding",
+      "date": "2026-11-20",
+      "classification": "reported after the spin",
+      "quote": "P acquisitions observed: 0; full coverage True",
+      "unit": "",
+      "start": "",
+      "amount": null,
+      "tag": "",
+      "source_scale": 0,
+      "facts_source": false
+    },
+    "price": {
+      "value": 229.91,
+      "filing": "CLOSES_FILE MSGR.K",
+      "section": "Instrument / Date / Price Close",
+      "date": "2026-11-11",
+      "classification": "reported after the spin",
+      "quote": "",
+      "unit": "not available",
+      "start": "",
+      "amount": null,
+      "tag": "",
+      "source_scale": 0,
+      "facts_source": false
+    },
+    "first_official_close": {
+      "value": 177.61,
+      "filing": "CLOSES_FILE MSGR.K",
+      "section": "Instrument / Date / Price Close; first exported regular-way close after distribution",
+      "date": "2026-10-27",
+      "classification": "reported after the spin",
+      "quote": "",
+      "unit": "not available",
+      "start": "",
+      "amount": null,
+      "tag": "",
+      "source_scale": 0,
+      "facts_source": false
+    }
+  },
+  "values": {
+    "owner_cash_flow": "not computed",
+    "low_total": "not computed",
+    "mid_total": "not computed",
+    "low_per_share": "not computed",
+    "mid_per_share": "not computed",
+    "comparison": "not computed",
+    "view": "not computed",
+    "conviction": "LOW",
+    "low_rate": "0.12",
+    "mid_rate": "0.1",
+    "arithmetic": "not computed",
+    "statement_basis": "not known",
+    "currency": "not known"
+  },
+  "judgment": {
+    "cheapness_view": "not_established",
+    "cheapness_reason": "Cheapness relative to value is not established.",
+    "next_filing_change": "new_financial_evidence"
+  },
+  "judgment_contract": {
+    "facts": {
+      "parent": {
+        "statement": "Relationship Between MSG Sports and Us After the Distribution",
+        "filing": "10-12B/A 0001193125-26-409182 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001193125-26-409182_9c7588c9c257b15c.txt",
+        "section": "Relationship Between MSG Sports and Us After the Distribution",
+        "date": "2026-09-30",
+        "classification": "historical"
+      },
+      "distribution_ratio": {
+        "statement": "The filing establishes distribution ratio.",
+        "filing": "8-K 0001193125-26-434266 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001193125-26-434266_7be9cb10c9267a7f.txt",
+        "section": "Completion of Distribution",
+        "date": "2026-10-27",
+        "classification": "historical"
+      },
+      "record_date": {
+        "statement": "The filing establishes record date.",
+        "filing": "8-K 0001193125-26-434266 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001193125-26-434266_7be9cb10c9267a7f.txt",
+        "section": "Completion of Distribution",
+        "date": "2026-10-27",
+        "classification": "historical"
+      },
+      "distribution_date": {
+        "statement": "The filing establishes distribution date.",
+        "filing": "8-K 0001193125-26-434266 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001193125-26-434266_7be9cb10c9267a7f.txt",
+        "section": "Completion of Distribution",
+        "date": "2026-10-27",
+        "classification": "historical"
+      },
+      "catalysts": {
+        "statement": "The filing establishes catalysts.",
+        "filing": "10-Q 0001628280-26-071325 10-Q.html",
+        "section": "NOTES TO COMBINED FINANCIAL STATEMENTS (UNAUDITED)",
+        "date": "2026-11-06",
+        "classification": "historical"
+      },
+      "insider_purchases": {
+        "statement": "No qualifying insider purchases are recorded in the established filing coverage.",
+        "filing": "4 0001193125-26-436221 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001193125-26-436221_43f7f3a75f5808a8.txt; 4 0000933029-26-000004 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0000933029-26-000004_29a6266a7230be6c.txt; 4 0000932963-26-000009 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0000932963-26-000009_0ad96252daf1513b.txt; 4 0000933026-26-000006 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0000933026-26-000006_9084d87f5c191b03.txt; 4 0001025983-26-000004 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001025983-26-000004_665011f82e07ad31.txt; 4 0000933023-26-000004 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0000933023-26-000004_183842c8fbcea0c2.txt; 4 0000933022-26-000004 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0000933022-26-000004_600fb93eaef73eac.txt; 4 0001788337-26-000004 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001788337-26-000004_890b4fed85ba613a.txt; 4 0001564760-26-000010 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001564760-26-000010_79422508f2782eb0.txt; 4 0001564761-26-000008 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001564761-26-000008_2224305adb8ea4dc.txt; 4 0001505841-26-000004 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001505841-26-000004_4f4591db9059f599.txt; 4 0001513347-26-000008 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001513347-26-000008_051c7b873ded3b28.txt; 4 0001871757-26-000008 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001871757-26-000008_278371687ea6a61e.txt; 4 0001505856-26-000004 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001505856-26-000004_9b1e481e946ed739.txt; 4 0001505848-26-000002 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001505848-26-000002_160c37f103d1d1cd.txt; 4 0001505850-26-000005 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001505850-26-000005_d2baf30b55ab678f.txt; 4 0001505853-26-000007 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001505853-26-000007_698425991cbf17a2.txt; 4 0000933025-26-000004 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0000933025-26-000004_5d66bae9d42fba9d.txt; 4 0001653340-26-000004 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001653340-26-000004_8ffa5b4e39281bdf.txt; 4 0001098901-26-000004 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001098901-26-000004_2ea22334ffc5d720.txt; 4 0000933028-26-000012 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0000933028-26-000012_733ca680c275118d.txt; 4 0001193125-26-436217 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001193125-26-436217_617d5d1e6506125e.txt; 4 0001193125-26-436222 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001193125-26-436222_f74bc95f397102f1.txt; 4 0001193125-26-436215 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001193125-26-436215_6fab95fd12765dbb.txt; 4 0001193125-26-436213 C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119\\worksheet_sources\\20261120_114503_927200_12483578\\0001193125-26-436213_acf35408acc9ad52.txt",
+        "section": "nonDerivativeTransaction/transactionCoding",
+        "date": "2026-11-20",
+        "classification": "reported after the spin"
+      }
+    },
+    "availability": {
+      "value_comparison_available": false,
+      "value_supports_cheapness": false,
+      "forced_selling_evidence_available": false,
+      "financing_cash_destination_available": false,
+      "liabilities_evidence_available": false,
+      "restrictions_evidence_available": false,
+      "insider_purchase_evidence_available": true
+    },
+    "allowed_claims": {
+      "cheapness_reason": {
+        "Cheapness relative to value is not established.": {
+          "text": "Cheapness relative to value is not established.",
+          "evidence_ids": [],
+          "views": [
+            "not_established",
+            "not_that_story"
+          ],
+          "requires": {}
+        },
+        "Financing evidence is not established.": {
+          "text": "Financing evidence is not established.",
+          "evidence_ids": [],
+          "views": [
+            "not_established",
+            "not_that_story"
+          ],
+          "requires": {
+            "financing_cash_destination_available": false
+          }
+        },
+        "Financing cash proceeds are not established by the supplied evidence.": {
+          "text": "Financing cash proceeds are not established by the supplied evidence.",
+          "evidence_ids": [],
+          "views": [
+            "not_established",
+            "not_that_story"
+          ],
+          "requires": {
+            "financing_cash_destination_available": false
+          }
+        },
+        "No forced-selling explanation is established by the supplied evidence.": {
+          "text": "No forced-selling explanation is established by the supplied evidence.",
+          "evidence_ids": [],
+          "views": [
+            "not_established",
+            "not_that_story"
+          ],
+          "requires": {
+            "forced_selling_evidence_available": false
+          }
+        },
+        "separation_structure:parent": {
+          "text": "The filing-supported parent relationship warrants review but does not alone establish cheapness.",
+          "evidence_ids": [
+            "parent"
+          ],
+          "views": [
+            "not_established",
+            "not_that_story"
+          ],
+          "requires": {}
+        },
+        "separation_structure:distribution_ratio": {
+          "text": "The filing-supported distribution structure warrants review but does not alone establish cheapness.",
+          "evidence_ids": [
+            "distribution_ratio"
+          ],
+          "views": [
+            "not_established",
+            "not_that_story"
+          ],
+          "requires": {}
+        },
+        "separation_structure:distribution_date": {
+          "text": "The filing-supported completed separation warrants review but does not alone establish cheapness.",
+          "evidence_ids": [
+            "distribution_date"
+          ],
+          "views": [
+            "not_established",
+            "not_that_story"
+          ],
+          "requires": {}
+        },
+        "insider_evidence:insider_purchases": {
+          "text": "The filing-supported qualifying insider evidence warrants review but does not alone establish cheapness.",
+          "evidence_ids": [
+            "insider_purchases"
+          ],
+          "views": [
+            "not_established",
+            "not_that_story"
+          ],
+          "requires": {}
+        },
+        "business_evidence:catalysts": {
+          "text": "The filing-supported disclosed business arrangements warrants review but does not alone establish cheapness.",
+          "evidence_ids": [
+            "catalysts"
+          ],
+          "views": [
+            "not_established",
+            "not_that_story"
+          ],
+          "requires": {}
+        }
+      },
+      "next_filing_change": {
+        "review:parent": {
+          "text": "A future filing that changes the parent relationship would change this assessment.",
+          "evidence_ids": [
+            "parent"
+          ],
+          "views": [
+            "supported",
+            "not_established",
+            "not_that_story"
+          ],
+          "requires": {}
+        },
+        "review:distribution_ratio": {
+          "text": "A future filing that changes the distribution structure would change this assessment.",
+          "evidence_ids": [
+            "distribution_ratio"
+          ],
+          "views": [
+            "supported",
+            "not_established",
+            "not_that_story"
+          ],
+          "requires": {}
+        },
+        "review:distribution_date": {
+          "text": "A future filing that changes the completed separation would change this assessment.",
+          "evidence_ids": [
+            "distribution_date"
+          ],
+          "views": [
+            "supported",
+            "not_established",
+            "not_that_story"
+          ],
+          "requires": {}
+        },
+        "review:insider_purchases": {
+          "text": "A future filing that changes the qualifying insider evidence would change this assessment.",
+          "evidence_ids": [
+            "insider_purchases"
+          ],
+          "views": [
+            "supported",
+            "not_established",
+            "not_that_story"
+          ],
+          "requires": {}
+        },
+        "review:catalysts": {
+          "text": "A future filing that changes the disclosed business arrangements would change this assessment.",
+          "evidence_ids": [
+            "catalysts"
+          ],
+          "views": [
+            "supported",
+            "not_established",
+            "not_that_story"
+          ],
+          "requires": {}
+        },
+        "new_financial_evidence": {
+          "text": "New filing-supported financial information sufficient to reassess value would change this assessment.",
+          "evidence_ids": [],
+          "views": [
+            "supported",
+            "not_established",
+            "not_that_story"
+          ],
+          "requires": {}
+        }
+      }
+    }
+  },
+  "purchases": [],
+  "reader_interval": {
+    "start": "2026-10-27",
+    "end": "2026-11-20"
+  },
+  "liquidity": "Liquidity: client purchase 100000; reader interval 2026-10-27 through 2026-11-20; median daily close-times-volume 52444364.030 (export quote units); sessions 12; observed dates 2026-10-27 through 2026-11-11; export instrument MSGR.K; median daily dollar volume not known; price currency is not evidenced as USD; client USD purchase/median comparison not computed; purchase reasonableness not known",
+  "not_known": [
+    "debt_raised",
+    "cash_destination",
+    "liabilities_left",
+    "parent_restrictions",
+    "parent_after_spin",
+    "market_value",
+    "index",
+    "buybacks",
+    "restrictions",
+    "after_tax_earnings",
+    "depreciation",
+    "capital_spending",
+    "shares_outstanding",
+    "coherent annual inputs for owner cash flow and value range",
+    "price currency",
+    "liquidity execution reasonableness (no participation rule in worksheet)",
+    "median daily dollar volume"
+  ],
+  "limitations": []
+}

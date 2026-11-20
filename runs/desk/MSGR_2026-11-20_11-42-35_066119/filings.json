@@ -1,0 +1,159 @@
+{
+  "10-Q": {
+    "accessionNumber": "0001628280-26-071325",
+    "filingDate": "2026-11-06",
+    "reportDate": "2026-09-30",
+    "acceptanceDateTime": "2026-11-06T12:40:46.000Z",
+    "act": "34",
+    "form": "10-Q",
+    "fileNumber": "001-43449",
+    "filmNumber": "261529360",
+    "items": "",
+    "core_type": "XBRL",
+    "size": 5519350,
+    "isXBRL": 1,
+    "isInlineXBRL": 1,
+    "isXBRLNumeric": 1,
+    "primaryDocument": "msgr-20260930.htm",
+    "primaryDocDescription": "10-Q",
+    "accepted": "2026-11-06 07:40:46",
+    "accepted_source": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071325/0001628280-26-071325-index.html",
+    "documents": [
+      {
+        "description": "10-Q",
+        "type": "10-Q",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071325/msgr-20260930.htm"
+      },
+      {
+        "description": "EX-10.11",
+        "type": "EX-10.11",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071325/msgrexhibit10119302610q.htm"
+      },
+      {
+        "description": "EX-31.1",
+        "type": "EX-31.1",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071325/msgrangerscorpex3119302026.htm"
+      },
+      {
+        "description": "EX-31.2",
+        "type": "EX-31.2",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071325/msgrangerscorpex3129302026.htm"
+      },
+      {
+        "description": "EX-32.1",
+        "type": "EX-32.1",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071325/msgrangerscorpex3219302026.htm"
+      },
+      {
+        "description": "EX-32.2",
+        "type": "EX-32.2",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071325/msgrangerscorpex3229302026.htm"
+      },
+      {
+        "description": "",
+        "type": "GRAPHIC",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071325/msgr-20260930_g1.jpg"
+      },
+      {
+        "description": "Complete submission text file",
+        "type": "",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071325/0001628280-26-071325.txt"
+      },
+      {
+        "description": "XBRL TAXONOMY EXTENSION SCHEMA DOCUMENT",
+        "type": "EX-101.SCH",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071325/msgr-20260930.xsd"
+      },
+      {
+        "description": "XBRL TAXONOMY EXTENSION CALCULATION LINKBASE DOCUMENT",
+        "type": "EX-101.CAL",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071325/msgr-20260930_cal.xml"
+      },
+      {
+        "description": "XBRL TAXONOMY EXTENSION DEFINITION LINKBASE DOCUMENT",
+        "type": "EX-101.DEF",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071325/msgr-20260930_def.xml"
+      },
+      {
+        "description": "XBRL TAXONOMY EXTENSION LABEL LINKBASE DOCUMENT",
+        "type": "EX-101.LAB",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071325/msgr-20260930_lab.xml"
+      },
+      {
+        "description": "XBRL TAXONOMY EXTENSION PRESENTATION LINKBASE DOCUMENT",
+        "type": "EX-101.PRE",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071325/msgr-20260930_pre.xml"
+      },
+      {
+        "description": "EXTRACTED XBRL INSTANCE DOCUMENT",
+        "type": "XML",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071325/msgr-20260930_htm.xml"
+      }
+    ],
+    "document_url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071325/msgr-20260930.htm"
+  },
+  "8-K": {
+    "accessionNumber": "0001628280-26-071324",
+    "filingDate": "2026-11-06",
+    "reportDate": "2026-11-06",
+    "acceptanceDateTime": "2026-11-06T12:38:20.000Z",
+    "act": "34",
+    "form": "8-K",
+    "fileNumber": "001-43449",
+    "filmNumber": "261529355",
+    "items": "2.02,9.01",
+    "core_type": "XBRL",
+    "size": 417374,
+    "isXBRL": 1,
+    "isInlineXBRL": 1,
+    "isXBRLNumeric": 0,
+    "primaryDocument": "msgr-20261106.htm",
+    "primaryDocDescription": "8-K",
+    "accepted": "2026-11-06 07:38:20",
+    "accepted_source": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/0001628280-26-071324-index.html",
+    "documents": [
+      {
+        "description": "8-K",
+        "type": "8-K",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgr-20261106.htm"
+      },
+      {
+        "description": "EX-99.1",
+        "type": "EX-99.1",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgrangerscorpex991forearn.htm"
+      },
+      {
+        "description": "",
+        "type": "GRAPHIC",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgrangers-lightbg.jpg"
+      },
+      {
+        "description": "Complete submission text file",
+        "type": "",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/0001628280-26-071324.txt"
+      },
+      {
+        "description": "XBRL TAXONOMY EXTENSION SCHEMA DOCUMENT",
+        "type": "EX-101.SCH",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgr-20261106.xsd"
+      },
+      {
+        "description": "XBRL TAXONOMY EXTENSION LABEL LINKBASE DOCUMENT",
+        "type": "EX-101.LAB",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgr-20261106_lab.xml"
+      },
+      {
+        "description": "XBRL TAXONOMY EXTENSION PRESENTATION LINKBASE DOCUMENT",
+        "type": "EX-101.PRE",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgr-20261106_pre.xml"
+      },
+      {
+        "description": "EXTRACTED XBRL INSTANCE DOCUMENT",
+        "type": "XML",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgr-20261106_htm.xml"
+      }
+    ],
+    "document_url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgr-20261106.htm",
+    "release_url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgrangerscorpex991forearn.htm"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "reason": "Operating loss widened to $23.6 million, an $10.7 million increase, outweighing modest revenue growth and leading to a Hold stance.",
+  "direction": "not computed",
+  "sections": {
+    "Future Developments and Strategic Recommendations": [
+      {
+        "text": "Management should prioritize cost reduction initiatives, especially in selling, general and administrative expenses, while continuing to capture modest revenue growth.",
+        "evidence_ids": [
+          "text.ed17aac93a11.L25",
+          "text.ed17aac93a11.L16"
+        ]
+      }
+    ],
+    "Investment Recommendation": [
+      {
+        "text": "Hold",
+        "evidence_ids": [
+          "text.ed17aac93a11.L16",
+          "text.ed17aac93a11.L17"
+        ]
+      }
+    ]
+  },
+  "limitations": [],
+  "recommendation": "Hold",
+  "thesis_evidence_ids": [
+    "text.ed17aac93a11.L16",
+    "text.ed17aac93a11.L17"
+  ],
+  "reason_evidence_ids": [
+    "text.ed17aac93a11.L17",
+    "text.ed17aac93a11.L16"
+  ],
+  "insight": {
+    "part": "Investment Recommendation",
+    "text": "Insight: Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | % [earnings_release.txt, line 17]",
+    "evidence_ids": [
+      "text.ed17aac93a11.L17"
+    ]
+  },
+  "thesis": "Revenue increased modestly year‑over‑year while operating loss expanded, indicating mixed momentum.",
+  "deciding_evidence_id": null
+}

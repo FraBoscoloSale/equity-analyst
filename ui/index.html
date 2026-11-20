@@ -28,6 +28,13 @@
         <button id="seeker-button" type="submit" disabled>Run seeker</button>
       </form>
     </section>
+    <section class="card setup" aria-labelledby="desk-title">
+      <h2 id="desk-title">One Desk</h2>
+      <form id="desk-form">
+        <div><label for="desk-input">Ticker or screen</label><input id="desk-input" name="desk" placeholder="Ticker or screen" required maxlength="20" autocomplete="off" spellcheck="false"><small>Screen uses the last 90 calendar days. The team and worksheet share one saved desk folder.</small></div>
+        <button id="desk-button" type="submit" disabled>Run desk</button>
+      </form>
+    </section>
     <div id="error" class="error" role="alert" hidden></div>
     <section class="card progress" aria-labelledby="progress-title">
       <div class="section-top"><h2 id="progress-title">Team activity</h2><span id="status" class="status">Ready</span></div>

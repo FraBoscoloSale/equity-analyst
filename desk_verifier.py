@@ -439,7 +439,7 @@ class Verifier:
         value = check["correction"] or "N/A (not established by the saved filings)"
         return f"Corrected number: {value}. Source: {check['source'] or 'No supporting filing line or XBRL fact found.'}\n", [check]
 
-    def run(self, sources, output):
+    def run(self, sources, output, *, instructions=None):
         print("Verifier: code checks", flush=True)
         output = Path(output)
         self.checks = []
@@ -543,7 +543,8 @@ class Verifier:
         returned = {}
         batch_index = None
         try:
-            instructions = (Path(__file__).resolve().parent / "roles/verifier.txt").read_text(encoding="utf-8")
+            if instructions is None:
+                instructions = (Path(__file__).resolve().parent / "roles/verifier.txt").read_text(encoding="utf-8")
             batches = plan_batches(model_checks, sources, re.sub(r"<!-- desk-record .*? -->", "", report),
                                    instructions, semantic_response_schema, normalized, SemanticResponseError)
             write_json(output / "verifier_semantic_batches.json", {

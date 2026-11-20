@@ -1,0 +1,31 @@
+{
+  "revenue": [
+    {
+      "line": 16,
+      "text": "Revenues | | $ | 14.1 | | | $ | 13.7 | | | $ | 0.4 | | | 3 | %",
+      "context": [
+        "| | | | | | | | | | | | | | | | | | | | | | | | | |",
+        "| | Three Months Ended | | | |",
+        "| | September 30, | | Change",
+        "$ millions | | 2026 | | 2025 | | $ | | %",
+        "Revenues | | $ | 14.1 | | | $ | 13.7 | | | $ | 0.4 | | | 3 | %",
+        "Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | %"
+      ],
+      "source_kind": "table"
+    },
+    {
+      "line": 49,
+      "text": "Revenues | | $ | 14,089 | | | $ | 13,655 |",
+      "context": [
+        "| | | | | | | | | | | | | |",
+        "| | Three Months Ended",
+        "| | September 30,",
+        "| | 2026 | | 2025",
+        "Revenues | | $ | 14,089 | | | $ | 13,655 |",
+        "Direct operating expenses | | 8,802 | | | 3,596 |"
+      ],
+      "source_kind": "table"
+    }
+  ],
+  "diluted_eps": []
+}

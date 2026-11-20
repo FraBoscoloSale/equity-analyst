@@ -39,7 +39,7 @@ class RunServiceTests(unittest.TestCase):
         job_id='a'*32
         service.active=job_id
         service.jobs[job_id]={'id':job_id,'status':'running','nodes':[], 'error':'','report':'','counts':{},'unresolved_parts':0,
-                              'kind':'seeker' if payload and 'start' in payload else 'team'}
+                              'kind':'desk' if payload and 'desk' in payload else 'seeker' if payload and 'start' in payload else 'team'}
         process=Mock()
         process.stdout=iter(lines)
         process.wait.return_value=code
@@ -58,6 +58,30 @@ class RunServiceTests(unittest.TestCase):
         command=ui.command_for({'start':'2025-11-10'})
         self.assertEqual(command,[ui.sys.executable,'-u',str(ui.ROOT/'spinoff_seeker.py'),
                                   '--start','2025-11-10'])
+
+    def test_desk_command_accepts_ticker_or_screen_without_changing_team_command(self):
+        for value, selected in ((' test ', 'TEST'), ('SCREEN', 'screen')):
+            self.assertEqual(ui.command_for({'desk': value}),
+                             [ui.sys.executable, '-B', '-u', str(ui.ROOT/'one_desk.py'), selected])
+        for payload in ({'desk':'--replay'}, {'desk':'TEST; whoami'}, {'desk':'TEST','ticker':'OTHER'}):
+            with self.assertRaises(ui.InputError):
+                ui.command_for(payload)
+
+    def test_desk_progress_and_final_report_reach_page_only_after_success(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); folder = root/'runs/desk/TEST_saved'; folder.mkdir(parents=True)
+            path = folder/'desk_report.md'; report = 'Filings read: fictional\nVerified team\nWorksheet view\n'
+            path.write_text(report, encoding='utf-8')
+            (folder/'desk_manifest.json').write_text(json.dumps({'status':'completed'}), encoding='utf-8')
+            result = self.execute(root, ['[desk] Agent team\n', '[desk] Worksheet\n',
+                                        'Desk report: '+str(path)+'\n'], payload={'desk':'TEST'})
+            self.assertEqual(result['status'], 'completed')
+            self.assertEqual(result['report'], report)
+            self.assertIn('[desk] Worksheet', result['nodes'])
+            result = self.execute(root, ['Error: Numeric hook: fictional failure\n'], code=2, payload={'desk':'TEST'})
+            self.assertEqual(result['status'], 'failed')
+            self.assertEqual(result['report'], '')
+            self.assertIn('Numeric hook: fictional failure', result['error'])
 
     def test_seeker_rejects_invalid_dates_and_mixed_team_inputs(self):
         for payload in ({'start':''},{'start':'11/10/2025'},{'start':'2025-2-01'},
@@ -198,7 +222,7 @@ const context = vm.createContext({document, setTimeout: fn => fn(), fetch:async 
   if (path === '/api/session') return reply({token:'test-token',run:null});
   if (options.method === 'POST') {
     const payload = JSON.parse(options.body); submissions.push(payload);
-    kind = payload.start ? 'seeker' : 'team'; polls = 0;
+    kind = payload.desk ? 'desk' : payload.start ? 'seeker' : 'team'; polls = 0;
     return reply({id:'a'.repeat(32)});
   }
   const job = {kind, nodes:kind === 'seeker' ? ['[discovery] Inspecting filings'] : ['Research Analyst'],
@@ -226,6 +250,12 @@ async function settle() { for (let i=0;i<5;i++) await new Promise(resolve => set
   assert.equal(elements.report.children[0].children[0].textContent, 'Verified result');
   assert.equal(elements.counts.hidden, false); assert.equal(elements.counts.children[0].textContent,'1 correct');
   assert.equal(elements['run-button'].disabled, false); assert.equal(elements['seeker-button'].disabled, false);
+  elements['desk-input'].value = 'screen';
+  await elements['desk-form'].events.submit({preventDefault(){}}); await settle();
+  assert.deepEqual(submissions[2], {desk:'screen'});
+  assert.equal(elements['report-title'].textContent, 'Desk report');
+  assert.equal(elements.results.hidden, false); assert.equal(elements.counts.hidden, true);
+  assert.equal(elements['desk-button'].disabled, false);
 })().catch(error => { console.error(error); process.exitCode=1; });
 '''
         result=subprocess.run([shutil.which('node'),'-',str(ui.ASSETS/'app.js'),str(ui.ASSETS/'index.html')],

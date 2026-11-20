@@ -1,0 +1,28 @@
+{
+  "run_folder": "C:\\Users\\franc\\equity-analyst\\runs\\desk\\MSGR_2026-11-20_11-42-35_066119",
+  "artifacts": [
+    "10-Q.html",
+    "10-Q.txt",
+    "8-K.html",
+    "8-K.txt",
+    "company.json",
+    "earnings_release.html",
+    "earnings_release.txt",
+    "filing_history.json",
+    "filing_time.json",
+    "filings.json",
+    "input_facts.json",
+    "investment_advisor.txt",
+    "reader_snapshot.json",
+    "registry.json",
+    "run.json",
+    "spinoff_factors.txt",
+    "spinoff_worksheet.txt",
+    "step_1_input.json",
+    "step_1_output.json",
+    "step_2_input.json",
+    "step_2_output.json",
+    "submissions.json",
+    "verifier_persona.txt"
+  ]
+}

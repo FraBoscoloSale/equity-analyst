@@ -33,6 +33,12 @@ class InputError(ValueError):
 
 def command_for(payload, root=ROOT):
     """Translate form fields to CLI arguments, never a shell string."""
+    if isinstance(payload, dict) and 'desk' in payload:
+        value = payload['desk']
+        if set(payload) != {'desk'} or not isinstance(value, str) or not SYMBOL.fullmatch(value.strip()):
+            raise InputError('Supply one desk ticker or screen.')
+        value = 'screen' if value.strip().casefold() == 'screen' else value.strip().upper()
+        return [sys.executable, '-B', '-u', str(root/'one_desk.py'), value]
     if isinstance(payload, dict) and 'start' in payload:
         start = payload['start']
         if set(payload) != {'start'}:
@@ -122,7 +128,7 @@ class RunService:
             job_id = uuid.uuid4().hex
             job = {'id': job_id, 'status': 'running', 'nodes': [], 'error': '',
                    'report': '', 'counts': {}, 'unresolved_parts': 0,
-                   'kind': 'seeker' if 'start' in payload else 'team'}
+                   'kind': 'desk' if 'desk' in payload else 'seeker' if 'start' in payload else 'team'}
             self.jobs[job_id] = job
             self.active = job_id
             # Retain recent results through browser refresh without unbounded storage.
@@ -165,7 +171,8 @@ class RunService:
     def execute(self, job_id, command):
         scrub = lambda text: text
         seeker = self.jobs[job_id].get('kind') == 'seeker'
-        run_name = 'Seeker' if seeker else 'Agent team'
+        desk = self.jobs[job_id].get('kind') == 'desk'
+        run_name = 'One Desk' if desk else 'Seeker' if seeker else 'Agent team'
         try:
             scrub = self.scrubber()
             report_path, error = None, ''
@@ -177,17 +184,19 @@ class RunService:
                                   creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0)) as process:
                 for raw in process.stdout:
                     line = raw.strip()
-                    node = (scrub(line) if re.match(r'^\[[a-z][a-z0-9_ -]*\] ', line) else None) if seeker else node_from_line(line)
+                    node = scrub(line) if desk else ((scrub(line) if re.match(r'^\[[a-z][a-z0-9_ -]*\] ', line) else None) if seeker else node_from_line(line))
                     with self.lock:
                         nodes = self.jobs[job_id]['nodes']
                         if node and (not nodes or nodes[-1] != node):
                             nodes.append(node)
                     if line.startswith('Error:'):
                         error = line
-                    if line.startswith('Verified report: '):
+                    if not desk and line.startswith('Verified report: '):
                         report_path = line.removeprefix('Verified report: ').strip()
                     if seeker and line.endswith('.md'):
                         report_path = line
+                    if desk and line.startswith('Desk report: '):
+                        report_path = line.removeprefix('Desk report: ').strip()
                 code = process.wait()
             if code != 0:
                 if not error:
@@ -198,7 +207,18 @@ class RunService:
             if not report_path:
                 raise ValueError('The seeker ended without returning a report. The run is incomplete.' if seeker else
                                  'The agent team ended without returning a verified report. The run is incomplete.')
-            if seeker:
+            if desk:
+                path = Path(report_path)
+                path = (path if path.is_absolute() else self.root/path).resolve()
+                if not path.is_relative_to((self.root/'runs/desk').resolve()) or path.name != 'desk_report.md':
+                    raise ValueError('The desk did not return a valid final-report location.')
+                manifest = json.loads((path.parent/'desk_manifest.json').read_text(encoding='utf-8'))
+                if manifest.get('status') != 'completed':
+                    raise ValueError('The desk did not finish numeric verification.')
+                report, counts, unresolved = path.read_text(encoding='utf-8'), {}, 0
+                if not report.strip():
+                    raise ValueError('The desk returned an empty report.')
+            elif seeker:
                 path = Path(report_path)
                 path = (path if path.is_absolute() else self.root / path).resolve()
                 if (not path.is_relative_to((self.root / 'spinoff_runs').resolve()) or

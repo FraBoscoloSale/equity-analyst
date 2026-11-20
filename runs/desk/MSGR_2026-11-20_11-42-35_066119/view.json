@@ -1,0 +1,16 @@
+{
+  "ticker": "MSGR",
+  "filing_accepted_time": "2026-11-06 07:38:20",
+  "filing_accepted_source": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/0001628280-26-071324-index.html",
+  "filing_time": "2026-11-06 07:38:20",
+  "filing_timezone": "America/New_York",
+  "time": "2026-11-20T16:44:31.444722+00:00",
+  "original_view": {
+    "recommendation": "Hold",
+    "thesis": "Revenue increased modestly year‑over‑year while operating loss expanded, indicating mixed momentum.",
+    "reason": "Operating loss widened to $23.6 million, an $10.7 million increase, outweighing modest revenue growth and leading to a Hold stance.",
+    "deciding_evidence_id": null
+  },
+  "direction": "not computed",
+  "reaction": "not available"
+}

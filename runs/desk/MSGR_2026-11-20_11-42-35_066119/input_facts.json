@@ -1,0 +1,12 @@
+{
+  "price": null,
+  "status": "not available",
+  "source": "CLOSES_FILE: last official daily close strictly before filing time (16:00 Eastern)",
+  "run_time": "2026-11-20T11:42:48.829605-05:00",
+  "accepted": "2026-11-06 07:38:20",
+  "accepted_source": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/0001628280-26-071324-index.html",
+  "accession": "0001628280-26-071324",
+  "filed_override": null,
+  "effective_filing_time": "2026-11-06 07:38:20",
+  "timezone": "America/New_York"
+}

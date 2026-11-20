@@ -1,0 +1,88 @@
+{
+  "checks": {
+    "Investment Recommendation": {
+      "passed": false,
+      "issues": [
+        "Thesis infers causality/acceleration without an exact supporting filing sentence.",
+        "Revenue growth metric in reason is not backed by the available numeric evidence.",
+        "thesis: Causality or acceleration is not established: use an exact supporting filing sentence or remove the inference.",
+        "reason: Financial numeric prose must be rendered from deterministic evidence, not authored by the model.",
+        "reason: Mentioned supporting metric is not backed by this claim's available numeric evidence: revenue_growth.",
+        "Report part is missing its required Insight: line.",
+        "Insight only repeats an opening earnings-release figure."
+      ],
+      "insight_present": false,
+      "insight_not_headline_restatement": false
+    },
+    "Overview": {
+      "passed": false,
+      "issues": [
+        "Financial numeric prose must be rendered from deterministic evidence, not authored by the model.",
+        "Required input limitations were omitted: missing.business, missing.market_share, missing.mda."
+      ]
+    },
+    "Market Positioning and Growth Outlook": {
+      "passed": false,
+      "issues": [
+        "Causal inference of weakening competitive position is not directly supported by the cited evidence.",
+        "Required input limitations were omitted: missing.business, missing.market_share, missing.mda."
+      ],
+      "insight_present": true,
+      "insight_not_headline_restatement": true
+    },
+    "Valuation Insights": {
+      "passed": false,
+      "issues": [
+        "Insight must be one line: Insight: one claim [filing.txt, line N].",
+        "Insight must be one line: Insight: one claim [filing.txt, line N].",
+        "Insight must be a standalone final line in a separate final block; embedded or non-final Insights fail.",
+        "Report part is missing its required Insight: line.",
+        "Insight only repeats an opening earnings-release figure."
+      ],
+      "insight_present": false,
+      "insight_not_headline_restatement": false
+    },
+    "Future Developments and Strategic Recommendations": {
+      "passed": false,
+      "issues": [
+        "Revenue‑growth claim is not backed by the available numeric evidence.",
+        "Mentioned supporting metric is not backed by this claim's available numeric evidence: revenue_growth."
+      ]
+    }
+  },
+  "policy_exclusions": {
+    "Investment Recommendation": [
+      {
+        "code": "invalid_provenance",
+        "text": "Reason uses financial numeric prose not directly rendered from deterministic evidence.",
+        "policy_reason": "Provenance is checked by Python; ratio narrative, limitation placement and extra deciding metrics are not requirements."
+      }
+    ],
+    "Overview": [
+      {
+        "code": "invalid_provenance",
+        "text": "Financial numeric prose not rendered directly from deterministic evidence.",
+        "policy_reason": "Provenance is checked by Python; ratio narrative, limitation placement and extra deciding metrics are not requirements."
+      },
+      {
+        "code": "limitation_placement",
+        "text": "Missing required input limitations: missing.business, missing.market_share, missing.mda.",
+        "policy_reason": "Provenance is checked by Python; ratio narrative, limitation placement and extra deciding metrics are not requirements."
+      }
+    ],
+    "Market Positioning and Growth Outlook": [
+      {
+        "code": "limitation_placement",
+        "text": "Missing required input limitations: missing.business, missing.market_share, missing.mda.",
+        "policy_reason": "Provenance is checked by Python; ratio narrative, limitation placement and extra deciding metrics are not requirements."
+      }
+    ],
+    "Valuation Insights": [
+      {
+        "code": "invalid_provenance",
+        "text": "Insight is not a single‑line claim and is not presented as a standalone final block.",
+        "policy_reason": "Provenance is checked by Python; ratio narrative, limitation placement and extra deciding metrics are not requirements."
+      }
+    ]
+  }
+}

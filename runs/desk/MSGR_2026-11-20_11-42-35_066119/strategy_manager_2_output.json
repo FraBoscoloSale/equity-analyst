@@ -1,0 +1,71 @@
+{
+  "checks": {
+    "Investment Recommendation": {
+      "passed": false,
+      "issues": [
+        {
+          "code": "unsupported_claim",
+          "text": "Thesis infers causality/acceleration without an exact supporting filing sentence."
+        },
+        {
+          "code": "invalid_provenance",
+          "text": "Reason uses financial numeric prose not directly rendered from deterministic evidence."
+        },
+        {
+          "code": "unsupported_claim",
+          "text": "Revenue growth metric in reason is not backed by the available numeric evidence."
+        }
+      ],
+      "insight_present": false,
+      "insight_not_headline_restatement": false
+    },
+    "Overview": {
+      "passed": false,
+      "issues": [
+        {
+          "code": "invalid_provenance",
+          "text": "Financial numeric prose not rendered directly from deterministic evidence."
+        },
+        {
+          "code": "limitation_placement",
+          "text": "Missing required input limitations: missing.business, missing.market_share, missing.mda."
+        }
+      ]
+    },
+    "Market Positioning and Growth Outlook": {
+      "passed": false,
+      "issues": [
+        {
+          "code": "unsupported_claim",
+          "text": "Causal inference of weakening competitive position is not directly supported by the cited evidence."
+        },
+        {
+          "code": "limitation_placement",
+          "text": "Missing required input limitations: missing.business, missing.market_share, missing.mda."
+        }
+      ],
+      "insight_present": true,
+      "insight_not_headline_restatement": true
+    },
+    "Valuation Insights": {
+      "passed": false,
+      "issues": [
+        {
+          "code": "invalid_provenance",
+          "text": "Insight is not a single‑line claim and is not presented as a standalone final block."
+        }
+      ],
+      "insight_present": false,
+      "insight_not_headline_restatement": false
+    },
+    "Future Developments and Strategic Recommendations": {
+      "passed": false,
+      "issues": [
+        {
+          "code": "unsupported_claim",
+          "text": "Revenue‑growth claim is not backed by the available numeric evidence."
+        }
+      ]
+    }
+  }
+}

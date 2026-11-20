@@ -1,0 +1,170 @@
+8-K
+MSGS Spinco,Inc.
+false
+0002132873
+--06-30
+0002132873
+2026-10-23
+2026-10-23
+UNITED STATES
+SECURITIES AND EXCHANGE COMMISSION
+WASHINGTON, D.C. 20549
+FORM
+8-K
+CURRENT REPORT
+Pursuant to Section 13 or 15(d)
+of The Securities Exchange Act of 1934
+Date of Report (Date of earliest event reported):
+October 23, 2026
+MSG RANGERS CORP.
+(Exact Name of Registrant as Specified in Charter)
+Nevada
+001-43449
+42-2203884
+(State or other jurisdiction
+of incorporation)
+(Commission
+File Number)
+(IRS Employer
+Identification No.)
+Two Pennsylvania Plaza
+,
+New York
+,
+NY
+10121
+(Address of principal executive offices)
+(Zip Code)
+Registrant’s telephone number, including area code:
+(212)
+465-6500
+MSGS Spinco, Inc.
+(Former name or former address, if changed since last report.)
+Check the appropriate box below if the Form
+8-K
+filing is intended to simultaneously satisfy the filing obligation of the registrant under any of the following provisions (see General Instruction A.2 below):
+☐
+Written communications pursuant to Rule 425 under the Securities Act (17 CFR 230.425)
+☐
+Soliciting material pursuant to Rule
+14a-12
+under the Exchange Act (17 CFR
+240.14a-12)
+☐
+Pre-commencement
+communications pursuant to Rule
+14d-2(b)
+under the Exchange Act (17 CFR
+240.14d-2(b))
+☐
+Pre-commencement
+communications pursuant to Rule
+13e-4(c)
+under the Exchange Act (17 CFR
+240.13e-4(c))
+Securities registered pursuant to Section 12(b) of the Act:
+Title of each class
+Trading
+Symbol(s)
+Name of Each Exchange
+on Which Registered
+Class A Common Stock
+MSGR
+New York Stock Exchange
+Indicate by check mark whether the registrant is an emerging growth company as defined in Rule 405 of the Securities Act of 1933 (§230.405 of this chapter) or Rule
+12b-2
+of the Securities Exchange Act of 1934
+(§240.12b-2
+of this chapter).
+Emerging growth company
+☒
+If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act.
+☒
+Item 1.01
+Entry into a Material Definitive Agreement.
+Completion of Distribution
+On October 26, 2026, MSG Knickerbockers Corp. (formerly Madison Square Garden Sports Corp. and referred herein as “MSG Knicks”) effected the distribution (the “Distribution”) of all of the issued and outstanding shares of the common stock of MSG Rangers Corp. (formerly MSGS Spinco, Inc., and referred to herein as the “Company”). In the Distribution, (a) each holder of MSG Knicks Class A common stock, par value $0.01 per share (“MSG Knicks Class A Common Stock”), received one share of the Company’s Class A common stock, par value $0.01 per share (“Company Class A Common Stock”), for every two shares of MSG Knicks Class A Common Stock held of record as of the close of business, New York City time, on October 20, 2026 (the “Record Date”) and (b) each holder of MSG Knicks Class B common stock, par value $0.01 per share (“MSG Knicks Class B Common Stock”), received one share of the Company’s Class B common stock, par value $0.01 per share (“Company Class B Common Stock”) for every two shares of MSG Knicks Class B Common Stock held of record as of the close of business, New York City time, on the Record Date. In the Distribution, an aggregate of 9,794,568 shares of Company Class A Common Stock and 2,264,754 shares of Company Class B Common Stock were distributed, with any fractional shares converted to cash and paid to stockholders. In addition, in connection with the Distribution, 46,005 shares of Company Class A Common Stock were distributed in respect of MSG Knicks
+non-employee
+director restricted stock units to the applicable holders as of the Record Date.
+NHL Transfer Consent Agreement
+On October 23, 2026, MSG Knicks, the Company and certain of their subsidiaries entered into a Transfer Consent Agreement with the National Hockey League (“NHL”) pursuant to which the parties acknowledge that future transfers of the ownership of the New York Rangers hockey club (the “Rangers”), the location of the Rangers or certain other transfers of assets or ownership, subject to exceptions, will require the consent of the NHL. The Company parties and MSG Knicks parties also agreed to release the NHL entities from any claims against them.
+The description above is qualified in its entirety by reference to the Transfer Consent Agreement, which is attached as Exhibits 10.1 to this Current Report on Form
+8-K
+and incorporated into this Item 1.01 by reference.
+Item 5.02
+Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers.
+On October 26, 2026, Alan D. Schwartz and Hans Vestberg were appointed to serve as members of the Audit Committee of the Company’s Board of Directors (the “Board”), and Mr. Schwartz was appointed as Chair of the Audit Committee.
+Also on October 26, 2026, Stephen C. Mills and Mr. Vestberg were appointed to serve as members of the Compensation Committee of the Board, and Joseph M. Cohen was appointed as Chair of the Compensation Committee.
+Approval of Executive Deferred Compensation Plan
+Effective as of October 26, 2026, the Board approved the MSG Rangers Corp. Executive Deferred Compensation Plan, (the “EDCP”), pursuant to which certain employees, including the Company’s named executive officers, may elect to participate.
+Pursuant to the EDCP, participants may make elective base salary or bonus deferral contributions. Participants may make individual investment elections that will determine the rate of return on their deferral amounts under the EDCP. The EDCP does not provide any above-market returns or preferential earnings to participants, and the participants’ deferrals and their earnings are always 100% vested. The EDCP does not provide for any Company contributions. Participants may elect at the time they make their deferral elections to receive their distribution either as a lump sum payment or in substantially equal annual installments over a period of 5 years.
+The description above is qualified in its entirety by reference to the EDCP, which is attached as Exhibit 10.2 hereto and incorporated into this Item 5.02 by reference.
+Employment Agreements
+On October 26, 2026, the Company entered into the previously-disclosed employment agreements with James L. Dolan, David Granville-Smith, Paul DiCicco and Jamaal T. Lesane, effective as of the Distribution. The description above is qualified in its entirety by reference to the employment agreements with James L. Dolan, David Granville-Smith, Paul DiCicco and Jamaal T. Lesane, which are attached as Exhibits 10.3, 10.4, 10.5 and 10.6, respectively, to this Current Report on Form
+8-K
+and incorporated into this Item 5.02 by reference, and are substantially in the forms included as Exhibit 10.23, Exhibit 10.24, Exhibit 10.25 and Exhibit 10.26, respectively, to the Form 10.
+Item 5.03
+Amendments to Articles of Incorporation or Bylaws; Change in Fiscal Year.
+On October 26, 2026, the Company filed with the Nevada Secretary of State a Certificate of Amendment to its Amended and Restated Articles of Incorporation (the “Certificate of Amendment”), which effected the name change of the Company from MSGS Spinco, Inc. to MSG Rangers Corp. The above description is qualified in its entirety by reference to the Certificate of Amendment, which is attached as Exhibit 3.1 to this Current Report on Form
+8-K
+and incorporated into this Item 5.03 by reference.
+Also on October 26, 2026, the Company’s Amended and Restated Bylaws (the “A&R Bylaws”) became effective immediately prior to the Distribution. The A&R Bylaws are attached as Exhibit 3.2 to this Current Report on Form
+8-K,
+are incorporated into this Item 5.03 by reference, and are substantially in the form included as Exhibit 3.4 to the Company’s registration statement on Form 10 (the “Form 10”).
+Item 8.01
+Other Events.
+In connection with the Distribution, the Company entered into (i) a Registration Rights Agreement, dated October 2, 2026, with The Charles F. Dolan Children Trusts (the “Children Trusts Registration Rights Agreement”), (ii) a Registration Rights Agreement, dated October 2, 2026, with The Dolan Family Affiliates (as defined therein) (the “Dolan Registration Rights Agreement”), and (iii) a Standstill Agreement, dated October 2, 2026, with the Dolan Family Group (the “Standstill Agreement”), each as further described in the Form 10. The agreements became effective upon the consummation of the Distribution. The Children Trusts Registration Rights Agreement, the Dolan Registration Rights Agreement and the Standstill Agreement are attached as Exhibit 4.1, Exhibit 4.2 and Exhibit 10.7, respectively, to this Current Report on Form
+8-K,
+are incorporated into this Item 8.01 by reference, and are substantially in the forms included as Exhibit 4.1, Exhibit 4.2 and Exhibit 10.6, respectively, to the Form 10.
+Also in connection with the Distribution, on October 26, 2026, the Company’s outside counsel delivered a tax opinion to MSG Knicks. A copy of such opinion is filed as Exhibit 8.1 to this Current Report on Form
+8-K,
+is incorporated into this Item 8.01 by reference, and is substantially in the form previously included as Exhibit 8.1 to the Form 10.
+Item 9.01
+Financial Statements and Exhibits.
+(d) Exhibits
+3.1
+Certificate of Amendment to the Amended and Restated Articles of Incorporation of MSGS Spinco, Inc. (renamed MSG Rangers Corp.), dated October 26, 2026.
+3.2
+Amended and Restated Bylaws of MSGS Spinco, Inc. (renamed MSG Rangers Corp.), dated October 26, 2026.
+4.1
+Registration Rights Agreement, dated October 2, 2026, by and among MSGS Spinco, Inc. (renamed MSG Rangers Corp.) and The Charles F. Dolan Children Trusts. #
+4.2
+Registration Rights Agreement, dated October 2, 2026, by and among MSGS Spinco, Inc. (renamed MSG Rangers Corp.) and The Dolan Family Affiliates. #
+8.1
+Tax Opinion of Sullivan & Cromwell LLP, dated October 26, 2026.
+10.1
+NHL Transfer Consent Agreement, dated as of October 23, 2026, between the National Hockey League and New York Rangers LLC, Rangers Holdings, LLC, MSG NYR Holdings, LLC, MSGS Spinco, Inc. (renamed MSG Rangers Corp.), MSG Sports, LLC (renamed MSG Knicks, LLC) and Madison Square Garden Sports Corp. (renamed MSG Knickerbockers Corp.). #
+10.2
+MSG Rangers Corp. Executive Deferred Compensation Plan. †
+10.3
+Employment Agreement dated as of October 26, 2026 between MSGS Spinco, Inc. (renamed MSG Rangers Corp.) and James L. Dolan.†
+10.4
+Employment Agreement dated as of October 26, 2026 between MSGS Spinco, Inc. (renamed MSG Rangers Corp.) and David Granville-Smith.†
+10.5
+Employment Agreement dated as of October 26, 2026 between MSGS Spinco, Inc. (renamed MSG Rangers Corp.) and Paul DiCicco.†
+10.6
+Employment Agreement dated as of October 26, 2026 between MSGS Spinco, Inc. (renamed MSG Rangers Corp.) and Jamaal T. Lesane.†
+10.7
+Standstill Agreement, dated October 2, 2026, between MSGS Spinco, Inc. (renamed MSG Rangers Corp.) and The Dolan Family Group.#
+104
+Cover Page Interactive Data File (embedded within the Inline XBRL document).
+†
+This exhibit is a management contract or a compensatory plan or arrangement.
++
+Certain confidential information - identified by bracketed asterisks “[*****]” - has been omitted from this exhibit pursuant to Item 601(b)(10) of Regulation
+S-K
+because it is both (i) not material and (ii) is the type that the registrant treats as private or confidential.
+#
+Schedules have been omitted pursuant to Item 601(a)(5) of Regulation
+S-K.
+The Registrant will furnish the omitted exhibits and schedules to the Securities and Exchange Commission upon request.
+SIGNATURES
+Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized.
+Date: October 27, 2026
+MSG RANGERS CORP.
+By:
+/s/ Mark Cresitello
+Name:
+Mark Cresitello
+Title:
+Senior Vice President, Deputy General Counsel and Secretary

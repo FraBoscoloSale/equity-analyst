@@ -1,0 +1,2053 @@
+{
+  "sources": {
+    "10-Q:0001628280-26-071325:10-Q.txt": {
+      "source": "quarterly",
+      "file": "10-Q.txt",
+      "form": "10-Q",
+      "accession": "0001628280-26-071325",
+      "period": "2026-09-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071325/msgr-20260930.htm",
+      "text_sha256": "f985ed5a64c0a188cc7bf8e43cd229c7382c7b9ea8c37ba5a2b6a3e55a39c8b2"
+    },
+    "8-K:0001628280-26-071324:earnings_release.txt": {
+      "source": "release",
+      "file": "earnings_release.txt",
+      "form": "8-K",
+      "accession": "0001628280-26-071324",
+      "period": "2026-11-06",
+      "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgrangerscorpex991forearn.htm",
+      "text_sha256": "ed17aac93a11b60121cbf255278fda6c803f2ab188b36839a92cc31bc18d1671"
+    },
+    "run.input": {
+      "file": "run.json",
+      "kind": "user_input"
+    },
+    "step4": {
+      "file": "facts.json",
+      "kind": "missing_input"
+    },
+    "calculator": {
+      "file": "metrics.json",
+      "kind": "calculator"
+    },
+    "comparison": {
+      "kind": "comparison",
+      "file": "metrics.json + peers.json",
+      "scope": "Available fiscal observations; not synchronized calendar periods."
+    },
+    "evidence.inventory": {
+      "kind": "inventory",
+      "file": "evidence_catalog.json",
+      "scope": "Only the evidence extracted and supplied to the roles; not all disclosures in a filing."
+    }
+  },
+  "evidence": {
+    "missing.business": {
+      "kind": "limitation",
+      "source_id": "evidence.inventory",
+      "statement": "The annual filing BUSINESS section is not available in the validated evidence supplied for this run. This is an extraction/input limitation, not a claim that the issuer did not disclose it.",
+      "item": "business",
+      "status": "not_extracted",
+      "references": [],
+      "required_for": [
+        "Research Analyst"
+      ]
+    },
+    "missing.market_share": {
+      "kind": "limitation",
+      "source_id": "evidence.inventory",
+      "statement": "A verified quantitative market-share measure is not available in the validated evidence supplied for this run. This is an extraction/input limitation, not a claim that the issuer did not disclose it.",
+      "item": "market_share",
+      "status": "not_extracted",
+      "references": [],
+      "required_for": [
+        "Research Analyst"
+      ]
+    },
+    "missing.mda": {
+      "kind": "limitation",
+      "source_id": "evidence.inventory",
+      "statement": "The annual filing MDA section is not available in the validated evidence supplied for this run. This is an extraction/input limitation, not a claim that the issuer did not disclose it.",
+      "item": "mda",
+      "status": "not_extracted",
+      "references": [],
+      "required_for": [
+        "Research Analyst"
+      ]
+    },
+    "missing.price": {
+      "kind": "limitation",
+      "source_id": "evidence.inventory",
+      "statement": "A subject share price for valuation is not available in the validated evidence supplied for this run. This is an extraction/input limitation, not a claim that the issuer did not disclose it.",
+      "item": "price",
+      "status": "not_extracted",
+      "references": [],
+      "required_for": [
+        "Financial Analyst"
+      ]
+    },
+    "missing.quarterly_cash_from_operations": {
+      "kind": "limitation",
+      "source_id": "evidence.inventory",
+      "statement": "Quarterly operating cash flow is not available in the validated evidence supplied for this run. This is an extraction/input limitation, not a claim that the issuer did not disclose it.",
+      "item": "quarterly_cash_from_operations",
+      "status": "not_extracted",
+      "references": [],
+      "required_for": [
+        "Financial Analyst"
+      ]
+    },
+    "missing.quarterly_diluted_eps": {
+      "kind": "limitation",
+      "source_id": "evidence.inventory",
+      "statement": "Reported-quarter diluted eps is not available in the validated evidence supplied for this run. This is an extraction/input limitation, not a claim that the issuer did not disclose it.",
+      "item": "quarterly_diluted_eps",
+      "status": "not_extracted",
+      "references": [],
+      "required_for": [
+        "Financial Analyst"
+      ]
+    },
+    "price": {
+      "kind": "missing_input",
+      "source_id": "step4",
+      "label": "price",
+      "reason": "No aligned Step 4 fact or supplied price.",
+      "required_for": [
+        "Financial Analyst"
+      ]
+    },
+    "quarter.revenue": {
+      "kind": "release_evidence",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "label": "Step 6 reported-quarter revenue evidence (retain column and measure definitions)",
+      "references": [
+        "text.ed17aac93a11.L11",
+        "text.ed17aac93a11.L12",
+        "text.ed17aac93a11.L13",
+        "text.ed17aac93a11.L14",
+        "text.ed17aac93a11.L15",
+        "text.ed17aac93a11.L16",
+        "text.ed17aac93a11.L17",
+        "text.ed17aac93a11.L43",
+        "text.ed17aac93a11.L44",
+        "text.ed17aac93a11.L45",
+        "text.ed17aac93a11.L46",
+        "text.ed17aac93a11.L47",
+        "text.ed17aac93a11.L48",
+        "text.ed17aac93a11.L49",
+        "text.ed17aac93a11.L50",
+        "text.ed17aac93a11.L7"
+      ]
+    },
+    "text.ed17aac93a11.L11": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 11,
+      "text": "Financial Results for the Three Months Ended September 30, 2026 and 2025:"
+    },
+    "text.ed17aac93a11.L12": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 12,
+      "text": "| | | | | | | | | | | | | | | | | | | | | | | | | |"
+    },
+    "text.ed17aac93a11.L13": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 13,
+      "text": "| | Three Months Ended | | | |"
+    },
+    "text.ed17aac93a11.L14": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 14,
+      "text": "| | September 30, | | Change"
+    },
+    "text.ed17aac93a11.L15": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 15,
+      "text": "$ millions | | 2026 | | 2025 | | $ | | %"
+    },
+    "text.ed17aac93a11.L16": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 16,
+      "text": "Revenues | | $ | 14.1 | | | $ | 13.7 | | | $ | 0.4 | | | 3 | %"
+    },
+    "text.ed17aac93a11.L17": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 17,
+      "text": "Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | %"
+    },
+    "text.ed17aac93a11.L43": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 43,
+      "text": "(In thousands, except per share data)"
+    },
+    "text.ed17aac93a11.L44": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 44,
+      "text": "(Unaudited)"
+    },
+    "text.ed17aac93a11.L45": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 45,
+      "text": "| | | | | | | | | | | | | |"
+    },
+    "text.ed17aac93a11.L46": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 46,
+      "text": "| | Three Months Ended"
+    },
+    "text.ed17aac93a11.L47": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 47,
+      "text": "| | September 30,"
+    },
+    "text.ed17aac93a11.L48": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 48,
+      "text": "| | 2026 | | 2025"
+    },
+    "text.ed17aac93a11.L49": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 49,
+      "text": "Revenues | | $ | 14,089 | | | $ | 13,655 |"
+    },
+    "text.ed17aac93a11.L50": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 50,
+      "text": "Direct operating expenses | | 8,802 | | | 3,596 |"
+    },
+    "text.ed17aac93a11.L7": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 7,
+      "text": "NEW YORK, N.Y., November 6, 2026 - MSG Rangers Corp. (NYSE: MSGR) (\"MSG Rangers\" or the \"Company\") today reported financial results for the fiscal first quarter ended September 30, 2026. This marks the first quarter that MSG Rangers is reporting financial results as a standalone company, following its spin-off from MSG Knickerbockers Corp. (NYSE: MSGK) (\"MSG Knicks\"), which was completed on October 26, 2026."
+    },
+    "subject.capex.current": {
+      "kind": "missing_input",
+      "source_id": "step4",
+      "label": "subject.capex.current",
+      "reason": "No aligned Step 4 fact or supplied price.",
+      "required_for": [
+        "Financial Analyst"
+      ]
+    },
+    "subject.cash_from_operations.current": {
+      "kind": "missing_input",
+      "source_id": "step4",
+      "label": "subject.cash_from_operations.current",
+      "reason": "No aligned Step 4 fact or supplied price.",
+      "required_for": [
+        "Financial Analyst"
+      ]
+    },
+    "subject.current_debt.current": {
+      "kind": "missing_input",
+      "source_id": "step4",
+      "label": "subject.current_debt.current",
+      "reason": "No aligned Step 4 fact or supplied price.",
+      "required_for": [
+        "Financial Analyst"
+      ]
+    },
+    "subject.debt_to_equity": {
+      "value": null,
+      "arithmetic": "(N/A + N/A) / N/A",
+      "reason": "missing aligned inputs",
+      "unit": "multiple",
+      "definition": "Noncurrent long-term debt plus current portion / ending stockholders' equity; excludes other short-term borrowings and leases.",
+      "inputs": [
+        "subject.long_term_debt.current",
+        "subject.current_debt.current",
+        "subject.equity.current"
+      ],
+      "kind": "calculation",
+      "source_id": "calculator",
+      "references": [
+        "subject.long_term_debt.current",
+        "subject.current_debt.current",
+        "subject.equity.current"
+      ]
+    },
+    "subject.long_term_debt.current": {
+      "kind": "missing_input",
+      "source_id": "step4",
+      "label": "subject.long_term_debt.current",
+      "reason": "No aligned Step 4 fact or supplied price.",
+      "required_for": [
+        "Financial Analyst"
+      ]
+    },
+    "subject.equity.current": {
+      "kind": "missing_input",
+      "source_id": "step4",
+      "label": "subject.equity.current",
+      "reason": "No aligned Step 4 fact or supplied price.",
+      "required_for": [
+        "Financial Analyst"
+      ]
+    },
+    "subject.diluted_eps.current": {
+      "kind": "missing_input",
+      "source_id": "step4",
+      "label": "subject.diluted_eps.current",
+      "reason": "No aligned Step 4 fact or supplied price.",
+      "required_for": [
+        "Financial Analyst"
+      ]
+    },
+    "subject.equity.prior": {
+      "kind": "missing_input",
+      "source_id": "step4",
+      "label": "subject.equity.prior",
+      "reason": "No aligned Step 4 fact or supplied price.",
+      "required_for": [
+        "Financial Analyst"
+      ]
+    },
+    "subject.free_cash_flow": {
+      "value": null,
+      "arithmetic": "N/A - N/A",
+      "reason": "missing aligned inputs",
+      "unit": "USD",
+      "definition": "Operating cash flow minus cash additions to property and equipment; desk definition, may differ from issuer's adjusted measure.",
+      "inputs": [
+        "subject.cash_from_operations.current",
+        "subject.capex.current"
+      ],
+      "kind": "calculation",
+      "source_id": "calculator",
+      "references": [
+        "subject.cash_from_operations.current",
+        "subject.capex.current"
+      ]
+    },
+    "subject.net_income.current": {
+      "kind": "missing_input",
+      "source_id": "step4",
+      "label": "subject.net_income.current",
+      "reason": "No aligned Step 4 fact or supplied price.",
+      "required_for": [
+        "Financial Analyst"
+      ]
+    },
+    "subject.operating_income.current": {
+      "kind": "missing_input",
+      "source_id": "step4",
+      "label": "subject.operating_income.current",
+      "reason": "No aligned Step 4 fact or supplied price.",
+      "required_for": [
+        "Financial Analyst"
+      ]
+    },
+    "subject.operating_margin": {
+      "value": null,
+      "arithmetic": "N/A / N/A",
+      "reason": "missing aligned inputs",
+      "unit": "fraction",
+      "definition": "Operating income / selected total revenue; annual fraction.",
+      "inputs": [
+        "subject.operating_income.current",
+        "subject.revenue.current"
+      ],
+      "kind": "calculation",
+      "source_id": "calculator",
+      "references": [
+        "subject.operating_income.current",
+        "subject.revenue.current"
+      ]
+    },
+    "subject.revenue.current": {
+      "kind": "missing_input",
+      "source_id": "step4",
+      "label": "subject.revenue.current",
+      "reason": "No aligned Step 4 fact or supplied price.",
+      "required_for": [
+        "Financial Analyst"
+      ]
+    },
+    "subject.pe": {
+      "value": null,
+      "arithmetic": "N/A / N/A",
+      "reason": "missing aligned inputs",
+      "unit": "multiple",
+      "definition": "Supplied market price / latest annual diluted EPS; annual, not forward or trailing-quarter EPS.",
+      "inputs": [
+        "price",
+        "subject.diluted_eps.current"
+      ],
+      "kind": "calculation",
+      "source_id": "calculator",
+      "references": [
+        "price",
+        "subject.diluted_eps.current"
+      ]
+    },
+    "subject.return_on_average_equity": {
+      "value": null,
+      "arithmetic": "N/A / ((N/A + N/A) / 2)",
+      "reason": "missing aligned inputs",
+      "unit": "fraction",
+      "definition": "Annual net income / average beginning and ending stockholders' equity; fraction.",
+      "inputs": [
+        "subject.net_income.current",
+        "subject.equity.current",
+        "subject.equity.prior"
+      ],
+      "kind": "calculation",
+      "source_id": "calculator",
+      "references": [
+        "subject.net_income.current",
+        "subject.equity.current",
+        "subject.equity.prior"
+      ]
+    },
+    "subject.revenue.prior": {
+      "kind": "missing_input",
+      "source_id": "step4",
+      "label": "subject.revenue.prior",
+      "reason": "No aligned Step 4 fact or supplied price.",
+      "required_for": [
+        "Financial Analyst"
+      ]
+    },
+    "subject.revenue_growth": {
+      "value": null,
+      "arithmetic": "(N/A / N/A) - 1",
+      "reason": "missing aligned inputs",
+      "unit": "fraction",
+      "definition": "Selected annual total revenue / prior annual total revenue - 1; fraction.",
+      "inputs": [
+        "subject.revenue.current",
+        "subject.revenue.prior"
+      ],
+      "kind": "calculation",
+      "source_id": "calculator",
+      "references": [
+        "subject.revenue.current",
+        "subject.revenue.prior"
+      ]
+    },
+    "text.ed17aac93a11.L1": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 1,
+      "text": "EX-99.1"
+    },
+    "text.ed17aac93a11.L10": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 10,
+      "text": "MSG Rangers Corp. Executive Chairman and CEO James L. Dolan said, “Following our spin-off, MSG Rangers begins its new chapter as a standalone company with enhanced strategic flexibility. The Rangers are a marquee franchise with a large and passionate fan base, and we remain well-positioned to create long-term value for shareholders.”"
+    },
+    "text.ed17aac93a11.L100": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 100,
+      "text": "Other current assets | | 8,540 | | | 13,430 |"
+    },
+    "text.ed17aac93a11.L101": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 101,
+      "text": "Total current assets | | 118,310 | | | 68,688 |"
+    },
+    "text.ed17aac93a11.L102": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 102,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L103": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 103,
+      "text": "Property and equipment, net of accumulated depreciation and amortization of $42,104 and $41,528 as of September 30, 2026 and June 30, 2026, respectively | | 22,568 | | | 22,944 |"
+    },
+    "text.ed17aac93a11.L104": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 104,
+      "text": "Right-of-use lease assets | | 266,568 | | | 266,802 |"
+    },
+    "text.ed17aac93a11.L105": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 105,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L106": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 106,
+      "text": "Indefinite-lived intangible assets | | 20,378 | | | 20,378 |"
+    },
+    "text.ed17aac93a11.L107": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 107,
+      "text": "Goodwill | | 76,423 | | | 76,423 |"
+    },
+    "text.ed17aac93a11.L108": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 108,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L109": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 109,
+      "text": "Deferred tax assets, net | | 49,793 | | | 42,374 |"
+    },
+    "text.ed17aac93a11.L110": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 110,
+      "text": "Other assets | | 47,843 | | | 19,685 |"
+    },
+    "text.ed17aac93a11.L111": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 111,
+      "text": "Total assets | | $ | 601,883 | | | $ | 517,294 |"
+    },
+    "text.ed17aac93a11.L112": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 112,
+      "text": "| |"
+    },
+    "text.ed17aac93a11.L113": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 113,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L114": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 114,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L115": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 115,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L116": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 116,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L117": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 117,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L118": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 118,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L119": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 119,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L120": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 120,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L121": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 121,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L122": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 122,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L123": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 123,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L124": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 124,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L125": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 125,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L126": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 126,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L127": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 127,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L128": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 128,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L129": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 129,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L130": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 130,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L131": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 131,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L132": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 132,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L133": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 133,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L134": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 134,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L135": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 135,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L136": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 136,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L137": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 137,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L138": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 138,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L139": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 139,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L140": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 140,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L141": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 141,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L142": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 142,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L143": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 143,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L144": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 144,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L145": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 145,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L146": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 146,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L147": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 147,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L148": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 148,
+      "text": "6"
+    },
+    "text.ed17aac93a11.L149": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 149,
+      "text": "MSG RANGERS CORP."
+    },
+    "text.ed17aac93a11.L150": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 150,
+      "text": "COMBINED BALANCE SHEETS (continued)"
+    },
+    "text.ed17aac93a11.L151": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 151,
+      "text": "(In thousands, except per share data)"
+    },
+    "text.ed17aac93a11.L152": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 152,
+      "text": "| | | | | | | | | | | | | |"
+    },
+    "text.ed17aac93a11.L153": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 153,
+      "text": "| | September 30, 2026 | | June 30, 2026"
+    },
+    "text.ed17aac93a11.L154": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 154,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L155": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 155,
+      "text": "LIABILITIES AND EQUITY | | (Unaudited) | |"
+    },
+    "text.ed17aac93a11.L156": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 156,
+      "text": "Current Liabilities: | | | |"
+    },
+    "text.ed17aac93a11.L157": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 157,
+      "text": "Accounts payable | | $ | 2,535 | | | $ | 1,703 |"
+    },
+    "text.ed17aac93a11.L158": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 158,
+      "text": "Net related party payables | | 6 | | | 47 |"
+    },
+    "text.ed17aac93a11.L159": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 159,
+      "text": "Debt | | 16,500 | | | 16,500 |"
+    },
+    "text.ed17aac93a11.L160": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 160,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L161": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 161,
+      "text": "Accrued liabilities: | | | |"
+    },
+    "text.ed17aac93a11.L162": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 162,
+      "text": "Employee-related costs | | 17,771 | | | 18,258 |"
+    },
+    "text.ed17aac93a11.L163": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 163,
+      "text": "League-related accruals | | 57,886 | | | 87,250 |"
+    },
+    "text.ed17aac93a11.L164": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 164,
+      "text": "Other accrued liabilities | | 2,260 | | | 1,166 |"
+    },
+    "text.ed17aac93a11.L165": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 165,
+      "text": "Operating lease liabilities, current | | 19,429 | | | 19,288 |"
+    },
+    "text.ed17aac93a11.L166": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 166,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L167": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 167,
+      "text": "Deferred revenue | | 139,365 | | | 75,143 |"
+    },
+    "text.ed17aac93a11.L168": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 168,
+      "text": "Total current liabilities | | 255,752 | | | 219,355 |"
+    },
+    "text.ed17aac93a11.L169": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 169,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L170": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 170,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L171": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 171,
+      "text": "Operating lease liabilities, noncurrent | | 308,263 | | | 312,309 |"
+    },
+    "text.ed17aac93a11.L172": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 172,
+      "text": "Other employee-related costs | | 14,708 | | | 18,347 |"
+    },
+    "text.ed17aac93a11.L173": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 173,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L174": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 174,
+      "text": "Deferred revenue, noncurrent | | 195 | | | 205 |"
+    },
+    "text.ed17aac93a11.L175": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 175,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L176": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 176,
+      "text": "Total liabilities | | 578,918 | | | 550,216 |"
+    },
+    "text.ed17aac93a11.L177": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 177,
+      "text": "Commitments and contingencies | | | |"
+    },
+    "text.ed17aac93a11.L178": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 178,
+      "text": "MSG Rangers Divisional Equity (Deficit): | | | |"
+    },
+    "text.ed17aac93a11.L179": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 179,
+      "text": "MSG Knicks investment | | 22,965 | | | (32,922) |"
+    },
+    "text.ed17aac93a11.L18": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 18,
+      "text": "Adjusted operating loss (1) | | $ | (21.3) | | | $ | (10.4) | | | $ | (10.9) | | | NM"
+    },
+    "text.ed17aac93a11.L180": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 180,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L181": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 181,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L182": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 182,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L183": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 183,
+      "text": "Total MSG Rangers divisional equity (deficit) | | 22,965 | | | (32,922) |"
+    },
+    "text.ed17aac93a11.L184": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 184,
+      "text": "Total liabilities and MSG Rangers divisional equity (deficit) | | $ | 601,883 | | | $ | 517,294 |"
+    },
+    "text.ed17aac93a11.L185": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 185,
+      "text": "7"
+    },
+    "text.ed17aac93a11.L186": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 186,
+      "text": "MSG RANGERS CORP."
+    },
+    "text.ed17aac93a11.L187": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 187,
+      "text": "SELECTED CASH FLOW INFORMATION"
+    },
+    "text.ed17aac93a11.L188": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 188,
+      "text": "(In thousands)"
+    },
+    "text.ed17aac93a11.L189": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 189,
+      "text": "(Unaudited)"
+    },
+    "text.ed17aac93a11.L19": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 19,
+      "text": "Note: Does not foot due to rounding. NM – Percentage is not meaningful."
+    },
+    "text.ed17aac93a11.L190": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 190,
+      "text": "| | | | | | | | | | | | | |"
+    },
+    "text.ed17aac93a11.L191": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 191,
+      "text": "| | Three Months Ended"
+    },
+    "text.ed17aac93a11.L192": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 192,
+      "text": "| | September 30,"
+    },
+    "text.ed17aac93a11.L193": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 193,
+      "text": "| | 2026 | | 2025"
+    },
+    "text.ed17aac93a11.L194": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 194,
+      "text": "Net cash used in operating activities | | $ | (71,188) | | | $ | (5,111) |"
+    },
+    "text.ed17aac93a11.L195": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 195,
+      "text": "Net cash used in investing activities | | (194) | | | (159) |"
+    },
+    "text.ed17aac93a11.L196": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 196,
+      "text": "Net cash provided by financing activities | | 71,273 | | | 5,280 |"
+    },
+    "text.ed17aac93a11.L197": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 197,
+      "text": "Net (decrease) increase in cash, cash equivalents and restricted cash | | (109) | | | 10 |"
+    },
+    "text.ed17aac93a11.L198": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 198,
+      "text": "Cash, cash equivalents and restricted cash at beginning of period | | 160 | | | 8,720 |"
+    },
+    "text.ed17aac93a11.L199": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 199,
+      "text": "Cash, cash equivalents and restricted cash at end of period | | $ | 51 | | | $ | 8,730 |"
+    },
+    "text.ed17aac93a11.L2": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 2,
+      "text": "2"
+    },
+    "text.ed17aac93a11.L20": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 20,
+      "text": "1. See page 3 of this earnings release for the definition of adjusted operating income (loss) included in the discussion of non-GAAP financial measures."
+    },
+    "text.ed17aac93a11.L200": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 200,
+      "text": "8"
+    },
+    "text.ed17aac93a11.L21": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 21,
+      "text": "1"
+    },
+    "text.ed17aac93a11.L22": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 22,
+      "text": "Summary of Financial Results"
+    },
+    "text.ed17aac93a11.L23": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 23,
+      "text": "For the fiscal 2027 first quarter, revenues of $14.1 million increased $0.4 million, or 3%, as compared to the prior year period. This primarily reflected higher revenues from league distributions of $1.2 million, mainly due to an increase in certain league distributions unrelated to national media rights fees, partially offset by other revenue decreases."
+    },
+    "text.ed17aac93a11.L24": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 24,
+      "text": "Direct operating expenses of $8.8 million increased $5.2 million as compared to the prior year period. This was primarily driven by (i) higher net provisions for certain team personnel transactions of $3.1 million and (ii) higher team personnel compensation of $1.3 million."
+    },
+    "text.ed17aac93a11.L25": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 25,
+      "text": "Selling, general and administrative expenses of $28.1 million increased $5.8 million, or 26%, as compared to the prior year period. This increase was primarily driven by (i) expenses related to the spin-off transaction in the current year period of $3.6 million and (ii) higher employee compensation and related benefits of $1.4 million."
+    },
+    "text.ed17aac93a11.L26": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 26,
+      "text": "Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses."
+    },
+    "text.ed17aac93a11.L27": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 27,
+      "text": "About MSG Rangers Corp."
+    },
+    "text.ed17aac93a11.L28": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 28,
+      "text": "MSG Rangers Corp. (MSG Rangers) is a leading professional sports company, with a collection of assets that includes the New York Rangers (NHL) and a development league team, the Hartford Wolf Pack (AHL). MSG Rangers also operates a professional sports team performance center, the MSG Training Center in Greenburgh, NY. More information is available at msgrangers.com."
+    },
+    "text.ed17aac93a11.L29": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 29,
+      "text": "2"
+    },
+    "text.ed17aac93a11.L3": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 3,
+      "text": "msgrangerscorpex991forearn.htm"
+    },
+    "text.ed17aac93a11.L30": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 30,
+      "text": "Non-GAAP Financial Measures"
+    },
+    "text.ed17aac93a11.L31": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 31,
+      "text": "We define adjusted operating income (loss), which is a non-GAAP financial measure, as operating income (loss) excluding (i) depreciation, amortization and impairments of property and equipment, goodwill and other intangible assets, (ii) share-based compensation expense or benefit, (iii) restructuring charges or credits, (iv) gains or losses on sales or dispositions of businesses, and (v) the impact of purchase accounting adjustments related to business acquisitions. Because it is based upon operating income (loss), adjusted operating income (loss) also excludes interest expense (including cash interest expense) and other non-operating income and expense items. We believe that the exclusion of share-based compensation expense or benefit allows investors to better track the performance of our business without regard to the settlement of an obligation that is not expected to be made in cash."
+    },
+    "text.ed17aac93a11.L32": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 32,
+      "text": "We believe adjusted operating income (loss) is an appropriate measure for evaluating the operating performance of our Company. Adjusted operating income (loss) and similar measures with similar titles are common performance measures used by investors and analysts to analyze our performance. Internally, we use revenues and adjusted operating income (loss) as the most important indicators of our business performance, and evaluate management’s effectiveness with specific reference to these indicators. Adjusted operating income (loss) should be viewed as a supplement to and not a substitute for operating income (loss), net income (loss), cash flows from operating activities, and other measures of performance and/or liquidity presented in accordance with U.S. generally accepted accounting principles (“GAAP”). Since adjusted operating income (loss) is not a measure of performance calculated in accordance with GAAP, this measure may not be comparable to similar measures with similar titles used by other companies. For a reconciliation of operating income (loss) to adjusted operating income (loss), please see page 5 of this earnings release."
+    },
+    "text.ed17aac93a11.L33": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 33,
+      "text": "Forward-Looking Statements"
+    },
+    "text.ed17aac93a11.L34": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 34,
+      "text": "This press release may contain statements that constitute forward-looking statements within the meaning of the Private Securities Litigation Reform Act of 1995. Investors are cautioned that any such forward-looking statements are not guarantees of future performance or results and involve risks and uncertainties, and that actual results, developments or events may differ materially from those in the forward-looking statements as a result of various factors, including financial community perceptions of the Company and its business, operations, financial condition and the industry in which it operates, and the factors described in the Company’s filings with the Securities and Exchange Commission, including the sections titled “Risk Factors” and “Management’s Discussion and Analysis of Financial Condition and Results of Operations” contained therein. The Company disclaims any obligation to update any forward-looking statements contained herein."
+    },
+    "text.ed17aac93a11.L35": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 35,
+      "text": "# # #"
+    },
+    "text.ed17aac93a11.L36": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 36,
+      "text": "Contacts :"
+    },
+    "text.ed17aac93a11.L37": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 37,
+      "text": "| | | | |"
+    },
+    "text.ed17aac93a11.L38": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 38,
+      "text": "Ari Danes, CFA Investor Relations (212) 465-6072 |"
+    },
+    "text.ed17aac93a11.L39": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 39,
+      "text": "Grace Kaminer Investor Relations (212) 631-5076 |"
+    },
+    "text.ed17aac93a11.L4": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 4,
+      "text": "EX-99.1"
+    },
+    "text.ed17aac93a11.L40": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 40,
+      "text": "3"
+    },
+    "text.ed17aac93a11.L41": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 41,
+      "text": "MSG RANGERS CORP."
+    },
+    "text.ed17aac93a11.L42": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 42,
+      "text": "COMBINED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS"
+    },
+    "text.ed17aac93a11.L5": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 5,
+      "text": "MSG RANGERS CORP. REPORTS"
+    },
+    "text.ed17aac93a11.L51": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 51,
+      "text": "Selling, general and administrative expenses | | 28,088 | | | 22,286 |"
+    },
+    "text.ed17aac93a11.L52": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 52,
+      "text": "Depreciation and amortization | | 576 | | | 616 |"
+    },
+    "text.ed17aac93a11.L53": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 53,
+      "text": "Restructuring charges | | 211 | | | — |"
+    },
+    "text.ed17aac93a11.L54": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 54,
+      "text": "Operating loss | | (23,588) | | | (12,843) |"
+    },
+    "text.ed17aac93a11.L55": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 55,
+      "text": "Other income (expense): | | | |"
+    },
+    "text.ed17aac93a11.L56": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 56,
+      "text": "Interest income | | 6 | | | 13 |"
+    },
+    "text.ed17aac93a11.L57": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 57,
+      "text": "Interest expense | | (694) | | | (920) |"
+    },
+    "text.ed17aac93a11.L58": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 58,
+      "text": "Miscellaneous (expense) income, net | | (15) | | | (21) |"
+    },
+    "text.ed17aac93a11.L59": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 59,
+      "text": "Loss before income taxes | | (24,291) | | | (13,771) |"
+    },
+    "text.ed17aac93a11.L6": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 6,
+      "text": "FISCAL 2027 FIRST QUARTER RESULTS"
+    },
+    "text.ed17aac93a11.L60": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 60,
+      "text": "Income tax benefit | | 7,405 | | | 2,966 |"
+    },
+    "text.ed17aac93a11.L61": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 61,
+      "text": "Net loss and comprehensive loss | | $ | (16,886) | | | $ | (10,805) |"
+    },
+    "text.ed17aac93a11.L62": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 62,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L63": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 63,
+      "text": "Basic and diluted earnings (loss) per common share attributable to MSG Rangers stockholders (1) | | $ | (1.39) | | | $ | (0.89) |"
+    },
+    "text.ed17aac93a11.L64": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 64,
+      "text": "(1) 12,105 common shares of the Company were outstanding as of October 26, 2026, the date of the spin-off from MSG Knickerbockers Corp. This share amount is being utilized for the calculation of basic loss per share for the three months ended September 30, 2026 and 2025 because the Company was not a standalone public company prior to the October 26, 2026 spin-off."
+    },
+    "text.ed17aac93a11.L65": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 65,
+      "text": "4"
+    },
+    "text.ed17aac93a11.L66": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 66,
+      "text": "MSG RANGERS CORP."
+    },
+    "text.ed17aac93a11.L67": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 67,
+      "text": "ADJUSTMENTS TO RECONCILE OPERATING INCOME (LOSS) TO"
+    },
+    "text.ed17aac93a11.L68": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 68,
+      "text": "ADJUSTED OPERATING INCOME (LOSS)"
+    },
+    "text.ed17aac93a11.L69": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 69,
+      "text": "(In thousands)"
+    },
+    "text.ed17aac93a11.L70": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 70,
+      "text": "(Unaudited)"
+    },
+    "text.ed17aac93a11.L71": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 71,
+      "text": "The following is a description of the adjustments to operating loss in arriving at adjusted operating loss as described in this earnings release:"
+    },
+    "text.ed17aac93a11.L72": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 72,
+      "text": "• Depreciation and amortization. This adjustment eliminates depreciation, amortization and impairments of property and equipment, goodwill and other intangible assets in all periods."
+    },
+    "text.ed17aac93a11.L73": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 73,
+      "text": "• Share-based compensation. This adjustment eliminates the compensation expense related to restricted stock units and stock options in all periods."
+    },
+    "text.ed17aac93a11.L74": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 74,
+      "text": "• Restructuring charges. This adjustment eliminates costs related to termination benefits provided to certain employees."
+    },
+    "text.ed17aac93a11.L75": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 75,
+      "text": "| | | | | | | | | | | | | |"
+    },
+    "text.ed17aac93a11.L76": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 76,
+      "text": "| | Three Months Ended"
+    },
+    "text.ed17aac93a11.L77": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 77,
+      "text": "| | September 30,"
+    },
+    "text.ed17aac93a11.L78": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 78,
+      "text": "| | 2026 | | 2025"
+    },
+    "text.ed17aac93a11.L79": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 79,
+      "text": "Operating loss | | $ | (23,588) | | | $ | (12,843) |"
+    },
+    "text.ed17aac93a11.L8": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 8,
+      "text": "The Company's fiscal 2027 and 2026 results are presented in accordance with accounting requirements for the preparation of carve-out financial statements, reflecting the results of the Rangers businesses previously owned and operated by MSG Knicks. These results do not include all of the actual expenses that would have been incurred by MSG Rangers had it been a standalone company for the periods presented."
+    },
+    "text.ed17aac93a11.L80": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 80,
+      "text": "Depreciation and amortization | | 576 | | | 616 |"
+    },
+    "text.ed17aac93a11.L81": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 81,
+      "text": "Share-based compensation | | 1,500 | | | 1,800 |"
+    },
+    "text.ed17aac93a11.L82": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 82,
+      "text": "Restructuring charges | | 211 | | | — |"
+    },
+    "text.ed17aac93a11.L83": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 83,
+      "text": "Adjusted operating loss | | $ | (21,301) | | | $ | (10,427) |"
+    },
+    "text.ed17aac93a11.L84": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 84,
+      "text": "5"
+    },
+    "text.ed17aac93a11.L85": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 85,
+      "text": "MSG RANGERS CORP."
+    },
+    "text.ed17aac93a11.L86": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 86,
+      "text": "COMBINED BALANCE SHEETS"
+    },
+    "text.ed17aac93a11.L87": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 87,
+      "text": "(In thousands, except per share data)"
+    },
+    "text.ed17aac93a11.L88": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 88,
+      "text": "| | | | | | | | | | | | | |"
+    },
+    "text.ed17aac93a11.L89": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 89,
+      "text": "| | September 30, 2026 | | June 30, 2026"
+    },
+    "text.ed17aac93a11.L9": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 9,
+      "text": "For the fiscal 2027 first quarter, the Company generated revenues of $14.1 million, an increase of $0.4 million, or 3%, as compared to the prior year period. In addition, the Company reported an operating loss of $23.6 million, an increase of $10.7 million, and adjusted operating loss of $21.3 million, an increase of $10.9 million, both as compared to the prior year period. (1)"
+    },
+    "text.ed17aac93a11.L90": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 90,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L91": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 91,
+      "text": "ASSETS | | (Unaudited) | |"
+    },
+    "text.ed17aac93a11.L92": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 92,
+      "text": "Current Assets: | | | |"
+    },
+    "text.ed17aac93a11.L93": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 93,
+      "text": "Cash and cash equivalents | | $ | 51 | | | $ | 160 |"
+    },
+    "text.ed17aac93a11.L94": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 94,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L95": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 95,
+      "text": "Accounts receivable, net of allowance for doubtful accounts of $0 as of September 30, 2026 and June 30, 2026 | | 8,258 | | | 9,033 |"
+    },
+    "text.ed17aac93a11.L96": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 96,
+      "text": "| | | |"
+    },
+    "text.ed17aac93a11.L97": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 97,
+      "text": "Net related party receivables | | 44,518 | | | 13,399 |"
+    },
+    "text.ed17aac93a11.L98": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 98,
+      "text": "Prepaid expenses | | 56,943 | | | 32,666 |"
+    },
+    "text.ed17aac93a11.L99": {
+      "kind": "text",
+      "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+      "line": 99,
+      "text": "| | | |"
+    },
+    "text.f985ed5a64c0.L105": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 105,
+      "text": "| | | |"
+    },
+    "text.f985ed5a64c0.L106": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 106,
+      "text": "Indefinite-lived intangible assets | | 20,378 | | | 20,378 |"
+    },
+    "text.f985ed5a64c0.L107": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 107,
+      "text": "Goodwill | | 76,423 | | | 76,423 |"
+    },
+    "text.f985ed5a64c0.L259": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 259,
+      "text": "The combined financial statements as of September 30, 2026 and for the three months ended September 30, 2026 and 2025 presented herein are unaudited; however, in the opinion of management, the accompanying financial statements contain all adjustments, consisting of only normal recurring adjustments, necessary for a fair statement of the results for the interim periods presented. The combined balance sheet as of June 30, 2026 was derived from the audited combined annual financial statements but does not contain all of the footnote disclosures from the audited combined annual financial statements."
+    },
+    "text.f985ed5a64c0.L260": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 260,
+      "text": "The results of operations for the periods presented are not necessarily indicative of the results that might be expected for future interim periods or for the full fiscal year. The dependence of the Company on revenues from the Rangers generally means it earns a disproportionate share of its revenues in the second and third quarters of the Company’s fiscal year, which is when the majority of the Rangers’ games are played."
+    },
+    "text.f985ed5a64c0.L261": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 261,
+      "text": "Note 2. Accounting Policies"
+    },
+    "text.f985ed5a64c0.L264": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 264,
+      "text": "Use of Estimates"
+    },
+    "text.f985ed5a64c0.L265": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 265,
+      "text": "The preparation of the accompanying combined financial statements in conformity with GAAP requires management to make estimates and assumptions about future events. These estimates and the underlying assumptions affect the amounts of assets and liabilities reported, disclosures about contingent assets and liabilities, and reported amounts of revenues and expenses. Such estimates include the valuation of accounts receivable, other current assets, goodwill, intangible assets, other long-lived assets, deferred tax valuation allowance, tax accruals and other liabilities. In addition, estimates are used in revenue recognition, revenue sharing expense (net of escrow), income tax expense (benefit), performance and share-based compensation, depreciation and amortization, litigation matters and other matters. Management believes its use of estimates in the combined financial statements to be reasonable."
+    },
+    "text.f985ed5a64c0.L266": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 266,
+      "text": "Management evaluates its estimates on an ongoing basis using historical experience and other factors, including the general economic environment and actions it may take in the future. The Company adjusts such estimates when facts and circumstances dictate. However, these estimates may involve significant uncertainties and judgments and cannot be determined with precision. In addition, these estimates are based on management’s best judgment at a point in time and as such these estimates may ultimately differ from actual results. Changes in estimates resulting from weakness in the economic environment or other factors beyond the Company’s control could be material and would be reflected in the Company’s financial statements in future periods."
+    },
+    "text.f985ed5a64c0.L274": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 274,
+      "text": "Earnings (Loss) Per Common Share"
+    },
+    "text.f985ed5a64c0.L275": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 275,
+      "text": "Basic earnings (loss) per common share (“EPS”) is based upon net income (loss) available to common stockholders divided by the weighted-average number of common shares outstanding during the period. On the Distribution Date, 12,105 common shares of the Company were outstanding as of October 26, 2026. This share amount is being utilized for the calculation of basic loss per share for the three months ended September 30, 2026 and 2025 because the Company was not a standalone public company prior to the Rangers Distribution. In addition, the computation of diluted loss per share equals the basic loss per common share calculation since there was no stock trading information available to compute the dilutive effect of shares issuable under share-based compensation plans needed under the treasury method in accordance with ASC Topic 260, Earnings Per Share and any such shares would be antidilutive."
+    },
+    "text.f985ed5a64c0.L276": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 276,
+      "text": "Recent Accounting Pronouncements"
+    },
+    "text.f985ed5a64c0.L31": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 31,
+      "text": "Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (§232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). ☑ Yes ☐ No"
+    },
+    "text.f985ed5a64c0.L32": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 32,
+      "text": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of “large accelerated filer,” “accelerated filer,” “smaller reporting company,” and “emerging growth company” in Rule 12b-2 of the Exchange Act."
+    },
+    "text.f985ed5a64c0.L33": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 33,
+      "text": "| | | | | | | | | | | | | |"
+    },
+    "text.f985ed5a64c0.L37": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 37,
+      "text": "If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☑"
+    },
+    "text.f985ed5a64c0.L379": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 379,
+      "text": "During the first quarter of fiscal year 2027, the Company performed its annual impairment test of goodwill and determined that there were no impairments of goodwill identified as of the impairment test date. The Company’s goodwill was $ 76,423 as of September 30, 2026 and June 30, 2026."
+    },
+    "text.f985ed5a64c0.L38": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 38,
+      "text": "Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). ☐ Yes ☑ No"
+    },
+    "text.f985ed5a64c0.L380": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 380,
+      "text": "During the first quarter of fiscal year 2027, the Company performed its annual impairment test of identifiable indefinite-lived intangible assets and determined that there were no impairments identified as of the impairment test date. The Company’s indefinite-lived intangible assets were $ 20,378 as of September 30, 2026 and June 30, 2026, which consisted of the Company’s sports franchises."
+    },
+    "text.f985ed5a64c0.L381": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 381,
+      "text": "Note 9. Fair Value Measurements"
+    },
+    "text.f985ed5a64c0.L39": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 39,
+      "text": "Number of shares of common stock outstanding as of October 30, 2026:"
+    },
+    "text.f985ed5a64c0.L414": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 414,
+      "text": "All borrowings under the Rangers Revolving Credit Facility are subject to the satisfaction of certain customary conditions. Borrowings under the Rangers Revolving Credit Facility bear interest at a floating rate, which at the option of Rangers LLC may be either (i) a base rate plus a margin ranging from 0.375 % to 0.625 % per annum or (ii) term Secured Overnight Financing Rate (“SOFR”) plus a credit spread adjustment of 0.100 % per annum plus a margin ranging from 1.375 % to 1.625 % per annum depending on the credit rating applicable to the NHL’s league-wide credit facility. Rangers LLC is required to pay a commitment fee ranging from 0.350 % to 0.400 % per annum in respect of the average daily unused commitments under the Rangers Revolving Credit Facility . There were no borrowings under the Rangers Revolving Credit Facility as of September 30, 2026. The Company did not make any interest payments in respect of the Rangers Revolving Credit Facility during the three months ended September 30, 2026 and 2025."
+    },
+    "text.f985ed5a64c0.L415": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 415,
+      "text": "All obligations under the Rangers Revolving Credit Facility are, subject to the Rangers NHL Advance Agreement (as defined below), secured by a first lien security interest in certain of Rangers LLC ’s assets, including, but not limited to, (i) Rangers LLC ’s membership rights in the NHL, (ii) revenues to be paid to Rangers LLC by the NHL pursuant to certain U.S. and Canadian national broadcast agreements, and (iii) revenues to be paid to Rangers LLC pursuant to local media contracts."
+    },
+    "text.f985ed5a64c0.L416": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 416,
+      "text": "Subject to customary notice and minimum amount conditions, Rangers LLC may voluntarily prepay outstanding loans under the Rangers Revolving Credit Facility at any time, in whole or in part, without premium or penalty (except for customary breakage costs with respect to SOFR-based loans). Rangers LLC is required to make mandatory prepayments in certain circumstances, including without limitation if qualified revenues are less than 17 % of the maximum available amount under the 2025 Rangers Credit Agreement."
+    },
+    "text.f985ed5a64c0.L488": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 488,
+      "text": "(Continued)"
+    },
+    "text.f985ed5a64c0.L489": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 489,
+      "text": "• A marketing sponsorship allocation agreement with MSG Knicks, MSG Entertainment and Sphere Entertainment, pursuant to which each party receives an allocation of certain sponsorship and signage revenues associated with sponsorship agreements that include the assets of the Company, MSG Knicks, MSG Entertainment and Sphere Entertainment, as applicable, based on the percentage of revenue each company earns relative to the total contract value."
+    },
+    "text.f985ed5a64c0.L490": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 490,
+      "text": "In connection with the Rangers Distribution, the Company was assigned a portion of warrants exercisable for approximately 6.5 % of the equity interests in MSG Networks."
+    },
+    "text.f985ed5a64c0.L602": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 602,
+      "text": "• lack of operating history as a standalone public company and costs associated with being an independent public company;"
+    },
+    "text.f985ed5a64c0.L603": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 603,
+      "text": "• the tax-free treatment of the Rangers Distribution (as defined below);"
+    },
+    "text.f985ed5a64c0.L604": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 604,
+      "text": "• our ability to achieve the intended benefits of the Rangers Distribution;"
+    },
+    "text.f985ed5a64c0.L622": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 622,
+      "text": "Seasonality of Our Business. This section discusses the seasonal performance of the Company ."
+    },
+    "text.f985ed5a64c0.L623": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 623,
+      "text": "Recently Issued Accounting Pronouncements and Critical Accounting Estimates. This section discusses accounting pronouncements that have been adopted by the Company, if any, as well as the results of the Company’s annual impairment testing of goodwill and identifiable indefinite-lived intangible assets performed during the first quarter of fiscal year 2027. This section should be read together with our critical accounting policies, which are discussed in the Information Statement under “Management’s Discussion and Analysis of Financial Condition and Results of Operations — Recently Issued Accounting Pronouncements and Critical Accounting Estimates — Critical Accounting Estimates” and in the notes to the combined financial statements of the Company included therein."
+    },
+    "text.f985ed5a64c0.L624": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 624,
+      "text": "Factors Affecting Operating Results"
+    },
+    "text.f985ed5a64c0.L625": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 625,
+      "text": "General"
+    },
+    "text.f985ed5a64c0.L626": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 626,
+      "text": "Our operating results are largely dependent on the continued popularity and/or on-ice competitiveness of the Rangers, which have a direct effect on ticket sales for the team’s home games and are the team’s largest single source of revenue. In addition, the popularity of the Rangers can generate fan enthusiasm, resulting in sustained premium seating, suite, sponsorship, food and beverage and merchandise sales. Furthermore, success in the regular season may qualify the Rangers for participation in post-season playoffs, which provides us with a significant source of additional revenue, operating income and adjusted operating income. As with other sports teams, the competitive position of the Rangers depends primarily on our ability to develop, obtain and retain talented players, for which we compete with other professional hockey teams."
+    },
+    "text.f985ed5a64c0.L627": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 627,
+      "text": "A significant factor in our ability to attract and retain talented players is player compensation. The Company’s operating results reflect the impact of high costs for player salaries and salaries of non-player team personnel. In addition, we have incurred significant charges for costs associated with transactions relating to our players for season-ending and career-ending injuries and for trades, waivers and contract terminations of players and other team personnel, including team executives. Waiver and termination costs reflect our efforts to improve the competitiveness of the Rangers. These transactions can result in significant charges as the Company recognizes the estimated ultimate costs of these events in the period in which they occur, although amounts due to these individuals are generally paid over their remaining contract terms. We expect to continue to pursue opportunities to improve the overall quality of the Rangers and our efforts may result in continued significant expenses and charges. Such expenses and charges may result in future operating losses although it is not possible to predict their timing or amount. In addition, our performance has been, and may in the future be, impacted by work stoppages. See “— Risk Factors — Economic and Business Relationship Risks — Labor matters may have a material negative effect on our business and results of operations .” in the Information Statement."
+    },
+    "text.f985ed5a64c0.L698": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 698,
+      "text": "See Note 14 to the combined financial statements included in “Part I — Item 1. Financial Statements” of this Quarterly Report on Form 10-Q for a discussion of the Company’s income taxes. Income taxes recognized in the combined financial statements and resulting effective tax rates may not be reflective of the taxes that the Company expects to recognize in the future as a standalone entity."
+    },
+    "text.f985ed5a64c0.L699": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 699,
+      "text": "Changes in laws and regulations have limited and in the future could further limit the availability of tax benefits or deductions that the Company expects to claim or otherwise increase the taxes imposed on the Company’s operations. For example, Section 162(m) of the U.S. Internal Revenue Code generally limits a publicly held corporation’s deduction for compensation paid to each covered employee to $1 million per year. Effective for our tax year beginning on July 1, 2027, Section 162(m) expands the definition of “covered employee” to include the five highest compensated employees for the taxable year other than our principal executive officer, principal financial officer, and the three highest compensated executive officers. This expanded provision will apply to players on the Rangers, and would cause a significant amount of compensation expense to be nondeductible in Fiscal Year 2028 and beyond. See “— Operational Risks — We are subject to governmental regulation, including tax laws and regulations, which can change, and any failure to comply with these regulations may have a material negative effect on our business and results of operations ” in our Information Statement."
+    },
+    "text.f985ed5a64c0.L700": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 700,
+      "text": "Adjusted operating income (loss)"
+    },
+    "text.f985ed5a64c0.L701": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 701,
+      "text": "The Company evaluates performance based on several factors, of which the key financial measure is operating income (loss) excluding (i) depreciation, amortization and impairments of property and equipment, goodwill and other intangible assets, (ii) share-based compensation expense or benefit, (iii) restructuring charges or credits, (iv) gains or losses on sales or dispositions"
+    },
+    "text.f985ed5a64c0.L703": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 703,
+      "text": "Table of Contents"
+    },
+    "text.f985ed5a64c0.L704": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 704,
+      "text": "of businesses, and (v) the impact of purchase accounting adjustments related to business acquisitions, which is referred to as adjusted operating income (loss), a non-GAAP measure."
+    },
+    "text.f985ed5a64c0.L705": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 705,
+      "text": "Management believes that the exclusion of share-based compensation expense allows investors to better track the performance of the Company’s business without regard to the settlement of an obligation that is not expected to be made in cash."
+    },
+    "text.f985ed5a64c0.L706": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 706,
+      "text": "The Company believes adjusted operating income (loss) is an appropriate measure for evaluating the operating performance of the Company. Adjusted operating income (loss) and similar measures with similar titles are common performance measures used by investors and analysts to analyze the Company’s performance. The Company uses revenues and adjusted operating income (loss) measures as the most important indicators of its business performance and evaluates management’s effectiveness with specific reference to these indicators."
+    },
+    "text.f985ed5a64c0.L707": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 707,
+      "text": "Adjusted operating income (loss) should be viewed as a supplement to and not a substitute for operating income (loss), net income (loss), cash flows from operating activities, and other measures of performance and/or liquidity presented in accordance with GAAP. Since adjusted operating income (loss) is not a measure of performance calculated in accordance with GAAP, this measure may not be comparable to similar measures with similar titles used by other companies. The Company has presented the components that reconcile operating income (loss), the most directly comparable GAAP financial measure, to adjusted operating income (loss)."
+    },
+    "text.f985ed5a64c0.L708": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 708,
+      "text": "The following is a reconciliation of operating loss to adjusted operating loss for the three months ended September 30, 2026 and 2025:"
+    },
+    "text.f985ed5a64c0.L709": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 709,
+      "text": "| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |"
+    },
+    "text.f985ed5a64c0.L718": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 718,
+      "text": "| | | | | | | | | | | | | | | |"
+    },
+    "text.f985ed5a64c0.L719": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 719,
+      "text": "Adjusted operating loss | | $ | (21,301) | | | $ | (10,427) | | | $ | (10,874) | | | NM | | | | | | | |"
+    },
+    "text.f985ed5a64c0.L720": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 720,
+      "text": "______________"
+    },
+    "text.f985ed5a64c0.L721": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 721,
+      "text": "NM - Percentage is not meaningful"
+    },
+    "text.f985ed5a64c0.L722": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 722,
+      "text": "For the three months ended September 30, 2026, adjusted operating loss increased $10,874 to $21,301 as compared to the prior year period. The increase in adjusted operating loss was primarily due to higher selling, general and administrative expenses and higher direct operating expenses."
+    },
+    "text.f985ed5a64c0.L723": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 723,
+      "text": "Liquidity and Capital Resources"
+    },
+    "text.f985ed5a64c0.L725": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 725,
+      "text": "As further described in “— Introduction — Spin-off Transaction” on October 26, 2026, the Company completed the Rangers Distribution. Although the information set forth in this Quarterly Report on Form 10-Q generally is as of September 30, 2026 and does not give effect to the Rangers Distribution, the information set forth in this section also focuses on the liquidity and capital resources of the Company following the Rangers Distribution."
+    },
+    "text.f985ed5a64c0.L726": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 726,
+      "text": "Our primary sources of liquidity are cash and cash equivalents, cash flow from operations and available borrowing capacity under our credit facility. See Note 11 to the combined financial statements included in “Part I — Item 1. Financial Statements” of this Quarterly Report on Form 10-Q for a discussion of the 2025 Rangers Credit Agreement and the Rangers NHL Advance Agreement (each as defined therein). In connection with the Rangers Distribution, a cash contribution of $19,095 was received by the Company from MSG Knicks in October 2026. In addition, subsequent to the Rangers Distribution, the Company received cash payments of $40,905 from MSG Entertainment related to the collection of deferred revenue for suites and sponsorship."
+    },
+    "text.f985ed5a64c0.L727": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 727,
+      "text": "Our principal uses of cash include the operation of our businesses, working capital-related items, and the repayment of outstanding debt, including under the Rangers NHL Advance Agreement."
+    },
+    "text.f985ed5a64c0.L728": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 728,
+      "text": "As of September 30, 2026, we had $51 in C ash and cash equivale nts. In addition, as of September 30, 2026, the Company’s deferred revenue obligations were $95,140, net of billed, but not yet collected deferred revenue. This balance is primarily comprised of obligations in connection with tickets and suites. The outstanding balance under the Rangers NHL Advance Agreement was $16,500 as of September 30, 2026. There were no borrowings under the Rangers Revolving Credit Facility as of September 30, 2026."
+    },
+    "text.f985ed5a64c0.L729": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 729,
+      "text": "23"
+    },
+    "text.f985ed5a64c0.L750": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 750,
+      "text": "Operating Activities"
+    },
+    "text.f985ed5a64c0.L751": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 751,
+      "text": "Net cash used in operating activities for the three months ended September 30, 2026 increased by $66,077 to $71,188. The increase was primarily due to changes in working capital assets and liabilities, and to a lesser extent, the change in net loss adjusted for non-cash items. The changes in working capital assets and liabilities were primarily driven by (i) a higher decrease in accrued and other liabilities of $30,282, primarily due to higher payments related to league revenue sharing in the current year period, and (ii) a higher increase in net related party receivables of $25,163, primarily related to the timing of receipts under the Arena License Agreement and Sponsorship Sales & Service Agreement in the current year period."
+    },
+    "text.f985ed5a64c0.L752": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 752,
+      "text": "Investing Activities"
+    },
+    "text.f985ed5a64c0.L756": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 756,
+      "text": "Seasonality of Our Business"
+    },
+    "text.f985ed5a64c0.L757": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 757,
+      "text": "The Company’s dependence on revenues from the Rangers generally means that it earns a disproportionate share of its revenues in the second and third quarters of the Company’s fiscal year, which is when the majority of the team’s games are played."
+    },
+    "text.f985ed5a64c0.L758": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 758,
+      "text": "24"
+    },
+    "text.f985ed5a64c0.L763": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 763,
+      "text": "Critical Accounting Estimates"
+    },
+    "text.f985ed5a64c0.L764": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 764,
+      "text": "The following discussion has been included to provide the results of our annual impairment testing of goodwill and identifiable indefinite-lived intangible assets performed during the first quarter of fiscal year 2027. There have been no material changes to the Company’s critical accounting policies from those set forth in our Information Statement."
+    },
+    "text.f985ed5a64c0.L765": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 765,
+      "text": "Goodwill"
+    },
+    "text.f985ed5a64c0.L775": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 775,
+      "text": "The Company performed its most recent annual impairment test of goodwill during the first quarter of fiscal year 2027, and there was no impairment of goodwill. Based on this impairment test, the Company concluded it was not more likely than not that the fair value of the reporting unit was less than its carrying amount."
+    },
+    "text.f985ed5a64c0.L776": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 776,
+      "text": "Identifiable Indefinite-Lived Intangible Assets"
+    },
+    "text.f985ed5a64c0.L777": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 777,
+      "text": "Identifiable indefinite-lived intangible assets are tested annually for impairment as of August 31 st and at any time upon the occurrence of certain events or substantive changes in circumstances. The following table sets forth the amount of identifiable indefinite-lived intangible assets reported in the combined balance sheet as of September 30, 2026:"
+    },
+    "text.f985ed5a64c0.L778": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 778,
+      "text": "| | | | |"
+    },
+    "text.f985ed5a64c0.L781": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 781,
+      "text": "| $ | 20,378 |"
+    },
+    "text.f985ed5a64c0.L782": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 782,
+      "text": "The Company has the option to perform a qualitative assessment to determine if an impairment is more likely than not to have occurred. In the qualitative assessment, the Company must evaluate the totality of qualitative factors, including any recent fair value measurements, that impact whether an indefinite-lived intangible asset other than goodwill has a carrying amount that more likely than not exceeds its fair value. The Company must proceed to conducting a quantitative analysis if the Company"
+    },
+    "text.f985ed5a64c0.L783": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 783,
+      "text": "25"
+    },
+    "text.f985ed5a64c0.L784": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 784,
+      "text": "Table of Contents"
+    },
+    "text.f985ed5a64c0.L785": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 785,
+      "text": "(i) determines that such an impairment is more likely than not to exist, or (ii) forgoes the qualitative assessment entirely. Under the quantitative assessment, the impairment test for identifiable indefinite-lived intangible assets consists of a comparison of the estimated fair value of the intangible asset with its carrying value. If the carrying value of the intangible asset exceeds its fair value, an impairment loss is recognized in an amount equal to that excess. For all periods presented, the Company elected to perform a qualitative assessment of impairment for the indefinite-lived intangible assets. These assessments considered the events and circumstances that could affect the significant inputs used to determine the fair value of the intangible asset. Examples of such events and circumstances include:"
+    },
+    "text.f985ed5a64c0.L786": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 786,
+      "text": "• cost factors;"
+    },
+    "text.f985ed5a64c0.L791": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 791,
+      "text": "• macroeconomic conditions."
+    },
+    "text.f985ed5a64c0.L792": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 792,
+      "text": "The Company performed its most recent annual impairment test of identifiable indefinite-lived intangible assets during the first quarter of fiscal year 2027, and there were no impairments identified. Based on this impairment test, the Company concluded it was not more likely than not that the fair value of the indefinite-lived intangible assets was less than their carrying amount."
+    },
+    "text.f985ed5a64c0.L793": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 793,
+      "text": "Item 3. Quantitative and Qualitative Disclosures About Market Risk"
+    },
+    "text.f985ed5a64c0.L797": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 797,
+      "text": "Item 4. Controls and Procedures"
+    },
+    "text.f985ed5a64c0.L798": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 798,
+      "text": "An evaluation was carried out under the supervision and with the participation of the Company’s management, including our Chief Executive Officer and Chief Financial Officer, of the effectiveness of the design and operation of our disclosure controls and procedures (as defined in Rules 13a-15(e) and 15d-15(e) under the Securities Exchange Act of 1934) as of the end of the period covered by this report. Based upon that evaluation, the Company’s Chief Executive Officer and Chief Financial Officer concluded that as of September 30, 2026, the Company’s disclosure controls and procedures were effective."
+    },
+    "text.f985ed5a64c0.L799": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 799,
+      "text": "There were no changes in the Company’s internal control over financial reporting (as such term is defined in Rules 13a-15(f) and 15d-15(f) under the Securities Exchange Act of 1934) during the quarter ended September 30, 2026 that have materially affected, or are reasonably likely to materially affect, the Company’s internal control over financial reporting."
+    },
+    "text.f985ed5a64c0.L800": {
+      "kind": "text",
+      "source_id": "10-Q:0001628280-26-071325:10-Q.txt",
+      "line": 800,
+      "text": "26"
+    }
+  }
+}

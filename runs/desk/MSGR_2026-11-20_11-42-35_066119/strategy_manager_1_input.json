@@ -1,0 +1,553 @@
+{
+  "task": "Check every part for presence, support and cross-role consistency. Return failures to the owning role. Check limitations are honest and not unsupported claims.",
+  "context": {
+    "required_parts": [
+      "Overview",
+      "Market Positioning and Growth Outlook",
+      "Valuation Insights",
+      "Future Developments and Strategic Recommendations",
+      "Investment Recommendation"
+    ],
+    "owners": {
+      "Overview": "Research Analyst",
+      "Market Positioning and Growth Outlook": "Research Analyst",
+      "Valuation Insights": "Financial Analyst",
+      "Future Developments and Strategic Recommendations": "Investment Advisor",
+      "Investment Recommendation": "Investment Advisor"
+    },
+    "outputs": {
+      "Research Analyst": {
+        "sections": {
+          "Overview": [
+            {
+              "text": "The company's latest quarter showed a year‑over‑year revenue increase, indicating continued growth momentum.",
+              "evidence_ids": [
+                "text.ed17aac93a11.L23",
+                "text.ed17aac93a11.L49"
+              ]
+            }
+          ],
+          "Market Positioning and Growth Outlook": [
+            {
+              "text": "Operating expenses rose sharply, widening the operating loss, which suggests a weakening competitive position.",
+              "evidence_ids": [
+                "text.ed17aac93a11.L26",
+                "text.ed17aac93a11.L25"
+              ]
+            }
+          ]
+        },
+        "limitations": [
+          "missing.business",
+          "missing.market_share",
+          "missing.mda"
+        ],
+        "insight": {
+          "part": "Market Positioning and Growth Outlook",
+          "text": "Insight: Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses. [earnings_release.txt, line 26]",
+          "evidence_ids": [
+            "text.ed17aac93a11.L26"
+          ]
+        }
+      },
+      "Financial Analyst": {
+        "sections": {
+          "Valuation Insights": [
+            {
+              "text": "The quarter’s revenue increased year‑over‑year while operating loss widened, indicating that top‑line growth was not accompanied by operating profitability.",
+              "evidence_ids": [
+                "text.ed17aac93a11.L16",
+                "text.ed17aac93a11.L17"
+              ]
+            }
+          ]
+        },
+        "limitations": [],
+        "calculator_requests": [],
+        "insight": {
+          "part": "Valuation Insights",
+          "text": "Insight: Revenues | | $ | 14.1 | | | $ | 13.7 | | | $ | 0.4 | | | 3 | % [earnings_release.txt, line L16]",
+          "evidence_ids": [
+            "text.ed17aac93a11.L16"
+          ]
+        }
+      },
+      "Investment Advisor": {
+        "sections": {
+          "Future Developments and Strategic Recommendations": [
+            {
+              "text": "Management should prioritize cost reduction initiatives, particularly in selling, general and administrative expenses, to narrow the widening operating loss while sustaining modest revenue growth.",
+              "evidence_ids": [
+                "text.ed17aac93a11.L25",
+                "text.ed17aac93a11.L26"
+              ]
+            }
+          ],
+          "Investment Recommendation": [
+            {
+              "text": "Hold",
+              "evidence_ids": [
+                "text.ed17aac93a11.L26"
+              ]
+            }
+          ]
+        },
+        "thesis": "Revenue grew modestly year‑over‑year, yet operating loss widened significantly, suggesting mixed momentum that does not yet justify a change in position.",
+        "recommendation": "Hold",
+        "reason": "The operating loss increase signals deteriorating profitability despite revenue growth, making the current valuation uncertain.",
+        "reason_evidence_ids": [
+          "text.ed17aac93a11.L26"
+        ],
+        "limitations": [],
+        "deciding_evidence_id": null,
+        "thesis_evidence_ids": [
+          "text.ed17aac93a11.L16",
+          "text.ed17aac93a11.L26"
+        ],
+        "direction": "not computed",
+        "insight": {
+          "part": "Investment Recommendation",
+          "text": "Insight: Operating loss of $23.6 million increased $10.7 million compared to the prior year period, indicating a widening loss [earnings_release.txt, line 26]",
+          "evidence_ids": [
+            "text.ed17aac93a11.L26"
+          ]
+        }
+      }
+    },
+    "citation_audit": {
+      "Overview": [
+        "Causality or acceleration is not established: use an exact supporting filing sentence or remove the inference."
+      ],
+      "Market Positioning and Growth Outlook": [],
+      "Valuation Insights": [
+        "Insight must be one line: Insight: one claim [filing.txt, line N].",
+        "Required input limitations were omitted: missing.price, missing.quarterly_cash_from_operations, missing.quarterly_diluted_eps, price, subject.capex.current, subject.cash_from_operations.current, subject.current_debt.current, subject.diluted_eps.current, subject.equity.current, subject.equity.prior, subject.long_term_debt.current, subject.net_income.current, subject.operating_income.current, subject.revenue.current, subject.revenue.prior.",
+        "Insight must be one line: Insight: one claim [filing.txt, line N].",
+        "Insight must be a standalone final line in a separate final block; embedded or non-final Insights fail."
+      ],
+      "Future Developments and Strategic Recommendations": [
+        "Mentioned supporting metric is not backed by this claim's available numeric evidence: revenue_growth."
+      ],
+      "Investment Recommendation": [
+        "Insight must reproduce one supported sentence or single table row from its cited filing line.",
+        "thesis: Causality or acceleration is not established: use an exact supporting filing sentence or remove the inference.",
+        "reason: Mentioned supporting metric is not backed by this claim's available numeric evidence: revenue_growth.",
+        "Insight must reproduce one supported sentence or single table row from its cited filing line."
+      ]
+    },
+    "supplied_evidence": {
+      "missing.business": {
+        "kind": "limitation",
+        "source_id": "evidence.inventory",
+        "statement": "The annual filing BUSINESS section is not available in the validated evidence supplied for this run. This is an extraction/input limitation, not a claim that the issuer did not disclose it.",
+        "item": "business",
+        "status": "not_extracted",
+        "references": [],
+        "required_for": [
+          "Research Analyst"
+        ]
+      },
+      "missing.market_share": {
+        "kind": "limitation",
+        "source_id": "evidence.inventory",
+        "statement": "A verified quantitative market-share measure is not available in the validated evidence supplied for this run. This is an extraction/input limitation, not a claim that the issuer did not disclose it.",
+        "item": "market_share",
+        "status": "not_extracted",
+        "references": [],
+        "required_for": [
+          "Research Analyst"
+        ]
+      },
+      "missing.mda": {
+        "kind": "limitation",
+        "source_id": "evidence.inventory",
+        "statement": "The annual filing MDA section is not available in the validated evidence supplied for this run. This is an extraction/input limitation, not a claim that the issuer did not disclose it.",
+        "item": "mda",
+        "status": "not_extracted",
+        "references": [],
+        "required_for": [
+          "Research Analyst"
+        ]
+      },
+      "quarter.revenue": {
+        "kind": "release_evidence",
+        "source_id": "8-K:0001628280-26-071324:earnings_release.txt",
+        "label": "Step 6 reported-quarter revenue evidence (retain column and measure definitions)",
+        "references": [
+          "text.ed17aac93a11.L11",
+          "text.ed17aac93a11.L12",
+          "text.ed17aac93a11.L13",
+          "text.ed17aac93a11.L14",
+          "text.ed17aac93a11.L15",
+          "text.ed17aac93a11.L16",
+          "text.ed17aac93a11.L17",
+          "text.ed17aac93a11.L43",
+          "text.ed17aac93a11.L44",
+          "text.ed17aac93a11.L45",
+          "text.ed17aac93a11.L46",
+          "text.ed17aac93a11.L47",
+          "text.ed17aac93a11.L48",
+          "text.ed17aac93a11.L49",
+          "text.ed17aac93a11.L50",
+          "text.ed17aac93a11.L7"
+        ]
+      },
+      "text.ed17aac93a11.L11": "Financial Results for the Three Months Ended September 30, 2026 and 2025:",
+      "text.ed17aac93a11.L12": "| | | | | | | | | | | | | | | | | | | | | | | | | |",
+      "text.ed17aac93a11.L13": "| | Three Months Ended | | | |",
+      "text.ed17aac93a11.L14": "| | September 30, | | Change",
+      "text.ed17aac93a11.L15": "$ millions | | 2026 | | 2025 | | $ | | %",
+      "text.ed17aac93a11.L16": "Revenues | | $ | 14.1 | | | $ | 13.7 | | | $ | 0.4 | | | 3 | %",
+      "text.ed17aac93a11.L17": "Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | %",
+      "text.ed17aac93a11.L43": "(In thousands, except per share data)",
+      "text.ed17aac93a11.L44": "(Unaudited)",
+      "text.ed17aac93a11.L45": "| | | | | | | | | | | | | |",
+      "text.ed17aac93a11.L46": "| | Three Months Ended",
+      "text.ed17aac93a11.L47": "| | September 30,",
+      "text.ed17aac93a11.L48": "| | 2026 | | 2025",
+      "text.ed17aac93a11.L49": "Revenues | | $ | 14,089 | | | $ | 13,655 |",
+      "text.ed17aac93a11.L50": "Direct operating expenses | | 8,802 | | | 3,596 |",
+      "text.ed17aac93a11.L7": "NEW YORK, N.Y., November 6, 2026 - MSG Rangers Corp. (NYSE: MSGR) (\"MSG Rangers\" or the \"Company\") today reported financial results for the fiscal first quarter ended September 30, 2026. This marks the first quarter that MSG Rangers is reporting financial results as a standalone company, following its spin-off from MSG Knickerbockers Corp. (NYSE: MSGK) (\"MSG Knicks\"), which was completed on October 26, 2026.",
+      "text.ed17aac93a11.L23": "For the fiscal 2027 first quarter, revenues of $14.1 million increased $0.4 million, or 3%, as compared to the prior year period. This primarily reflected higher revenues from league distributions of $1.2 million, mainly due to an increase in certain league distributions unrelated to national media rights fees, partially offset by other revenue decreases.",
+      "text.ed17aac93a11.L25": "Selling, general and administrative expenses of $28.1 million increased $5.8 million, or 26%, as compared to the prior year period. This increase was primarily driven by (i) expenses related to the spin-off transaction in the current year period of $3.6 million and (ii) higher employee compensation and related benefits of $1.4 million.",
+      "text.ed17aac93a11.L26": "Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses."
+    },
+    "sources": {
+      "8-K:0001628280-26-071324:earnings_release.txt": {
+        "source": "release",
+        "file": "earnings_release.txt",
+        "form": "8-K",
+        "accession": "0001628280-26-071324",
+        "period": "2026-11-06",
+        "url": "https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgrangerscorpex991forearn.htm",
+        "text_sha256": "ed17aac93a11b60121cbf255278fda6c803f2ab188b36839a92cc31bc18d1671"
+      },
+      "evidence.inventory": {
+        "kind": "inventory",
+        "file": "evidence_catalog.json",
+        "scope": "Only the evidence extracted and supplied to the roles; not all disclosures in a filing."
+      }
+    },
+    "input_gaps": {
+      "peers": [],
+      "price_supplied": false
+    },
+    "insight_requirements": {
+      "opening_paragraph": {
+        "file": "earnings_release.txt",
+        "line": 7,
+        "end_line": 7,
+        "text": "NEW YORK, N.Y., November 6, 2026 - MSG Rangers Corp. (NYSE: MSGR) (\"MSG Rangers\" or the \"Company\") today reported financial results for the fiscal first quarter ended September 30, 2026. This marks the first quarter that MSG Rangers is reporting financial results as a standalone company, following its spin-off from MSG Knickerbockers Corp. (NYSE: MSGK) (\"MSG Knicks\"), which was completed on October 26, 2026."
+      },
+      "parts": {
+        "Market Positioning and Growth Outlook": {
+          "insight": "Insight: Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses. [earnings_release.txt, line 26]",
+          "opening_figure_overlap": [],
+          "designated_part": "Market Positioning and Growth Outlook",
+          "insight_count": 1,
+          "occurrences": [
+            {
+              "part": "Market Positioning and Growth Outlook",
+              "block": 1,
+              "text": "Insight: Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses. [earnings_release.txt, line 26]",
+              "count": 1
+            }
+          ],
+          "outside_sections_count": 0
+        },
+        "Valuation Insights": {
+          "insight": "Insight: Revenues | | $ | 14.1 | | | $ | 13.7 | | | $ | 0.4 | | | 3 | % [earnings_release.txt, line L16]",
+          "opening_figure_overlap": [],
+          "designated_part": "Valuation Insights",
+          "insight_count": 1,
+          "occurrences": [
+            {
+              "part": "Valuation Insights",
+              "block": 1,
+              "text": "Insight: Revenues | | $ | 14.1 | | | $ | 13.7 | | | $ | 0.4 | | | 3 | % [earnings_release.txt, line L16]",
+              "count": 1
+            }
+          ],
+          "outside_sections_count": 0
+        },
+        "Investment Recommendation": {
+          "insight": "Insight: Operating loss of $23.6 million increased $10.7 million compared to the prior year period, indicating a widening loss [earnings_release.txt, line 26]",
+          "opening_figure_overlap": [],
+          "designated_part": "Investment Recommendation",
+          "insight_count": 1,
+          "occurrences": [
+            {
+              "part": "Investment Recommendation",
+              "block": 1,
+              "text": "Insight: Operating loss of $23.6 million increased $10.7 million compared to the prior year period, indicating a widening loss [earnings_release.txt, line 26]",
+              "count": 1
+            }
+          ],
+          "outside_sections_count": 0
+        }
+      },
+      "locations": {
+        "Research Analyst": "Market Positioning and Growth Outlook",
+        "Financial Analyst": "Valuation Insights",
+        "Investment Advisor": "Investment Recommendation"
+      },
+      "rule": "Each role must have exactly one standalone final sourced Insight, in its designated last owned part. The other parts must remain, without Insights. Fail the relevant parts for missing, duplicate, misplaced, embedded/non-final, unsupported Insights, or a claim that only restates an opening-paragraph figure, including paraphrases and equivalent unit displays. Check measure, period and claim meaning; a coincident number for a different measure is not a restatement. Explicitly return insight_present and insight_not_headline_restatement for each designated part only. Also fail multiple claims or a claim not supported by its specified filing line."
+    }
+  },
+  "expected_output": {
+    "type": "object",
+    "properties": {
+      "checks": {
+        "type": "object",
+        "properties": {
+          "Overview": {
+            "type": "object",
+            "properties": {
+              "passed": {
+                "type": "boolean"
+              },
+              "issues": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "unsupported_claim",
+                        "contradiction",
+                        "missing_analysis",
+                        "definition_ambiguity",
+                        "invalid_provenance",
+                        "missing_ratio_narrative",
+                        "limitation_placement",
+                        "additional_deciding_metrics"
+                      ]
+                    },
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "text"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "passed",
+              "issues"
+            ],
+            "additionalProperties": false
+          },
+          "Market Positioning and Growth Outlook": {
+            "type": "object",
+            "properties": {
+              "passed": {
+                "type": "boolean"
+              },
+              "issues": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "unsupported_claim",
+                        "contradiction",
+                        "missing_analysis",
+                        "definition_ambiguity",
+                        "invalid_provenance",
+                        "missing_ratio_narrative",
+                        "limitation_placement",
+                        "additional_deciding_metrics"
+                      ]
+                    },
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "text"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "insight_present": {
+                "type": "boolean"
+              },
+              "insight_not_headline_restatement": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "passed",
+              "issues",
+              "insight_present",
+              "insight_not_headline_restatement"
+            ],
+            "additionalProperties": false
+          },
+          "Valuation Insights": {
+            "type": "object",
+            "properties": {
+              "passed": {
+                "type": "boolean"
+              },
+              "issues": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "unsupported_claim",
+                        "contradiction",
+                        "missing_analysis",
+                        "definition_ambiguity",
+                        "invalid_provenance",
+                        "missing_ratio_narrative",
+                        "limitation_placement",
+                        "additional_deciding_metrics"
+                      ]
+                    },
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "text"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "insight_present": {
+                "type": "boolean"
+              },
+              "insight_not_headline_restatement": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "passed",
+              "issues",
+              "insight_present",
+              "insight_not_headline_restatement"
+            ],
+            "additionalProperties": false
+          },
+          "Future Developments and Strategic Recommendations": {
+            "type": "object",
+            "properties": {
+              "passed": {
+                "type": "boolean"
+              },
+              "issues": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "unsupported_claim",
+                        "contradiction",
+                        "missing_analysis",
+                        "definition_ambiguity",
+                        "invalid_provenance",
+                        "missing_ratio_narrative",
+                        "limitation_placement",
+                        "additional_deciding_metrics"
+                      ]
+                    },
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "text"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "passed",
+              "issues"
+            ],
+            "additionalProperties": false
+          },
+          "Investment Recommendation": {
+            "type": "object",
+            "properties": {
+              "passed": {
+                "type": "boolean"
+              },
+              "issues": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "unsupported_claim",
+                        "contradiction",
+                        "missing_analysis",
+                        "definition_ambiguity",
+                        "invalid_provenance",
+                        "missing_ratio_narrative",
+                        "limitation_placement",
+                        "additional_deciding_metrics"
+                      ]
+                    },
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "text"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "insight_present": {
+                "type": "boolean"
+              },
+              "insight_not_headline_restatement": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "passed",
+              "issues",
+              "insight_present",
+              "insight_not_headline_restatement"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "Overview",
+          "Market Positioning and Growth Outlook",
+          "Valuation Insights",
+          "Future Developments and Strategic Recommendations",
+          "Investment Recommendation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "checks"
+    ],
+    "additionalProperties": false
+  }
+}

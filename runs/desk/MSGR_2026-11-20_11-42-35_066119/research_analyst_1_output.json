@@ -1,0 +1,34 @@
+{
+  "sections": {
+    "Overview": [
+      {
+        "text": "The company's latest quarter showed a year‑over‑year revenue increase, indicating continued growth momentum.",
+        "evidence_ids": [
+          "text.ed17aac93a11.L23",
+          "text.ed17aac93a11.L49"
+        ]
+      }
+    ],
+    "Market Positioning and Growth Outlook": [
+      {
+        "text": "Operating expenses rose sharply, widening the operating loss, which suggests a weakening competitive position.",
+        "evidence_ids": [
+          "text.ed17aac93a11.L26",
+          "text.ed17aac93a11.L25"
+        ]
+      }
+    ]
+  },
+  "limitations": [
+    "missing.business",
+    "missing.market_share",
+    "missing.mda"
+  ],
+  "insight": {
+    "part": "Market Positioning and Growth Outlook",
+    "text": "Insight: Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses. [earnings_release.txt, line 26]",
+    "evidence_ids": [
+      "text.ed17aac93a11.L26"
+    ]
+  }
+}

@@ -1,0 +1,350 @@
+{
+  "checks": {
+    "number_2": {
+      "supported": true,
+      "reason": "The quoted paragraph explicitly states a revenue amount of $14.1 million for the fiscal 2027 first quarter.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L23",
+        "value": "14.1",
+        "period": "Fiscal 2027 first quarter",
+        "definition": "Revenues"
+      }
+    },
+    "number_6": {
+      "supported": true,
+      "reason": "The table line shows Revenues of 14,089 (in thousands) for the three months ended September 30, 2026.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L49",
+        "value": "14,089",
+        "period": "Three months ended September 30, 2026",
+        "definition": "Revenues (in thousands of dollars)"
+      }
+    },
+    "number_7": {
+      "supported": true,
+      "reason": "The table line shows Revenues of 13,655 (in thousands) for the three months ended September 30, 2025.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L49",
+        "value": "13,655",
+        "period": "Three months ended September 30, 2025",
+        "definition": "Revenues (in thousands of dollars)"
+      }
+    },
+    "number_15": {
+      "supported": true,
+      "reason": "The paragraph states that $1.4 million of higher employee compensation contributed to the SG&A increase.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L25",
+        "value": "1.4",
+        "period": "Fiscal 2027 first quarter",
+        "definition": "Component of SG&A expense increase"
+      }
+    },
+    "number_48": {
+      "supported": true,
+      "reason": "The table row lists an operating loss change of $10.7 million for the three months ended September 30, 2026.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L17",
+        "value": "10.7",
+        "period": "Three months ended September 30, 2026",
+        "definition": "Operating loss change (in millions of dollars)"
+      }
+    },
+    "number_10": {
+      "supported": true,
+      "reason": "The paragraph explicitly reports adjusted operating loss of $21.3 million for the fiscal 2027 first quarter.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L26",
+        "value": "21.3",
+        "period": "Fiscal 2027 first quarter",
+        "definition": "Adjusted operating loss"
+      }
+    },
+    "number_42": {
+      "supported": true,
+      "reason": "The Insight paragraph repeats the operating loss of $23.6 million stated in the earnings release.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L26",
+        "value": "23.6",
+        "period": "Fiscal 2027 first quarter",
+        "definition": "Operating loss"
+      }
+    },
+    "number_9": {
+      "supported": true,
+      "reason": "The paragraph states the operating loss increased by $10.7 million.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L26",
+        "value": "10.7",
+        "period": "Fiscal 2027 first quarter",
+        "definition": "Increase in operating loss"
+      }
+    },
+    "number_43": {
+      "supported": true,
+      "reason": "The Insight paragraph repeats the $10.7 million increase in operating loss.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L26",
+        "value": "10.7",
+        "period": "Fiscal 2027 first quarter",
+        "definition": "Increase in operating loss"
+      }
+    },
+    "number_17": {
+      "supported": true,
+      "reason": "The revenues row in the table shows $14.1 million for the current period.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L16",
+        "value": "14.1",
+        "period": "Three months ended September 30, 2026",
+        "definition": "Revenues (in millions of dollars)"
+      }
+    },
+    "number_20": {
+      "supported": true,
+      "reason": "The table reports a 3% increase in revenues.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L16",
+        "value": "3",
+        "period": "Three months ended September 30, 2026",
+        "definition": "Percent change in revenues"
+      }
+    },
+    "number_3": {
+      "supported": true,
+      "reason": "The paragraph states revenues increased by $0.4 million.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L23",
+        "value": "0.4",
+        "period": "Fiscal 2027 first quarter",
+        "definition": "Revenue increase"
+      }
+    },
+    "number_13": {
+      "supported": true,
+      "reason": "The paragraph states SG&A expenses increased by $5.8 million.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L25",
+        "value": "5.8",
+        "period": "Fiscal 2027 first quarter",
+        "definition": "Increase in SG&A expenses"
+      }
+    },
+    "number_23": {
+      "supported": true,
+      "reason": "The table lists a $10.7 million change in operating loss.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L17",
+        "value": "10.7",
+        "period": "Three months ended September 30, 2026",
+        "definition": "Operating loss change (in millions of dollars)"
+      }
+    },
+    "number_5": {
+      "supported": true,
+      "reason": "The paragraph mentions league distributions of $1.2 million.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L23",
+        "value": "1.2",
+        "period": "Fiscal 2027 first quarter",
+        "definition": "League distributions revenue"
+      }
+    },
+    "number_11": {
+      "supported": true,
+      "reason": "The paragraph states adjusted operating loss increased by $10.9 million.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L26",
+        "value": "10.9",
+        "period": "Fiscal 2027 first quarter",
+        "definition": "Increase in adjusted operating loss"
+      }
+    },
+    "number_12": {
+      "supported": true,
+      "reason": "The paragraph reports SG&A expenses of $28.1 million.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L25",
+        "value": "28.1",
+        "period": "Fiscal 2027 first quarter",
+        "definition": "Selling, general and administrative expenses"
+      }
+    },
+    "number_14": {
+      "supported": true,
+      "reason": "The paragraph indicates a 26% increase in SG&A expenses.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L25",
+        "value": "26",
+        "period": "Fiscal 2027 first quarter",
+        "definition": "Percent increase in SG&A expenses"
+      }
+    },
+    "number_19": {
+      "supported": true,
+      "reason": "The table shows a $0.4 million increase in revenues.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L16",
+        "value": "0.4",
+        "period": "Three months ended September 30, 2026",
+        "definition": "Revenue increase (in millions of dollars)"
+      }
+    },
+    "number_21": {
+      "supported": true,
+      "reason": "The operating loss row of the table lists a current loss of $23.6 million.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L17",
+        "value": "23.6",
+        "period": "Three months ended September 30, 2026",
+        "definition": "Operating loss (in millions of dollars)"
+      }
+    },
+    "number_46": {
+      "supported": true,
+      "reason": "The Insight table repeats the operating loss of $23.6 million.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L17",
+        "value": "23.6",
+        "period": "Three months ended September 30, 2026",
+        "definition": "Operating loss (in millions of dollars)"
+      }
+    },
+    "number_8": {
+      "supported": true,
+      "reason": "The paragraph states operating loss of $23.6 million.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L26",
+        "value": "23.6",
+        "period": "Fiscal 2027 first quarter",
+        "definition": "Operating loss"
+      }
+    },
+    "number_16": {
+      "supported": true,
+      "reason": "The paragraph cites $1.4 million of employee compensation as part of SG&A increase.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L25",
+        "value": "1.4",
+        "period": "Fiscal 2027 first quarter",
+        "definition": "Employee compensation component of SG&A"
+      }
+    },
+    "number_18": {
+      "supported": true,
+      "reason": "The table shows prior‑period revenues of $13.7 million.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L16",
+        "value": "13.7",
+        "period": "Three months ended September 30, 2025",
+        "definition": "Revenues (in millions of dollars)"
+      }
+    },
+    "number_47": {
+      "supported": true,
+      "reason": "The table lists prior‑period operating loss of $12.8 million.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L17",
+        "value": "12.8",
+        "period": "Three months ended September 30, 2025",
+        "definition": "Operating loss (in millions of dollars)"
+      }
+    },
+    "number_49": {
+      "supported": true,
+      "reason": "The table shows an operating loss percent change of 84%.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L17",
+        "value": "84",
+        "period": "Three months ended September 30, 2026",
+        "definition": "Operating loss percent change"
+      }
+    },
+    "number_1": {
+      "supported": false,
+      "reason": "The quoted line mentions the fiscal year 2027 but does not state a numeric financial measure equal to 2027; the value is a year identifier, not a reported amount.",
+      "correction": null
+    },
+    "number_4": {
+      "supported": true,
+      "reason": "The paragraph reports a 3% revenue increase.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L23",
+        "value": "3",
+        "period": "Fiscal 2027 first quarter",
+        "definition": "Percent revenue increase"
+      }
+    },
+    "number_22": {
+      "supported": true,
+      "reason": "The table shows prior‑period operating loss of $12.8 million.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L17",
+        "value": "12.8",
+        "period": "Three months ended September 30, 2025",
+        "definition": "Operating loss (in millions of dollars)"
+      }
+    },
+    "number_24": {
+      "supported": true,
+      "reason": "The table lists a percent change of 84% for operating loss.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L17",
+        "value": "84",
+        "period": "Three months ended September 30, 2026",
+        "definition": "Operating loss percent change"
+      }
+    },
+    "number_44": {
+      "supported": true,
+      "reason": "The Insight paragraph repeats the adjusted operating loss of $21.3 million.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L26",
+        "value": "21.3",
+        "period": "Fiscal 2027 first quarter",
+        "definition": "Adjusted operating loss"
+      }
+    },
+    "number_45": {
+      "supported": true,
+      "reason": "The Insight paragraph repeats the $10.9 million increase in adjusted operating loss.",
+      "correction": {
+        "file": "earnings_release.txt",
+        "line": "L26",
+        "value": "10.9",
+        "period": "Fiscal 2027 first quarter",
+        "definition": "Increase in adjusted operating loss"
+      }
+    }
+  }
+}

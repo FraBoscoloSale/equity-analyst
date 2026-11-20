@@ -1,0 +1,38 @@
+{
+  "operating_margin": {
+    "value": null,
+    "arithmetic": "N/A / N/A",
+    "reason": "missing aligned inputs",
+    "unit": "fraction"
+  },
+  "revenue_growth": {
+    "value": null,
+    "arithmetic": "(N/A / N/A) - 1",
+    "reason": "missing aligned inputs",
+    "unit": "fraction"
+  },
+  "return_on_average_equity": {
+    "value": null,
+    "arithmetic": "N/A / ((N/A + N/A) / 2)",
+    "reason": "missing aligned inputs",
+    "unit": "fraction"
+  },
+  "debt_to_equity": {
+    "value": null,
+    "arithmetic": "(N/A + N/A) / N/A",
+    "reason": "missing aligned inputs",
+    "unit": "multiple"
+  },
+  "free_cash_flow": {
+    "value": null,
+    "arithmetic": "N/A - N/A",
+    "reason": "missing aligned inputs",
+    "unit": "USD"
+  },
+  "pe": {
+    "value": null,
+    "arithmetic": "N/A / N/A",
+    "reason": "missing aligned inputs",
+    "unit": "multiple"
+  }
+}

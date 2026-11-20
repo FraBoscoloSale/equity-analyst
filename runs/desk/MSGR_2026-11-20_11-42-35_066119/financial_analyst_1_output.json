@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "Valuation Insights": [
+      {
+        "text": "The quarter’s revenue increased year‑over‑year while operating loss widened, indicating that top‑line growth was not accompanied by operating profitability.",
+        "evidence_ids": [
+          "text.ed17aac93a11.L16",
+          "text.ed17aac93a11.L17"
+        ]
+      }
+    ]
+  },
+  "limitations": [],
+  "calculator_requests": [],
+  "insight": {
+    "part": "Valuation Insights",
+    "text": "Insight: Revenues | | $ | 14.1 | | | $ | 13.7 | | | $ | 0.4 | | | 3 | % [earnings_release.txt, line L16]",
+    "evidence_ids": [
+      "text.ed17aac93a11.L16"
+    ]
+  }
+}

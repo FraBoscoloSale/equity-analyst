@@ -1,0 +1,60 @@
+{
+  "checks": {
+    "Market Positioning and Growth Outlook": {
+      "passed": false,
+      "issues": [
+        "Inference 'which suggests a weakening competitive position' is not directly supported by the cited evidence."
+      ],
+      "insight_present": true,
+      "insight_not_headline_restatement": true
+    },
+    "Valuation Insights": {
+      "passed": false,
+      "issues": [
+        "Insight is a table row rather than a single claim sentence.",
+        "Insight must be one line: Insight: one claim [filing.txt, line N].",
+        "Required input limitations were omitted: missing.price, missing.quarterly_cash_from_operations, missing.quarterly_diluted_eps, price, subject.capex.current, subject.cash_from_operations.current, subject.current_debt.current, subject.diluted_eps.current, subject.equity.current, subject.equity.prior, subject.long_term_debt.current, subject.net_income.current, subject.operating_income.current, subject.revenue.current, subject.revenue.prior.",
+        "Insight must be one line: Insight: one claim [filing.txt, line N].",
+        "Insight must be a standalone final line in a separate final block; embedded or non-final Insights fail."
+      ],
+      "insight_present": true,
+      "insight_not_headline_restatement": true
+    },
+    "Future Developments and Strategic Recommendations": {
+      "issues": [
+        "Claim about 'sustaining modest revenue growth' is not backed by the cited evidence.",
+        "Mentioned supporting metric is not backed by this claim's available numeric evidence: revenue_growth."
+      ],
+      "passed": false
+    },
+    "Investment Recommendation": {
+      "passed": false,
+      "issues": [
+        "Thesis contains a causality inference ('suggesting mixed momentum') that is not directly supported by the cited filing sentence.",
+        "Reason references revenue growth without supporting evidence.",
+        "Insight must reproduce one supported sentence or single table row from its cited filing line.",
+        "thesis: Causality or acceleration is not established: use an exact supporting filing sentence or remove the inference.",
+        "reason: Mentioned supporting metric is not backed by this claim's available numeric evidence: revenue_growth.",
+        "Insight must reproduce one supported sentence or single table row from its cited filing line."
+      ],
+      "insight_present": true,
+      "insight_not_headline_restatement": true
+    },
+    "Overview": {
+      "issues": [
+        "Inference 'indicating continued growth momentum' is not directly supported by the cited evidence.",
+        "Causality or acceleration is not established: use an exact supporting filing sentence or remove the inference."
+      ],
+      "passed": false
+    }
+  },
+  "policy_exclusions": {
+    "Valuation Insights": [
+      {
+        "code": "limitation_placement",
+        "text": "Missing required input limitations for financial analysis (e.g., missing.price, missing.quarterly_cash_from_operations, missing.quarterly_diluted_eps, price, subject.capex.current, subject.cash_from_operations.current, subject.debt, etc.).",
+        "policy_reason": "Provenance is checked by Python; ratio narrative, limitation placement and extra deciding metrics are not requirements."
+      }
+    ]
+  }
+}

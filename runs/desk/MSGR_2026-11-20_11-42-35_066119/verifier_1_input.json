@@ -1,0 +1,206 @@
+{
+  "task": "After the completed code checks below, check each semantic=true entry. Does its cited filing line actually state this number for the asserted period and definition? A matching line alone is insufficient. Check surrounding table columns, scales, GAAP versus adjusted, total revenue versus net sales. For a source-bound calculated statement, review each quoted operand's filing column, period, units and definition, and whether the stated formula represents the claimed measure. The derived result is recomputed in code; it need not appear verbatim in a filing. When source_binding is supplied, review that exact numeric span and only the operands used by its expression. display.scale converts the displayed value to base units: a scale of 1000000000 means billions, not base dollars. A conversion must preserve the source amount. For each operand, source.filing.number_index is the zero-based numeric-token index on the complete quoted row; check the selected value against the quoted period/unit headers and asserted operand definition. Verify that mapping independently; do not assume a binding is true merely because it is supplied. Other columns remain evidence context, not the target of this ID. Keep each result and reason attached to its own ID and original value, never a neighboring check's number. If ambiguous, supported=false. If a ratio has alternatives and no definition, unsupported. Return checks as an object keyed by every supplied semantic id, never an array. Every key in expected_output.checks.required is mandatory, with no extra keys. Each value must contain supported, reason and correction; do not repeat the id inside it. Preserve the claimed financial measure; do not substitute a different metric. Corrections must quote an actual saved filing line with its period, definition and numeric literal, or null if not recoverable. Skip the Investment Advisor thesis. Inputs contain only relevant excerpts of the compiled report, saved filing texts and saved facts. L prefixes are original line labels, not text belonging to the filing. Each selected evidence line/paragraph is complete, including its selected headers and required notes; gaps contain no evidence selected for this batch. This batch is fixed by Python. Check every supplied id. Code checks: [{\"id\": \"number_1\", \"original\": \"2027\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"For the fiscal 2027 first quarter, revenues of $14.1 million increased $0.4 million, or 3%, as compared to the prior year period. This primarily reflected higher revenues from league distributions of $1.2 million, mainly due to an increase in certain league distributions unrelated to national media rights fees, partially offset by other revenue decreases.\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_2\", \"original\": \"14.1\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"For the fiscal 2027 first quarter, revenues of $14.1 million increased $0.4 million, or 3%, as compared to the prior year period. This primarily reflected higher revenues from league distributions of $1.2 million, mainly due to an increase in certain league distributions unrelated to national media rights fees, partially offset by other revenue decreases.\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_3\", \"original\": \"0.4\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"For the fiscal 2027 first quarter, revenues of $14.1 million increased $0.4 million, or 3%, as compared to the prior year period. This primarily reflected higher revenues from league distributions of $1.2 million, mainly due to an increase in certain league distributions unrelated to national media rights fees, partially offset by other revenue decreases.\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_4\", \"original\": \"3\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"For the fiscal 2027 first quarter, revenues of $14.1 million increased $0.4 million, or 3%, as compared to the prior year period. This primarily reflected higher revenues from league distributions of $1.2 million, mainly due to an increase in certain league distributions unrelated to national media rights fees, partially offset by other revenue decreases.\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_5\", \"original\": \"1.2\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"For the fiscal 2027 first quarter, revenues of $14.1 million increased $0.4 million, or 3%, as compared to the prior year period. This primarily reflected higher revenues from league distributions of $1.2 million, mainly due to an increase in certain league distributions unrelated to national media rights fees, partially offset by other revenue decreases.\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_6\", \"original\": \"14,089\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Revenues | | $ | 14,089 | | | $ | 13,655 |\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_7\", \"original\": \"13,655\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Revenues | | $ | 14,089 | | | $ | 13,655 |\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_8\", \"original\": \"23.6\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses.\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_9\", \"original\": \"10.7\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses.\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_10\", \"original\": \"21.3\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses.\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_11\", \"original\": \"10.9\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses.\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_12\", \"original\": \"28.1\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Selling, general and administrative expenses of $28.1 million increased $5.8 million, or 26%, as compared to the prior year period. This increase was primarily driven by (i) expenses related to the spin-off transaction in the current year period of $3.6 million and (ii) higher employee compensation and related benefits of $1.4 million.\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_13\", \"original\": \"5.8\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Selling, general and administrative expenses of $28.1 million increased $5.8 million, or 26%, as compared to the prior year period. This increase was primarily driven by (i) expenses related to the spin-off transaction in the current year period of $3.6 million and (ii) higher employee compensation and related benefits of $1.4 million.\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_14\", \"original\": \"26\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Selling, general and administrative expenses of $28.1 million increased $5.8 million, or 26%, as compared to the prior year period. This increase was primarily driven by (i) expenses related to the spin-off transaction in the current year period of $3.6 million and (ii) higher employee compensation and related benefits of $1.4 million.\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_15\", \"original\": \"3.6\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Selling, general and administrative expenses of $28.1 million increased $5.8 million, or 26%, as compared to the prior year period. This increase was primarily driven by (i) expenses related to the spin-off transaction in the current year period of $3.6 million and (ii) higher employee compensation and related benefits of $1.4 million.\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_16\", \"original\": \"1.4\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Selling, general and administrative expenses of $28.1 million increased $5.8 million, or 26%, as compared to the prior year period. This increase was primarily driven by (i) expenses related to the spin-off transaction in the current year period of $3.6 million and (ii) higher employee compensation and related benefits of $1.4 million.\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_17\", \"original\": \"14.1\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Revenues | | $ | 14.1 | | | $ | 13.7 | | | $ | 0.4 | | | 3 | %\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_18\", \"original\": \"13.7\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Revenues | | $ | 14.1 | | | $ | 13.7 | | | $ | 0.4 | | | 3 | %\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_19\", \"original\": \"0.4\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Revenues | | $ | 14.1 | | | $ | 13.7 | | | $ | 0.4 | | | 3 | %\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_20\", \"original\": \"3\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Revenues | | $ | 14.1 | | | $ | 13.7 | | | $ | 0.4 | | | 3 | %\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_21\", \"original\": \"23.6\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | %\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_22\", \"original\": \"12.8\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | %\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_23\", \"original\": \"10.7\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | %\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_24\", \"original\": \"84\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | %\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"as stated in quoted line\", \"semantic\": true}, {\"id\": \"number_42\", \"original\": \"23.6\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses.\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"Measure stated in this Insight claim: Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses.\", \"semantic\": true, \"quoted_input\": \"Insight: Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses. [earnings_release.txt, line 26]\"}, {\"id\": \"number_43\", \"original\": \"10.7\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses.\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"Measure stated in this Insight claim: Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses.\", \"semantic\": true, \"quoted_input\": \"Insight: Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses. [earnings_release.txt, line 26]\"}, {\"id\": \"number_44\", \"original\": \"21.3\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses.\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"Measure stated in this Insight claim: Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses.\", \"semantic\": true, \"quoted_input\": \"Insight: Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses. [earnings_release.txt, line 26]\"}, {\"id\": \"number_45\", \"original\": \"10.9\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses.\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"Measure stated in this Insight claim: Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses.\", \"semantic\": true, \"quoted_input\": \"Insight: Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses. [earnings_release.txt, line 26]\"}, {\"id\": \"number_46\", \"original\": \"23.6\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | %\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"Measure stated in this Insight claim: Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | %\", \"semantic\": true, \"quoted_input\": \"Insight: Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | % [earnings_release.txt, line 17]\"}, {\"id\": \"number_47\", \"original\": \"12.8\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | %\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"Measure stated in this Insight claim: Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | %\", \"semantic\": true, \"quoted_input\": \"Insight: Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | % [earnings_release.txt, line 17]\"}, {\"id\": \"number_48\", \"original\": \"10.7\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | %\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"Measure stated in this Insight claim: Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | %\", \"semantic\": true, \"quoted_input\": \"Insight: Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | % [earnings_release.txt, line 17]\"}, {\"id\": \"number_49\", \"original\": \"84\", \"mark\": \"correct\", \"reason\": \"Quoted line occurs in the saved filing; semantic check pending.\", \"file\": \"earnings_release.txt\", \"quote\": \"Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | %\", \"period\": \"as stated in quoted line and saved column headers\", \"definition\": \"Measure stated in this Insight claim: Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | %\", \"semantic\": true, \"quoted_input\": \"Insight: Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | % [earnings_release.txt, line 17]\"}]",
+  "context": {
+    "compiled_report": "L1: Filings read: 10-Q.txt (10-Q 0001628280-26-071325); earnings_release.txt (8-K 0001628280-26-071324)\nL3: # MSGR Equity Research\nL5: ## Overview\nL22: > For the fiscal 2027 first quarter, revenues of $14.1 million increased $0.4 million, or 3%, as compared to the prior year period. This primarily reflected higher revenues from league distributions of $1.2 million, mainly due to an increase in certain league distributions unrelated to national media rights fees, partially offset by other revenue decreases.\nL24: [earnings_release.txt, line 23; 8-K 0001628280-26-071324; filing report date 2026-11-06](https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgrangerscorpex991forearn.htm)\nL29: > Revenues | | $ | 14,089 | | | $ | 13,655 |\nL31: [earnings_release.txt, line 49; 8-K 0001628280-26-071324; filing report date 2026-11-06](https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgrangerscorpex991forearn.htm)\nL35: ## Market Positioning and Growth Outlook\nL52: > Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses.\nL54: [earnings_release.txt, line 26; 8-K 0001628280-26-071324; filing report date 2026-11-06](https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgrangerscorpex991forearn.htm)\nL59: > Selling, general and administrative expenses of $28.1 million increased $5.8 million, or 26%, as compared to the prior year period. This increase was primarily driven by (i) expenses related to the spin-off transaction in the current year period of $3.6 million and (ii) higher employee compensation and related benefits of $1.4 million.\nL61: [earnings_release.txt, line 25; 8-K 0001628280-26-071324; filing report date 2026-11-06](https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgrangerscorpex991forearn.htm)\nL66: Insight: Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses. [earnings_release.txt, line 26]\nL69: ## Valuation Insights\nL178: > Revenues | | $ | 14.1 | | | $ | 13.7 | | | $ | 0.4 | | | 3 | %\nL180: [earnings_release.txt, line 16; 8-K 0001628280-26-071324; filing report date 2026-11-06](https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgrangerscorpex991forearn.htm)\nL185: > Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | %\nL187: [earnings_release.txt, line 17; 8-K 0001628280-26-071324; filing report date 2026-11-06](https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgrangerscorpex991forearn.htm)\nL192: Insight: Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | % [earnings_release.txt, line L17]\nL195: ## Future Developments and Strategic Recommendations\nL212: > Selling, general and administrative expenses of $28.1 million increased $5.8 million, or 26%, as compared to the prior year period. This increase was primarily driven by (i) expenses related to the spin-off transaction in the current year period of $3.6 million and (ii) higher employee compensation and related benefits of $1.4 million.\nL214: [earnings_release.txt, line 25; 8-K 0001628280-26-071324; filing report date 2026-11-06](https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgrangerscorpex991forearn.htm)\nL219: > Revenues | | $ | 14.1 | | | $ | 13.7 | | | $ | 0.4 | | | 3 | %\nL221: [earnings_release.txt, line 16; 8-K 0001628280-26-071324; filing report date 2026-11-06](https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgrangerscorpex991forearn.htm)\nL225: ## Investment Recommendation\nL268: > Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | %\nL270: [earnings_release.txt, line 17; 8-K 0001628280-26-071324; filing report date 2026-11-06](https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgrangerscorpex991forearn.htm)\nL275: > Revenues | | $ | 14.1 | | | $ | 13.7 | | | $ | 0.4 | | | 3 | %\nL277: [earnings_release.txt, line 16; 8-K 0001628280-26-071324; filing report date 2026-11-06](https://www.sec.gov/Archives/edgar/data/2132873/000162828026071324/msgrangerscorpex991forearn.htm)\nL286: Insight: Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | % [earnings_release.txt, line 17]",
+    "saved_filing_texts": {
+      "earnings_release.txt": "L1: EX-99.1\nL11: Financial Results for the Three Months Ended September 30, 2026 and 2025:\nL12: | | | | | | | | | | | | | | | | | | | | | | | | | |\nL13: | | Three Months Ended | | | |\nL14: | | September 30, | | Change\nL15: $ millions | | 2026 | | 2025 | | $ | | %\nL16: Revenues | | $ | 14.1 | | | $ | 13.7 | | | $ | 0.4 | | | 3 | %\nL17: Operating loss | | $ | (23.6) | | | $ | (12.8) | | | $ | (10.7) | | | (84) | %\nL23: For the fiscal 2027 first quarter, revenues of $14.1 million increased $0.4 million, or 3%, as compared to the prior year period. This primarily reflected higher revenues from league distributions of $1.2 million, mainly due to an increase in certain league distributions unrelated to national media rights fees, partially offset by other revenue decreases.\nL25: Selling, general and administrative expenses of $28.1 million increased $5.8 million, or 26%, as compared to the prior year period. This increase was primarily driven by (i) expenses related to the spin-off transaction in the current year period of $3.6 million and (ii) higher employee compensation and related benefits of $1.4 million.\nL26: Operating loss of $23.6 million increased $10.7 million and adjusted operating loss of $21.3 million increased $10.9 million, both as compared to the prior year period, primarily due to higher selling, general and administrative expenses and direct operating expenses.\nL31: We define adjusted operating income (loss), which is a non-GAAP financial measure, as operating income (loss) excluding (i) depreciation, amortization and impairments of property and equipment, goodwill and other intangible assets, (ii) share-based compensation expense or benefit, (iii) restructuring charges or credits, (iv) gains or losses on sales or dispositions of businesses, and (v) the impact of purchase accounting adjustments related to business acquisitions. Because it is based upon operating income (loss), adjusted operating income (loss) also excludes interest expense (including cash interest expense) and other non-operating income and expense items. We believe that the exclusion of share-based compensation expense or benefit allows investors to better track the performance of our business without regard to the settlement of an obligation that is not expected to be made in cash.\nL32: We believe adjusted operating income (loss) is an appropriate measure for evaluating the operating performance of our Company. Adjusted operating income (loss) and similar measures with similar titles are common performance measures used by investors and analysts to analyze our performance. Internally, we use revenues and adjusted operating income (loss) as the most important indicators of our business performance, and evaluate management’s effectiveness with specific reference to these indicators. Adjusted operating income (loss) should be viewed as a supplement to and not a substitute for operating income (loss), net income (loss), cash flows from operating activities, and other measures of performance and/or liquidity presented in accordance with U.S. generally accepted accounting principles (“GAAP”). Since adjusted operating income (loss) is not a measure of performance calculated in accordance with GAAP, this measure may not be comparable to similar measures with similar titles used by other companies. For a reconciliation of operating income (loss) to adjusted operating income (loss), please see page 5 of this earnings release.\nL35: # # #\nL43: (In thousands, except per share data)\nL45: | | | | | | | | | | | | | |\nL46: | | Three Months Ended\nL47: | | September 30,\nL48: | | 2026 | | 2025\nL49: Revenues | | $ | 14,089 | | | $ | 13,655 |"
+    },
+    "saved_facts": {}
+  },
+  "expected_output": {
+    "type": "object",
+    "properties": {
+      "checks": {
+        "type": "object",
+        "properties": {
+          "number_1": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_2": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_3": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_4": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_5": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_6": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_7": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_8": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_9": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_10": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_11": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_12": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_13": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_14": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_15": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_16": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_17": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_18": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_19": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_20": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_21": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_22": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_23": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_24": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_42": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_43": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_44": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_45": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_46": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_47": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_48": {
+            "$ref": "#/$defs/semantic_check"
+          },
+          "number_49": {
+            "$ref": "#/$defs/semantic_check"
+          }
+        },
+        "required": [
+          "number_1",
+          "number_2",
+          "number_3",
+          "number_4",
+          "number_5",
+          "number_6",
+          "number_7",
+          "number_8",
+          "number_9",
+          "number_10",
+          "number_11",
+          "number_12",
+          "number_13",
+          "number_14",
+          "number_15",
+          "number_16",
+          "number_17",
+          "number_18",
+          "number_19",
+          "number_20",
+          "number_21",
+          "number_22",
+          "number_23",
+          "number_24",
+          "number_42",
+          "number_43",
+          "number_44",
+          "number_45",
+          "number_46",
+          "number_47",
+          "number_48",
+          "number_49"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "checks"
+    ],
+    "additionalProperties": false,
+    "$defs": {
+      "semantic_check": {
+        "type": "object",
+        "properties": {
+          "supported": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "correction": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "file": {
+                "type": "string"
+              },
+              "line": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              },
+              "period": {
+                "type": "string"
+              },
+              "definition": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "file",
+              "line",
+              "value",
+              "period",
+              "definition"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "supported",
+          "reason",
+          "correction"
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
+}

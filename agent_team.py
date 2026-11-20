@@ -365,10 +365,11 @@ class DeskState(BaseModel):
 class DeskFlow(Flow[DeskState]):
     """Only these edges exist. No model output can choose a successor."""
 
-    def __init__(self, settings, **kwargs):
+    def __init__(self, settings, *, run_folder=None, sec_client=None, **kwargs):
         super().__init__(**kwargs)
         self.settings = settings
         self.manager = None
+        self.run_folder, self.sec_client = run_folder, sec_client
 
     @start()
     def seven_steps(self):
@@ -387,6 +388,8 @@ class DeskFlow(Flow[DeskState]):
                 events.clear()
         args = SimpleNamespace(ticker=self.state.ticker, peers=self.state.peers, price=None, step=None,
                                output_root=self.state.output_root)
+        if self.run_folder is not None:
+            args.run_folder, args.sec_client = self.run_folder, self.sec_client
         output = desk.run_seven_steps(args, self.settings, on_step=record)
         self.state.run_folder = str(output)
         roles.write_json(output / "seven_steps_input.json", {"ticker": args.ticker, "peers": args.peers, "price": args.price})

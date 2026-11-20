@@ -1,0 +1,16 @@
+{
+  "ticker": "WMT",
+  "filing_accepted_time": "2026-11-19 06:58:52",
+  "filing_accepted_source": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000168/0000104169-26-000168-index.html",
+  "filing_time": "2026-11-19 06:58:52",
+  "filing_timezone": "America/New_York",
+  "time": "2026-11-20T15:16:58.959734+00:00",
+  "original_view": {
+    "recommendation": "Hold",
+    "thesis": "Modest comparable‑period revenue growth confirms the annual trend, justifying a Hold recommendation.",
+    "reason": "Revenue grew modestly year over year, matching the annual trend, so a Hold is appropriate.",
+    "deciding_evidence_id": "subject.revenue_growth"
+  },
+  "direction": "not computed",
+  "reaction": "not available"
+}

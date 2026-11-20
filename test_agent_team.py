@@ -15,6 +15,7 @@ import research_roles as roles
 from desk_verifier import (Verifier, fact_records, load_verifier_sources, semantic_response_schema,
                            validate_semantic_response, load_semantic_response, SemanticResponseError)
 from test_research_roles import setup_run
+from test_equity_desk import COMPANY, quarterly_fixture
 
 
 class ScriptedClient:
@@ -69,6 +70,8 @@ class ScriptedClient:
             result.update(thesis="Unverified thesis with 999 percent upside.", recommendation="Hold",
                           deciding_evidence_id=deciding, reason="The selected measure decides the rating.",
                           thesis_evidence_ids=[deciding], reason_evidence_ids=[deciding])
+        if 'direction' in properties:
+            result['direction'] = 'not computed'
         roles.validate_shape(result, schema)
         return result
 
@@ -79,6 +82,84 @@ def saved_fixture(path):
 
 
 class FlowTests(unittest.TestCase):
+    def test_new_standalone_without_annual_filing_completes_real_steps_and_flow(self):
+        """Only external IO/model boundaries are stubbed; extraction is real."""
+        class MissingAnnualClient(ScriptedClient):
+            def call(self, role, task, context, schema):
+                if role != roles.ADVISOR:
+                    return super().call(role, task, context, schema)
+                self.calls.append((role, task, copy.deepcopy(context), copy.deepcopy(schema)))
+                key, row = next((k, r) for output in context.values()
+                                for k, r in output['cited_evidence'].items()
+                                if r.get('text') == 'The business sells subscriptions.')
+                part = team.insight_locations(roles.PARTS, roles.OWNERS)[role]
+                filename = row['source_id'].rsplit(':', 1)[-1]
+                result = {'sections': {p: [{'text': 'Annual valuation is unavailable.',
+                                           'evidence_ids': ['subject.pe'] }]
+                                       for p in schema['properties']['sections']['properties']},
+                          'limitations': [], 'thesis': 'Annual valuation is unavailable.',
+                          'recommendation': 'Hold', 'direction': 'not computed', 'deciding_evidence_id': None,
+                          'reason': 'Annual valuation is unavailable.',
+                          'thesis_evidence_ids': ['subject.pe'], 'reason_evidence_ids': ['subject.pe'],
+                          'insight': {'part': part,
+                                      'text': f"Insight: {row['text']} [{filename}, line {row['line']}]",
+                                      'evidence_ids': [key]}}
+                roles.validate_shape(result, schema)
+                return result
+
+        def select(client, company, folder):
+            selected = {form: {'accessionNumber': f'0000000001-26-{number:06d}',
+                               'reportDate': '2026-09-30', 'document_url': 'https://www.sec.gov/test',
+                               'accepted': '2026-11-06 16:15:00', 'accepted_source': 'saved index'}
+                        for number, form in enumerate(('10-Q', '8-K'), 1)}
+            roles.write_json(folder / 'filings.json', selected)
+            return selected
+
+        def download(client, selected, folder):
+            texts = {'10-Q': 'Revenue includes subscriptions.\n',
+                     '8-K': 'Item 2.02 Results of Operations\n',
+                     'release': 'Quarter ended September 30, 2026\nRevenue was $40 million.\n'
+                                'Revenue includes subscriptions.\n'
+                                'Diluted EPS was $0.50 (GAAP).\nThe business sells subscriptions.\n'}
+            paths = {}
+            for key, text in texts.items():
+                path = folder / ('earnings_release.txt' if key == 'release' else key + '.txt')
+                path.write_text(text, encoding='utf-8')
+                paths[key] = str(path)
+            return paths
+
+        with tempfile.TemporaryDirectory() as tmp, redirect_stdout(io.StringIO()):
+            client = MissingAnnualClient()
+            sec = Mock()
+            sec.json.return_value = quarterly_fixture()
+            with patch.object(team.desk, 'ROOT', Path(tmp)), \
+                 patch.object(team.desk, 'SECClient', return_value=sec), \
+                 patch.object(team.desk, 'resolve', return_value=COMPANY), \
+                 patch.object(team.desk, 'select_filings', side_effect=select), \
+                 patch.object(team.desk, 'download_documents', side_effect=download), \
+                 patch.object(team, 'last_close_before', return_value=30), \
+                 patch.object(team, 'NodeClient', return_value=client):
+                flow = team.DeskFlow({'API_KEY': 'offline', 'SEC_USER_AGENT': 'test@example.test'})
+                report = Path(flow.kickoff(inputs={'ticker': 'TEST', 'peers': []}))
+            self.assertTrue(report.is_file())
+            folder = Path(flow.state.run_folder)
+            facts = json.loads((folder / 'facts.json').read_text())
+            metrics = json.loads((folder / 'metrics.json').read_text())
+            filings = json.loads((folder / 'filings.json').read_text())
+            self.assertEqual(set(filings), {'10-Q', '8-K'})
+            self.assertFalse((folder / '10-K.txt').exists())
+            self.assertIsNone(facts['concepts']['revenue']['current'])
+            self.assertTrue(all(row['value'] is None for row in metrics.values()))
+            self.assertNotIn('subject.revenue.current', fact_records({'facts.json': facts}))
+            record = flow.manager.catalog.records['subject.revenue.current']
+            self.assertEqual(record['kind'], 'missing_input')
+            quarter = flow.manager.catalog.records['quarter.revenue']
+            self.assertEqual(quarter['kind'], 'release_evidence')
+            self.assertTrue(any(row.get('source_id', '').endswith(':10-Q.txt')
+                                for row in flow.manager.catalog.records.values()))
+            self.assertEqual(client.calls[-1][0], 'Verifier')
+            self.assertIn('N/A', report.read_text(encoding='utf-8'))
+
     def test_real_flow_fixed_order_mandatory_verifier_and_artifacts(self):
         with tempfile.TemporaryDirectory() as tmp, redirect_stdout(io.StringIO()):
             folder = Path(tmp)
@@ -255,6 +336,15 @@ class VerificationTests(unittest.TestCase):
         payload["record"]["end"] = "1900-01-01"
         _, checks = verifier.check_record(payload, visible, self.sources)
         self.assertEqual(checks[0]["mark"], "unsupported")
+
+    def test_missing_annual_revenue_cannot_verify_as_supported_number(self):
+        # Reuse an otherwise valid annual citation against a run whose annual
+        # inputs are explicitly unavailable. The unchanged verifier must reject it.
+        payload, visible = self.fact_payload()
+        self.sources['saved_facts']['facts.json'] = team.desk.extract_facts(quarterly_fixture(), COMPANY)
+        self.assertNotIn('subject.revenue.current', fact_records(self.sources['saved_facts']))
+        _, checks = Verifier(None).check_record(payload, visible, self.sources)
+        self.assertEqual(checks[0]['mark'], 'unsupported')
 
     def test_visible_number_tampering_does_not_trust_citation_json(self):
         payload, visible = self.fact_payload()

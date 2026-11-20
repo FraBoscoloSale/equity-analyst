@@ -1,0 +1,20 @@
+{
+  "company": {
+    "ticker": "WMT",
+    "cik": "0000104169",
+    "name": "Walmart Inc."
+  },
+  "run_time": "2026-11-20T10:04:52.668435-05:00",
+  "step": null,
+  "peers": [],
+  "price": null,
+  "price_source": "CLOSES_FILE: last official daily close strictly before filing time (16:00 Eastern)",
+  "filing_time": {
+    "accepted": "2026-11-19 06:58:52",
+    "accepted_source": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000168/0000104169-26-000168-index.html",
+    "accession": "0000104169-26-000168",
+    "filed_override": null,
+    "effective_filing_time": "2026-11-19 06:58:52",
+    "timezone": "America/New_York"
+  }
+}

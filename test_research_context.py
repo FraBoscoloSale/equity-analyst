@@ -38,6 +38,23 @@ class ResearchContextTests(unittest.TestCase):
     def manager(self, folder):
         return team.TeamManager(folder, ScriptedClient())
 
+    def test_compact_fiscal_quarter_segment_header_keeps_exact_source_lines(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            large_fixture(folder)
+            path = folder / '10-K.txt'
+            path.write_text(path.read_text(encoding='utf-8').replace(
+                'Year ended | 2025 | 2024',
+                'Example segment | Q3 FY27 | Q3 FY26 | Change | |'), encoding='utf-8')
+            manager = self.manager(folder)
+            manager.specialist(roles.RESEARCH)
+            supplied = manager.supplied[roles.RESEARCH]
+            for text in ('Example segment | Q3 FY27 | Q3 FY26 | Change | |',
+                         'Revenue | 120 | 100', '(In millions, except per share amounts)'):
+                row = next(row for row in supplied.values() if row.get('text') == text)
+                filename = manager.catalog.sources[row['source_id']]['file']
+                self.assertEqual((folder / filename).read_text(encoding='utf-8').splitlines()[row['line']-1], text)
+
     def test_large_filing_actual_first_and_revision_requests_fit_and_remain_source_bound(self):
         with tempfile.TemporaryDirectory() as tmp, redirect_stdout(io.StringIO()):
             folder = Path(tmp)

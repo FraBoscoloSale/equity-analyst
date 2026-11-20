@@ -1,0 +1,59 @@
+{
+  "revenue": [
+    {
+      "line": 18,
+      "text": "| • Revenue of $188.8 billion, up 5.2%, or 4.5% (cc) 1 • Global eCommerce sales grew 17%, led by store-fulfilled pickup & delivery. Walmart U.S. eCommerce grew 23% • Global advertising business 2 up 25%. Walmart U.S. advertising 2 up 37% • Membership fee revenue grew 17% globally • Launched new membership bundle in the U.S., combining Walmart+ and Sam’s Club Plus for $120 annually • Gross profit rate up 28 bps, led by Walmart U.S. • Operating income up $1.1 billion, or 16.0%; up 5.5% adjusted (cc) 1 • Adjusted EPS 1 of $0.65 excludes the impact, net of tax, from a net loss of $0.03 on equity and other investments • ROA at 7.2%; ROI at 15.4% 1 • Global inventory up 8.1%, reflecting strategic initiatives, timing of seasonal events and cost inflation • Issued $6.5 billion in long-term debt at favorable rates for general corporate purposes | | |",
+      "context": [
+        "| | |",
+        "| | |",
+        "| | | | |",
+        "| Third Quarter Highlights | | | |",
+        "| • Revenue of $188.8 billion, up 5.2%, or 4.5% (cc) 1 • Global eCommerce sales grew 17%, led by store-fulfilled pickup & delivery. Walmart U.S. eCommerce grew 23% • Global advertising business 2 up 25%. Walmart U.S. advertising 2 up 37% • Membership fee revenue grew 17% globally • Launched new membership bundle in the U.S., combining Walmart+ and Sam’s Club Plus for $120 annually • Gross profit rate up 28 bps, led by Walmart U.S. • Operating income up $1.1 billion, or 16.0%; up 5.5% adjusted (cc) 1 • Adjusted EPS 1 of $0.65 excludes the impact, net of tax, from a net loss of $0.03 on equity and other investments • ROA at 7.2%; ROI at 15.4% 1 • Global inventory up 8.1%, reflecting strategic initiatives, timing of seasonal events and cost inflation • Issued $6.5 billion in long-term debt at favorable rates for general corporate purposes | | |",
+        "| |"
+      ],
+      "source_kind": "table"
+    },
+    {
+      "line": 56,
+      "text": "Net sales | $125.0 | $120.7 | $4.3 | 3.6% | | | | |",
+      "context": [
+        "| Business Highlights and Strategic Initiatives Dollars in billions, except as noted. Dollar and percentage changes may not recalculate due to rounding. | |",
+        "| | | | | |",
+        "| | | | | | | | | | | | | | | | | | |",
+        "Walmart U.S. | Q3 FY27 | Q3 FY26 | Change | | | |",
+        "Net sales | $125.0 | $120.7 | $4.3 | 3.6% | | | | |",
+        "Comp sales (ex. fuel) 2 | 2.9% | 4.5% | NP | NP | | | | |"
+      ],
+      "source_kind": "table"
+    },
+    {
+      "line": 74,
+      "text": "Net sales | $35.9 | $33.5 | $2.3 | 7.0% | | | | |",
+      "context": [
+        "• Operating income grew 9.0% due to factors above, improved eCommerce economics and other income benefits",
+        "• Inventory increased 5.2% reflecting strategic initiatives as well as cost inflation",
+        "| | | | | | | | | | | | | | | | | | |",
+        "Walmart International | Q3 FY27 | Q3 FY26 | Change | | | |",
+        "Net sales | $35.9 | $33.5 | $2.3 | 7.0% | | | | |",
+        "Net sales (cc) 1 | $34.7 | $33.5 | $1.1 | 3.3% | | | | |"
+      ],
+      "source_kind": "table"
+    }
+  ],
+  "diluted_eps": [
+    {
+      "line": 194,
+      "text": "Diluted net income per common share attributable to Walmart | | 0.62 | | | 0.77 | | | (19.5 | %) | | 2.09 | | | 2.20 | | | (5.0 | %)",
+      "context": [
+        "| | Three Months Ended | | Nine Months Ended",
+        "Consolidated net income attributable to Walmart | | $ | 4,945 | | | $ | 6,143 | | | (19.5 | %) | | $ | 16,641 | | | $ | 17,656 | | | (5.7 | %)",
+        "| | | | | | | | | | | |",
+        "Net income per common share: | | | | | | | | | | | |",
+        "Basic net income per common share attributable to Walmart | | $ | 0.62 | | | $ | 0.77 | | | (19.5 | %) | | $ | 2.09 | | | $ | 2.21 | | | (5.4 | %)",
+        "Diluted net income per common share attributable to Walmart | | 0.62 | | | 0.77 | | | (19.5 | %) | | 2.09 | | | 2.20 | | | (5.0 | %)",
+        "| | | | | | | | | | | |"
+      ],
+      "source_kind": "table"
+    }
+  ]
+}

@@ -75,6 +75,57 @@ def with_records(sources,records):
 
 
 class SourcedClaimTests(unittest.TestCase):
+    def currency_caption_claim(self):
+        source, _ = fixture()
+        lines = ['Synthetic quarterly results', '| | Three Months Ended | |',
+                 '| | June 30, | | Change', '$ millions | | 2025 | | 2024 | | $ | | %',
+                 'Total revenue | | $ | 60 | | $ | 50 | | $ | 10 | | 20 | %']
+        source['saved_filing_texts']['earnings_release.txt'] = '\n'.join(lines)
+        operand = {'name': 'a', 'quoted': '60', 'scale': '1000000', 'unit': 'USD',
+                   'period': {'start': '2025-04-01', 'end': '2025-06-30', 'duration': 'three months'},
+                   'definition': 'Quarterly total revenue',
+                   'source': {'filing': {'file': 'earnings_release.txt', 'line': 5,
+                                        'quote': lines[4], 'number_index': 0,
+                                        'context': [{'line': i+1, 'quote': lines[i]} for i in (1, 2, 3)]}}}
+        row = payload('quarter_revenue', 'Quarterly total revenue was "$60 million".', [operand],
+                      [('60', 'a', 'USD', 1000000, 0)])
+        return source, row
+
+    def test_currency_caption_units_pass_with_exact_header_provenance(self):
+        source, row = self.currency_caption_claim()
+        _, checks, client = self.run_case(source, [row])
+        self.assertTrue(all(c['mark'] == 'correct' for c in checks if c.get('claim_statement')))
+        targets = self.focused_checks(client)
+        self.assertTrue(targets)
+        binding = targets[0]['source_binding']['operands'][0]
+        self.assertEqual(binding['source']['filing'], row['record']['inputs'][0]['source']['filing'])
+        self.assertEqual(binding['period'], row['record']['inputs'][0]['period'])
+        self.assertEqual(binding['definition'], 'Quarterly total revenue')
+        for _, _, context, _ in client.calls:
+            selected = context['saved_filing_texts']['earnings_release.txt']
+            self.assertIn('L4: $ millions | | 2025 | | 2024 | | $ | | %', selected)
+            self.assertIn('L2: | | Three Months Ended | |', selected)
+
+    def test_currency_caption_wrong_scale_stays_unsupported_even_if_model_approves(self):
+        source, row = self.currency_caption_claim()
+        row['record']['inputs'][0]['scale'] = '1000'
+        row['record']['statement'] = row['record']['statement'].replace('million', 'thousand')
+        row['record']['mentions'][0]['scale'] = '1000'
+        _, checks, _ = self.run_case(source, [row])
+        claims = [c for c in checks if c.get('claim_statement')]
+        self.assertTrue(claims)
+        self.assertTrue(all(c['mark'] == 'unsupported' for c in claims))
+        self.assertTrue(any('scale is not established' in c['reason'] for c in checks))
+
+    def test_currency_caption_missing_scale_fails_before_model(self):
+        source, row = self.currency_caption_claim()
+        source['saved_filing_texts']['earnings_release.txt'] = source['saved_filing_texts']['earnings_release.txt'].replace('$ millions', '')
+        row['record']['inputs'][0]['source']['filing']['context'][2]['quote'] = ' | | 2025 | | 2024 | | $ | | %'
+        client = SemanticClient()
+        with self.assertRaisesRegex(SemanticResponseError, 'missing units/scale context'):
+            self.run_case(source, [row], client)
+        self.assertEqual(client.calls, [])
+
     @staticmethod
     def focused_checks(client):
         return [c for call in client.calls for c in json.loads(call[1].split('Code checks: ',1)[1])

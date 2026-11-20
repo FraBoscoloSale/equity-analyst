@@ -40,6 +40,29 @@ def plan(checks, sources, **kwargs):
 
 
 class PlannerTests(unittest.TestCase):
+    def test_currency_scale_header_preserves_split_period_and_column_context(self):
+        lines = ['Synthetic quarterly results', '| | Three Months Ended | |',
+                 '| | June 30, | | Change', '$ millions | | 2033 | | 2032 | | $ | | %',
+                 'Revenue | | $ | 72 | | $ | 60 | | $ | 12 | | 20 | %']
+        sources = {'compiled_report': 'Filings read: synthetic\n\n> ' + lines[-1],
+                   'saved_filing_texts': {'earnings_release.txt': '\n'.join(lines)}, 'saved_facts': {}}
+        check = {'id': 'number_1', 'original': '72', 'mark': 'correct', 'semantic': True,
+                 'file': 'earnings_release.txt', 'quote': lines[-1], 'period': '2033-06-30',
+                 'definition': 'Quarterly total revenue'}
+        before = copy.deepcopy(sources)
+        batches = plan([check], sources)
+        self.assertEqual([key for batch in batches for key in batch['ids']], ['number_1'])
+        selected = batches[0]['context']['saved_filing_texts']['earnings_release.txt']
+        for i in range(1, 5):
+            self.assertIn(f'L{i+1}: {lines[i]}', selected)
+        self.assertEqual(json.loads(batches[0]['task'].split('Code checks: ', 1)[1])[0], check)
+        self.assertEqual(sources, before)
+        # Currency symbols alone do not establish the scale of a table amount.
+        lines[3] = '| | 2033 | | 2032 | | $ | | %'
+        sources['saved_filing_texts']['earnings_release.txt'] = '\n'.join(lines)
+        with self.assertRaisesRegex(SemanticResponseError, 'missing units/scale context'):
+            plan([check], sources)
+
     def mixed_column_fixture(self, header=None):
         header = header or '(In millions, except percentages and per share amounts) | | 2033 | | 2032 | | Percentage Change |'
         lines = ['Item 7. Results of operations', 'SUMMARY RESULTS OF OPERATIONS',

@@ -1,0 +1,70 @@
+{
+  "subject.operating_margin": {
+    "value": 0.041820733829433104,
+    "arithmetic": "29,825,000,000.0000 / 713,163,000,000.0000",
+    "reason": null,
+    "unit": "fraction",
+    "definition": "Operating income / selected total revenue; annual fraction.",
+    "inputs": [
+      "subject.operating_income.current",
+      "subject.revenue.current"
+    ]
+  },
+  "subject.revenue_growth": {
+    "value": 0.047252142117667706,
+    "arithmetic": "(713,163,000,000.0000 / 680,985,000,000.0000) - 1",
+    "reason": null,
+    "unit": "fraction",
+    "definition": "Selected annual total revenue / prior annual total revenue - 1; fraction.",
+    "inputs": [
+      "subject.revenue.current",
+      "subject.revenue.prior"
+    ]
+  },
+  "subject.return_on_average_equity": {
+    "value": 0.22969102449771808,
+    "arithmetic": "21,893,000,000.0000 / ((99,617,000,000.0000 + 91,013,000,000.0000) / 2)",
+    "reason": null,
+    "unit": "fraction",
+    "definition": "Annual net income / average beginning and ending stockholders' equity; fraction.",
+    "inputs": [
+      "subject.net_income.current",
+      "subject.equity.current",
+      "subject.equity.prior"
+    ]
+  },
+  "subject.debt_to_equity": {
+    "value": 0.38312737785719303,
+    "arithmetic": "(34,624,000,000.0000 + 3,542,000,000.0000) / 99,617,000,000.0000",
+    "reason": null,
+    "unit": "multiple",
+    "definition": "Noncurrent long-term debt plus current portion / ending stockholders' equity; excludes other short-term borrowings and leases.",
+    "inputs": [
+      "subject.long_term_debt.current",
+      "subject.current_debt.current",
+      "subject.equity.current"
+    ]
+  },
+  "subject.free_cash_flow": {
+    "value": 14923000000.0,
+    "arithmetic": "41,565,000,000.0000 - 26,642,000,000.0000",
+    "reason": null,
+    "unit": "USD",
+    "definition": "Operating cash flow minus cash additions to property and equipment; desk definition, may differ from issuer's adjusted measure.",
+    "inputs": [
+      "subject.cash_from_operations.current",
+      "subject.capex.current"
+    ]
+  },
+  "subject.pe": {
+    "value": null,
+    "arithmetic": "N/A / 2.7300",
+    "reason": "missing aligned inputs",
+    "unit": "multiple",
+    "definition": "Supplied market price / latest annual diluted EPS; annual, not forward or trailing-quarter EPS.",
+    "inputs": [
+      "price",
+      "subject.diluted_eps.current"
+    ]
+  }
+}

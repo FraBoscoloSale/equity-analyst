@@ -1,5 +1,7 @@
 # SEC equity research desk
 
+Our team owns the factor check: factors, directions, and weights are fixed in spinoff_factors.txt before returns are observed; results disclose how many valid comparisons were actually made.
+
 ## Local browser page
 
 Start the page with the existing Python environment:

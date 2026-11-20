@@ -1,0 +1,125 @@
+Spinoff Worksheet
+
+Purpose:
+Evaluate one company from the spinoff screen.
+Screens to look at, not a recommendation.
+
+1. Facts
+Record:
+- Parent
+- Distribution date
+- Distribution ratio
+- Record date
+- Price and price date
+- Market value
+- Index
+- Window end date
+- Rank and factor points
+
+Every fact must state its filing, section, and date.
+Mark each financial figure as:
+- historical
+- pro forma
+- reported after the spin
+
+If a required fact cannot be established, write "not known".
+
+2. Why It May Be Cheap
+Use the Investment Advisor persona.
+
+Determine whether forced or indifferent selling can explain why the company may be cheap, or explain why this is not that story.
+
+Use only filing-supported facts, the calculated value range, and the price against the low case.
+
+State what evidence in the next filing would change the view.
+
+3. Value Range
+
+Owner cash flow:
+After-tax earnings + depreciation - capital spending
+
+Print every input and the arithmetic.
+
+Valuation method:
+Owner cash flow / required return
+
+Low case required return: 12%
+Mid case required return: 10%
+
+Low case value:
+Owner cash flow / 0.12
+
+Mid case value:
+Owner cash flow / 0.10
+
+Compare the current price with the low-case value.
+
+No model computes a number.
+
+4. What the Parent Pushed Into It
+Record:
+- Debt raised
+- Where the cash went
+- Liabilities left with the company
+- Restrictions left by the parent
+
+Give an amount, filing, section, and classification for every item.
+
+If the relevant sections were checked and nothing was found, state:
+"looked in [sections], found none"
+
+Never estimate a missing amount.
+
+5. The Parent After the Spin
+Record filing-supported facts needed to understand the parent after the distribution.
+
+Every numerical fact must include its filing, section, and date.
+
+6. Insiders and Catalysts
+Count only open-market insider purchases reported on Form 4 with transaction code P.
+
+Do not treat other Form 4 transaction codes as open-market purchases.
+
+Record:
+- qualifying insider purchases
+- buybacks
+- restrictions
+- relevant filing-supported catalysts
+
+7. Can You Buy It
+
+Client purchase size: $100,000
+
+Calculate median daily dollar volume from the closes and volumes supplied by the reader.
+
+Compare the client's $100,000 purchase size with median daily dollar volume.
+
+State whether the position can reasonably be purchased at the stated size based on that comparison.
+
+The liquidity line is added in code after the model call.
+
+8. View and Conviction
+
+The view must state whether the value indicated by the filing evidence is more or less than the current price.
+
+State the one number that decides the view and give its filing or line.
+
+Conviction rule:
+
+HIGH:
+- low-case value is at least 1.25 times the current price; and
+- no input required to calculate the low case is "not known".
+
+LOW:
+- otherwise.
+
+If the close is "not available", the price comparison and view are "not computed".
+
+9. Not Known
+List every required fact that could not be established from the available filings or reader data.
+
+Never estimate a missing fact.
+
+
+Model used for judgment: gpt-oss:120b
+Model knowledge cutoff: June 1, 2024

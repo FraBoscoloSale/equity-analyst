@@ -18,6 +18,12 @@ from pypdf import PdfReader
 
 
 ROOT = Path(__file__).resolve().parent
+WORKSHEET_TAGS = {
+    'after_tax_earnings': {'us-gaap:NetIncomeLoss', 'ifrs-full:ProfitLoss'},
+    'depreciation': {'us-gaap:Depreciation', 'us-gaap:DepreciationAmortizationAndAccretionNet', 'ifrs-full:DepreciationExpense'},
+    'capital_spending': {'us-gaap:PaymentsToAcquirePropertyPlantAndEquipment', 'ifrs-full:PurchaseOfPropertyPlantAndEquipment'},
+    'shares_outstanding': {'dei:EntityCommonStockSharesOutstanding', 'us-gaap:CommonStockSharesOutstanding'},
+}
 ANNUAL_FORMS = {"10-K", "10-K/A"}
 # These debt concepts exclude the current portion; it is added separately.
 CONCEPTS = {
@@ -317,26 +323,28 @@ def extract_facts(raw, company):
     monetary_units = {unit for tag in CONCEPTS["revenue"][2]
                       for unit in taxonomy.get(tag, {}).get("units", {}) if re.fullmatch(r"[A-Z]{3}", unit)}
     currency = "USD" if "USD" in monetary_units else next(iter(sorted(monetary_units)), None)
-    if not currency:
-        raise DeskError(f"{company['ticker']}: no mapped annual revenue currency.")
     revenue_tag, revenues = newest_tag(taxonomy, CONCEPTS["revenue"][2], currency, "duration")
     current = latest_record(revenues)
-    if not current:
-        raise DeskError(f"{company['ticker']}: no mapped full-year revenue in annual filings.")
     # Use dates, not the fy field on comparative disclosures (which labels the filing's FY).
     previous = latest_record([row for row in revenues if row["end"] < current["start"]
-                              and 300 <= (date.fromisoformat(current["end"]) - date.fromisoformat(row["end"])).days <= 430])
-    if not previous:
+                              and 300 <= (date.fromisoformat(current["end"]) - date.fromisoformat(row["end"])).days <= 430]) if current else None
+    if current and not previous:
         all_revenues = [row for tag in CONCEPTS["revenue"][2]
                         for row in annual_records(taxonomy, tag, currency, "duration")]
         previous = latest_record([row for row in all_revenues if row["end"] < current["start"]
                                   and 300 <= (date.fromisoformat(current["end"]) - date.fromisoformat(row["end"])).days <= 430])
     result = {"company": company, "currency": currency,
-              "fiscal_year": current.get("fy"),
-              "current_period": {"start": current["start"], "end": current["end"]},
+              "fiscal_year": current.get("fy") if current else None,
+              "current_period": {"start": current["start"], "end": current["end"]} if current else None,
               "prior_period": {"start": previous["start"], "end": previous["end"]} if previous else None,
               "source_url": f"https://data.sec.gov/api/xbrl/companyfacts/CIK{company['cik']}.json",
               "concepts": {}}
+    if not current:
+        # A new standalone issuer may have only quarterly filings. Keep the
+        # annual schema, but never use a quarter to anchor annual calculations.
+        result["annual_facts_limitation"] = (
+            "No mapped full-year revenue in annual filings; no annual fiscal period established. "
+            "Aligned annual facts and calculations requiring them are unavailable.")
     for key, (label, kind, tags) in CONCEPTS.items():
         unit = f"{currency}/shares" if key == "diluted_eps" else currency
         tag, records = newest_tag(taxonomy, tags, unit, kind)
@@ -365,6 +373,8 @@ def extract_facts(raw, company):
 def show_facts(facts):
     print(f"{facts['company']['ticker']} | FY {facts['fiscal_year']} | {facts['current_period']} "
           f"| prior {facts['prior_period']} | currency {facts['currency']}")
+    if facts.get("annual_facts_limitation"):
+        print("Unavailable: " + facts["annual_facts_limitation"])
     for concept in facts["concepts"].values():
         print(concept["label"] + ":")
         for period in ("current", "prior"):
@@ -378,10 +388,53 @@ def show_facts(facts):
                       f"preferred tag {concept['selected_tag']})")
 
 
+def worksheet_input_records(raw, company):
+    """Additional saved SEC facts, not new estimates or changes to mapped metrics.
+
+    SEC companyfacts values are normalized base units (scale zero). Preserve
+    tag/period/unit/accession; conflicting latest records remain unavailable.
+    """
+    grouped = {}
+    for namespace, concepts in raw.get('facts', {}).items():
+        for name, concept in concepts.items():
+            tag = namespace+':'+name
+            key = next((key for key, tags in WORKSHEET_TAGS.items() if tag in tags), None)
+            if key is None:
+                continue
+            for unit, rows in concept.get('units', {}).items():
+                if (unit != 'shares' if key == 'shares_outstanding' else not re.fullmatch(r'[A-Z]{3}', unit)):
+                    continue
+                for row in rows:
+                    try:
+                        if isinstance(row.get('val'), bool) or not math.isfinite(float(row['val'])):
+                            continue
+                        end = date.fromisoformat(row['end'])
+                        if key == 'shares_outstanding':
+                            if row.get('start'):
+                                continue
+                        elif not 330 <= (end-date.fromisoformat(row['start'])).days <= 380:
+                            continue
+                        if not row.get('accn') or not row.get('filed'):
+                            continue
+                    except (ValueError, KeyError, TypeError, OverflowError):
+                        continue
+                    identity = tag, row.get('start'), row['end'], unit
+                    grouped.setdefault(identity, []).append({**row, 'tag': tag, 'unit': unit, 'scale': 0,
+                        'filing_url': f'https://www.sec.gov/Archives/edgar/data/{int(company["cik"])}/{row["accn"].replace("-", "")}/{row["accn"]}-index.html'})
+    result = []
+    for rows in grouped.values():
+        latest = max(row['filed'] for row in rows)
+        selected = [row for row in rows if row['filed'] == latest]
+        if len({row['val'] for row in selected}) == 1:
+            result.append(selected[0])
+    return result
+
+
 def collect_facts(client, company, output, prefix=""):
     raw = client.json(f"https://data.sec.gov/api/xbrl/companyfacts/CIK{company['cik']}.json")
     save_json(output / f"{prefix}companyfacts.json", raw)
     facts = extract_facts(raw, company)
+    facts['worksheet_inputs'] = worksheet_input_records(raw, company)
     save_json(output / f"{prefix}facts.json", facts)
     return facts
 
@@ -546,7 +599,8 @@ def run_seven_steps(args, settings, on_step=None):
         if "output" not in state:
             name = re.sub(r"[^\w.-]+", "_", company()["name"]).strip("_.")[:100] or company()["ticker"]
             stamp = datetime.now().astimezone().strftime("%Y-%m-%d_%H-%M-%S_%f")
-            path = ROOT / "research_data" / f"{name}_{stamp}"
+            parent = getattr(args, 'output_root', None)
+            path = (Path(parent) if parent is not None else ROOT / "research_data") / f"{name}_{stamp}"
             path.mkdir(parents=True, exist_ok=False)
             state["output"] = path
             save_json(path / "run.json", {"company": company(), "run_time": datetime.now().astimezone().isoformat(),

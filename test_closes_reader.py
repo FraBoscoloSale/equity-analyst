@@ -31,6 +31,60 @@ def export_file(instruments):
 
 
 class ClosesReaderTests(unittest.TestCase):
+    @contextmanager
+    def volume_export(self, rows):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'volumes.xlsx'
+            workbook = Workbook()
+            for row in rows:
+                workbook.active.append(row)
+            workbook.save(path)
+            workbook.close()
+            before = path.read_bytes()
+            with patch.object(reader, 'dotenv_values', return_value={'CLOSES_FILE': str(path)}):
+                yield
+            self.assertEqual(path.read_bytes(), before)
+
+    def test_numeric_volume(self):
+        with self.volume_export([
+            ['Instrument', 'Date', 'Price Close', 'Volume'],
+            ['EXAMPLE.K', datetime(2026, 10, 27), 177.61, 393514],
+        ]):
+            self.assertEqual(reader.daily_close_volumes('EXAMPLE', '2026-10-27', '2026-10-27'),
+                             [{'date': '2026-10-27', 'close': 177.61, 'volume': 393514.0,
+                               'instrument': 'EXAMPLE.K'}])
+
+    def test_later_header_introduces_volume_and_updates_column_order(self):
+        with self.volume_export([
+            ['Instrument', 'Date', 'Price Close'],
+            ['FIRST.O', datetime(2026, 10, 27), 100],
+            ['Instrument', 'Date', 'Price Close', 'Volume'],
+            ['EXAMPLE.K', datetime(2026, 10, 27), 20, 1000],
+            [' Volume ', ' Price Close ', ' Instrument ', ' Date '],
+            [2000, 22, 'EXAMPLE.K', datetime(2026, 10, 28)],
+        ]):
+            rows = reader.daily_close_volumes('EXAMPLE', '2026-10-27', '2026-10-28')
+            self.assertEqual([(r['close'], r['volume']) for r in rows], [(20.0, 1000.0), (22.0, 2000.0)])
+            self.assertEqual(reader.daily_closes('FIRST.O', '2026-10-27', '2026-10-28'),
+                             [{'date': '2026-10-27', 'close': 100.0}])
+
+    def test_missing_and_invalid_volume_remain_unavailable(self):
+        for volume in (None, 'invalid', -1, True, 'NaN', 'inf'):
+            with self.subTest(volume=volume), self.volume_export([
+                ['Instrument', 'Date', 'Price Close', 'Volume'],
+                ['EXAMPLE.K', datetime(2026, 10, 27), 20, volume],
+            ]):
+                rows = reader.daily_close_volumes('EXAMPLE', '2026-10-27', '2026-10-27')
+                self.assertIsNone(rows[0]['volume'])
+                self.assertEqual(rows[0]['close'], 20.0)
+
+    def test_close_only_export_preserves_closes_and_missing_volume(self):
+        with export_file(['EXAMPLE.K']):
+            closes = reader.daily_closes('EXAMPLE.K', '2026-10-02', '2026-10-10')
+            rows = reader.daily_close_volumes('EXAMPLE', '2026-10-02', '2026-10-10')
+            self.assertEqual(closes, [{'date': row['date'], 'close': row['close']} for row in rows])
+            self.assertTrue(all(row['volume'] is None for row in rows))
+
     def test_sec_ticker_resolves_generic_sole_vendor_suffix(self):
         for ticker, instrument in (("MSGR", "MSGR.K"), ("EXAMPLE", "EXAMPLE.O"),
                                    ("CLASS.B", "CLASS.B.N"), ("PLAIN", "PLAIN")):

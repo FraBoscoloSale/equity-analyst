@@ -1,0 +1,502 @@
+{
+  "verified_report": "verified_report.md",
+  "marks": [
+    {
+      "id": "number_1",
+      "original": "706,413",
+      "mark": "correct",
+      "reason": "Quoted line occurs in the saved filing; semantic check pending.",
+      "correction": "",
+      "source": "10-K.txt: Net sales | | $ | 706,413 | | | $ | 674,538 |",
+      "file": "10-K.txt",
+      "quote": "Net sales | | $ | 706,413 | | | $ | 674,538 |",
+      "period": "as stated in quoted line and saved column headers",
+      "filing_report_date": "2026-01-31",
+      "definition": "as stated in quoted line",
+      "semantic": true,
+      "semantic_reason": "Line L533 of 10‑K.txt reports Net sales $ 706,413 (in millions) for fiscal 2026, matching the quoted value."
+    },
+    {
+      "id": "number_2",
+      "original": "674,538",
+      "mark": "correct",
+      "reason": "Quoted line occurs in the saved filing; semantic check pending.",
+      "correction": "",
+      "source": "10-K.txt: Net sales | | $ | 706,413 | | | $ | 674,538 |",
+      "file": "10-K.txt",
+      "quote": "Net sales | | $ | 706,413 | | | $ | 674,538 |",
+      "period": "as stated in quoted line and saved column headers",
+      "filing_report_date": "2026-01-31",
+      "definition": "as stated in quoted line",
+      "semantic": true,
+      "semantic_reason": "Line L533 of 10‑K.txt reports Net sales $ 674,538 (in millions) for fiscal 2025, matching the quoted value."
+    },
+    {
+      "id": "number_3",
+      "original": "4.7",
+      "mark": "correct",
+      "reason": "Quoted line occurs in the saved filing; semantic check pending.",
+      "correction": "",
+      "source": "10-K.txt: Percentage change from comparable period | | 4.7 | % | | 5.0 | %",
+      "file": "10-K.txt",
+      "quote": "Percentage change from comparable period | | 4.7 | % | | 5.0 | %",
+      "period": "as stated in quoted line and saved column headers",
+      "filing_report_date": "2026-01-31",
+      "definition": "as stated in quoted line",
+      "semantic": true,
+      "semantic_reason": "Line L534 of 10-K.txt reports a 4.7 % percentage change from comparable period for fiscal 2026, matching the quoted value."
+    },
+    {
+      "id": "number_4",
+      "original": "5.0",
+      "mark": "correct",
+      "reason": "Quoted line occurs in the saved filing; semantic check pending.",
+      "correction": "",
+      "source": "10-K.txt: Percentage change from comparable period | | 4.7 | % | | 5.0 | %",
+      "file": "10-K.txt",
+      "quote": "Percentage change from comparable period | | 4.7 | % | | 5.0 | %",
+      "period": "as stated in quoted line and saved column headers",
+      "filing_report_date": "2026-01-31",
+      "definition": "as stated in quoted line",
+      "semantic": true,
+      "semantic_reason": "Line L534 of 10-K.txt reports a 5.0 % percentage change from comparable period for fiscal 2025, matching the quoted value."
+    },
+    {
+      "id": "number_5",
+      "original": "188,835",
+      "mark": "correct",
+      "reason": "Quoted line occurs in the saved filing; semantic check pending.",
+      "correction": "",
+      "source": "earnings_release.txt: Total revenues | | 188,835 | | | 179,496 | | | 5.2 | % | | 554,523 | | | 522,507 | | | 6.1 | %",
+      "file": "earnings_release.txt",
+      "quote": "Total revenues | | 188,835 | | | 179,496 | | | 5.2 | % | | 554,523 | | | 522,507 | | | 6.1 | %",
+      "period": "as stated in quoted line and saved column headers",
+      "filing_report_date": "2026-11-19",
+      "definition": "as stated in quoted line",
+      "semantic": true,
+      "semantic_reason": "Line L173 of earnings_release.txt lists Total revenues 188,835 (in millions) for the three‑month period ending Q3 FY27, matching the quoted value."
+    },
+    {
+      "id": "number_6",
+      "original": "179,496",
+      "mark": "correct",
+      "reason": "Quoted line occurs in the saved filing; semantic check pending.",
+      "correction": "",
+      "source": "earnings_release.txt: Total revenues | | 188,835 | | | 179,496 | | | 5.2 | % | | 554,523 | | | 522,507 | | | 6.1 | %",
+      "file": "earnings_release.txt",
+      "quote": "Total revenues | | 188,835 | | | 179,496 | | | 5.2 | % | | 554,523 | | | 522,507 | | | 6.1 | %",
+      "period": "as stated in quoted line and saved column headers",
+      "filing_report_date": "2026-11-19",
+      "definition": "as stated in quoted line",
+      "semantic": true,
+      "semantic_reason": "Line L173 of earnings_release.txt lists Total revenues 179,496 (in millions) for the three‑month period ending Q3 FY26, matching the quoted value."
+    },
+    {
+      "id": "number_7",
+      "original": "5.2",
+      "mark": "correct",
+      "reason": "Quoted line occurs in the saved filing; semantic check pending.",
+      "correction": "",
+      "source": "earnings_release.txt: Total revenues | | 188,835 | | | 179,496 | | | 5.2 | % | | 554,523 | | | 522,507 | | | 6.1 | %",
+      "file": "earnings_release.txt",
+      "quote": "Total revenues | | 188,835 | | | 179,496 | | | 5.2 | % | | 554,523 | | | 522,507 | | | 6.1 | %",
+      "period": "as stated in quoted line and saved column headers",
+      "filing_report_date": "2026-11-19",
+      "definition": "as stated in quoted line",
+      "semantic": true,
+      "semantic_reason": "Line L173 of earnings_release.txt shows a 5.2 % change for Total revenues in the three‑month period ending Q3 FY27, matching the quoted value."
+    },
+    {
+      "id": "number_8",
+      "original": "554,523",
+      "mark": "correct",
+      "reason": "Quoted line occurs in the saved filing; semantic check pending.",
+      "correction": "",
+      "source": "earnings_release.txt: Total revenues | | 188,835 | | | 179,496 | | | 5.2 | % | | 554,523 | | | 522,507 | | | 6.1 | %",
+      "file": "earnings_release.txt",
+      "quote": "Total revenues | | 188,835 | | | 179,496 | | | 5.2 | % | | 554,523 | | | 522,507 | | | 6.1 | %",
+      "period": "as stated in quoted line and saved column headers",
+      "filing_report_date": "2026-11-19",
+      "definition": "as stated in quoted line",
+      "semantic": true,
+      "semantic_reason": "Line L173 of earnings_release.txt lists Total revenues 554,523 (in millions) for the nine‑month period ending FY27, matching the quoted value."
+    },
+    {
+      "id": "number_9",
+      "original": "522,507",
+      "mark": "correct",
+      "reason": "Quoted line occurs in the saved filing; semantic check pending.",
+      "correction": "",
+      "source": "earnings_release.txt: Total revenues | | 188,835 | | | 179,496 | | | 5.2 | % | | 554,523 | | | 522,507 | | | 6.1 | %",
+      "file": "earnings_release.txt",
+      "quote": "Total revenues | | 188,835 | | | 179,496 | | | 5.2 | % | | 554,523 | | | 522,507 | | | 6.1 | %",
+      "period": "as stated in quoted line and saved column headers",
+      "filing_report_date": "2026-11-19",
+      "definition": "as stated in quoted line",
+      "semantic": true,
+      "semantic_reason": "Line L173 of earnings_release.txt lists Total revenues 522,507 (in millions) for the nine‑month period ending FY26, matching the quoted value."
+    },
+    {
+      "id": "number_10",
+      "original": "6.1",
+      "mark": "correct",
+      "reason": "Quoted line occurs in the saved filing; semantic check pending.",
+      "correction": "",
+      "source": "earnings_release.txt: Total revenues | | 188,835 | | | 179,496 | | | 5.2 | % | | 554,523 | | | 522,507 | | | 6.1 | %",
+      "file": "earnings_release.txt",
+      "quote": "Total revenues | | 188,835 | | | 179,496 | | | 5.2 | % | | 554,523 | | | 522,507 | | | 6.1 | %",
+      "period": "as stated in quoted line and saved column headers",
+      "filing_report_date": "2026-11-19",
+      "definition": "as stated in quoted line",
+      "semantic": true,
+      "semantic_reason": "Line L173 of earnings_release.txt shows a 6.1 % change for Total revenues in the nine‑month period ending FY27, matching the quoted value."
+    },
+    {
+      "id": "number_11",
+      "original": "30",
+      "mark": "unsupported",
+      "reason": "Quoted line occurs in the saved filing; semantic check pending.",
+      "correction": "",
+      "source": "earnings_release.txt: • eCommerce sales up 30% with continued strong growth in club-fulfilled pickup & delivery",
+      "file": "earnings_release.txt",
+      "quote": "• eCommerce sales up 30% with continued strong growth in club-fulfilled pickup & delivery",
+      "period": "as stated in quoted line and saved column headers",
+      "filing_report_date": "2026-11-19",
+      "definition": "as stated in quoted line",
+      "semantic": true,
+      "semantic_reason": "The bullet line only states “eCommerce sales up 30%” without an explicit reporting period or a defined metric, so the period and definition are ambiguous."
+    },
+    {
+      "id": "number_12",
+      "original": "2.2",
+      "mark": "unsupported",
+      "reason": "Quoted line occurs in the saved filing; semantic check pending.",
+      "correction": "",
+      "source": "earnings_release.txt: • Membership fee revenue grew 2.2% driven by steady growth in member counts and Plus penetration, partially offset by the allocation of fees from the bundled membership",
+      "file": "earnings_release.txt",
+      "quote": "• Membership fee revenue grew 2.2% driven by steady growth in member counts and Plus penetration, partially offset by the allocation of fees from the bundled membership",
+      "period": "as stated in quoted line and saved column headers",
+      "filing_report_date": "2026-11-19",
+      "definition": "as stated in quoted line",
+      "semantic": true,
+      "semantic_reason": "The bullet line only states “Membership fee revenue grew 2.2%” without an explicit reporting period or a defined metric, so the period and definition are ambiguous."
+    },
+    {
+      "id": "number_13",
+      "original": "10.7",
+      "mark": "unsupported",
+      "reason": "Quoted line occurs in the saved filing; semantic check pending.",
+      "correction": "",
+      "source": "earnings_release.txt: • Inventory up 10.7%, primarily related to higher fuel costs and volumes; including fuel upstreaming with a strategic partner",
+      "file": "earnings_release.txt",
+      "quote": "• Inventory up 10.7%, primarily related to higher fuel costs and volumes; including fuel upstreaming with a strategic partner",
+      "period": "as stated in quoted line and saved column headers",
+      "filing_report_date": "2026-11-19",
+      "definition": "as stated in quoted line",
+      "semantic": true,
+      "semantic_reason": "The bullet line only states “Inventory up 10.7%” without an explicit reporting period or a defined metric, so the period and definition are ambiguous."
+    },
+    {
+      "id": "number_14",
+      "original": "0.047252142117667706",
+      "mark": "correct",
+      "reason": "Recomputed ratio from quoted inputs; definition: Selected annual total revenue / prior annual total revenue - 1; fraction.",
+      "correction": "0.047252142117667790039428181",
+      "source": "WMT us-gaap:Revenues; 2025-02-01 to 2026-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html; WMT us-gaap:Revenues; 2024-02-01 to 2025-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html; arithmetic: (713,163,000,000.0000 / 680,985,000,000.0000) - 1 = 0.047252142117667790039428181; quoted inputs: subject.revenue.current=713163000000, subject.revenue.prior=680985000000; arithmetic: 713163000000 / 680985000000 - 1; definition: Selected annual total revenue / prior annual total revenue - 1; fraction."
+    },
+    {
+      "id": "number_15",
+      "original": "713163000000",
+      "mark": "correct",
+      "reason": "Exact XBRL fact comparison.",
+      "correction": "713163000000",
+      "source": "WMT us-gaap:Revenues; 2025-02-01 to 2026-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html"
+    },
+    {
+      "id": "number_16",
+      "original": "680985000000",
+      "mark": "correct",
+      "reason": "Exact XBRL fact comparison.",
+      "correction": "680985000000",
+      "source": "WMT us-gaap:Revenues; 2024-02-01 to 2025-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html"
+    },
+    {
+      "id": "number_17",
+      "original": "0.041820733829433104",
+      "mark": "correct",
+      "reason": "Recomputed ratio from quoted inputs; definition: Operating income / selected total revenue; annual fraction.",
+      "correction": "0.04182073382943310295121872559",
+      "source": "WMT us-gaap:OperatingIncomeLoss; 2025-02-01 to 2026-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html; WMT us-gaap:Revenues; 2025-02-01 to 2026-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html; arithmetic: 29,825,000,000.0000 / 713,163,000,000.0000 = 0.04182073382943310295121872559; quoted inputs: subject.operating_income.current=29825000000, subject.revenue.current=713163000000; arithmetic: 29825000000 / 713163000000; definition: Operating income / selected total revenue; annual fraction."
+    },
+    {
+      "id": "number_18",
+      "original": "29825000000",
+      "mark": "correct",
+      "reason": "Exact XBRL fact comparison.",
+      "correction": "29825000000",
+      "source": "WMT us-gaap:OperatingIncomeLoss; 2025-02-01 to 2026-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html"
+    },
+    {
+      "id": "number_19",
+      "original": "14923000000.0",
+      "mark": "correct",
+      "reason": "Recomputed ratio from quoted inputs; definition: Operating cash flow minus cash additions to property and equipment; desk definition, may differ from issuer's adjusted measure.",
+      "correction": "14923000000",
+      "source": "WMT us-gaap:NetCashProvidedByUsedInOperatingActivities; 2025-02-01 to 2026-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html; WMT us-gaap:PaymentsToAcquirePropertyPlantAndEquipment; 2025-02-01 to 2026-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html; arithmetic: 41,565,000,000.0000 - 26,642,000,000.0000 = 14923000000.0000; quoted inputs: subject.cash_from_operations.current=41565000000, subject.capex.current=26642000000; arithmetic: 41565000000 - 26642000000; definition: Operating cash flow minus cash additions to property and equipment; desk definition, may differ from issuer's adjusted measure."
+    },
+    {
+      "id": "number_20",
+      "original": "41565000000",
+      "mark": "correct",
+      "reason": "Exact XBRL fact comparison.",
+      "correction": "41565000000",
+      "source": "WMT us-gaap:NetCashProvidedByUsedInOperatingActivities; 2025-02-01 to 2026-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html"
+    },
+    {
+      "id": "number_21",
+      "original": "26642000000",
+      "mark": "correct",
+      "reason": "Exact XBRL fact comparison.",
+      "correction": "26642000000",
+      "source": "WMT us-gaap:PaymentsToAcquirePropertyPlantAndEquipment; 2025-02-01 to 2026-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html"
+    },
+    {
+      "id": "number_22",
+      "original": "0.38312737785719303",
+      "mark": "correct",
+      "reason": "Recomputed ratio from quoted inputs; definition: Noncurrent long-term debt plus current portion / ending stockholders' equity; excludes other short-term borrowings and leases.",
+      "correction": "0.3831273778571930493791220374",
+      "source": "WMT us-gaap:LongTermDebtNoncurrent; instant to 2026-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html; WMT us-gaap:LongTermDebtCurrent; instant to 2026-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html; WMT us-gaap:StockholdersEquity; instant to 2026-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html; arithmetic: (34,624,000,000.0000 + 3,542,000,000.0000) / 99,617,000,000.0000 = 0.3831273778571930493791220374; quoted inputs: subject.long_term_debt.current=34624000000, subject.current_debt.current=3542000000, subject.equity.current=99617000000; arithmetic: (34624000000 + 3542000000) / 99617000000; definition: Noncurrent long-term debt plus current portion / ending stockholders' equity; excludes other short-term borrowings and leases."
+    },
+    {
+      "id": "number_23",
+      "original": "34624000000",
+      "mark": "correct",
+      "reason": "Exact XBRL fact comparison.",
+      "correction": "34624000000",
+      "source": "WMT us-gaap:LongTermDebtNoncurrent; instant to 2026-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html"
+    },
+    {
+      "id": "number_24",
+      "original": "3542000000",
+      "mark": "correct",
+      "reason": "Exact XBRL fact comparison.",
+      "correction": "3542000000",
+      "source": "WMT us-gaap:LongTermDebtCurrent; instant to 2026-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html"
+    },
+    {
+      "id": "number_25",
+      "original": "99617000000",
+      "mark": "correct",
+      "reason": "Exact XBRL fact comparison.",
+      "correction": "99617000000",
+      "source": "WMT us-gaap:StockholdersEquity; instant to 2026-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html"
+    },
+    {
+      "id": "number_26",
+      "original": "4.2",
+      "mark": "correct",
+      "reason": "Quoted line occurs in the saved filing; semantic check pending.",
+      "correction": "",
+      "source": "10-K.txt: Operating income as a percentage of net sales | | 4.2 | % | | 4.4 | %",
+      "file": "10-K.txt",
+      "quote": "Operating income as a percentage of net sales | | 4.2 | % | | 4.4 | %",
+      "period": "as stated in quoted line and saved column headers",
+      "filing_report_date": "2026-01-31",
+      "definition": "as stated in quoted line",
+      "semantic": true,
+      "semantic_reason": "Line L538 of 10‑K.txt reports Operating income as a percentage of net sales 4.2 % for fiscal 2026, matching the quoted value."
+    },
+    {
+      "id": "number_27",
+      "original": "4.4",
+      "mark": "correct",
+      "reason": "Quoted line occurs in the saved filing; semantic check pending.",
+      "correction": "",
+      "source": "10-K.txt: Operating income as a percentage of net sales | | 4.2 | % | | 4.4 | %",
+      "file": "10-K.txt",
+      "quote": "Operating income as a percentage of net sales | | 4.2 | % | | 4.4 | %",
+      "period": "as stated in quoted line and saved column headers",
+      "filing_report_date": "2026-01-31",
+      "definition": "as stated in quoted line",
+      "semantic": true,
+      "semantic_reason": "Line L538 of 10‑K.txt reports Operating income as a percentage of net sales 4.4 % for fiscal 2025, matching the quoted value."
+    },
+    {
+      "id": "number_28",
+      "original": "0.041820733829433104",
+      "mark": "correct",
+      "reason": "Recomputed ratio from quoted inputs; definition: Operating income / selected total revenue; annual fraction.",
+      "correction": "0.04182073382943310295121872559",
+      "source": "WMT us-gaap:OperatingIncomeLoss; 2025-02-01 to 2026-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html; WMT us-gaap:Revenues; 2025-02-01 to 2026-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html; arithmetic: 29,825,000,000.0000 / 713,163,000,000.0000 = 0.04182073382943310295121872559; quoted inputs: subject.operating_income.current=29825000000, subject.revenue.current=713163000000; arithmetic: 29825000000 / 713163000000; definition: Operating income / selected total revenue; annual fraction."
+    },
+    {
+      "id": "number_29",
+      "original": "29825000000",
+      "mark": "correct",
+      "reason": "Exact XBRL fact comparison.",
+      "correction": "29825000000",
+      "source": "WMT us-gaap:OperatingIncomeLoss; 2025-02-01 to 2026-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html"
+    },
+    {
+      "id": "number_30",
+      "original": "713163000000",
+      "mark": "correct",
+      "reason": "Exact XBRL fact comparison.",
+      "correction": "713163000000",
+      "source": "WMT us-gaap:Revenues; 2025-02-01 to 2026-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html"
+    },
+    {
+      "id": "number_31",
+      "original": "0.047252142117667706",
+      "mark": "correct",
+      "reason": "Recomputed ratio from quoted inputs; definition: Selected annual total revenue / prior annual total revenue - 1; fraction.",
+      "correction": "0.047252142117667790039428181",
+      "source": "WMT us-gaap:Revenues; 2025-02-01 to 2026-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html; WMT us-gaap:Revenues; 2024-02-01 to 2025-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html; arithmetic: (713,163,000,000.0000 / 680,985,000,000.0000) - 1 = 0.047252142117667790039428181; quoted inputs: subject.revenue.current=713163000000, subject.revenue.prior=680985000000; arithmetic: 713163000000 / 680985000000 - 1; definition: Selected annual total revenue / prior annual total revenue - 1; fraction."
+    },
+    {
+      "id": "number_32",
+      "original": "713163000000",
+      "mark": "correct",
+      "reason": "Exact XBRL fact comparison.",
+      "correction": "713163000000",
+      "source": "WMT us-gaap:Revenues; 2025-02-01 to 2026-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html"
+    },
+    {
+      "id": "number_33",
+      "original": "680985000000",
+      "mark": "correct",
+      "reason": "Exact XBRL fact comparison.",
+      "correction": "680985000000",
+      "source": "WMT us-gaap:Revenues; 2024-02-01 to 2025-01-31; 0000104169-26-000055; https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/0000104169-26-000055-index.html"
+    },
+    {
+      "id": "number_34",
+      "original": "4.7",
+      "mark": "unsupported",
+      "reason": "Number has no explicit filing/XBRL/calculator source.",
+      "correction": "",
+      "source": ""
+    },
+    {
+      "id": "number_35",
+      "original": "706,413",
+      "mark": "unsupported",
+      "reason": "Number has no explicit filing/XBRL/calculator source.",
+      "correction": "",
+      "source": ""
+    },
+    {
+      "id": "number_36",
+      "original": "2026",
+      "mark": "unsupported",
+      "reason": "Number has no explicit filing/XBRL/calculator source.",
+      "correction": "",
+      "source": ""
+    },
+    {
+      "id": "number_37",
+      "original": "674,538",
+      "mark": "unsupported",
+      "reason": "Number has no explicit filing/XBRL/calculator source.",
+      "correction": "",
+      "source": ""
+    },
+    {
+      "id": "number_38",
+      "original": "2025",
+      "mark": "unsupported",
+      "reason": "Number has no explicit filing/XBRL/calculator source.",
+      "correction": "",
+      "source": ""
+    },
+    {
+      "id": "number_39",
+      "original": "5.2",
+      "mark": "unsupported",
+      "reason": "Number has no explicit filing/XBRL/calculator source.",
+      "correction": "",
+      "source": ""
+    },
+    {
+      "id": "number_40",
+      "original": "188,835",
+      "mark": "unsupported",
+      "reason": "Number has no explicit filing/XBRL/calculator source.",
+      "correction": "",
+      "source": ""
+    },
+    {
+      "id": "number_41",
+      "original": "179,496",
+      "mark": "unsupported",
+      "reason": "Number has no explicit filing/XBRL/calculator source.",
+      "correction": "",
+      "source": ""
+    },
+    {
+      "id": "number_42",
+      "original": "30",
+      "mark": "unsupported",
+      "reason": "Number has no explicit filing/XBRL/calculator source.",
+      "correction": "",
+      "source": ""
+    },
+    {
+      "id": "number_43",
+      "original": "2.2",
+      "mark": "unsupported",
+      "reason": "Number has no explicit filing/XBRL/calculator source.",
+      "correction": "",
+      "source": ""
+    },
+    {
+      "id": "number_44",
+      "original": "2.2",
+      "mark": "unsupported",
+      "reason": "Number has no explicit filing/XBRL/calculator source.",
+      "correction": "",
+      "source": ""
+    },
+    {
+      "id": "number_45",
+      "original": "4.2",
+      "mark": "unsupported",
+      "reason": "Number has no explicit filing/XBRL/calculator source.",
+      "correction": "",
+      "source": ""
+    },
+    {
+      "id": "number_46",
+      "original": "2026",
+      "mark": "unsupported",
+      "reason": "Number has no explicit filing/XBRL/calculator source.",
+      "correction": "",
+      "source": ""
+    },
+    {
+      "id": "number_47",
+      "original": "4.4",
+      "mark": "unsupported",
+      "reason": "Number has no explicit filing/XBRL/calculator source.",
+      "correction": "",
+      "source": ""
+    },
+    {
+      "id": "number_48",
+      "original": "2025",
+      "mark": "unsupported",
+      "reason": "Number has no explicit filing/XBRL/calculator source.",
+      "correction": "",
+      "source": ""
+    },
+    {
+      "id": "number_49",
+      "original": "0",
+      "mark": "unsupported",
+      "reason": "Number has no explicit filing/XBRL/calculator source.",
+      "correction": "",
+      "source": ""
+    }
+  ]
+}

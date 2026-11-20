@@ -36,7 +36,59 @@ def fixture():
     return {"facts": {"us-gaap": facts}}
 
 
+def quarterly_fixture():
+    raw = fixture()
+    for concept in raw['facts']['us-gaap'].values():
+        for records in concept['units'].values():
+            for row in records:
+                row['form'] = '10-Q'
+                if row.get('start'):
+                    row['start'] = row['end'][:4] + '-04-01'
+    return raw
+
+
 class FinancialTests(unittest.TestCase):
+    def test_no_annual_revenue_stays_missing_without_quarter_substitution(self):
+        raw = quarterly_fixture()
+        facts = desk.extract_facts(raw, COMPANY)
+        self.assertIsNone(facts['current_period'])
+        self.assertIsNone(facts['prior_period'])
+        self.assertIsNone(facts['fiscal_year'])
+        self.assertIn('No mapped full-year revenue', facts['annual_facts_limitation'])
+        self.assertEqual(facts['source_url'], 'https://data.sec.gov/api/xbrl/companyfacts/CIK0000000001.json')
+        for concept in facts['concepts'].values():
+            self.assertIsNone(concept['current'])
+            self.assertIsNone(concept['prior'])
+        with redirect_stdout(io.StringIO()):
+            metrics = desk.calculate(facts, 30)
+            desk.show_facts(facts)
+        for metric in metrics.values():
+            self.assertIsNone(metric['value'])
+            self.assertEqual(metric['reason'], 'missing aligned inputs')
+        self.assertEqual(raw['facts']['us-gaap']['Revenues']['units']['USD'][0]['val'], 120)
+
+    def test_missing_revenue_currency_does_not_invent_annual_inputs(self):
+        raw = quarterly_fixture()
+        del raw['facts']['us-gaap']['Revenues']
+        facts = desk.extract_facts(raw, COMPANY)
+        self.assertIsNone(facts['currency'])
+        self.assertIsNone(facts['concepts']['revenue']['current'])
+        with redirect_stdout(io.StringIO()):
+            metrics = desk.calculate(facts, 30)
+        self.assertTrue(all(row['value'] is None for row in metrics.values()))
+
+    def test_ordinary_annual_issuer_keeps_annual_values_and_provenance(self):
+        facts = desk.extract_facts(fixture(), COMPANY)
+        self.assertNotIn('annual_facts_limitation', facts)
+        self.assertEqual(facts['current_period'], {'start': '2024-07-01', 'end': '2025-06-30'})
+        revenue = facts['concepts']['revenue']['current']
+        self.assertEqual((revenue['val'], revenue['form'], revenue['accn']),
+                         (120, '10-K', '0000000001-25-000001'))
+        with redirect_stdout(io.StringIO()):
+            metrics = desk.calculate(facts, 30)
+        self.assertAlmostEqual(metrics['operating_margin']['value'], .25)
+        self.assertAlmostEqual(metrics['revenue_growth']['value'], .2)
+
     def test_fresh_tag_wins_and_every_fact_uses_revenue_period(self):
         raw = fixture()
         taxonomy = raw["facts"]["us-gaap"]

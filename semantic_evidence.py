@@ -9,6 +9,7 @@ from quoted_calculations import DATE
 
 
 UNIT = re.compile(r'\bin (?:thousands|millions|billions)\b|\b(?:amounts|dollars|figures) (?:are |shown |expressed )?in\b|'
+                  r'[$\u20ac\u00a3]\s*(?:thousands|millions|billions|trillions)\b|'
                   r'except.{0,45}per.share|\b(?:USD|EUR|GBP|CAD|AUD|JPY)\b', re.I)
 PERIOD = re.compile(r'\b(?:weeks?|months?|years?|quarters?) (?:ended|ending)\b|fiscal years? (?:ends?|ended)|'
                     r'references to.{0,70}(?:relate|refer)|\b(?:FY\s*)?(?:19|20)\d{2}\s+(?:versus|vs\.?|compared to)\s+(?:19|20)\d{2}', re.I)
@@ -43,11 +44,13 @@ def _year_columns(line):
         if cell in years:
             continue
         units_caption = (UNIT.search(cell) and
-                         re.match(r'^\(?\s*(?:(?:[$\u20ac\u00a3]\s+)?in\b|amounts\b|dollars\b|figures\b|except\b)', cell, re.I) and
+                         re.match(r'^\(?\s*(?:(?:[$\u20ac\u00a3]\s+)?in\b|'
+                                  r'[$\u20ac\u00a3]\s*(?:thousands|millions|billions|trillions)\b|'
+                                  r'amounts\b|dollars\b|figures\b|except\b)', cell, re.I) and
                          not re.search(r'\d', cell))
         column_label = re.fullmatch(r'(?:percentage|percent|%)?\s*change(?:\s+(?:Y/Y|YoY|year.over.year))?|'
                                    r'(?:fiscal\s+)?years?(?:\s+ended)?|'
-                                   r'as reported(?:\s*\(GAAP\))?|as adjusted(?:\s*\(non-GAAP\))?', cell, re.I)
+                                   r'as reported(?:\s*\(GAAP\))?|as adjusted(?:\s*\(non-GAAP\))?|[$\u20ac\u00a3%]', cell, re.I)
         if not (units_caption or column_label):
             return False
     return True
@@ -59,11 +62,29 @@ def _comparison_period_header(line):
                             r'(?:(?:fiscal\s+)?(?:year|quarter)\s+)?(?:19|20)\d{2}\s*', line, re.I))
 
 
+def _split_date_header(line):
+    # Some tables put the common month/day above separate year columns. Keep
+    # this literal header without inventing a date or treating body rows as dates.
+    return bool(re.fullmatch(
+        r'[\s|]*(?:January|February|March|April|May|June|July|August|September|October|November|December)'
+        r'\s+\d{1,2},?[\s|]*(?:Change[\s|]*)?', line, re.I))
+
+
 def _period_header(line):
     # Full dates in ordinary narrative are not automatically column headers.
     remainder = DATE.sub('', line).strip(' |,:;()-')
+    cells = [cell.strip() for cell in line.split('|') if cell.strip()]
+    # A segment label may share a header with literal compact fiscal quarters.
+    # Require whole period cells, never quarter-looking tokens in body prose.
+    quarters = [i for i, cell in enumerate(cells)
+                if re.fullmatch(r'Q[1-4]\s+FY\s*\d{2}(?:\d{2})?', cell, re.I)]
+    fiscal_columns = (len(quarters) >= 2 and
+                      all(i == 0 or i in quarters or
+                          re.fullmatch(r'(?:%\s*)?change|[$%]', cell, re.I)
+                          for i, cell in enumerate(cells)))
     return bool(PERIOD.search(line) or (DATE.search(line) and not remainder) or
-                _year_columns(line) or _comparison_period_header(line))
+                _year_columns(line) or _comparison_period_header(line) or _split_date_header(line) or
+                fiscal_columns)
 
 
 def _paragraphs(lines):
@@ -193,9 +214,9 @@ class EvidenceSelector:
                 if not units: units=[i for i in range(item,first_note) if UNIT.search(lines[i])]
                 if not periods: periods=[i for i in range(item,first_note) if _period_header(lines[i])]
             selected.update(units[-1:])
-            date_headers=[i for i in periods if DATE.search(lines[i])]
+            date_headers=[i for i in periods if DATE.search(lines[i]) or _split_date_header(lines[i])]
             year_headers=[i for i in periods if _year_columns(lines[i])]
-            duration_headers=[i for i in periods if re.search(r'\b\d+\s+(?:weeks?|months?) (?:ended|ending)\b',lines[i],re.I)]
+            duration_headers=[i for i in periods if re.search(r'\b(?:weeks?|months?) (?:ended|ending)\b',lines[i],re.I)]
             selected.update(date_headers[-1:]); selected.update(year_headers[-1:]); selected.update(duration_headers[-1:])
             if not (date_headers or year_headers or duration_headers): selected.update(periods[-1:])
             if anchor>a and len(lines[anchor-1])<160 and lines[anchor-1].rstrip().endswith(':'):

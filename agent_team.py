@@ -27,6 +27,7 @@ from model_budget import MODEL_INPUT_CHAR_LIMIT, request_characters
 from research_context import research_evidence_ids
 from insight_contract import (opening_paragraph, insight_locations, role_insight_audit,
                               insight_block, role_sections, INSIGHT_OUTPUT_CONTRACT)
+from live_run import DIRECTIONS, freeze_view, reference, atomic_bytes
 
 ROOT = Path(__file__).resolve().parent
 VERIFIER = "Verifier"
@@ -110,6 +111,9 @@ class TeamManager(roles.StrategyManager):
 
     def specialist_schema(self, role, supplied, parts):
         schema = roles.analyst_schema(role, supplied)
+        if role == roles.ADVISOR and roles.PARTS[4] in parts:
+            schema['properties']['direction'] = {'type': 'string', 'enum': list(DIRECTIONS)}
+            schema['required'].append('direction')
         schema['properties']['sections'] = roles.object_schema({
             part: schema['properties']['sections']['properties'][part] for part in parts})
         designated = insight_locations(roles.PARTS, roles.OWNERS)[role]
@@ -210,6 +214,11 @@ class TeamManager(roles.StrategyManager):
                 del schema["properties"][field]
                 schema["required"].remove(field)
         task = "Write only these assigned report parts: " + "; ".join(parts) + ". Use only the assigned context."
+        if role == roles.ADVISOR and roles.PARTS[4] in parts:
+            task += (' State direction explicitly as up, down, flat, or not computed: your expectation for '
+                     'the sign of first post-filing official close / last pre-filing official close - one. '
+                     'Use not computed when no supported directional view is established. '
+                     'Do not infer a reaction forecast mechanically from Buy/Hold/Sell. Do not compute its return.')
         insight_part = insight_locations(roles.PARTS, roles.OWNERS)[role]
         task += (f' Your role has exactly ONE Insight across its output, located only in {insight_part}. '
                  'Keep every assigned part, but put no Insight in other parts or fields. '
@@ -252,6 +261,8 @@ class TeamManager(roles.StrategyManager):
         self.errors.update(roles.validate_content(role, result, supplied))
 
     def finish(self):
+        if (self.output/'view.json').exists():
+            raise FileExistsError('Historical view already finalized; use verify-only without rewriting it.')
         # The model checks content, but Python chooses owners and bounds retries.
         initial = self.review()
         roles.write_json(self.output / "review_initial.json", initial)
@@ -261,6 +272,7 @@ class TeamManager(roles.StrategyManager):
             if feedback:
                 self.specialist(role, feedback)
         final = self.review() if failures else initial
+        freeze_view(self.output, self.results[roles.ADVISOR])
         roles.write_json(self.output / "review_final.json", final)
         roles.write_json(self.output / "role_outputs.json", self.results)
         roles.write_json(self.output / "evidence_catalog.json", self.catalog.snapshot())
@@ -347,6 +359,7 @@ class DeskState(BaseModel):
     run_folder: str = ""
     compiled_report: str = ""
     verified_report: str = ""
+    output_root: str | None = None
 
 
 class DeskFlow(Flow[DeskState]):
@@ -372,7 +385,8 @@ class DeskFlow(Flow[DeskState]):
                 for n, event_phase, event_payload in events:
                     roles.write_json(folder / f"step_{n}_{event_phase}.json", event_payload)
                 events.clear()
-        args = SimpleNamespace(ticker=self.state.ticker, peers=self.state.peers, price=None, step=None)
+        args = SimpleNamespace(ticker=self.state.ticker, peers=self.state.peers, price=None, step=None,
+                               output_root=self.state.output_root)
         output = desk.run_seven_steps(args, self.settings, on_step=record)
         self.state.run_folder = str(output)
         roles.write_json(output / "seven_steps_input.json", {"ticker": args.ticker, "peers": args.peers, "price": args.price})
@@ -401,6 +415,7 @@ class DeskFlow(Flow[DeskState]):
         output = Path(self.state.run_folder)
         source = load_verifier_sources(output)
         result = Verifier(self.manager.client).run(source, output)
+        reference(output, 'verified_report', result)
         self.state.verified_report = str(result)
         return str(result)
 
@@ -408,6 +423,8 @@ class DeskFlow(Flow[DeskState]):
 def filing_valuation(output, ticker, override=None):
     """Save filing provenance and only the single selected market input."""
     output = Path(output)
+    if (output/'view.json').exists():
+        raise FileExistsError('Refusing to change filing-time history after the view was finalized.')
     filings_path = output / "filings.json"
     filings = json.loads(filings_path.read_text(encoding="utf-8")) if filings_path.exists() else {}
     filing = filings.get("8-K", {})
@@ -440,19 +457,78 @@ def fresh_folder(company, parent=None):
     return path
 
 
-def verify_only(saved, key):
+def verify_only(saved, key, output_root=None):
     # This path never constructs DeskFlow, TeamManager, or the seven-step tools.
     source = load_verifier_sources(saved)
     facts = source["saved_facts"].get("facts.json", {})
     company = facts.get("company", {}).get("name") or facts.get("company", {}).get("ticker") or Path(saved).name
-    output = fresh_folder(company)
+    output = fresh_folder(company, Path(output_root) if output_root is not None else None)
     for name, text in source["saved_filing_texts"].items():
         (output / name).write_text(text, encoding="utf-8")
     for name, data in source["saved_facts"].items():
         roles.write_json(output / name, data)
     (output / "compiled_report.md").write_text(source["compiled_report"], encoding="utf-8")
     roles.write_json(output / "verification_origin.json", {"saved_run": str(Path(saved).resolve())})
-    return Verifier(NodeClient(key, output)).run(source, output)
+    result = Verifier(NodeClient(key, output)).run(source, output)
+    # Publish the first successful verification artifact for a frozen run so
+    # existing completion readers recognize it. Never replace historical files.
+    original_report = Path(saved)/'verified_report.md'
+    if (Path(saved)/'view.json').is_file() and not original_report.exists():
+        atomic_bytes(original_report, result.read_bytes())
+    reference(saved, 'verified_report', result)
+    return result
+
+
+class ResumeClient(NodeClient):
+    """Replay validated saved responses locally; call only unfinished nodes.
+
+    Replay rebuilds evidence scopes, calculations and bounded review decisions
+    through the same code as a fresh run. It never requests SEC data.
+    """
+
+    def call(self, role, task, context, schema):
+        count = self.counts.get(role, 0) + 1
+        stem = f"{role.lower().replace(' ', '_')}_{count}"
+        saved = self.output / f'{stem}_output.json'
+        if not saved.exists():
+            return super().call(role, task, context, schema)
+        result = json.loads(saved.read_text(encoding='utf-8'))
+        if 'error' in result:
+            raise roles.RoleError(f'{stem}: saved failed API attempt; refusing to overwrite or silently retry it.')
+        previous = self.output / f'{stem}_input.json'
+        if not previous.is_file():
+            raise roles.RoleError(f'{stem}: saved response has no request provenance.')
+        request = json.loads(previous.read_text(encoding='utf-8'))
+        compared_context = (roles.compact_strategy_context(context)
+                            if role == roles.MANAGER and 'supplied_evidence' in context else context)
+        if request != {'task': task, 'context': compared_context, 'expected_output': schema}:
+            raise roles.RoleError(f'{stem}: saved request no longer matches; refusing to reuse changed evidence.')
+        roles.validate_shape(result, schema)
+        self.counts[role] = count
+        print(f'Reusing saved {role} response {count} (no API call)', flush=True)
+        return result
+
+
+def resume_saved(saved, key):
+    """Resume agents only, in the existing folder, after all seven saved steps."""
+    saved = Path(saved)
+    completed = json.loads((saved / 'seven_steps_output.json').read_text(encoding='utf-8'))
+    if completed.get('steps') != list(range(1, 8)):
+        raise roles.RoleError('Resume requires all seven deterministic steps to be completed and saved.')
+    if (saved / 'verified_report.md').is_file():
+        return saved / 'verified_report.md'
+    if (saved / 'compiled_report.md').is_file():
+        return verify_only(saved, key)
+    if (saved / 'view.json').exists():
+        raise roles.RoleError('Frozen historical view lacks compiled report; refusing to overwrite it.')
+    client = ResumeClient(key, saved)
+    manager = TeamManager(saved, client)
+    for role in (roles.RESEARCH, roles.FINANCIAL, roles.ADVISOR):
+        manager.specialist(role)
+    manager.finish()
+    result = Verifier(client).run(load_verifier_sources(saved), saved)
+    reference(saved, 'verified_report', result)
+    return result
 
 
 def main(argv=None):
@@ -462,10 +538,15 @@ def main(argv=None):
     parser.add_argument("--price", type=float, help="Deprecated; ignored. Valuation uses CLOSES_FILE.")
     parser.add_argument("--filed", help="Override 8-K Accepted time: YYYY-MM-DDTHH:MM:SS Eastern")
     parser.add_argument("--verify-only", type=Path, metavar="SAVED_RUN")
+    parser.add_argument("--resume", type=Path, metavar="SAVED_RUN",
+                        help="Reuse completed saved data and agent responses; never rerun collection")
+    parser.add_argument("--output-root", type=Path, help="Parent folder for a new saved run; default: research_data")
     args = parser.parse_args(argv)
+    if args.resume and (args.ticker or args.verify_only or args.peers or args.price is not None or args.filed or args.output_root):
+        parser.error('--resume takes only an existing saved run; no new collection arguments.')
     if args.verify_only and (args.ticker or args.peers or args.price is not None or args.filed):
-        parser.error("--verify-only accepts only a saved run path; it does not run the desk.")
-    if not args.verify_only and not args.ticker:
+        parser.error("--verify-only accepts a saved run path and optional --output-root; it does not run the desk.")
+    if not args.verify_only and not args.resume and not args.ticker:
         parser.error("a ticker is required for a normal run")
     if args.price is not None and (not math.isfinite(args.price) or args.price <= 0):
         parser.error("--price must be a finite positive number")
@@ -481,8 +562,10 @@ def main(argv=None):
     settings = dotenv_values(ROOT / ".env")
     if not (settings.get("API_KEY") or "").strip():
         raise desk.DeskError("Required Lab 03 input missing: API_KEY in the root .env (Purdue GenAI Studio key).")
-    if args.verify_only:
-        result = verify_only(args.verify_only, settings["API_KEY"].strip())
+    if args.resume:
+        result = resume_saved(args.resume, settings['API_KEY'].strip())
+    elif args.verify_only:
+        result = verify_only(args.verify_only, settings["API_KEY"].strip(), args.output_root)
     else:
         if not (settings.get("SEC_USER_AGENT") or "").strip():
             raise desk.DeskError("Required Lab 03 input missing: SEC_USER_AGENT in the root .env.")
@@ -491,7 +574,8 @@ def main(argv=None):
             if not supplied:
                 print("Missing optional input " + optional, flush=True)
         flow = DeskFlow(settings)
-        result = flow.kickoff(inputs={"ticker": args.ticker.upper(), "peers": peers, "filed": args.filed})
+        result = flow.kickoff(inputs={"ticker": args.ticker.upper(), "peers": peers, "filed": args.filed,
+                                      "output_root": str(args.output_root) if args.output_root is not None else None})
     print(f"Verified report: {result}", flush=True)
     return 0
 

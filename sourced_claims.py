@@ -149,11 +149,11 @@ def resolve_operand(operand, sources, normalize):
                 observed=abs(observed)
             if observed != quote:
                 errors.append('Quoted input does not match the selected number on its cited filing line.')
-            context='\n'.join(ref['quote'] for ref in citation.get('context',[]))
+            context='\n'.join([actual]+[ref['quote'] for ref in citation.get('context',[])])
             unit_scale=None
             if '/shares' in operand['unit'] and re.search(r'except per.share',context,re.I): unit_scale=Decimal(1)
-            elif re.search(r'in millions',context,re.I): unit_scale=Decimal(1000000)
-            elif re.search(r'in thousands',context,re.I): unit_scale=Decimal(1000)
+            elif re.search(r'(?:\bin\s+|[$\u20ac\u00a3]\s*)millions\b',context,re.I): unit_scale=Decimal(1000000)
+            elif re.search(r'(?:\bin\s+|[$\u20ac\u00a3]\s*)thousands\b',context,re.I): unit_scale=Decimal(1000)
             if unit_scale is None or unit_scale!=scale:
                 errors.append('Quoted input scale is not established by its cited saved unit context.')
             filing={**citation,'quote':actual}

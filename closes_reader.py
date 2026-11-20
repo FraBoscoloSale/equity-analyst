@@ -33,7 +33,7 @@ def _date(value):
     return value if isinstance(value, date) else date.fromisoformat(str(value)[:10])
 
 
-def _export_rows():
+def _export_rows(include_volume=False, include_currency=False):
     # Lazy import lets the rest of the team run even without the Excel dependency.
     from openpyxl import load_workbook
 
@@ -57,13 +57,23 @@ def _export_rows():
             if columns is None:
                 continue
             for row in rows:
+                header = {str(cell).strip().casefold(): i for i, cell in enumerate(row) if cell is not None}
+                if {"instrument", "date", "price close"} <= header.keys():
+                    # Each Workspace Lite block has its own column map. Later
+                    # blocks can add Volume even when the first block lacks it.
+                    columns = header
+                    continue
                 if max(columns[key] for key in ("instrument", "date", "price close")) >= len(row):
                     continue
-                if all(str(row[columns[key]]).strip().casefold() == key
-                       for key in ("instrument", "date", "price close")):
-                    continue  # Workspace Lite may repeat the header between export blocks.
-                yield (str(row[columns["instrument"]]).strip(),
-                       row[columns["date"]], row[columns["price close"]])
+                record = (str(row[columns["instrument"]]).strip(),
+                          row[columns["date"]], row[columns["price close"]])
+                if include_volume:
+                    index = columns.get('volume')
+                    record += (row[index] if index is not None and index < len(row) else None,)
+                if include_currency:
+                    index = columns.get('currency')
+                    record += (row[index] if index is not None and index < len(row) else None,)
+                yield record
     finally:
         workbook.close()
 
@@ -137,6 +147,65 @@ def daily_closes(ticker, start_date, end_date):
         return rows or NOT_AVAILABLE
     except Exception:
         # Export/dependency/format failures must not prevent a team run.
+        return NOT_AVAILABLE
+
+
+def daily_close_volumes_for_ticker(ticker, start_date, end_date):
+    """Read exact resolved Instrument closes and Volume; never infer volume.
+
+    Missing/conflicting volumes remain None, so a caller cannot silently compute
+    liquidity from just the rows whose volume happened to be available.
+    The existing closes-only APIs keep their original return shapes.
+    """
+    try:
+        instrument = resolve_export_instrument(ticker)
+        if instrument == NOT_AVAILABLE:
+            return NOT_AVAILABLE
+        start, end = _date(start_date), _date(end_date)
+        found = {}
+        for name, raw_day, raw_close, raw_volume in _export_rows(include_volume=True):
+            if name.upper() != instrument.upper():
+                continue
+            try:
+                day, close = _date(raw_day), float(raw_close)
+                if isinstance(raw_close, bool) or not start <= day <= end or not math.isfinite(close) or close <= 0:
+                    continue
+            except (ValueError, TypeError, OverflowError):
+                continue
+            try:
+                volume = float(raw_volume)
+                if isinstance(raw_volume, bool) or not math.isfinite(volume) or volume < 0:
+                    volume = None
+            except (ValueError, TypeError, OverflowError):
+                volume = None
+            record = {'date': day.isoformat(), 'close': close, 'volume': volume, 'instrument': instrument}
+            if day not in found:
+                found[day] = record
+            elif found[day] is not None:
+                if found[day]['close'] != close:
+                    found[day] = None
+                elif found[day]['volume'] != volume:
+                    found[day]['volume'] = None
+        return [row for _, row in sorted(found.items()) if row is not None] or NOT_AVAILABLE
+    except Exception:
+        return NOT_AVAILABLE
+
+
+def daily_close_volumes(ticker, start_date, end_date):
+    """Return resolved Instrument closes and volumes, preserving missing values."""
+    return daily_close_volumes_for_ticker(ticker, start_date, end_date)
+
+
+def instrument_currency(ticker):
+    """Return an explicit, unambiguous Currency column value, never infer FX."""
+    try:
+        instrument = resolve_export_instrument(ticker)
+        if instrument == NOT_AVAILABLE:
+            return NOT_AVAILABLE
+        values = {str(currency).strip().upper() for name, _, _, currency in _export_rows(include_currency=True)
+                  if name.upper() == instrument.upper()}
+        return next(iter(values)) if len(values) == 1 and re.fullmatch(r'[A-Z]{3}', next(iter(values))) else NOT_AVAILABLE
+    except Exception:
         return NOT_AVAILABLE
 
 

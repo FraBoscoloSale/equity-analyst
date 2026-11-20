@@ -1,0 +1,27 @@
+{
+    "hooks":  {
+                  "PostToolUse":  [
+                                      {
+                                          "matcher":  "Bash|apply_patch|Write|Edit",
+                                          "hooks":  [
+                                                        {
+                                                            "type":  "command",
+                                                            "command":  "python -B \"C:/Users/franc/equity-analyst/verify_spinoff_worksheet.py\" --hook",
+                                                            "timeout":  120
+                                                        }
+                                                    ]
+                                      }
+                                  ],
+                  "Stop":  [
+                               {
+                                   "hooks":  [
+                                                 {
+                                                     "type":  "command",
+                                                     "command":  "python -B \"C:/Users/franc/equity-analyst/verify_spinoff_worksheet.py\" --hook",
+                                                     "timeout":  120
+                                                 }
+                                             ]
+                               }
+                           ]
+              }
+}

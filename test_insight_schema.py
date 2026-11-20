@@ -56,6 +56,8 @@ class InsightSchemaTests(unittest.TestCase):
                         blocks[0]['text']='The selected filing evidence informs the recommendation.'
                     output.update(thesis='The filing informs the thesis.',recommendation='Hold',deciding_evidence_id=None,
                                   reason='No valuation metric is available.',thesis_evidence_ids=[key],reason_evidence_ids=[key])
+                    if 'direction' in schema['properties']:
+                        output['direction'] = 'not computed'
                 # This is precisely the schema sent as response_format by the
                 # production NodeClient, not a simplified test-only contract.
                 roles.validate_shape(output, body['response_format']['json_schema']['schema'])
